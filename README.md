@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💼 Personal Portfolio - Zeus
 
-## Getting Started
+Welcome to my personal portfolio repository! This portfolio showcases my skills, experience, and projects in software development. The goal of this project is to highlight my professional journey, technical skills, and the solutions I’ve created. Feel free to explore and connect!
 
-First, run the development server:
+## 🚀 Live Demo
+
+Check out the live version of my portfolio here: https://nitroc.xyz
+
+## 💻 Installation
+
+#### Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js
+- Git
+
+#### Setup
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/nitroc-dev/Zeus.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd Zeus
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install the required dependencies:
 
-## Learn More
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run the project locally:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+## 🛠️ Skills
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework**: Next.js
+- UI: @nitroc-dev/ui
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+This project is licensed under the MIT License. You are free to use, modify, and distribute this project, as long as you include a link back to this repository.
+
+[Read more about the MIT License](https://choosealicense.com/licenses/mit/)
+
+## 📫 Let’s Connect  
+
+I’d love to hear from you! Feel free to reach out through any of the following:
+
+- **LinkedIn**: [linkedin.com](https://www.linkedin.com/in/corentin-d-02472724b/)
+- **Email**: [contact@nitroc.xyz](mailto:contact@nitroc.xyz)
+- **Portfolio**: [nitroc.xyz](https://nitroc.xyz)
+
+Let’s create something amazing together!
