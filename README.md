@@ -46,7 +46,7 @@ npm start
 ## 🛠️ Skills
 
 - **Framework**: Next.js
-- UI: @nitroc-dev/ui
+- UI: @shadcn/ui and Tailwindcss
 
 ## 📄 License
 
