@@ -1,13 +1,13 @@
-import { LinkIcon } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ProjectCardProps } from "./props";
-import { GithubIcon } from "@/components/icons/github";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="bg-gray-800 border-gray-700 overflow-hidden p-0 flex flex-col">
+    <Card className="bg-gray-800/50 border-gray-700/50 overflow-hidden h-full flex flex-col transition-all duration-200 hover:bg-gray-800/70 pt-0">
       <CardContent className="p-0 flex flex-col flex-1">
         <div className="relative w-full h-48 overflow-hidden">
           {project.imageUrl && (
@@ -22,34 +22,48 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="p-6 text-left flex flex-col flex-1">
           <div className="flex-1">
-            <h3 className="mb-2 text-xl font-semibold text-white">
+            <h3 className="mb-3 text-xl font-semibold text-white">
               {project.name}
             </h3>
-            <p className="text-sm text-gray-300">{project.description}</p>
+            <p className="text-sm text-gray-300 leading-relaxed line-clamp-3 mb-4">
+              {project.description}
+            </p>
           </div>
-          <div className="flex items-center gap-4 mt-4">
+
+          <div className="flex gap-3 mt-4">
             {project.websiteUrl && (
-              <Link
-                href={project.websiteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Visit Website"
-                className="text-gray-400 transition-colors hover:text-white"
+              <Button
+                asChild
+                size="sm"
+                className="bg-blue-600 hover:bg-blue-700 text-white flex-1"
               >
-                <LinkIcon size={18} />
-              </Link>
+                <Link
+                  href={project.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Live Demo
+                </Link>
+              </Button>
             )}
 
             {project.repositoryUrl && (
-              <Link
-                href={project.repositoryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="View Repository"
-                className="text-gray-400 transition-colors hover:text-white"
+              <Button
+                asChild
+                size="sm"
+                variant="outline"
+                className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white flex-1"
               >
-                <GithubIcon width={18} height={18} />
-              </Link>
+                <Link
+                  href={project.repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="w-4 h-4 mr-2" />
+                  Source Code
+                </Link>
+              </Button>
             )}
           </div>
         </div>

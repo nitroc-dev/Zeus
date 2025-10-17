@@ -3,20 +3,20 @@
 import { useState } from "react";
 import { useFormik, FormikProvider } from "formik";
 import toast from "react-hot-toast";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Send } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { contactSchema, ContactFormData } from "@/utils/contact-validation";
+import { FormInput } from "@/components/inputs/input";
+import { FormTextarea } from "@/components/inputs/textarea";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = async (values: ContactFormData) => {
     setIsSubmitting(true);
+    setIsSuccess(false);
 
     try {
       const response = await fetch("/api/contact", {
@@ -32,12 +32,12 @@ export default function Contact() {
         throw new Error(errorData.error || "Failed to send message");
       }
 
-      console.log("Contact form submitted successfully");
-      setIsSubmitted(true);
       formik.resetForm();
-      toast.success("Message sent successfully!");
+      setIsSuccess(true);
+      toast.success("Message sent successfully! I'll get back to you soon.");
+
+      setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
-      console.error("Error submitting contact form:", error);
       toast.error(
         error instanceof Error
           ? error.message
@@ -52,173 +52,157 @@ export default function Contact() {
     initialValues: {
       name: "",
       email: "",
-      subject: "",
       message: "",
     },
     validationSchema: contactSchema,
     onSubmit: handleSubmit,
   });
 
-  if (isSubmitted) {
-    return (
-      <section className="min-h-[95vh] flex items-center justify-center bg-gray-950 px-6 py-20">
-        <div className="w-full max-w-2xl mx-auto text-center">
-          <Card className="bg-gray-800 border-gray-700">
-            <CardContent className="p-8 space-y-8">
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto">
-                  <Send className="w-8 h-8 text-white" />
-                </div>
-                <h2 className="text-3xl font-bold text-gray-50">
-                  Message Sent!
-                </h2>
-                <p className="text-lg text-gray-300">
-                  Thank you for reaching out! I&apos;ll get back to you as soon
-                  as possible.
+  return (
+    <main className="bg-gray-950 relative overflow-hidden">
+      <div className="fixed inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)] pointer-events-none"></div>
+
+      <section className="relative min-h-[95vh] px-6 py-20 flex items-center justify-center backdrop-blur-sm">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
+                  Get in touch
+                </h1>
+                <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
+                  Ready to bring your ideas to life? Let&apos;s discuss your
+                  project and explore how we can work together to create
+                  something amazing.
                 </p>
-                <Button
-                  onClick={() => setIsSubmitted(false)}
-                  className="mt-6 bg-blue-600 hover:bg-blue-700"
-                >
-                  Send Another Message
-                </Button>
               </div>
-            </CardContent>
-          </Card>
+
+              <div className="space-y-6 pt-6">
+                <div className="flex items-center space-x-4">
+                  <div className="w-6 h-6 text-blue-400">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <Link
+                    href="mailto:contact@nitroc.xyz"
+                    className="hover:underline"
+                  >
+                    <span className="text-white font-medium text-base">
+                      contact@nitroc.xyz
+                    </span>
+                  </Link>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="w-6 h-6 text-blue-400">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <span className="text-white font-medium text-base">
+                    Brussels, Belgium
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-800/50 rounded-xl border border-gray-700/50 p-8 transition-all duration-200 hover:bg-gray-800/70">
+              {isSuccess ? (
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto">
+                    <svg
+                      className="w-8 h-8 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">
+                    Message Sent!
+                  </h3>
+                  <p className="text-gray-300">
+                    Thanks for reaching out! I&apos;ll get back to you as soon
+                    as possible.
+                  </p>
+                  <Button
+                    onClick={() => setIsSuccess(false)}
+                    variant="outline"
+                    className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >
+                    Send Another Message
+                  </Button>
+                </div>
+              ) : (
+                <FormikProvider value={formik}>
+                  <form onSubmit={formik.handleSubmit} className="space-y-6">
+                    <FormInput
+                      field={formik.getFieldProps("name")}
+                      formik={formik}
+                      label="Name"
+                      placeholder="Name"
+                      required
+                      className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 h-12 text-base"
+                    />
+
+                    <FormInput
+                      field={formik.getFieldProps("email")}
+                      formik={formik}
+                      label="Email"
+                      type="email"
+                      placeholder="Email"
+                      required
+                      className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 h-12 text-base"
+                    />
+
+                    <FormTextarea
+                      field={formik.getFieldProps("message")}
+                      formik={formik}
+                      label="Message"
+                      rows={5}
+                      placeholder="Type your message"
+                      required
+                      className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 resize-none text-base min-h-[120px]"
+                    />
+
+                    <div className="text-sm text-gray-400">
+                      By submitting this form, you agree to our{" "}
+                      <Link
+                        href="/privacy"
+                        className="text-blue-400 underline hover:text-blue-300"
+                      >
+                        Privacy Policy
+                      </Link>{" "}
+                      and consent to the collection and use of your information
+                      as described.
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || !formik.isValid}
+                      size="lg"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50 py-3 text-base"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        "Send message"
+                      )}
+                    </Button>
+                  </form>
+                </FormikProvider>
+              )}
+            </div>
+          </div>
         </div>
       </section>
-    );
-  }
-
-  return (
-    <section className="min-h-[95vh] flex items-center justify-center bg-gray-950 px-6 py-20">
-      <div className="w-full max-w-4xl mx-auto text-center">
-        <div className="mb-12">
-          <h1 className="mb-4 text-4xl font-bold text-gray-50 sm:text-5xl">
-            Get In <span className="text-blue-600">Touch</span>
-          </h1>
-          <p className="text-lg text-gray-300 sm:text-xl max-w-2xl mx-auto">
-            Have a project in mind? Want to collaborate? Or just want to say
-            hello? I&apos;d love to hear from you!
-          </p>
-        </div>
-
-        <Card className="bg-gray-800 border-gray-700">
-          <CardContent className="p-8">
-            <FormikProvider value={formik}>
-              <form onSubmit={formik.handleSubmit} className="space-y-6">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-gray-300">
-                      Name
-                    </Label>
-                    <Input
-                      {...formik.getFieldProps("name")}
-                      id="name"
-                      type="text"
-                      placeholder="Your name"
-                      className={`bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400 focus:border-blue-600 ${
-                        formik.touched.name && formik.errors.name
-                          ? "border-red-500"
-                          : ""
-                      }`}
-                    />
-                    {formik.touched.name && formik.errors.name && (
-                      <p className="text-red-400 text-sm">
-                        {formik.errors.name}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-300">
-                      Email
-                    </Label>
-                    <Input
-                      {...formik.getFieldProps("email")}
-                      id="email"
-                      type="email"
-                      placeholder="your.email@example.com"
-                      className={`bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400 focus:border-blue-600 ${
-                        formik.touched.email && formik.errors.email
-                          ? "border-red-500"
-                          : ""
-                      }`}
-                    />
-                    {formik.touched.email && formik.errors.email && (
-                      <p className="text-red-400 text-sm">
-                        {formik.errors.email}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-gray-300">
-                    Subject
-                  </Label>
-                  <Input
-                    {...formik.getFieldProps("subject")}
-                    id="subject"
-                    type="text"
-                    placeholder="What's this about?"
-                    className={`bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400 focus:border-blue-600 ${
-                      formik.touched.subject && formik.errors.subject
-                        ? "border-red-500"
-                        : ""
-                    }`}
-                  />
-                  {formik.touched.subject && formik.errors.subject && (
-                    <p className="text-red-400 text-sm">
-                      {formik.errors.subject}
-                    </p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-gray-300">
-                    Message
-                  </Label>
-                  <Textarea
-                    {...formik.getFieldProps("message")}
-                    id="message"
-                    rows={6}
-                    placeholder="Tell me about your project, idea, or just say hello..."
-                    className={`bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400 focus:border-blue-600 resize-none ${
-                      formik.touched.message && formik.errors.message
-                        ? "border-red-500"
-                        : ""
-                    }`}
-                  />
-                  {formik.touched.message && formik.errors.message && (
-                    <p className="text-red-400 text-sm">
-                      {formik.errors.message}
-                    </p>
-                  )}
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || !formik.isValid}
-                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} className="mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </FormikProvider>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+    </main>
   );
 }
