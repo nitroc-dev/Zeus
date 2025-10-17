@@ -3,17 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 interface ContactFormData {
   name: string;
   email: string;
-  subject: string;
   message: string;
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
-    const { name, email, subject, message } = body;
+    const { name, email, message } = body;
 
     // Validate the form data
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -49,12 +48,7 @@ export async function POST(request: NextRequest) {
               inline: true,
             },
             {
-              name: "📝 Subject",
-              value: subject,
-              inline: false,
-            },
-            {
-              name: "💬 Message",
+              name: " Message",
               value:
                 message.length > 1000
                   ? message.substring(0, 1000) + "..."
@@ -80,10 +74,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (!discordResponse.ok) {
-      console.error(
-        "Failed to send Discord message:",
-        discordResponse.statusText
-      );
       return NextResponse.json(
         { error: "Failed to send notification" },
         { status: 500 }
@@ -91,8 +81,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ message: "Message sent successfully" });
-  } catch (error) {
-    console.error("Error processing contact form:", error);
+  } catch {
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

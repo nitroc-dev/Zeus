@@ -15,7 +15,7 @@ export interface SkillCategory {
   id: string;
   icon: ReactNode;
   label: string;
-  url: string;
+  technologies: string[];
 }
 
 export interface Experience {
@@ -50,15 +50,30 @@ export const skills: SkillCategory[] = [
     id: "1",
     icon: <Code className="w-5 h-5 text-primary" />,
     label: "Programming Languages",
-    url: "https://skillicons.dev/icons?i=html,css,js,ts,c,cs,java&theme=dark",
+    technologies: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "C",
+      "C#",
+      "Java",
+    ],
   },
 
   // Frameworks
   {
     id: "2",
     icon: <Box className="w-5 h-5 text-primary" />,
-    label: "Frameworks & Librairies",
-    url: "https://skillicons.dev/icons?i=react,nextjs,nestjs,dotnet,express,spring&theme=dark",
+    label: "Frameworks & Libraries",
+    technologies: [
+      "React",
+      "Next.js",
+      "NestJS",
+      ".NET",
+      "Express.js",
+      "Spring Boot",
+    ],
   },
 
   // Tools and Databases
@@ -66,7 +81,15 @@ export const skills: SkillCategory[] = [
     id: "3",
     icon: <Database className="w-5 h-5 text-primary" />,
     label: "Tools & Databases",
-    url: "https://skillicons.dev/icons?i=mysql,postgres,mongodb,docker,git,github,githubactions&theme=dark",
+    technologies: [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Docker",
+      "Git",
+      "GitHub",
+      "GitHub Actions",
+    ],
   },
 ];
 

@@ -1,41 +1,63 @@
 import { Briefcase, GraduationCap, Star } from "lucide-react";
 import { ExperienceCardProps } from "./props";
 import { Card, CardContent } from "@/components/ui/card";
-import { formatExperience } from "@/utils/date";
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   const getIcon = () => {
     switch (experience.experienceType) {
       case "work":
-        return <Briefcase className="w-5 h-5 text-white" />;
+        return <Briefcase className="w-5 h-5 text-blue-400" />;
       case "education":
-        return <GraduationCap className="w-5 h-5 text-white" />;
+        return <GraduationCap className="w-5 h-5 text-green-400" />;
       case "internship":
-        return <Star className="w-5 h-5 text-white" />;
+        return <Star className="w-5 h-5 text-purple-400" />;
       default:
-        return null;
+        return <Briefcase className="w-5 h-5 text-gray-400" />;
+    }
+  };
+
+  const getIconBackground = () => {
+    switch (experience.experienceType) {
+      case "work":
+        return "bg-blue-600/20 border-blue-600/30";
+      case "education":
+        return "bg-green-600/20 border-green-600/30";
+      case "internship":
+        return "bg-purple-600/20 border-purple-600/30";
+      default:
+        return "bg-gray-600/20 border-gray-600/30";
     }
   };
 
   return (
-    <Card className="bg-gray-800 border-gray-700">
-      <CardContent>
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2 text-white">
+    <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 group">
+      <CardContent className="p-8">
+        <div className="flex items-start gap-4 mb-6">
+          <div
+            className={`flex h-10 w-10 items-center justify-center rounded-lg border ${getIconBackground()}`}
+          >
             {getIcon()}
-            <h3 className="text-xl font-semibold">{experience.name}</h3>
           </div>
-          {!experience.endDate && (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 text-sm text-yellow-400 bg-yellow-800 rounded-full">
-              <Star className="w-4 h-4" />
-              Current
-            </span>
-          )}
+
+          <div className="flex-1">
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {experience.name}
+                </h3>
+                <p className="text-blue-400 font-medium mb-1">
+                  {experience.companyName}
+                </p>
+                <p className="text-sm text-gray-400">
+                  {experience.startDate} - {experience.endDate || "Present"} •{" "}
+                  {experience.location}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="mb-3 text-sm text-gray-400">
-          {experience.companyName} / {formatExperience(experience) || "Present"}
-        </p>
-        <p className="mb-4 leading-relaxed text-gray-300">
+
+        <p className="text-gray-300 leading-relaxed">
           {experience.description}
         </p>
       </CardContent>

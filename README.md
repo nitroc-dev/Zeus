@@ -1,10 +1,32 @@
-# 💼 Personal Portfolio - Zeus
+# 💼 Zeus Portfolio - Modern Developer Portfolio
 
-Welcome to my personal portfolio repository! This portfolio showcases my skills, experience, and projects in software development. The goal of this project is to highlight my professional journey, technical skills, and the solutions I’ve created. Feel free to explore and connect!
+A sleek, modern portfolio website built with Next.js 15, showcasing professional experience, projects, and technical skills. Features a beautiful dark theme, smooth animations, and optimized performance.
+
+## 🌟 Features
+
+- **Modern Design**: Clean, professional dark theme with smooth animations
+- **Fully Responsive**: Mobile-first design that works perfectly on all devices
+- **Performance Optimized**: Built with Next.js 15 and App Router for maximum speed
+- **SEO Ready**: Complete meta tags, OpenGraph, sitemap, and robots.txt
+- **Type Safe**: Full TypeScript implementation for better developer experience
+- **Accessible**: Following WCAG guidelines for accessibility
+- **Fast Loading**: Image optimization and efficient code splitting
 
 ## 🚀 Live Demo
 
-Check out the live version of my portfolio here: https://nitroc.xyz
+Check out the live version: [https://nitroc.xyz](https://nitroc.xyz)
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI primitives
+- **Icons**: Lucide React + Custom SVG icons
+- **Form Handling**: Formik with Yup validation
+- **HTTP Client**: Axios
+- **Notifications**: React Hot Toast
+- **Deployment**: Vercel
 
 ## 💻 Installation
 
