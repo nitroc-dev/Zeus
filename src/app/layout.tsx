@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/navigation/header";
 import { Footer } from "@/components/navigation/footer";
 import { ToasterProvider } from "@/components/providers/toaster-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Corentin - Full Stack Developer",
@@ -76,6 +77,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ToasterProvider />
+        <Analytics />
       </body>
     </html>
   );
