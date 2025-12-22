@@ -1,6 +1,7 @@
-import { Briefcase, GraduationCap, Star } from "lucide-react";
+import { Briefcase, GraduationCap, Star, ExternalLink } from "lucide-react";
 import { ExperienceCardProps } from "./props";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   const getIcon = () => {
@@ -45,9 +46,21 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
                 <h3 className="text-lg font-semibold text-white mb-2">
                   {experience.name}
                 </h3>
-                <p className="text-blue-400 font-medium mb-1">
-                  {experience.companyName}
-                </p>
+                {experience.websiteUrl ? (
+                  <Link
+                    href={experience.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 font-medium mb-1 inline-flex items-center gap-1 hover:text-blue-300 transition-colors"
+                  >
+                    {experience.companyName}
+                    <ExternalLink className="w-3 h-3" />
+                  </Link>
+                ) : (
+                  <p className="text-blue-400 font-medium mb-1">
+                    {experience.companyName}
+                  </p>
+                )}
                 <p className="text-sm text-gray-400">
                   {experience.startDate} - {experience.endDate || "Present"} •{" "}
                   {experience.location}
