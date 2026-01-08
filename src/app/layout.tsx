@@ -3,7 +3,6 @@ import { Header } from "@/components/navigation/header";
 import { Footer } from "@/components/navigation/footer";
 import { ToasterProvider } from "@/components/providers/toaster-provider";
 import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,6 +27,11 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/profile.png", sizes: "180x180", type: "image/png" }],
   },
   openGraph: {
     type: "website",
