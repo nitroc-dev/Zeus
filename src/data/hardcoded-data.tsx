@@ -27,6 +27,7 @@ export interface Experience {
   endDate?: string;
   location: string;
   experienceType: "work" | "education" | "internship";
+  websiteUrl?: string;
 }
 
 // Hardcoded projects data
@@ -100,31 +101,34 @@ export const experiences: Experience[] = [
     name: "Full Stack Developer",
     companyName: "Eachstapp",
     description:
-      "Developed and maintained web applications using React, Next.js, and .NET. Collaborated with cross-functional teams to deliver high-quality software solutions.",
+      "Leading the development and maintenance of enterprise web applications using React, Next.js, and .NET technologies. Collaborating with cross-functional teams to architect scalable solutions, implement RESTful APIs, and optimize application performance. Successfully delivered multiple features that improved user engagement and system efficiency while maintaining high code quality standards.",
     startDate: "2024-10-01",
     location: "Brussels, Belgium",
     experienceType: "work",
+    websiteUrl: "https://eachstapp.com",
   },
   {
     id: "2",
     name: "Fullstack Developer (Internship)",
     companyName: "Eachstapp",
     description:
-      "Assisted in the development of web applications, focusing on frontend and backend integration. Gained hands-on experience with modern web technologies and agile methodologies.",
+      "Contributed to the development of modern web applications by implementing responsive frontend components and backend API integrations. Gained practical experience with React, TypeScript, and .NET while working in an agile development environment. Participated in code reviews, sprint planning sessions, and learned industry best practices for building production-ready applications.",
     startDate: "2024-01-01",
     endDate: "2024-05-01",
     location: "Brussels, Belgium",
     experienceType: "internship",
+    websiteUrl: "https://eachstapp.com",
   },
   {
     id: "3",
     name: "Computer Science Student",
     companyName: "Haute Ecole Léonard de Vinci",
     description:
-      "Studied various aspects of computer science, including programming, algorithms, and software development.",
+      "Completed comprehensive studies in computer science covering programming fundamentals, data structures, algorithms, database management, and software engineering principles. Developed strong analytical and problem-solving skills through hands-on projects and coursework. Built a solid foundation in object-oriented programming, web development, and system design that directly applies to modern software development practices.",
     startDate: "2021-09-01",
     endDate: "2024-06-30",
     location: "Brussels, Belgium",
     experienceType: "education",
+    websiteUrl: "https://www.vinci.be",
   },
 ];
