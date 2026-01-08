@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { MessageCircle, Github } from "lucide-react";
 import ProjectCard from "@/components/cards/project";
+import { motion } from "framer-motion";
 
 export default function ProjectsPage() {
   return (
@@ -14,7 +15,12 @@ export default function ProjectsPage() {
 
       <section className="relative min-h-[95vh] px-6 py-20 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center mb-16"
+          >
             <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               My <span className="text-blue-600">Projects</span>
             </h1>
@@ -23,15 +29,28 @@ export default function ProjectsPage() {
               and innovative solutions. Each project represents a unique
               challenge and creative approach.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {projects?.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {projects?.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
           </div>
 
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
             <p className="text-gray-400 mb-6">
               Want to see more of my work or discuss a project?
             </p>
@@ -58,7 +77,7 @@ export default function ProjectsPage() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
