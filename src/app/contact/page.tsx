@@ -9,6 +9,7 @@ import { Mail, MapPin } from "lucide-react";
 import { contactSchema, ContactFormData } from "@/utils/contact-validation";
 import { FormInput } from "@/components/inputs/input";
 import { FormTextarea } from "@/components/inputs/textarea";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +42,7 @@ export default function Contact() {
       toast.error(
         error instanceof Error
           ? error.message
-          : "Failed to send message. Please try again."
+          : "Failed to send message. Please try again.",
       );
     } finally {
       setIsSubmitting(false);
@@ -66,7 +67,12 @@ export default function Contact() {
       <section className="relative min-h-[95vh] px-6 py-20 flex items-center justify-center backdrop-blur-sm">
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-8"
+            >
               <div className="space-y-4">
                 <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
                   Get in touch
@@ -79,7 +85,12 @@ export default function Contact() {
               </div>
 
               <div className="space-y-6 pt-6">
-                <div className="flex items-center space-x-4">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="flex items-center space-x-4"
+                >
                   <div className="w-6 h-6 text-blue-400">
                     <Mail className="w-6 h-6" />
                   </div>
@@ -91,20 +102,30 @@ export default function Contact() {
                       contact@nitroc.xyz
                     </span>
                   </Link>
-                </div>
+                </motion.div>
 
-                <div className="flex items-center space-x-4">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex items-center space-x-4"
+                >
                   <div className="w-6 h-6 text-blue-400">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <span className="text-white font-medium text-base">
                     Brussels, Belgium
                   </span>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-gray-800/50 rounded-xl border border-gray-700/50 p-8 transition-all duration-200 hover:bg-gray-800/70">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gray-800/50 rounded-xl border border-gray-700/50 p-8 hover:bg-gray-800/70"
+            >
               {isSuccess ? (
                 <div className="text-center space-y-4">
                   <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto">
@@ -199,7 +220,7 @@ export default function Contact() {
                   </form>
                 </FormikProvider>
               )}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
