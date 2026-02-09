@@ -1,5 +1,5 @@
-import * as React from "react";
-import { FormikErrors, FormikTouched } from "formik";
+import type { FormikErrors, FormikTouched } from "formik";
+import type * as React from "react";
 
 export interface FormTextareaProps
   extends Omit<

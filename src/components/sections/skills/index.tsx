@@ -1,6 +1,6 @@
 "use client";
-import { getLocalizedSkills } from "@/data/hardcoded-data";
 import { useTranslations } from "next-intl";
+import { getLocalizedSkills } from "@/data/hardcoded-data";
 
 export function Skills() {
   const t = useTranslations("skills");

@@ -1,11 +1,11 @@
-import { Header } from "@/components/navigation/header";
-import { Footer } from "@/components/navigation/footer";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { Footer } from "@/components/navigation/footer";
+import { Header } from "@/components/navigation/header";
 import { Toaster } from "@/components/ui/sonner";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
 
 export const metadata: Metadata = {

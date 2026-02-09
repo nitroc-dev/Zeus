@@ -1,4 +1,4 @@
-import { Project } from "@/data/hardcoded-data";
+import type { Project } from "@/data/hardcoded-data";
 
 export interface ProjectCardProps {
   project: Project;

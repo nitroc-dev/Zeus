@@ -1,9 +1,9 @@
-import { Github, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
-import { ProjectCardProps } from "./props";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import type { ProjectCardProps } from "./props";
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
