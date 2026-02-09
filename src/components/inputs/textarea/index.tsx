@@ -28,7 +28,7 @@ const FormTextarea = React.forwardRef<HTMLTextAreaElement, FormTextareaProps>(
       formik,
       ...props
     },
-    ref
+    ref,
   ) => {
     const generatedId = React.useId();
     const textareaId = id || generatedId;
@@ -70,7 +70,7 @@ const FormTextarea = React.forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             onBlur={fieldOnBlur}
             className={cn(
               hasError && "border-destructive focus-visible:ring-destructive",
-              className
+              className,
             )}
             aria-invalid={hasError ? "true" : "false"}
             aria-describedby={
@@ -93,7 +93,7 @@ const FormTextarea = React.forwardRef<HTMLTextAreaElement, FormTextareaProps>(
         </FieldContent>
       </Field>
     );
-  }
+  },
 );
 
 FormTextarea.displayName = "FormTextarea";

@@ -1,21 +1,24 @@
-import { experiences } from "@/data/hardcoded-data";
+"use client";
+import { getLocalizedExperiences } from "@/data/hardcoded-data";
 import { ExperienceCard } from "@/components/cards/experience";
+import { useTranslations } from "next-intl";
 
 export function Experience() {
+  const t = useTranslations("experience");
+  const experiences = getLocalizedExperiences(useTranslations("experiencesData"));
+
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-xs font-medium text-gray-300 mb-4">
-            Professional Journey
+            {t("badge")}
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
-            Experience & Expertise
+            {t("title")}
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            A journey through professional growth, technical challenges, and
-            successful project deliveries across different industries and
-            technologies.
+            {t("description")}
           </p>
         </div>
 

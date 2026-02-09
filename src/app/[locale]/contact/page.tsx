@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useFormik, FormikProvider } from "formik";
-import toast from "react-hot-toast";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin } from "lucide-react";
@@ -10,8 +9,11 @@ import { contactSchema, ContactFormData } from "@/utils/contact-validation";
 import { FormInput } from "@/components/inputs/input";
 import { FormTextarea } from "@/components/inputs/textarea";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 export default function Contact() {
+  const t = useTranslations("contact");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -35,15 +37,11 @@ export default function Contact() {
 
       formik.resetForm();
       setIsSuccess(true);
-      toast.success("Message sent successfully! I'll get back to you soon.");
+      toast.success(t("success"));
 
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
-      toast.error(
-        error instanceof Error
-          ? error.message
-          : "Failed to send message. Please try again.",
-      );
+      toast.error(error instanceof Error ? error.message : t("error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -75,12 +73,10 @@ export default function Contact() {
             >
               <div className="space-y-4">
                 <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
-                  Get in touch
+                  {t("title")}
                 </h1>
                 <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
-                  Ready to bring your ideas to life? Let&apos;s discuss your
-                  project and explore how we can work together to create
-                  something amazing.
+                  {t("description")}
                 </p>
               </div>
 
@@ -164,8 +160,8 @@ export default function Contact() {
                     <FormInput
                       field={formik.getFieldProps("name")}
                       formik={formik}
-                      label="Name"
-                      placeholder="Name"
+                      label={t("name")}
+                      placeholder={t("name")}
                       required
                       className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 h-12 text-base"
                     />
@@ -173,9 +169,9 @@ export default function Contact() {
                     <FormInput
                       field={formik.getFieldProps("email")}
                       formik={formik}
-                      label="Email"
+                      label={t("email")}
                       type="email"
-                      placeholder="Email"
+                      placeholder={t("email")}
                       required
                       className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 h-12 text-base"
                     />
@@ -183,9 +179,9 @@ export default function Contact() {
                     <FormTextarea
                       field={formik.getFieldProps("message")}
                       formik={formik}
-                      label="Message"
+                      label={t("message")}
                       rows={5}
-                      placeholder="Type your message"
+                      placeholder={t("message")}
                       required
                       className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500 resize-none text-base min-h-[120px]"
                     />
@@ -214,7 +210,7 @@ export default function Contact() {
                           Sending...
                         </>
                       ) : (
-                        "Send message"
+                        t("send")
                       )}
                     </Button>
                   </form>
