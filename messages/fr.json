@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "title": "Corentin - Développeur Full Stack",
+    "description": "Développeur Full Stack passionné par la création d'applications web modernes avec React, Next.js et .NET. Découvrez mon portfolio, mes projets et mon parcours professionnel."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "experience": "Expérience",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "name": "Corentin",
+    "description": "Un développeur full-stack passionné spécialisé dans le développement web et les systèmes backend. Je crée des solutions modernes et évolutives qui résolvent des problèmes réels grâce à un code propre et une pensée innovante.",
+    "getInTouch": "Me contacter",
+    "viewProjects": "Voir les projets"
+  },
+  "about": {
+    "badge": "Disponible pour travailler",
+    "title": "Créer des expériences numériques qui comptent",
+    "description": "Je suis un développeur full-stack passionné qui aime créer des solutions réelles grâce à un code propre et maintenable et une pensée créative. Je travaille actuellement chez Eachstapp tout en explorant de nouvelles opportunités.",
+    "basedInBelgium": "Basé en Belgique",
+    "basedDescription": "Travail à distance et disponible pour les collaborations mondiales",
+    "fullStackFocus": "Approche Full-Stack",
+    "fullStackDescription": "Spécialisé dans les technologies web modernes et les solutions évolutives",
+    "innovationDriven": "Orienté Innovation",
+    "innovationDescription": "Prospérant sur les défis et créant des solutions numériques percutantes",
+    "alwaysLearning": "Apprentissage Continu",
+    "learningDescription": "Exploration continue des nouvelles technologies pour rester en avant"
+  },
+  "experience": {
+    "badge": "Parcours Professionnel",
+    "title": "Expérience & Expertise",
+    "description": "Un parcours de croissance professionnelle, de défis techniques et de livraisons de projets réussis dans différents secteurs et technologies."
+  },
+  "skills": {
+    "badge": "Stack Technique",
+    "title": "Compétences & Technologies",
+    "description": "Un ensemble complet de technologies modernes et de frameworks que j'utilise pour créer des applications évolutives, performantes et conviviales."
+  },
+  "projects": {
+    "badge": "Portfolio",
+    "title": "Projets en vedette",
+    "description": "Une collection de projets qui showcasent mes compétences techniques et mes capacités de résolution de problèmes créatifs.",
+    "pageTitle": {
+      "my": "Mes",
+      "projects": "Projets"
+    },
+    "pageDescription": "Un aperçu de mon travail couvrant le développement web, les systèmes backend et les solutions innovantes. Chaque projet représente un défi unique et une approche créative.",
+    "callToAction": "Vous voulez voir plus de mon travail ou discuter d'un projet ?",
+    "getInTouched": "Me contacter",
+    "viewGithub": "Voir GitHub"
+  },
+  "cta": {
+    "badge": "Prêt à collaborer",
+    "title": "Prêt à concrétiser vos idées ?",
+    "description": "Collaborons pour créer quelque chose d'extraordinaire. Je suis là pour transformer votre vision en réalité avec un code propre, des solutions évolutives et une approche innovante. Commençons votre prochain projet dès aujourd'hui.",
+    "getInTouch": "Me contacter",
+    "viewProjects": "Voir les projets"
+  },
+  "contact": {
+    "title": "Me contacter",
+    "description": "Prêt à concrétiser vos idées ? Discutons de votre projet et explorez comment nous pouvons travailler ensemble pour créer quelque chose d'extraordinaire.",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
+    "error": "Échec de l'envoi du message. Veuillez réessayer ou me contacter directement par email.",
+    "contactMe": "Me contacter directement"
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "lastUpdated": "Dernière mise à jour : 15 octobre 2025",
+    "informationCollected": "Informations que nous collectons",
+    "collectDescription": "Lorsque vous nous contactez via notre formulaire de contact, nous collectons :",
+    "name": "Votre nom",
+    "emailAddress": "Votre adresse email",
+    "messageContent": "Le contenu de votre message",
+    "howWeUse": "Comment nous utilisons vos informations",
+    "useDescription": "Nous utilisons les informations que vous fournissez pour :",
+    "respondInquiries": "Répondre à vos demandes et messages",
+    "provideServices": "Fournir les services ou informations que vous avez demandés",
+    "communicateProjects": "Communiquer avec vous sur les projets ou collaborations potentiels"
+  },
+  "skillCategories": {
+    "programmingLanguages": "Langages de Programmation",
+    "frameworksLibraries": "Frameworks & Bibliothèques",
+    "toolsDatabases": "Outils & Bases de données"
+  },
+  "projectsData": {
+    "zeus": {
+      "name": "Zeus",
+      "description": "Zeus est un portfolio qui présente mes compétences, mon expérience et mes projets en développement logiciel. L'objectif de ce projet est de mettre en valeur mon parcours professionnel, mes compétences techniques et les solutions que j'ai créées. N'hésitez pas à explorer et à me contacter !"
+    }
+  },
+  "experiencesData": {
+    "fullStackDev": {
+      "name": "Développeur Full Stack",
+      "company": "Eachstapp",
+      "location": "Bruxelles, Belgique",
+      "description": "Direction du développement et de la maintenance d'applications web d'entreprise utilisant React, Next.js et les technologies .NET. Collaboration avec des équipes interfonctionnelles pour concevoir des solutions évolutives, implémenter des API RESTful et optimiser les performances des applications. Livraison réussie de plusieurs fonctionnalités qui ont amélioré l'engagement des utilisateurs et l'efficacité du système tout en maintenant des normes de qualité de code élevées."
+    },
+    "internship": {
+      "name": "Développeur Fullstack (Stage)",
+      "company": "Eachstapp",
+      "location": "Bruxelles, Belgique",
+      "description": "Contribution au développement d'applications web modernes en implémentant des composants frontend réactifs et des intégrations d'API backend. Acquisition d'une expérience pratique avec React, TypeScript et .NET tout en travaillant dans un environnement de développement agile. Participation aux revues de code, aux sessions de planification de sprint et apprentissage des meilleures pratiques de l'industrie pour créer des applications prêtes pour la production."
+    },
+    "education": {
+      "name": "Étudiant en Informatique",
+      "company": "Haute École Léonard de Vinci",
+      "location": "Bruxelles, Belgique",
+      "description": "Études complètes en informatique couvrant les fondamentaux de la programmation, les structures de données, les algorithmes, la gestion des bases de données et les principes de génie logiciel. Développement de solides compétences analytiques et de résolution de problèmes grâce à des projets pratiques et des travaux de cours. Construction d'une base solide en programmation orientée objet, développement web et conception de systèmes qui s'applique directement aux pratiques modernes de développement logiciel."
+    }
+  }
+}

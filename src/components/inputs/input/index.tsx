@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import {
   Field,
   FieldContent,
@@ -10,7 +8,9 @@ import {
   FieldError,
   FieldLabel,
 } from "@/components/ui/field";
-import { FormInputProps } from "./props";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import type { FormInputProps } from "./props";
 
 const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
   (
@@ -28,7 +28,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
       formik,
       ...props
     },
-    ref
+    ref,
   ) => {
     const generatedId = React.useId();
     const inputId = id || generatedId;
@@ -69,7 +69,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
             onBlur={fieldOnBlur}
             className={cn(
               hasError && "border-destructive focus-visible:ring-destructive",
-              className
+              className,
             )}
             aria-invalid={hasError ? "true" : "false"}
             aria-describedby={
@@ -92,7 +92,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
         </FieldContent>
       </Field>
     );
-  }
+  },
 );
 
 FormInput.displayName = "FormInput";

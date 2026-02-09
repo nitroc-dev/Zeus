@@ -1,7 +1,7 @@
-import { Briefcase, GraduationCap, Star, ExternalLink } from "lucide-react";
-import { ExperienceCardProps } from "./props";
-import { Card, CardContent } from "@/components/ui/card";
+import { Briefcase, ExternalLink, GraduationCap, Star } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import type { ExperienceCardProps } from "./props";
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   const getIcon = () => {
