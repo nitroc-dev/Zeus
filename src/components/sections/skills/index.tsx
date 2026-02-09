@@ -1,19 +1,23 @@
-import { skills } from "@/data/hardcoded-data";
+"use client";
+import { getLocalizedSkills } from "@/data/hardcoded-data";
+import { useTranslations } from "next-intl";
 
 export function Skills() {
+  const t = useTranslations("skills");
+  const skills = getLocalizedSkills(useTranslations("skillCategories"));
+
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-xs font-medium text-gray-300 mb-4">
-            Technical Stack
+            {t("badge")}
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
-            Skills & Technologies
+            {t("title")}
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            A comprehensive toolkit of modern technologies and frameworks I use
-            to build scalable, performant, and user-friendly applications.
+            {t("description")}
           </p>
         </div>
 
@@ -38,9 +42,9 @@ export function Skills() {
               </div>
 
               <div className="flex flex-wrap justify-center gap-3 mb-6">
-                {skillCategory.technologies.map((tech, techIndex) => (
+                {skillCategory.technologies.map((tech) => (
                   <span
-                    key={techIndex}
+                    key={tech}
                     className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-105 hover:-translate-y-1 ${
                       index === 0
                         ? "bg-blue-500/10 text-blue-300 border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-400/50"

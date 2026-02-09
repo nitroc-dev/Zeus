@@ -28,7 +28,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
       formik,
       ...props
     },
-    ref
+    ref,
   ) => {
     const generatedId = React.useId();
     const inputId = id || generatedId;
@@ -69,7 +69,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
             onBlur={fieldOnBlur}
             className={cn(
               hasError && "border-destructive focus-visible:ring-destructive",
-              className
+              className,
             )}
             aria-invalid={hasError ? "true" : "false"}
             aria-describedby={
@@ -92,7 +92,7 @@ const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
         </FieldContent>
       </Field>
     );
-  }
+  },
 );
 
 FormInput.displayName = "FormInput";
