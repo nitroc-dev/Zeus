@@ -1,16 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { useFormik, FormikProvider } from "formik";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { FormikProvider, useFormik } from "formik";
+import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
-import { contactSchema, ContactFormData } from "@/utils/contact-validation";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { toast } from "sonner";
 import { FormInput } from "@/components/inputs/input";
 import { FormTextarea } from "@/components/inputs/textarea";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
-import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import {
+  type ContactFormData,
+  contactSchema,
+} from "@/utils/contact-validation";
 
 export default function Contact() {
   const t = useTranslations("contact");
@@ -126,6 +129,8 @@ export default function Contact() {
                 <div className="text-center space-y-4">
                   <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto">
                     <svg
+                      role="img"
+                      aria-label="Success"
                       className="w-8 h-8 text-green-500"
                       fill="none"
                       stroke="currentColor"

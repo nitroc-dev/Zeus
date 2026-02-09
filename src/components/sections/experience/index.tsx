@@ -1,11 +1,13 @@
 "use client";
-import { getLocalizedExperiences } from "@/data/hardcoded-data";
-import { ExperienceCard } from "@/components/cards/experience";
 import { useTranslations } from "next-intl";
+import { ExperienceCard } from "@/components/cards/experience";
+import { getLocalizedExperiences } from "@/data/hardcoded-data";
 
 export function Experience() {
   const t = useTranslations("experience");
-  const experiences = getLocalizedExperiences(useTranslations("experiencesData"));
+  const experiences = getLocalizedExperiences(
+    useTranslations("experiencesData"),
+  );
 
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">

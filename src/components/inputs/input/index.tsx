@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import {
   Field,
   FieldContent,
@@ -10,7 +8,9 @@ import {
   FieldError,
   FieldLabel,
 } from "@/components/ui/field";
-import { FormInputProps } from "./props";
+import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import type { FormInputProps } from "./props";
 
 const FormInput = React.forwardRef<HTMLInputElement, FormInputProps>(
   (

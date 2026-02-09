@@ -1,13 +1,12 @@
 "use client";
 
-import { getLocalizedProjects } from "@/data/hardcoded-data";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { MessageCircle, Github } from "lucide-react";
-import ProjectCard from "@/components/cards/project";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { Github, MessageCircle } from "lucide-react";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import ProjectCard from "@/components/cards/project";
+import { Button } from "@/components/ui/button";
+import { getLocalizedProjects } from "@/data/hardcoded-data";
 
 export default function ProjectsPage() {
   const t = useTranslations("projects");

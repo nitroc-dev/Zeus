@@ -1,8 +1,8 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export function Header() {
   const pathname = usePathname();

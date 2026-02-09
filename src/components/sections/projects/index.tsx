@@ -1,11 +1,11 @@
 "use client";
 
-import { getLocalizedProjects } from "@/data/hardcoded-data";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import ProjectCard from "@/components/cards/project";
-import { useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { getLocalizedProjects } from "@/data/hardcoded-data";
 
 export function Projects() {
   const t = useTranslations("projects");

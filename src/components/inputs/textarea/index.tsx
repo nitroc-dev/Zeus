@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Field,
   FieldContent,
@@ -10,7 +8,9 @@ import {
   FieldError,
   FieldLabel,
 } from "@/components/ui/field";
-import { FormTextareaProps } from "./props";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import type { FormTextareaProps } from "./props";
 
 const FormTextarea = React.forwardRef<HTMLTextAreaElement, FormTextareaProps>(
   (

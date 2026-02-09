@@ -44,7 +44,9 @@ export const getLocalizedProjects = (t: (key: string) => string): Project[] => [
 ];
 
 // Helper function to get localized skills
-export const getLocalizedSkills = (t: (key: string) => string): SkillCategory[] => [
+export const getLocalizedSkills = (
+  t: (key: string) => string,
+): SkillCategory[] => [
   // Languages
   {
     id: "1",
@@ -94,7 +96,9 @@ export const getLocalizedSkills = (t: (key: string) => string): SkillCategory[] 
 ];
 
 // Helper function to get localized experiences
-export const getLocalizedExperiences = (t: (key: string) => string): Experience[] => [
+export const getLocalizedExperiences = (
+  t: (key: string) => string,
+): Experience[] => [
   {
     id: "1",
     name: t("fullStackDev.name"),

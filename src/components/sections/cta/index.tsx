@@ -1,9 +1,8 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { FolderOpen, Phone } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 
 export function CTA() {
   const t = useTranslations("cta");
