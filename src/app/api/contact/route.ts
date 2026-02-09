@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 interface ContactFormData {
   name: string;
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "All fields are required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
       console.error("DISCORD_WEBHOOK_URL environment variable is not set");
       return NextResponse.json(
         { error: "Discord webhook not configured" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
               name: " Message",
               value:
                 message.length > 1000
-                  ? message.substring(0, 1000) + "..."
+                  ? `${message.substring(0, 1000)}...`
                   : message,
               inline: false,
             },
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
     if (!discordResponse.ok) {
       return NextResponse.json(
         { error: "Failed to send notification" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 export interface FormInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "form"> {

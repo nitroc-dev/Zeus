@@ -1,12 +1,15 @@
 "use client";
 
-import { projects } from "@/data/hardcoded-data";
-import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import ProjectCard from "@/components/cards/project";
+import { Button } from "@/components/ui/button";
+import { getLocalizedProjects } from "@/data/hardcoded-data";
 
 export function Projects() {
+  const t = useTranslations("projects");
+  const projects = getLocalizedProjects(useTranslations("projectsData"));
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,14 +41,13 @@ export function Projects() {
       <div className="max-w-6xl mx-auto text-center">
         <div className="mb-12">
           <div className="inline-flex items-center rounded-full border border-gray-700 bg-gray-800 px-3 py-1 text-xs font-medium text-gray-300 mb-4">
-            Portfolio Showcase
+            {t("badge")}
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
-            Featured Projects
+            {t("title")}
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            A collection of projects that showcase my technical skills and
-            creative problem-solving abilities.
+            {t("description")}
           </p>
         </div>
 

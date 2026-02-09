@@ -1,11 +1,11 @@
 "use client";
-import { Hero } from "@/components/sections/hero";
-import { About } from "@/components/sections/about";
-import { Experience } from "@/components/sections/experience";
-import { Skills } from "@/components/sections/skills";
-import { Projects } from "@/components/sections/projects";
-import { CTA } from "@/components/sections/cta";
 import { motion } from "framer-motion";
+import { About } from "@/components/sections/about";
+import { CTA } from "@/components/sections/cta";
+import { Experience } from "@/components/sections/experience";
+import { Hero } from "@/components/sections/hero";
+import { Projects } from "@/components/sections/projects";
+import { Skills } from "@/components/sections/skills";
 
 export default function Home() {
   const sectionVariants = {

@@ -8,7 +8,7 @@ const formatDate = (date: string): string => {
 
 export const formatDateRange = (
   startDate: string,
-  endDate?: string
+  endDate?: string,
 ): string => {
   const start = formatDate(startDate);
   if (!endDate) return start;

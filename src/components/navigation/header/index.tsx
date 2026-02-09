@@ -1,22 +1,25 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 export function Header() {
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const locale = useLocale();
+
+  const navigation = [
+    { name: t("home"), href: `/${locale}` },
+    { name: t("projects"), href: `/${locale}/projects` },
+    { name: t("contact"), href: `/${locale}/contact` },
+  ];
 
   return (
     <header className="bg-gray-950 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href={`/${locale}`} className="flex items-center space-x-3">
             <Image
               src="/profile.png"
               alt="Corentin"

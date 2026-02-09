@@ -1,4 +1,9 @@
+"use client";
+import { useTranslations } from "next-intl";
+
 export default function PrivacyPolicy() {
+  const t = useTranslations("privacy");
+
   return (
     <main className="bg-gray-950 relative overflow-hidden">
       {/* Global Background gradients */}
@@ -10,42 +15,33 @@ export default function PrivacyPolicy() {
           <div className="space-y-8">
             <div className="text-center mb-16">
               <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-                Privacy Policy
+                {t("title")}
               </h1>
-              <p className="text-lg text-gray-400">
-                Last updated: October 15, 2025
-              </p>
+              <p className="text-lg text-gray-400">{t("lastUpdated")}</p>
             </div>
 
             <div className="space-y-8 text-gray-300">
               <section className="space-y-4">
                 <h2 className="text-2xl font-semibold text-white">
-                  Information We Collect
+                  {t("informationCollected")}
                 </h2>
-                <p className="leading-relaxed">
-                  When you contact us through our contact form, we collect:
-                </p>
+                <p className="leading-relaxed">{t("collectDescription")}</p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Your name</li>
-                  <li>Your email address</li>
-                  <li>Your message content</li>
+                  <li>{t("name")}</li>
+                  <li>{t("emailAddress")}</li>
+                  <li>{t("messageContent")}</li>
                 </ul>
               </section>
 
               <section className="space-y-4">
                 <h2 className="text-2xl font-semibold text-white">
-                  How We Use Your Information
+                  {t("howWeUse")}
                 </h2>
-                <p className="leading-relaxed">
-                  We use the information you provide to:
-                </p>
+                <p className="leading-relaxed">{t("useDescription")}</p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Respond to your inquiries and messages</li>
-                  <li>Provide the services or information you requested</li>
-                  <li>
-                    Communicate with you about potential projects or
-                    collaborations
-                  </li>
+                  <li>{t("respondInquiries")}</li>
+                  <li>{t("provideServices")}</li>
+                  <li>{t("communicateProjects")}</li>
                 </ul>
               </section>
 
