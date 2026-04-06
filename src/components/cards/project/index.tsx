@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ProjectCardProps } from "./props";
+import { GithubIcon } from "@/components/icons/github";
 
 export default function ProjectCard({ project, locale }: ProjectCardProps) {
   return (
@@ -17,6 +18,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
               src={project.imageUrl}
               alt={project.name}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover"
             />
           </div>
@@ -81,7 +83,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                 className="border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 <Link href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4" />
+                  <GithubIcon className="w-4 h-4" />
                 </Link>
               </Button>
             )}

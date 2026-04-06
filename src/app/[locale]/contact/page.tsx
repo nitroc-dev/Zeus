@@ -1,18 +1,21 @@
 "use client";
 
 import { FormikProvider, useFormik } from "formik";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { Github, Linkedin, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FormInput } from "@/components/inputs/input";
+import { CopyEmail } from "@/components/ui/copy-email";
 import { FormTextarea } from "@/components/inputs/textarea";
 import { Button } from "@/components/ui/button";
 import {
   type ContactFormData,
   contactSchema,
 } from "@/utils/contact-validation";
+import { GithubIcon } from "@/components/icons/github";
+import { LinkedinIcon } from "@/components/icons/linkedin";
 
 export default function Contact() {
   const t = useTranslations("contact");
@@ -78,15 +81,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-4 pt-4">
-                <Link
-                  href="mailto:contact@nitroc.xyz"
-                  className="flex items-center gap-3 group"
-                >
-                  <Mail className="w-5 h-5 text-blue-400 shrink-0" />
-                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
-                    contact@nitroc.xyz
-                  </span>
-                </Link>
+                <CopyEmail email="contact@nitroc.xyz" successMessage="Email copied!" />
 
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-blue-400 shrink-0" />
@@ -99,7 +94,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 group"
                 >
-                  <Github className="w-5 h-5 text-gray-400 shrink-0" />
+                  <GithubIcon className="w-5 h-5 text-gray-400 shrink-0" />
                   <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
                     github.com/nitroc-dev
                   </span>
@@ -111,7 +106,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 group"
                 >
-                  <Linkedin className="w-5 h-5 text-blue-400 shrink-0" />
+                  <LinkedinIcon className="w-5 h-5 text-blue-400 shrink-0" />
                   <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
                     linkedin.com/in/corentin-d
                   </span>

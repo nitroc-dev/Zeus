@@ -1,35 +1,13 @@
 import { ArrowLeft, CheckCircle2, ExternalLink, Github, User } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
-import { getLocalizedProjects } from "@/data/hardcoded-data";
-
-const DEVICON_MAP: Record<string, string> = {
-  HTML5: "devicon-html5-plain colored",
-  CSS3: "devicon-css3-plain colored",
-  JavaScript: "devicon-javascript-plain colored",
-  TypeScript: "devicon-typescript-plain colored",
-  C: "devicon-c-plain colored",
-  "C#": "devicon-csharp-plain colored",
-  Java: "devicon-java-plain colored",
-  React: "devicon-react-original colored",
-  "Next.js": "devicon-nextjs-plain",
-  NestJS: "devicon-nestjs-plain colored",
-  ".NET": "devicon-dot-net-plain colored",
-  "Express.js": "devicon-express-original",
-  "Spring Boot": "devicon-spring-plain colored",
-  "Tailwind CSS": "devicon-tailwindcss-plain colored",
-  "next-intl": "devicon-nextjs-plain",
-  MySQL: "devicon-mysql-plain colored",
-  PostgreSQL: "devicon-postgresql-plain colored",
-  MongoDB: "devicon-mongodb-plain colored",
-  Docker: "devicon-docker-plain colored",
-  Git: "devicon-git-plain colored",
-  GitHub: "devicon-github-original",
-  "GitHub Actions": "devicon-githubactions-plain colored",
-};
+import { DEVICON_MAP } from "@/data/devicon-map";
+import { PROJECT_IDS, getLocalizedProjects } from "@/data/hardcoded-data";
+import { GithubIcon } from "@/components/icons/github";
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   live: { label: "Live", color: "text-green-400 bg-green-400/10 border-green-400/30" },
@@ -39,10 +17,42 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
 
 export function generateStaticParams() {
   const locales = ["en", "fr"];
-  const projectIds = ["zeus", "placeholder-1", "placeholder-2"];
   return locales.flatMap((locale) =>
-    projectIds.map((id) => ({ locale, id })),
+    PROJECT_IDS.map((id) => ({ locale, id })),
   );
+}
+
+export async function generateMetadata({
+  params,
+}: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const projects = getLocalizedProjects(await getTranslations("projectsData"));
+  const project = projects.find((p) => p.id === id);
+  if (!project) return {};
+
+  const title = `${project.name} — Corentin`;
+  const images = project.imageUrl
+    ? [{ url: `https://nitroc.xyz${project.imageUrl}`, width: 1200, height: 630 }]
+    : [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }];
+
+  return {
+    title,
+    description: project.description,
+    alternates: {
+      canonical: `https://nitroc.xyz/en/projects/${id}`,
+      languages: {
+        en: `https://nitroc.xyz/en/projects/${id}`,
+        fr: `https://nitroc.xyz/fr/projects/${id}`,
+      },
+    },
+    openGraph: {
+      title,
+      description: project.description,
+      url: `https://nitroc.xyz/projects/${id}`,
+      images,
+    },
+    robots: project.status === "in-progress" ? { index: false, follow: false } : undefined,
+  };
 }
 
 interface ProjectDetailPageProps {
@@ -158,7 +168,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 {project.repositoryUrl && (
                   <Button asChild variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
                     <Link href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
+                      <GithubIcon className="w-4 h-4 mr-2" />
                       Source Code
                     </Link>
                   </Button>

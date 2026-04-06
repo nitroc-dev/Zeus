@@ -38,6 +38,13 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: [{ url: "/profile.png", sizes: "180x180", type: "image/png" }],
   },
+  alternates: {
+    canonical: "https://nitroc.xyz/en",
+    languages: {
+      en: "https://nitroc.xyz/en",
+      fr: "https://nitroc.xyz/fr",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -96,6 +103,7 @@ export default async function LocaleLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
+        <link rel="preload" href="/profile.png" as="image" />
       </head>
       <body className="min-h-screen">
         <NextIntlClientProvider messages={messages}>

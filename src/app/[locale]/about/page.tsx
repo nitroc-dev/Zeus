@@ -1,34 +1,38 @@
-import { BookOpen, BriefcaseBusiness, Clock, ExternalLink, Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
-
-const DEVICON_MAP: Record<string, string> = {
-  HTML5: "devicon-html5-plain colored",
-  CSS3: "devicon-css3-plain colored",
-  JavaScript: "devicon-javascript-plain colored",
-  TypeScript: "devicon-typescript-plain colored",
-  C: "devicon-c-plain colored",
-  "C#": "devicon-csharp-plain colored",
-  Java: "devicon-java-plain colored",
-  React: "devicon-react-original colored",
-  "Next.js": "devicon-nextjs-plain",
-  NestJS: "devicon-nestjs-plain colored",
-  ".NET": "devicon-dot-net-plain colored",
-  "Express.js": "devicon-express-original",
-  "Spring Boot": "devicon-spring-plain colored",
-  MySQL: "devicon-mysql-plain colored",
-  PostgreSQL: "devicon-postgresql-plain colored",
-  MongoDB: "devicon-mongodb-plain colored",
-  Docker: "devicon-docker-plain colored",
-  Git: "devicon-git-plain colored",
-  GitHub: "devicon-github-original",
-  "GitHub Actions": "devicon-githubactions-plain colored",
-};
+import { BookOpen, BriefcaseBusiness, Clock, Download, ExternalLink, Github, Globe, Linkedin, Mail, MapPin } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { DEVICON_MAP } from "@/data/devicon-map";
 import { getLocalizedExperiences, getLocalizedSkills } from "@/data/hardcoded-data";
 import { formatExperience } from "@/utils/date";
+import { GithubIcon } from "@/components/icons/github";
+import { LinkedinIcon } from "@/components/icons/linkedin";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("about");
+  const title = `${t("name")} — ${t("role")}`;
+  const description = t("bio");
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: "https://nitroc.xyz/en/about",
+      languages: {
+        en: "https://nitroc.xyz/en/about",
+        fr: "https://nitroc.xyz/fr/about",
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: "https://nitroc.xyz/about",
+      images: [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }],
+    },
+  };
+}
 
 export default async function AboutPage() {
   const t = await getTranslations("about");
@@ -72,14 +76,20 @@ export default async function AboutPage() {
                 </Button>
                 <Button asChild size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
                   <Link href="https://github.com/nitroc-dev" target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
+                    <GithubIcon className="w-4 h-4 mr-2" />
                     GitHub
                   </Link>
                 </Button>
                 <Button asChild size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
                   <Link href="https://www.linkedin.com/in/corentin-d-02472724b" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="w-4 h-4 mr-2" />
+                    <LinkedinIcon className="w-4 h-4 mr-2" />
                     LinkedIn
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white">
+                  <Link href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+                    <Download className="w-4 h-4 mr-2" />
+                    {t("downloadCV")}
                   </Link>
                 </Button>
               </div>

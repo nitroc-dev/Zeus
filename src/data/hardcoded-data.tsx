@@ -24,6 +24,17 @@ export interface SkillCategory {
   technologies: string[];
 }
 
+export interface WorkingItem {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  iconType: "server" | "mic";
+  iconBg: string;
+  iconColor: string;
+  tags: string[];
+}
+
 export interface Experience {
   id: string;
   name: string;
@@ -35,6 +46,8 @@ export interface Experience {
   experienceType: "work" | "education" | "internship";
   websiteUrl?: string;
 }
+
+export const PROJECT_IDS = ["zeus"] as const;
 
 // Helper function to get localized projects
 export const getLocalizedProjects = (t: (key: string) => string): Project[] => [
@@ -57,28 +70,6 @@ export const getLocalizedProjects = (t: (key: string) => string): Project[] => [
     year: "2024",
     status: "live",
     role: "Solo — design, architecture, development",
-    isFeatured: true,
-  },
-  {
-    id: "placeholder-1",
-    name: t("placeholder1.name"),
-    description: t("placeholder1.description"),
-    longDescription: t("placeholder1.longDescription"),
-    tags: ["React", "NestJS", "PostgreSQL", "Docker"],
-    year: "2024",
-    status: "in-progress",
-    role: "Solo",
-    isFeatured: true,
-  },
-  {
-    id: "placeholder-2",
-    name: t("placeholder2.name"),
-    description: t("placeholder2.description"),
-    longDescription: t("placeholder2.longDescription"),
-    tags: ["Next.js", ".NET", "MySQL"],
-    year: "2024",
-    status: "in-progress",
-    role: "Solo",
     isFeatured: true,
   },
 ];
@@ -132,6 +123,32 @@ export const getLocalizedSkills = (
       "GitHub",
       "GitHub Actions",
     ],
+  },
+];
+
+// Helper function to get localized working-on items
+export const getLocalizedWorkingOn = (
+  t: (key: string) => string,
+): WorkingItem[] => [
+  {
+    id: "nestApi",
+    title: t("nestApi.title"),
+    description: t("nestApi.description"),
+    status: t("nestApi.status"),
+    iconType: "server",
+    iconBg: "bg-red-500/20",
+    iconColor: "text-red-400",
+    tags: ["NestJS", "TypeScript", "PostgreSQL"],
+  },
+  {
+    id: "voiceAssistant",
+    title: t("voiceAssistant.title"),
+    description: t("voiceAssistant.description"),
+    status: t("voiceAssistant.status"),
+    iconType: "mic",
+    iconBg: "bg-purple-500/20",
+    iconColor: "text-purple-400",
+    tags: ["Python", "NestJS", "TypeScript"],
   },
 ];
 

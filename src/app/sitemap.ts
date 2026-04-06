@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
+import { PROJECT_IDS } from "@/data/hardcoded-data";
 
 const BASE_URL = "https://nitroc.xyz";
 const LOCALES = ["en", "fr"];
-const PROJECT_IDS = ["zeus", "placeholder-1", "placeholder-2"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = ["", "/about", "/projects", "/contact", "/privacy"];
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         : page === "/privacy"
           ? ("yearly" as const)
           : ("monthly" as const),
-      priority: page === "" ? 1 : page === "/projects" ? 0.8 : 0.6,
+      priority: page === "" ? 1 : page === "/about" ? 0.9 : page === "/projects" ? 0.8 : 0.6,
     })),
   );
 
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     PROJECT_IDS.map((id) => ({
       url: `${BASE_URL}/${locale}/projects/${id}`,
       lastModified: new Date(),
-      changeFrequency: "weekly" as const,
+      changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
   );

@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import ProjectCard from "@/components/cards/project";
 import { Button } from "@/components/ui/button";
 import { getLocalizedProjects } from "@/data/hardcoded-data";
+import { GithubIcon } from "@/components/icons/github";
 
 export async function Projects() {
   const t = await getTranslations("projects");
@@ -52,7 +53,7 @@ export async function Projects() {
             className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
           >
             <Link href="https://github.com/nitroc-dev" target="_blank">
-              <Github className="w-4 h-4 mr-2" />
+              <GithubIcon className="w-4 h-4 mr-2" />
               GitHub
             </Link>
           </Button>

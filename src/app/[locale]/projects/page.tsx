@@ -1,17 +1,38 @@
-"use client";
-
 import { Github, MessageCircle } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import ProjectCard from "@/components/cards/project";
 import { Button } from "@/components/ui/button";
 import { getLocalizedProjects } from "@/data/hardcoded-data";
+import { GithubIcon } from "@/components/icons/github";
 
-export default function ProjectsPage() {
-  const t = useTranslations("projects");
-  const tData = useTranslations("projectsData");
-  const locale = useLocale();
-  const projects = getLocalizedProjects(tData);
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("projects");
+  const title = `${t("pageTitle.my")} ${t("pageTitle.projects")} — Corentin`;
+  return {
+    title,
+    description: t("pageDescription"),
+    alternates: {
+      canonical: "https://nitroc.xyz/en/projects",
+      languages: {
+        en: "https://nitroc.xyz/en/projects",
+        fr: "https://nitroc.xyz/fr/projects",
+      },
+    },
+    openGraph: {
+      title,
+      description: t("pageDescription"),
+      url: "https://nitroc.xyz/projects",
+      images: [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }],
+    },
+  };
+}
+
+export default async function ProjectsPage() {
+  const t = await getTranslations("projects");
+  const locale = await getLocale();
+  const projects = getLocalizedProjects(await getTranslations("projectsData"));
 
   return (
     <main className="bg-gray-950 relative overflow-hidden">
@@ -31,7 +52,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {projects?.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.id} project={project} locale={locale} />
             ))}
           </div>
@@ -56,7 +77,7 @@ export default function ProjectsPage() {
                 className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
               >
                 <Link href="https://github.com/nitroc-dev" target="_blank">
-                  <Github className="w-5 h-5 mr-2" />
+                  <GithubIcon className="w-5 h-5 mr-2" />
                   {t("viewGithub")}
                 </Link>
               </Button>

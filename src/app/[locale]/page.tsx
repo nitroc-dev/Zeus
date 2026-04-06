@@ -1,7 +1,30 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { CTA } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { WorkingOn } from "@/components/sections/working-on";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata");
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: "https://nitroc.xyz/en",
+      languages: {
+        en: "https://nitroc.xyz/en",
+        fr: "https://nitroc.xyz/fr",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: "https://nitroc.xyz",
+      images: [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }],
+    },
+  };
+}
 
 export default function Home() {
   return (

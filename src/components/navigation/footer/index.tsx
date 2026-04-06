@@ -87,6 +87,16 @@ export async function Footer() {
                   Email
                 </Link>
               </li>
+                <li>
+                  <Link
+                    href="/cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    CV
+                  </Link>
+                </li>
             </ul>
           </div>
 
