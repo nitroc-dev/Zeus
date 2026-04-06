@@ -29,7 +29,25 @@
     "innovationDriven": "Innovation Driven",
     "innovationDescription": "Thriving on challenges and crafting impactful digital solutions",
     "alwaysLearning": "Always Learning",
-    "learningDescription": "Continuously exploring new technologies to stay ahead"
+    "learningDescription": "Continuously exploring new technologies to stay ahead",
+    "name": "Corentin",
+    "role": "Full Stack Developer",
+    "location": "Brussels, Belgium",
+    "contactMe": "Contact me",
+    "bioTitle": "About me",
+    "bio": "I'm a full-stack developer based in Brussels, Belgium. I enjoy building modern, scalable web applications with a focus on clean code and great user experience. I'm currently working at Eachstapp, where I contribute to enterprise web applications using React, Next.js, and .NET. I studied Computer Science at Haute École Léonard de Vinci, where I built my foundation in software engineering.",
+    "yearsExp": "2+ years of experience",
+    "status": "Open to freelance",
+    "languagesTitle": "Languages",
+    "french": "French",
+    "frenchLevel": "Native",
+    "english": "English",
+    "englishLevel": "Professional",
+    "learningTitle": "Currently learning",
+    "learningDescription": "Exploring Expo and mobile app development with React Native.",
+    "skillsTitle": "Skills",
+    "experienceTitle": "Experience",
+    "present": "Present"
   },
   "experience": {
     "badge": "Professional Journey",
@@ -52,7 +70,14 @@
     "pageDescription": "A showcase of my work spanning web development, backend systems, and innovative solutions. Each project represents a unique challenge and creative approach.",
     "callToAction": "Want to see more of my work or discuss a project?",
     "getInTouched": "Get in Touch",
-    "viewGithub": "View GitHub"
+    "viewGithub": "View GitHub",
+    "viewAll": "View all projects",
+    "backToProjects": "Back to projects",
+    "detailAbout": "About the project",
+    "detailHighlights": "Key highlights",
+    "detailYear": "Year",
+    "detailRole": "Role",
+    "detailStack": "Tech stack"
   },
   "cta": {
     "badge": "Ready to collaborate",
@@ -91,10 +116,36 @@
     "frameworksLibraries": "Frameworks & Libraries",
     "toolsDatabases": "Tools & Databases"
   },
+  "workingOn": {
+    "title": "What I'm building",
+    "description": "Personal projects I'm exploring outside of work.",
+    "nestApi": {
+      "title": "REST API",
+      "description": "Building a production-ready REST API with NestJS, focusing on clean architecture, authentication, and scalable module design.",
+      "status": "In progress"
+    },
+    "voiceAssistant": {
+      "title": "Voice Assistant",
+      "description": "Experimenting with speech recognition and NLP to build a voice-controlled assistant with custom commands and integrations.",
+      "status": "In progress"
+    },
+    "moreSoon": "More coming soon"
+  },
   "projectsData": {
     "zeus": {
       "name": "Zeus",
-      "description": "Zeus is a portfolio that showcases my skills, experience, and projects in software development. The goal of this project is to highlight my professional journey, technical skills, and the solutions I've created. Feel free to explore and connect!"
+      "description": "Needed a fast, multilingual portfolio — built it with Next.js 16 and zero client JS on the main page.",
+      "longDescription": "Zeus is my personal portfolio website built to showcase my skills, experience, and projects. It features full internationalization (EN/FR), dark mode by default, a contact form that forwards messages to a Discord webhook, SEO metadata, and a clean component architecture using shadcn/ui. The site is deployed on Vercel with analytics and speed insights integrated."
+    },
+    "placeholder1": {
+      "name": "Project Name",
+      "description": "Short description of what this project does and the problem it solves.",
+      "longDescription": "This is a placeholder project. Replace this with a real project description including the context, goals, technical challenges, and outcomes."
+    },
+    "placeholder2": {
+      "name": "Project Name",
+      "description": "Short description of what this project does and the problem it solves.",
+      "longDescription": "This is a placeholder project. Replace this with a real project description including the context, goals, technical challenges, and outcomes."
     }
   },
   "experiencesData": {

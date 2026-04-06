@@ -1,21 +1,15 @@
-"use client";
 import { FolderOpen, Phone } from "lucide-react";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 
-export function CTA() {
-  const t = useTranslations("cta");
-  const locale = useLocale();
+export async function CTA() {
+  const t = await getTranslations("cta");
+  const locale = await getLocale();
 
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
       <div className="relative max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center rounded-full border border-gray-700 bg-gray-800/50 px-3 py-1 text-xs font-medium text-gray-300 mb-6">
-          <span className="mr-2 h-1.5 w-1.5 rounded-full bg-green-500"></span>
-          {t("badge")}
-        </div>
-
         <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
           {t("title")}
         </h2>

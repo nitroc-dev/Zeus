@@ -1,13 +1,11 @@
-"use client";
 import { FolderOpen, Phone } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 
-export function Hero() {
-  const t = useTranslations("hero");
-  const locale = useLocale();
+export async function Hero() {
+  const t = await getTranslations("hero");
+  const locale = await getLocale();
 
   return (
     <section className="relative min-h-[95vh] flex items-center justify-center px-6 py-20 backdrop-blur-sm">
@@ -50,15 +48,11 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src="/hero.svg"
-              alt="Developer coding illustration"
-              width={350}
-              height={300}
-              className="w-full h-full object-contain"
-              priority
-            />
+          {/* TODO: Add hero illustration here */}
+          <div className="hidden lg:flex justify-center lg:justify-end">
+            <div className="w-[350px] h-[300px] rounded-2xl border border-gray-700 bg-gray-800/30 flex items-center justify-center text-gray-600 text-sm">
+              Illustration
+            </div>
           </div>
         </div>
       </div>

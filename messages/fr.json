@@ -29,7 +29,25 @@
     "innovationDriven": "Orienté Innovation",
     "innovationDescription": "Prospérant sur les défis et créant des solutions numériques percutantes",
     "alwaysLearning": "Apprentissage Continu",
-    "learningDescription": "Exploration continue des nouvelles technologies pour rester en avant"
+    "learningDescription": "Exploration continue des nouvelles technologies pour rester en avant",
+    "name": "Corentin",
+    "role": "Développeur Full Stack",
+    "location": "Bruxelles, Belgique",
+    "contactMe": "Me contacter",
+    "bioTitle": "À propos",
+    "bio": "Je suis un développeur full-stack basé à Bruxelles, en Belgique. J'aime créer des applications web modernes et évolutives en mettant l'accent sur un code propre et une excellente expérience utilisateur. Je travaille actuellement chez Eachstapp, où je contribue au développement d'applications web d'entreprise avec React, Next.js et .NET. J'ai étudié l'informatique à la Haute École Léonard de Vinci, où j'ai construit ma base en génie logiciel.",
+    "yearsExp": "2+ ans d'expérience",
+    "status": "Disponible en freelance",
+    "languagesTitle": "Langues",
+    "french": "Français",
+    "frenchLevel": "Langue maternelle",
+    "english": "Anglais",
+    "englishLevel": "Professionnel",
+    "learningTitle": "En cours d'apprentissage",
+    "learningDescription": "J'explore Expo et le développement d'applications mobiles avec React Native.",
+    "skillsTitle": "Compétences",
+    "experienceTitle": "Expérience",
+    "present": "Présent"
   },
   "experience": {
     "badge": "Parcours Professionnel",
@@ -52,7 +70,14 @@
     "pageDescription": "Un aperçu de mon travail couvrant le développement web, les systèmes backend et les solutions innovantes. Chaque projet représente un défi unique et une approche créative.",
     "callToAction": "Vous voulez voir plus de mon travail ou discuter d'un projet ?",
     "getInTouched": "Me contacter",
-    "viewGithub": "Voir GitHub"
+    "viewGithub": "Voir GitHub",
+    "viewAll": "Voir tous les projets",
+    "backToProjects": "Retour aux projets",
+    "detailAbout": "À propos du projet",
+    "detailHighlights": "Points clés",
+    "detailYear": "Année",
+    "detailRole": "Rôle",
+    "detailStack": "Stack technique"
   },
   "cta": {
     "badge": "Prêt à collaborer",
@@ -91,10 +116,36 @@
     "frameworksLibraries": "Frameworks & Bibliothèques",
     "toolsDatabases": "Outils & Bases de données"
   },
+  "workingOn": {
+    "title": "Ce que je construis",
+    "description": "Projets personnels que j'explore en dehors du travail.",
+    "nestApi": {
+      "title": "API REST",
+      "description": "Construction d'une API REST prête pour la production avec NestJS, en mettant l'accent sur une architecture propre, l'authentification et une conception modulaire évolutive.",
+      "status": "En cours"
+    },
+    "voiceAssistant": {
+      "title": "Assistant Vocal",
+      "description": "Expérimentation avec la reconnaissance vocale et le NLP pour construire un assistant vocal avec des commandes personnalisées et des intégrations.",
+      "status": "En cours"
+    },
+    "moreSoon": "Plus à venir"
+  },
   "projectsData": {
     "zeus": {
       "name": "Zeus",
-      "description": "Zeus est un portfolio qui présente mes compétences, mon expérience et mes projets en développement logiciel. L'objectif de ce projet est de mettre en valeur mon parcours professionnel, mes compétences techniques et les solutions que j'ai créées. N'hésitez pas à explorer et à me contacter !"
+      "description": "Besoin d'un portfolio rapide et multilingue — construit avec Next.js 16 et zéro JS client sur la page principale.",
+      "longDescription": "Zeus est mon site portfolio personnel conçu pour présenter mes compétences, mon expérience et mes projets. Il propose une internationalisation complète (EN/FR), le mode sombre par défaut, un formulaire de contact qui transfère les messages vers un webhook Discord, des métadonnées SEO et une architecture de composants propre avec shadcn/ui. Le site est déployé sur Vercel avec analytics et speed insights intégrés."
+    },
+    "placeholder1": {
+      "name": "Nom du projet",
+      "description": "Courte description de ce que fait ce projet et du problème qu'il résout.",
+      "longDescription": "Ceci est un projet placeholder. Remplacez ceci par une vraie description incluant le contexte, les objectifs, les défis techniques et les résultats."
+    },
+    "placeholder2": {
+      "name": "Nom du projet",
+      "description": "Courte description de ce que fait ce projet et du problème qu'il résout.",
+      "longDescription": "Ceci est un projet placeholder. Remplacez ceci par une vraie description incluant le contexte, les objectifs, les défis techniques et les résultats."
     }
   },
   "experiencesData": {

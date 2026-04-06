@@ -1,32 +1,33 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://nitroc.xyz";
+const BASE_URL = "https://nitroc.xyz";
+const LOCALES = ["en", "fr"];
+const PROJECT_IDS = ["zeus", "placeholder-1", "placeholder-2"];
 
-  return [
-    {
-      url: baseUrl,
+export default function sitemap(): MetadataRoute.Sitemap {
+  const staticPages = ["", "/about", "/projects", "/contact", "/privacy"];
+
+  const pageEntries = LOCALES.flatMap((locale) =>
+    staticPages.map((page) => ({
+      url: `${BASE_URL}/${locale}${page}`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/projects`,
+      changeFrequency: page === "" || page === "/projects"
+        ? ("weekly" as const)
+        : page === "/privacy"
+          ? ("yearly" as const)
+          : ("monthly" as const),
+      priority: page === "" ? 1 : page === "/projects" ? 0.8 : 0.6,
+    })),
+  );
+
+  const projectEntries = LOCALES.flatMap((locale) =>
+    PROJECT_IDS.map((id) => ({
+      url: `${BASE_URL}/${locale}/projects/${id}`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+  );
+
+  return [...pageEntries, ...projectEntries];
 }

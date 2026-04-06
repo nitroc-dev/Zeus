@@ -5,8 +5,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
+
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "fr" }];
+}
 
 export const metadata: Metadata = {
   keywords: [
@@ -86,6 +91,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
       <body className="min-h-screen">
         <NextIntlClientProvider messages={messages}>
           <Header />
@@ -95,6 +106,7 @@ export default async function LocaleLayout({
         <Analytics />
         <SpeedInsights />
         <Toaster />
+        <ScrollToTop />
       </body>
     </html>
   );

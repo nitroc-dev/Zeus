@@ -5,9 +5,15 @@ export interface Project {
   id: string;
   name: string;
   description: string;
+  longDescription?: string;
   imageUrl?: string;
   repositoryUrl?: string;
   websiteUrl?: string;
+  tags?: string[];
+  highlights?: string[];
+  year?: string;
+  status?: "live" | "in-progress" | "archived";
+  role?: string;
   isFeatured: boolean;
 }
 
@@ -33,12 +39,46 @@ export interface Experience {
 // Helper function to get localized projects
 export const getLocalizedProjects = (t: (key: string) => string): Project[] => [
   {
-    id: "1",
+    id: "zeus",
     name: t("zeus.name"),
     description: t("zeus.description"),
+    longDescription: t("zeus.longDescription"),
     imageUrl: "/projects/zeus.png",
     repositoryUrl: "https://github.com/nitroc-dev/Zeus",
     websiteUrl: "https://nitroc.xyz",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
+    highlights: [
+      "Full EN/FR internationalization with next-intl",
+      "Zero client JS on the main page — fully server-rendered sections",
+      "Contact form forwarding webhook",
+      "SEO metadata, Open Graph, and Twitter cards",
+      "Deployed on Vercel with Analytics and Speed Insights",
+    ],
+    year: "2024",
+    status: "live",
+    role: "Solo — design, architecture, development",
+    isFeatured: true,
+  },
+  {
+    id: "placeholder-1",
+    name: t("placeholder1.name"),
+    description: t("placeholder1.description"),
+    longDescription: t("placeholder1.longDescription"),
+    tags: ["React", "NestJS", "PostgreSQL", "Docker"],
+    year: "2024",
+    status: "in-progress",
+    role: "Solo",
+    isFeatured: true,
+  },
+  {
+    id: "placeholder-2",
+    name: t("placeholder2.name"),
+    description: t("placeholder2.description"),
+    longDescription: t("placeholder2.longDescription"),
+    tags: ["Next.js", ".NET", "MySQL"],
+    year: "2024",
+    status: "in-progress",
+    role: "Solo",
     isFeatured: true,
   },
 ];

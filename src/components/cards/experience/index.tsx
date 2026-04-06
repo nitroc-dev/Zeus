@@ -1,6 +1,7 @@
-import { Briefcase, ExternalLink, GraduationCap, Star } from "lucide-react";
+import { Briefcase, ExternalLink, GraduationCap, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { formatExperience } from "@/utils/date";
 import type { ExperienceCardProps } from "./props";
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
@@ -31,48 +32,46 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
   };
 
   return (
-    <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 group">
-      <CardContent className="p-8">
-        <div className="flex items-start gap-4 mb-6">
+    <Card className="bg-gray-800/50 border-gray-700">
+      <CardContent className="p-6">
+        <div className="flex items-start gap-4">
           <div
-            className={`flex h-10 w-10 items-center justify-center rounded-lg border ${getIconBackground()}`}
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border ${getIconBackground()}`}
           >
             {getIcon()}
           </div>
 
-          <div className="flex-1">
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {experience.name}
-                </h3>
-                {experience.websiteUrl ? (
-                  <Link
-                    href={experience.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 font-medium mb-1 inline-flex items-center gap-1 hover:text-blue-300 transition-colors"
-                  >
-                    {experience.companyName}
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
-                ) : (
-                  <p className="text-blue-400 font-medium mb-1">
-                    {experience.companyName}
-                  </p>
-                )}
-                <p className="text-sm text-gray-400">
-                  {experience.startDate} - {experience.endDate || "Present"} •{" "}
-                  {experience.location}
-                </p>
-              </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-base font-semibold text-white">
+              {experience.name}
+            </h3>
+            {experience.websiteUrl ? (
+              <Link
+                href={experience.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 text-sm font-medium inline-flex items-center gap-1 hover:text-blue-300 transition-colors"
+              >
+                {experience.companyName}
+                <ExternalLink className="w-3 h-3" />
+              </Link>
+            ) : (
+              <p className="text-blue-400 text-sm font-medium">
+                {experience.companyName}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-xs text-gray-400">
+              <span>{formatExperience(experience)}</span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-3 h-3" />
+                {experience.location}
+              </span>
             </div>
+            <p className="text-sm text-gray-300 leading-relaxed mt-3">
+              {experience.description}
+            </p>
           </div>
         </div>
-
-        <p className="text-gray-300 leading-relaxed">
-          {experience.description}
-        </p>
       </CardContent>
     </Card>
   );

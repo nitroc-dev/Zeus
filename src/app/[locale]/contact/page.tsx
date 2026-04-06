@@ -1,8 +1,7 @@
 "use client";
 
 import { FormikProvider, useFormik } from "formik";
-import { motion } from "framer-motion";
-import { Mail, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -68,12 +67,7 @@ export default function Contact() {
       <section className="relative min-h-[95vh] px-6 py-20 flex items-center justify-center backdrop-blur-sm">
         <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight">
                   {t("title")}
@@ -83,48 +77,49 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="space-y-6 pt-6">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="flex items-center space-x-4"
+              <div className="space-y-4 pt-4">
+                <Link
+                  href="mailto:contact@nitroc.xyz"
+                  className="flex items-center gap-3 group"
                 >
-                  <div className="w-6 h-6 text-blue-400">
-                    <Mail className="w-6 h-6" />
-                  </div>
-                  <Link
-                    href="mailto:contact@nitroc.xyz"
-                    className="hover:underline"
-                  >
-                    <span className="text-white font-medium text-base">
-                      contact@nitroc.xyz
-                    </span>
-                  </Link>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex items-center space-x-4"
-                >
-                  <div className="w-6 h-6 text-blue-400">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <span className="text-white font-medium text-base">
-                    Brussels, Belgium
+                  <Mail className="w-5 h-5 text-blue-400 shrink-0" />
+                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
+                    contact@nitroc.xyz
                   </span>
-                </motion.div>
-              </div>
-            </motion.div>
+                </Link>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gray-800/50 rounded-xl border border-gray-700/50 p-8 hover:bg-gray-800/70"
-            >
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-blue-400 shrink-0" />
+                  <span className="text-sm text-gray-400">Brussels, Belgium</span>
+                </div>
+
+                <Link
+                  href="https://github.com/nitroc-dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group"
+                >
+                  <Github className="w-5 h-5 text-gray-400 shrink-0" />
+                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
+                    github.com/nitroc-dev
+                  </span>
+                </Link>
+
+                <Link
+                  href="https://www.linkedin.com/in/corentin-d-02472724b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 group"
+                >
+                  <Linkedin className="w-5 h-5 text-blue-400 shrink-0" />
+                  <span className="text-sm text-gray-400 group-hover:text-white transition-colors">
+                    linkedin.com/in/corentin-d
+                  </span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-gray-800/50 rounded-xl border border-gray-700/50 p-8">
               {isSuccess ? (
                 <div className="text-center space-y-4">
                   <div className="w-16 h-16 bg-green-600/20 rounded-full flex items-center justify-center mx-auto">
@@ -221,7 +216,7 @@ export default function Contact() {
                   </form>
                 </FormikProvider>
               )}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
