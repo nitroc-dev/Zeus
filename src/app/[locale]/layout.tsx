@@ -6,6 +6,7 @@ import { getMessages } from "next-intl/server";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { QueryProvider } from "@/components/providers/query-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
 
@@ -106,11 +107,13 @@ export default async function LocaleLayout({
         <link rel="preload" href="/profile.png" as="image" />
       </head>
       <body className="min-h-screen">
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <Footer />
-        </NextIntlClientProvider>
+        <QueryProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
+        </QueryProvider>
         <Analytics />
         <SpeedInsights />
         <Toaster />

@@ -1,11 +1,11 @@
 import { Clock } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-import { getLocalizedWorkingOn } from "@/data/hardcoded-data";
-import WorkingCard from "@/components/cards/working-on";
+import { getLocale, getTranslations } from "next-intl/server";
+import { ProjectsControllerFindAllV1StatusItem } from "@/api/generated/nestJSAPI.schemas";
+import { ProjectsGrid } from "@/components/sections/projects/projects-grid";
 
 export async function WorkingOn() {
   const t = await getTranslations("workingOn");
-  const items = getLocalizedWorkingOn(t);
+  const locale = await getLocale();
 
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
@@ -17,15 +17,15 @@ export async function WorkingOn() {
           <p className="text-lg text-gray-400">{t("description")}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((item) => (
-            <WorkingCard key={item.id} item={item} />
-          ))}
+        <ProjectsGrid
+          locale={locale}
+          status={[ProjectsControllerFindAllV1StatusItem.in_progress]}
+        >
           <div className="border border-dashed border-gray-700/50 rounded-xl p-6 flex flex-col items-center justify-center gap-3 text-center min-h-[160px]">
             <Clock className="w-6 h-6 text-gray-600" />
             <p className="text-sm text-gray-600">{t("moreSoon")}</p>
           </div>
-        </div>
+        </ProjectsGrid>
       </div>
     </section>
   );

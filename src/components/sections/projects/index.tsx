@@ -1,16 +1,12 @@
-import { Github } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import ProjectCard from "@/components/cards/project";
 import { Button } from "@/components/ui/button";
-import { getLocalizedProjects } from "@/data/hardcoded-data";
 import { GithubIcon } from "@/components/icons/github";
+import { ProjectsGrid } from "./projects-grid";
 
 export async function Projects() {
   const t = await getTranslations("projects");
   const locale = await getLocale();
-  const projects = getLocalizedProjects(await getTranslations("projectsData"));
-  const featured = projects.filter((p) => p.isFeatured);
 
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
@@ -33,11 +29,7 @@ export async function Projects() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {featured.map((project) => (
-            <ProjectCard key={project.id} project={project} locale={locale} />
-          ))}
-        </div>
+        <ProjectsGrid locale={locale} featuredOnly />
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center md:hidden">
           <Button
