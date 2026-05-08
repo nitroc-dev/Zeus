@@ -1,126 +1,235 @@
-import { Download, FolderOpen, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { GithubIcon } from "@/components/icons/github";
-import { LinkedinIcon } from "@/components/icons/linkedin";
-import { Button } from "@/components/ui/button";
 
 export async function Hero() {
   const t = await getTranslations("hero");
-  const tAbout = await getTranslations("about");
   const locale = await getLocale();
 
   return (
-    <section className="relative min-h-[95vh] flex items-center justify-center px-6 py-20 backdrop-blur-sm">
-      <div className="w-full max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-2">
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-50 leading-tight">
-                {t("greeting")}{" "}
-                <span className="text-blue-600">{t("name")}</span>
-              </h1>
-            </div>
+    <section className="px-6 py-20 w-full max-w-[1180px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-15 items-center">
+        {/* Left: copy */}
+        <div>
 
-            <p className="text-lg text-gray-400 max-w-lg leading-relaxed">
-              {t("description")}
-            </p>
+          {/* Heading */}
+          <h1
+            className="text-[clamp(48px,6vw,80px)] leading-[1.02] font-semibold tracking-tight mb-6"
+            style={{ color: "var(--text-p-0)" }}
+          >
+            {t("greeting")}{" "}
+            <span style={{ color: "var(--portfolio-accent)" }}>
+              {t("name")}
+            </span>{" "}
+            <br />
+            {t("headline")}
+          </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                <Link href={`/${locale}/contact`}>
-                  <Phone className="w-4 h-4 mr-2" />
-                  {t("getInTouch")}
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
-                <Link href={`/${locale}/projects`}>
-                  <FolderOpen className="w-4 h-4 mr-2" />
-                  {t("viewProjects")}
-                </Link>
-              </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
-                >
-                  <Link href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                    <Download className="w-4 h-4 mr-2" />
-                    {t("downloadCV")}
-                  </Link>
-                </Button>
-            </div>
+          {/* Tagline */}
+          <p
+            className="text-[19px] leading-[1.55] mb-8 max-w-[540px]"
+            style={{ color: "var(--text-p-1)" }}
+          >
+            {t("tagline")}
+          </p>
+
+          {/* Actions */}
+          <div className="flex gap-3 flex-wrap">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
+              style={{
+                background: "var(--portfolio-accent)",
+                color: "oklch(0.18 0.02 252)",
+                boxShadow:
+                  "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
+              }}
+            >
+              <ArrowRight className="w-3.5 h-3.5" />
+              {t("seeWork")}
+            </a>
+            <Link
+              href={`/${locale}/about`}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
+            >
+              {t("about")}
+            </Link>
+            <Link
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:bg-[var(--navy-2)]"
+              style={{ color: "var(--text-p-1)" }}
+            >
+              <Download className="w-3.5 h-3.5" />
+              {t("downloadCV")}
+            </Link>
+          </div>
+        </div>
+
+        {/* Right: terminal ID card */}
+        <div
+          className="hidden lg:block rounded-[14px] overflow-hidden font-mono text-[13px] relative"
+          style={{
+            background: "linear-gradient(180deg, var(--navy-2), var(--navy-1))",
+            border: "1px solid var(--portfolio-line-2)",
+            boxShadow:
+              "0 20px 60px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04) inset",
+          }}
+        >
+          {/* Radial glow overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(500px 200px at 100% 0%, var(--portfolio-accent-soft), transparent 60%)",
+            }}
+          />
+
+          {/* Title bar */}
+          <div
+            className="flex items-center gap-1.5 px-3.5 py-2.5 relative"
+            style={{
+              background: "var(--navy-3)",
+              borderBottom: "1px solid var(--portfolio-line)",
+            }}
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+            <span
+              className="ml-3 text-[11px] tracking-wider"
+              style={{ color: "var(--text-p-2)" }}
+            >
+              ~/corentin — whoami.json
+            </span>
           </div>
 
-          {/* Profile card */}
-          <div className="hidden lg:flex justify-center lg:justify-end">
-            <div className="w-full max-w-sm rounded-2xl border border-gray-700/50 bg-gray-800/30 overflow-hidden">
-              <div className="h-20 bg-gradient-to-br from-blue-600/30 to-purple-600/30" />
-              <div className="px-6 pb-6">
-                <div className="-mt-10 mb-4">
-                  <Image
-                    src="/profile.png"
-                    alt="Corentin"
-                    width={72}
-                    height={72}
-                    className="rounded-full border-4 border-gray-950 bg-gray-800"
-                  />
-                </div>
-                <div className="mb-3">
-                  <h2 className="font-bold text-white text-lg">{tAbout("name")}</h2>
-                  <p className="text-sm text-blue-400">{tAbout("role")}</p>
-                  <div className="flex items-center gap-1.5 mt-1 text-xs text-gray-400">
-                    <MapPin className="w-3 h-3" />
-                    {tAbout("location")}
-                  </div>
-                </div>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-500/10 border border-green-500/20 text-green-400 mb-4">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-                  {tAbout("status")}
-                </span>
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {["React", "Next.js", "TypeScript", ".NET", "NestJS"].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 text-xs rounded-md bg-gray-700/60 text-gray-300 border border-gray-600/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <Link
-                    href="https://github.com/nitroc-dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
-                  >
-                    <GithubIcon className="w-3.5 h-3.5" />
-                    GitHub
-                  </Link>
-                  <Link
-                    href="https://www.linkedin.com/in/corentin-d-02472724b"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-white transition-colors"
-                  >
-                    <LinkedinIcon className="w-3.5 h-3.5" />
-                    LinkedIn
-                  </Link>
-                </div>
-              </div>
-            </div>
+          {/* Terminal body */}
+          <div
+            className="px-[22px] py-[22px] leading-[1.85] relative"
+            style={{ color: "var(--text-p-0)" }}
+          >
+            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
+            <span>cat whoami.json</span>
+            <br />
+            <span style={{ color: "var(--text-p-2)" }}>{"{"}</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"name"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Corentin"</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"role"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>
+              "Full-stack dev"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"location"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>
+              "Brussels, BE"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"company"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Eachstapp"</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"since"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 75)" }}>2024</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"stack"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: [</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"TS"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"React"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>".NET"</span>
+            <span style={{ color: "var(--text-p-2)" }}>],</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"speaks"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: [</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"FR"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"EN"</span>
+            <span style={{ color: "var(--text-p-2)" }}>],</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"available"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "var(--portfolio-ok)" }}>true</span>
+            <br />
+            <span style={{ color: "var(--text-p-2)" }}>{"}"}</span>
+            <br />
+            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
+            <span
+              className="inline-block w-[7px] h-[14px] align-[-2px] ml-0.5"
+              style={{
+                background: "var(--portfolio-accent)",
+                animation: "cursor-blink 1s steps(2) infinite",
+              }}
+            />
           </div>
         </div>
       </div>

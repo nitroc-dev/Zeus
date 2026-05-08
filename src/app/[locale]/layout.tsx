@@ -3,10 +3,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Footer } from "@/components/navigation/footer";
-import { Header } from "@/components/navigation/header";
-import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { QueryProvider } from "@/components/providers/query-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
 
@@ -100,6 +96,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
@@ -107,17 +109,12 @@ export default async function LocaleLayout({
         <link rel="preload" href="/profile.png" as="image" />
       </head>
       <body className="min-h-screen">
-        <QueryProvider>
-          <NextIntlClientProvider messages={messages}>
-            <Header />
-            {children}
-            <Footer />
-          </NextIntlClientProvider>
-        </QueryProvider>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
         <Toaster />
-        <ScrollToTop />
       </body>
     </html>
   );

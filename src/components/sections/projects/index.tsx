@@ -1,56 +1,44 @@
-import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
-import { GithubIcon } from "@/components/icons/github";
-import { ProjectsGrid } from "./projects-grid";
+import { ProjectsList } from "./projects-list";
 
 export async function Projects() {
   const t = await getTranslations("projects");
   const locale = await getLocale();
 
   return (
-    <section className="relative px-6 py-24 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-3 tracking-tight">
-              {t("title")}
-            </h2>
-            <p className="text-lg text-gray-400 max-w-2xl">
-              {t("description")}
-            </p>
+    <section
+      id="projects"
+      className="px-6 py-[60px] w-full max-w-[1180px] mx-auto"
+    >
+      {/* Section header */}
+      <div className="flex justify-between items-end mb-8 gap-6">
+        <div>
+          <div
+            className="flex items-center gap-2.5 font-mono text-xs tracking-[0.1em] uppercase mb-3.5"
+            style={{ color: "var(--portfolio-accent)" }}
+          >
+            <span
+              className="w-6 h-px"
+              style={{ background: "var(--portfolio-accent)" }}
+            />
+            {t("badge")}
           </div>
-          <Button
-            asChild
-            variant="outline"
-            className="hidden md:flex shrink-0 border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
+          <h2
+            className="text-[clamp(28px,3vw,36px)] font-semibold tracking-tight mb-2"
+            style={{ color: "var(--text-p-0)" }}
           >
-            <Link href={`/${locale}/projects`}>{t("viewAll")}</Link>
-          </Button>
-        </div>
-
-        <ProjectsGrid locale={locale} featuredOnly />
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center md:hidden">
-          <Button
-            asChild
-            variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
+            {t("title")}
+          </h2>
+          <p
+            className="text-sm leading-relaxed max-w-[520px] m-0"
+            style={{ color: "var(--text-p-2)" }}
           >
-            <Link href={`/${locale}/projects`}>{t("viewAll")}</Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
-          >
-            <Link href="https://github.com/nitroc-dev" target="_blank">
-              <GithubIcon className="w-4 h-4 mr-2" />
-              GitHub
-            </Link>
-          </Button>
+            {t("description")}
+          </p>
         </div>
       </div>
+
+      <ProjectsList locale={locale} featuredOnly />
     </section>
   );
 }

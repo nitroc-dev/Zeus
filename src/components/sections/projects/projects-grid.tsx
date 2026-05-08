@@ -1,17 +1,14 @@
 "use client";
 
 import { useProjectsControllerFindAllV1 } from "@/api/generated/projects/projects";
-import type {
-  ProjectDto,
-  ProjectsControllerFindAllV1StatusItem,
-} from "@/api/generated/nestJSAPI.schemas";
+import type { ProjectDto } from "@/api/generated/nestJSAPI.schemas";
 import ProjectCard from "@/components/cards/project";
 import type { Project } from "@/data/hardcoded-data";
 
 interface ProjectsGridProps {
   locale: string;
   featuredOnly?: boolean;
-  status?: ProjectsControllerFindAllV1StatusItem[];
+  statusFilter?: string;
   skeletonCount?: number;
   children?: React.ReactNode;
 }
@@ -40,13 +37,11 @@ function mapProjectDtoToProject(dto: ProjectDto, locale: string): Project {
 export function ProjectsGrid({
   locale,
   featuredOnly = false,
-  status,
+  statusFilter,
   skeletonCount = 3,
   children,
 }: ProjectsGridProps) {
-  const { data, isLoading, isError } = useProjectsControllerFindAllV1(
-    status ? { status } : undefined,
-  );
+  const { data, isLoading, isError } = useProjectsControllerFindAllV1();
 
   if (isLoading) {
     return (
@@ -65,7 +60,11 @@ export function ProjectsGrid({
 
   const raw = (data as any)?.data?.data as ProjectDto[] | undefined;
   const projects = (raw ?? []).map((dto) => mapProjectDtoToProject(dto, locale));
-  const displayed = featuredOnly ? projects.filter((p) => p.isFeatured) : projects;
+  const displayed = projects.filter((p) => {
+    if (featuredOnly && !p.isFeatured) return false;
+    if (statusFilter && p.status !== statusFilter) return false;
+    return true;
+  });
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">

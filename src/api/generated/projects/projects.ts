@@ -188,6 +188,38 @@ export const getProjectsControllerCreateV1Url = () => {
 
 export const projectsControllerCreateV1 = async (projectsControllerCreateV1Body: ProjectsControllerCreateV1Body, options?: RequestInit): Promise<projectsControllerCreateV1Response> => {
     const formData = new FormData();
+formData.append(`nameEn`, projectsControllerCreateV1Body.nameEn);
+formData.append(`nameFr`, projectsControllerCreateV1Body.nameFr);
+formData.append(`descriptionEn`, projectsControllerCreateV1Body.descriptionEn);
+formData.append(`descriptionFr`, projectsControllerCreateV1Body.descriptionFr);
+if(projectsControllerCreateV1Body.longDescriptionEn !== undefined) {
+ formData.append(`longDescriptionEn`, projectsControllerCreateV1Body.longDescriptionEn);
+ }
+if(projectsControllerCreateV1Body.longDescriptionFr !== undefined) {
+ formData.append(`longDescriptionFr`, projectsControllerCreateV1Body.longDescriptionFr);
+ }
+if(projectsControllerCreateV1Body.repositoryUrl !== undefined) {
+ formData.append(`repositoryUrl`, projectsControllerCreateV1Body.repositoryUrl);
+ }
+if(projectsControllerCreateV1Body.websiteUrl !== undefined) {
+ formData.append(`websiteUrl`, projectsControllerCreateV1Body.websiteUrl);
+ }
+if(projectsControllerCreateV1Body.tags !== undefined) {
+ projectsControllerCreateV1Body.tags.forEach(value => formData.append(`tags`, value));
+ }
+if(projectsControllerCreateV1Body.highlights !== undefined) {
+ projectsControllerCreateV1Body.highlights.forEach(value => formData.append(`highlights`, value));
+ }
+if(projectsControllerCreateV1Body.year !== undefined) {
+ formData.append(`year`, projectsControllerCreateV1Body.year);
+ }
+if(projectsControllerCreateV1Body.status !== undefined) {
+ formData.append(`status`, projectsControllerCreateV1Body.status);
+ }
+if(projectsControllerCreateV1Body.role !== undefined) {
+ formData.append(`role`, projectsControllerCreateV1Body.role);
+ }
+formData.append(`isFeatured`, projectsControllerCreateV1Body.isFeatured.toString())
 if(projectsControllerCreateV1Body.image !== undefined) {
  formData.append(`image`, projectsControllerCreateV1Body.image);
  }
@@ -399,6 +431,48 @@ export const getProjectsControllerUpdateV1Url = (projectId: string,) => {
 export const projectsControllerUpdateV1 = async (projectId: string,
     projectsControllerUpdateV1Body: ProjectsControllerUpdateV1Body, options?: RequestInit): Promise<projectsControllerUpdateV1Response> => {
     const formData = new FormData();
+if(projectsControllerUpdateV1Body.nameEn !== undefined) {
+ formData.append(`nameEn`, projectsControllerUpdateV1Body.nameEn);
+ }
+if(projectsControllerUpdateV1Body.nameFr !== undefined) {
+ formData.append(`nameFr`, projectsControllerUpdateV1Body.nameFr);
+ }
+if(projectsControllerUpdateV1Body.descriptionEn !== undefined) {
+ formData.append(`descriptionEn`, projectsControllerUpdateV1Body.descriptionEn);
+ }
+if(projectsControllerUpdateV1Body.descriptionFr !== undefined) {
+ formData.append(`descriptionFr`, projectsControllerUpdateV1Body.descriptionFr);
+ }
+if(projectsControllerUpdateV1Body.longDescriptionEn !== undefined) {
+ formData.append(`longDescriptionEn`, projectsControllerUpdateV1Body.longDescriptionEn);
+ }
+if(projectsControllerUpdateV1Body.longDescriptionFr !== undefined) {
+ formData.append(`longDescriptionFr`, projectsControllerUpdateV1Body.longDescriptionFr);
+ }
+if(projectsControllerUpdateV1Body.repositoryUrl !== undefined) {
+ formData.append(`repositoryUrl`, projectsControllerUpdateV1Body.repositoryUrl);
+ }
+if(projectsControllerUpdateV1Body.websiteUrl !== undefined) {
+ formData.append(`websiteUrl`, projectsControllerUpdateV1Body.websiteUrl);
+ }
+if(projectsControllerUpdateV1Body.tags !== undefined) {
+ projectsControllerUpdateV1Body.tags.forEach(value => formData.append(`tags`, value));
+ }
+if(projectsControllerUpdateV1Body.highlights !== undefined) {
+ projectsControllerUpdateV1Body.highlights.forEach(value => formData.append(`highlights`, value));
+ }
+if(projectsControllerUpdateV1Body.year !== undefined) {
+ formData.append(`year`, projectsControllerUpdateV1Body.year);
+ }
+if(projectsControllerUpdateV1Body.status !== undefined) {
+ formData.append(`status`, projectsControllerUpdateV1Body.status);
+ }
+if(projectsControllerUpdateV1Body.role !== undefined) {
+ formData.append(`role`, projectsControllerUpdateV1Body.role);
+ }
+if(projectsControllerUpdateV1Body.isFeatured !== undefined) {
+ formData.append(`isFeatured`, projectsControllerUpdateV1Body.isFeatured.toString())
+ }
 if(projectsControllerUpdateV1Body.image !== undefined) {
  formData.append(`image`, projectsControllerUpdateV1Body.image);
  }

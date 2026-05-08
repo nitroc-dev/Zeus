@@ -14,18 +14,6 @@ export interface PaginatedResponseDto {
   totalPages: number;
 }
 
-export type ProjectDtoLongDescriptionEn = { [key: string]: unknown };
-
-export type ProjectDtoLongDescriptionFr = { [key: string]: unknown };
-
-export type ProjectDtoImageUrl = { [key: string]: unknown };
-
-export type ProjectDtoRepositoryUrl = { [key: string]: unknown };
-
-export type ProjectDtoWebsiteUrl = { [key: string]: unknown };
-
-export type ProjectDtoYear = { [key: string]: unknown };
-
 export type ProjectDtoStatus = typeof ProjectDtoStatus[keyof typeof ProjectDtoStatus];
 
 
@@ -35,27 +23,79 @@ export const ProjectDtoStatus = {
   archived: 'archived',
 } as const;
 
-export type ProjectDtoRole = { [key: string]: unknown };
-
 export interface ProjectDto {
   projectId: string;
   nameEn: string;
   nameFr: string;
   descriptionEn: string;
   descriptionFr: string;
-  longDescriptionEn?: ProjectDtoLongDescriptionEn;
-  longDescriptionFr?: ProjectDtoLongDescriptionFr;
-  imageUrl?: ProjectDtoImageUrl;
-  repositoryUrl?: ProjectDtoRepositoryUrl;
-  websiteUrl?: ProjectDtoWebsiteUrl;
+  /** @nullable */
+  longDescriptionEn?: string | null;
+  /** @nullable */
+  longDescriptionFr?: string | null;
+  /** @nullable */
+  imageUrl?: string | null;
+  /** @nullable */
+  repositoryUrl?: string | null;
+  /** @nullable */
+  websiteUrl?: string | null;
   tags?: string[];
   highlights?: string[];
-  year?: ProjectDtoYear;
+  /** @nullable */
+  year?: string | null;
   status?: ProjectDtoStatus;
-  role?: ProjectDtoRole;
+  /** @nullable */
+  role?: string | null;
   isFeatured: boolean;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface SkillDto {
+  skillId: string;
+  nameEn: string;
+  nameFr: string;
+  /** Icon identifier (e.g. react-icons name) */
+  icon: string;
+  categoryId: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SkillCategoryDto {
+  categoryId: string;
+  label: string;
+  /** Icon identifier (e.g. react-icons name) */
+  icon: string;
+  skills: SkillDto[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateSkillCategoryDto {
+  label: string;
+  /** Icon identifier (e.g. react-icons name) */
+  icon: string;
+}
+
+export interface UpdateSkillCategoryDto {
+  label?: string;
+  icon?: string;
+}
+
+export interface CreateSkillDto {
+  nameEn: string;
+  nameFr: string;
+  /** Icon identifier (e.g. react-icons name) */
+  icon: string;
+  categoryId: string;
+}
+
+export interface UpdateSkillDto {
+  nameEn?: string;
+  nameFr?: string;
+  icon?: string;
+  categoryId?: string;
 }
 
 export type ProjectsControllerFindAllV1Params = {
@@ -85,11 +125,57 @@ export const ProjectsControllerFindAllV1StatusItem = {
   archived: 'archived',
 } as const;
 
+export type ProjectsControllerCreateV1BodyStatus = typeof ProjectsControllerCreateV1BodyStatus[keyof typeof ProjectsControllerCreateV1BodyStatus];
+
+
+export const ProjectsControllerCreateV1BodyStatus = {
+  live: 'live',
+  in_progress: 'in_progress',
+  archived: 'archived',
+} as const;
+
 export type ProjectsControllerCreateV1Body = {
+  nameEn: string;
+  nameFr: string;
+  descriptionEn: string;
+  descriptionFr: string;
+  longDescriptionEn?: string;
+  longDescriptionFr?: string;
+  repositoryUrl?: string;
+  websiteUrl?: string;
+  tags?: string[];
+  highlights?: string[];
+  year?: string;
+  status?: ProjectsControllerCreateV1BodyStatus;
+  role?: string;
+  isFeatured: boolean;
   image?: Blob;
 };
 
+export type ProjectsControllerUpdateV1BodyStatus = typeof ProjectsControllerUpdateV1BodyStatus[keyof typeof ProjectsControllerUpdateV1BodyStatus];
+
+
+export const ProjectsControllerUpdateV1BodyStatus = {
+  live: 'live',
+  in_progress: 'in_progress',
+  archived: 'archived',
+} as const;
+
 export type ProjectsControllerUpdateV1Body = {
+  nameEn?: string;
+  nameFr?: string;
+  descriptionEn?: string;
+  descriptionFr?: string;
+  longDescriptionEn?: string;
+  longDescriptionFr?: string;
+  repositoryUrl?: string;
+  websiteUrl?: string;
+  tags?: string[];
+  highlights?: string[];
+  year?: string;
+  status?: ProjectsControllerUpdateV1BodyStatus;
+  role?: string;
+  isFeatured?: boolean;
   image?: Blob;
 };
 
