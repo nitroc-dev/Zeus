@@ -15,7 +15,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations("about");
-  const title = `${t("name")} — ${t("role")}`;
+  const title = `${t("name")} - ${t("role")}`;
   return {
     title,
     description: t("bio"),

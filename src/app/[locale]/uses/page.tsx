@@ -11,7 +11,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Uses — Corentin",
+    title: "Uses - Corentin",
     description:
       "An honest list of the hardware, software, and small tools I reach for daily.",
     alternates: {

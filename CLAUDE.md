@@ -29,19 +29,19 @@ The app uses `next-intl` with two locales: `en` (default) and `fr`. All routes a
 ### Data Layer
 
 Content (projects, skills, experiences) lives in [src/data/hardcoded-data.tsx](src/data/hardcoded-data.tsx). There are two versions of each dataset:
-- **Localized functions** (`getLocalizedProjects`, `getLocalizedSkills`, `getLocalizedExperiences`) — accept a `t()` translator and are the **preferred approach**
-- **Hardcoded exports** (`projects`, `skills`, `experiences`) — legacy, kept for reference only
+- **Localized functions** (`getLocalizedProjects`, `getLocalizedSkills`, `getLocalizedExperiences`) - accept a `t()` translator and are the **preferred approach**
+- **Hardcoded exports** (`projects`, `skills`, `experiences`) - legacy, kept for reference only
 
 When adding new content, use the localized functions and add the corresponding keys to both `messages/en.json` and `messages/fr.json`.
 
 ### Page Structure
 
-- `src/app/layout.tsx` — root layout (metadata only, passes through children)
-- `src/app/[locale]/layout.tsx` — locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`, `Toaster`
-- `src/app/[locale]/page.tsx` — home page composing all sections with Framer Motion scroll animations
-- `src/app/[locale]/projects/page.tsx` — standalone projects page
-- `src/app/[locale]/contact/page.tsx` — contact form page
-- `src/app/[locale]/privacy/page.tsx` — privacy policy
+- `src/app/layout.tsx` - root layout (metadata only, passes through children)
+- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`, `Toaster`
+- `src/app/[locale]/page.tsx` - home page composing all sections with Framer Motion scroll animations
+- `src/app/[locale]/projects/page.tsx` - standalone projects page
+- `src/app/[locale]/contact/page.tsx` - contact form page
+- `src/app/[locale]/privacy/page.tsx` - privacy policy
 
 ### Contact Form
 
@@ -49,12 +49,12 @@ The contact form at `src/app/api/contact/route.ts` forwards submissions to a **D
 
 ### Components
 
-- `src/components/sections/` — page sections (Hero, About, Experience, Skills, Projects, CTA)
-- `src/components/cards/` — ExperienceCard, ProjectCard with typed props in adjacent `props.ts` files
-- `src/components/navigation/` — Header, Footer
-- `src/components/ui/` — shadcn/ui primitives (Button, Card, Input, etc.)
-- `src/components/inputs/` — form input wrappers built on top of the UI primitives
-- `src/components/icons/` — custom SVG icon components
+- `src/components/sections/` - page sections (Hero, About, Experience, Skills, Projects, CTA)
+- `src/components/cards/` - ExperienceCard, ProjectCard with typed props in adjacent `props.ts` files
+- `src/components/navigation/` - Header, Footer
+- `src/components/ui/` - shadcn/ui primitives (Button, Card, Input, etc.)
+- `src/components/inputs/` - form input wrappers built on top of the UI primitives
+- `src/components/icons/` - custom SVG icon components
 
 ### Styling
 
@@ -64,4 +64,4 @@ Tailwind CSS v4 with `tw-animate-css`. The linter is **Biome** (not ESLint/Prett
 
 | Variable | Purpose |
 |---|---|
-| `DISCORD_WEBHOOK_URL` | Required — receives contact form submissions |
+| `DISCORD_WEBHOOK_URL` | Required - receives contact form submissions |

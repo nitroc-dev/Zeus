@@ -122,7 +122,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                     name="message"
                     label={`${t("message")} *`}
                     rows={5}
-                    placeholder="Tell me about your project — timeline, scope, anything I should know."
+                    placeholder="Tell me about your project - timeline, scope, anything I should know."
                     required
                   />
                   <p className="text-xs" style={{ color: "var(--text-p-3)" }}>

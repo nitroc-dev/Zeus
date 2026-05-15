@@ -100,7 +100,7 @@ export async function Hero() {
               className="ml-3 text-[11px] tracking-wider"
               style={{ color: "var(--text-p-2)" }}
             >
-              ~/corentin — whoami.json
+              ~/corentin - whoami.json
             </span>
           </div>
 

@@ -117,7 +117,7 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Corentin — Full Stack Developer",
+  name: "Corentin - Full Stack Developer",
   url: "https://nitroc.xyz",
   description:
     "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",

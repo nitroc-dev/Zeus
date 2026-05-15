@@ -70,7 +70,7 @@ export async function ProjectsList({
               className="hidden md:block font-mono text-[13px] text-right self-center"
               style={{ color: "var(--text-p-2)" }}
             >
-              {project.year ?? "—"}
+              {project.year ?? "-"}
               {project.role && (
                 <small
                   className="block text-[11px] mt-1"

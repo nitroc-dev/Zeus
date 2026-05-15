@@ -37,7 +37,7 @@ export async function generateMetadata({
   const tr = createTranslator(locale);
   const name = tr(project, "name") ?? project.nameEn;
   const description = tr(project, "description") ?? project.descriptionEn;
-  const title = project.seoTitle ?? `${name} — Corentin`;
+  const title = project.seoTitle ?? `${name} - Corentin`;
   const desc = project.seoDescription ?? description;
   const images = project.imageUrl
     ? [
@@ -236,7 +236,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Right — sticky sidebar */}
+          {/* Right - sticky sidebar */}
           <aside
             className="rounded-[16px] p-6"
             style={{

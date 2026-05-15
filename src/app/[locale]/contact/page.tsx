@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations("contact");
   return {
-    title: `Contact — Corentin`,
+    title: `Contact - Corentin`,
     description: t("description"),
     alternates: {
       canonical: `https://nitroc.xyz/${locale}/contact`,
@@ -22,7 +22,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `Contact — Corentin`,
+      title: `Contact - Corentin`,
       description: t("description"),
       url: `https://nitroc.xyz/${locale}/contact`,
     },

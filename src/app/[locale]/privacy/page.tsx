@@ -11,7 +11,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations("privacy");
   return {
-    title: `${t("title")} — Corentin`,
+    title: `${t("title")} - Corentin`,
     description: t("collectDescription"),
     alternates: {
       canonical: `https://nitroc.xyz/${locale}/privacy`,

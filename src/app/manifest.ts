@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Corentin — Full Stack Developer",
+    name: "Corentin - Full Stack Developer",
     short_name: "Corentin",
     description:
       "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",

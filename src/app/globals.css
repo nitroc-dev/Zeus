@@ -82,7 +82,7 @@
 
 /* Portfolio design tokens */
 :root {
-  /* Navy background scale — must be in :root, not only @theme, so var(--navy-*) resolves in inline styles */
+  /* Navy background scale - must be in :root, not only @theme, so var(--navy-*) resolves in inline styles */
   --navy-0: #07090f;
   --navy-1: #0b0f1a;
   --navy-2: #111726;
