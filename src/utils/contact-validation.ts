@@ -1,22 +1,9 @@
-import * as yup from "yup";
+import { z } from "zod";
 
-export interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-export const contactSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Name is required")
-    .min(2, "Name must be at least 2 characters"),
-  email: yup
-    .string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  message: yup
-    .string()
-    .required("Message is required")
-    .min(10, "Message must be at least 10 characters"),
+export const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.email("Invalid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
+
+export type ContactFormData = z.infer<typeof contactSchema>;

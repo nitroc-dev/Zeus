@@ -11,7 +11,6 @@ export async function Hero() {
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-15 items-center">
         {/* Left: copy */}
         <div>
-
           {/* Heading */}
           <h1
             className="text-[clamp(48px,6vw,80px)] leading-[1.02] font-semibold tracking-tight mb-6"

@@ -1,25 +1,28 @@
-const formatDate = (date: string): string => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "long",
-  };
-  return new Date(date).toLocaleDateString("en-US", options);
-};
+import { format, parseISO } from "date-fns";
+import { enUS, fr } from "date-fns/locale";
 
-export const formatDateRange = (
-  startDate: string,
-  endDate?: string,
-): string => {
-  const start = formatDate(startDate);
-  if (!endDate) return start;
+function getLocaleObj(locale: string) {
+  return locale === "fr" ? fr : enUS;
+}
 
-  const end = formatDate(endDate);
-  return `${start} - ${end}`;
-};
+export function formatWhen(
+  exp: { startDate: string; endDate?: string },
+  locale: string,
+  presentLabel: string,
+): string {
+  const dateLocale = getLocaleObj(locale);
+  const fmt = (d: string) =>
+    format(parseISO(d), "MMM yyyy", { locale: dateLocale });
+  const end = exp.endDate ? fmt(exp.endDate) : presentLabel;
+  return `${fmt(exp.startDate)} — ${end}`;
+}
 
-export const formatExperience = (experience: {
+export function formatExperience(experience: {
   startDate: string;
   endDate?: string;
-}): string => {
-  return formatDateRange(experience.startDate, experience.endDate);
-};
+}): string {
+  const fmt = (d: string) => format(parseISO(d), "MMMM yyyy", { locale: enUS });
+  const start = fmt(experience.startDate);
+  if (!experience.endDate) return start;
+  return `${start} - ${fmt(experience.endDate)}`;
+}

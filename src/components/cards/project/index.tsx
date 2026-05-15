@@ -1,10 +1,16 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons/github";
+import { useTranslations } from "next-intl";
+import { createTranslator } from "@/utils/translate";
 import type { ProjectCardProps } from "./props";
 
 export default function ProjectCard({ project, locale }: ProjectCardProps) {
+  const t = useTranslations("projects");
+  const tr = createTranslator(locale);
+  const name = tr(project, "name") ?? project.nameEn;
+  const description = tr(project, "description") ?? project.descriptionEn;
+
   return (
     <div
       className="group flex flex-col overflow-hidden rounded-[var(--radius-lg)] transition-all duration-200 hover:[border-color:var(--portfolio-line-2)]"
@@ -18,7 +24,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
         <div className="relative w-full h-44 overflow-hidden">
           <Image
             src={project.imageUrl}
-            alt={project.name}
+            alt={name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
@@ -37,7 +43,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
             className="font-mono text-5xl font-black select-none uppercase tracking-widest"
             style={{ color: "var(--portfolio-line-2)" }}
           >
-            {project.name.slice(0, 2)}
+            {name.slice(0, 2)}
           </span>
         </div>
       )}
@@ -48,7 +54,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
           className="text-base font-semibold mb-2 leading-tight"
           style={{ color: "var(--text-p-0)" }}
         >
-          {project.name}
+          {name}
         </h3>
 
         {/* Tags */}
@@ -74,7 +80,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
           className="text-sm leading-relaxed flex-1 line-clamp-3"
           style={{ color: "var(--text-p-2)" }}
         >
-          {project.description}
+          {description}
         </p>
 
         {/* Actions */}
@@ -90,7 +96,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
               }}
             >
               <ArrowRight className="w-3.5 h-3.5" />
-              Details
+              {t("details")}
             </Link>
           )}
           {project.websiteUrl && (
@@ -120,7 +126,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                 color: "var(--text-p-1)",
               }}
             >
-              <GithubIcon className="w-3.5 h-3.5" />
+              <Github className="w-3.5 h-3.5" />
             </Link>
           )}
         </div>

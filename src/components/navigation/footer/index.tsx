@@ -1,8 +1,6 @@
+import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
-import { GithubIcon } from "@/components/icons/github";
-import { LinkedinIcon } from "@/components/icons/linkedin";
-import { MailIcon } from "@/components/icons/mail";
 
 export async function Footer() {
   const locale = await getLocale();
@@ -20,7 +18,10 @@ export async function Footer() {
   return (
     <footer
       className="mt-auto"
-      style={{ borderTop: "1px solid var(--portfolio-line)", background: "var(--navy-1)" }}
+      style={{
+        borderTop: "1px solid var(--portfolio-line)",
+        background: "var(--navy-1)",
+      }}
     >
       <div className="max-w-[1180px] mx-auto px-8 pt-14 pb-6 grid grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12">
         {/* Brand */}
@@ -81,15 +82,26 @@ export async function Footer() {
           <ul className="flex flex-col gap-2.5">
             {[
               { label: "GitHub", href: "https://github.com/nitroc-dev" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/corentin-d-02472724b" },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/in/corentin-d-02472724b",
+              },
               { label: "Email", href: "mailto:contact@nitroc.xyz" },
               { label: "CV / Resume", href: "/cv.pdf" },
             ].map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  target={link.href.startsWith("http") || link.href.endsWith(".pdf") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={
+                    link.href.startsWith("http") || link.href.endsWith(".pdf")
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    link.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   className="text-sm transition-colors hover:[color:var(--portfolio-accent)]"
                   style={{ color: "var(--text-p-1)" }}
                 >
@@ -132,12 +144,26 @@ export async function Footer() {
           color: "var(--text-p-3)",
         }}
       >
-        <span>&copy; {new Date().getFullYear()} Corentin. All rights reserved.</span>
+        <span>
+          &copy; {new Date().getFullYear()} Corentin. All rights reserved.
+        </span>
         <div className="flex gap-3">
           {[
-            { href: "https://github.com/nitroc-dev", label: "GitHub", Icon: GithubIcon },
-            { href: "https://www.linkedin.com/in/corentin-d-02472724b", label: "LinkedIn", Icon: LinkedinIcon },
-            { href: "mailto:contact@nitroc.xyz", label: "Email", Icon: MailIcon },
+            {
+              href: "https://github.com/nitroc-dev",
+              label: "GitHub",
+              Icon: Github,
+            },
+            {
+              href: "https://www.linkedin.com/in/corentin-d-02472724b",
+              label: "LinkedIn",
+              Icon: Linkedin,
+            },
+            {
+              href: "mailto:contact@nitroc.xyz",
+              label: "Email",
+              Icon: Mail,
+            },
           ].map(({ href, label, Icon }) => (
             <Link
               key={href}

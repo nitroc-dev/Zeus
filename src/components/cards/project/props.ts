@@ -1,6 +1,6 @@
-import type { Project } from "@/data/hardcoded-data";
+import type { Project } from "@/types";
 
 export interface ProjectCardProps {
   project: Project;
-  locale?: string;
+  locale: string;
 }

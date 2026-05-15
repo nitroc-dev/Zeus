@@ -9,7 +9,10 @@ interface CopyEmailProps {
   successMessage?: string;
 }
 
-export function CopyEmail({ email, successMessage = "Email copied!" }: CopyEmailProps) {
+export function CopyEmail({
+  email,
+  successMessage = "Email copied!",
+}: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

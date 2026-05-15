@@ -3,8 +3,8 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
@@ -60,16 +60,18 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-3.5 py-2 rounded-lg transition-all duration-120"
+                className="px-3.5 py-2 rounded-lg transition-colors duration-120 relative"
                 style={{
                   color: isActive ? "var(--text-p-0)" : "var(--text-p-2)",
-                  background: isActive ? "var(--navy-2)" : "transparent",
-                  boxShadow: isActive
-                    ? "inset 0 -2px 0 var(--portfolio-accent)"
-                    : "none",
                 }}
               >
                 {item.name}
+                {isActive && (
+                  <span
+                    className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-px rounded-full"
+                    style={{ background: "var(--portfolio-accent)" }}
+                  />
+                )}
               </Link>
             );
           })}

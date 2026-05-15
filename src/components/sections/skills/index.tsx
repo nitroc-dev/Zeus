@@ -1,9 +1,8 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { SkillsGrid } from "./skills-grid";
 
 export async function Skills() {
   const t = await getTranslations("skills");
-  const locale = await getLocale();
 
   return (
     <section className="relative px-6 py-24 backdrop-blur-sm">
@@ -17,7 +16,7 @@ export async function Skills() {
           </p>
         </div>
 
-        <SkillsGrid locale={locale} />
+        <SkillsGrid />
       </div>
     </section>
   );
