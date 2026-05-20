@@ -41,6 +41,9 @@
     "present": "Present"
   },
   "projects": {
+    "badge": "Selected work",
+    "title": "What I've built",
+    "description": "A few things I've shipped — web apps, tools, and side projects.",
     "pageTitle": {
       "my": "My",
       "projects": "Projects"

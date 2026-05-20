@@ -66,42 +66,49 @@ export const projects: Project[] = [
     nameEn: "Helios",
     nameFr: "Helios",
     descriptionEn:
-      "A self-hosted server monitoring dashboard. Track services, containers, and system health from a single interface.",
+      "A personal desktop dashboard built with Tauri 2 and React. 28+ plugin widgets, Kanban project management, network topology graph, and system monitoring.",
     descriptionFr:
-      "Un tableau de bord de surveillance de serveur auto-hébergé. Suivez les services, conteneurs et la santé système depuis une seule interface.",
+      "Un tableau de bord bureau personnel construit avec Tauri 2 et React. 28+ widgets, gestion de projets Kanban, graphe réseau interactif et surveillance système.",
     longDescriptionEn:
-      "Helios is a personal project — a self-hosted monitoring dashboard for home servers and VPS. It tracks Docker containers, system metrics, and service uptime. Built to replace cobbled-together scripts with a clean interface.",
+      "Helios is a self-hosted desktop dashboard built on Tauri 2 (Rust backend) and React 19. It features a drag-and-drop widget grid, a 28-plugin ecosystem covering system stats, Docker monitoring, RSS feeds, notes, finance, and more. It also includes a full Kanban project management system, an interactive network topology graph, and a remote agent for monitoring headless servers.",
     longDescriptionFr:
-      "Helios est un projet personnel — un tableau de bord de surveillance auto-hébergé pour serveurs domestiques et VPS. Il suit les conteneurs Docker, les métriques système et la disponibilité des services. Construit pour remplacer des scripts bricolés par une interface propre.",
+      "Helios est un tableau de bord bureau auto-hébergé construit sur Tauri 2 (backend Rust) et React 19. Il propose une grille de widgets glisser-déposer, un écosystème de 28 plugins couvrant les stats système, Docker, les flux RSS, les notes, la finance et bien plus. Il inclut également un système de gestion de projets Kanban, un graphe de topologie réseau interactif et un agent distant pour surveiller des serveurs headless.",
     repositoryUrl: "https://github.com/nitroc-dev/helios",
-    tags: ["Next.js", "TypeScript", ".NET", "Docker"],
+    tags: ["Tauri 2", "React 19", "Rust", "TypeScript"],
     techStack: [
       {
-        name: "Next.js",
-        reasonEn: "Frontend dashboard with real-time updates.",
-        reasonFr: "Dashboard frontend avec mises à jour en temps réel.",
+        name: "Tauri 2",
+        reasonEn:
+          "Native desktop shell with a Rust backend — no Electron overhead.",
+        reasonFr:
+          "Shell bureau natif avec backend Rust — sans la surcharge d'Electron.",
       },
       {
-        name: ".NET",
-        reasonEn: "Backend API collecting metrics from the host system.",
-        reasonFr: "API backend collectant les métriques du système hôte.",
+        name: "React 19",
+        reasonEn:
+          "Component model for the dashboard UI and plugin widgets.",
+        reasonFr:
+          "Modèle de composants pour l'interface du tableau de bord et les widgets plugins.",
       },
       {
-        name: "Docker",
-        reasonEn: "The thing being monitored — and the deployment target.",
-        reasonFr: "La chose surveillée — et la cible de déploiement.",
+        name: "Rust",
+        reasonEn:
+          "Backend commands: system metrics, Docker, SQLite, network scanning.",
+        reasonFr:
+          "Commandes backend : métriques système, Docker, SQLite, scan réseau.",
       },
       {
-        name: "PostgreSQL",
-        reasonEn: "Time-series metrics storage.",
-        reasonFr: "Stockage des métriques en séries temporelles.",
+        name: "SQLite",
+        reasonEn: "Embedded local database — zero config, bundled with the app.",
+        reasonFr:
+          "Base de données locale embarquée — zéro configuration, intégrée à l'app.",
       },
     ],
     highlights: [
-      "Docker container health monitoring",
-      "System metrics (CPU, RAM, disk)",
-      "Service uptime tracking",
-      "Clean dashboard UI",
+      "28+ plugin widgets (system stats, Docker, RSS, notes, finance…)",
+      "Drag-and-drop grid dashboard",
+      "Kanban project management",
+      "Interactive network topology graph",
     ],
     year: "2026",
     status: "in_progress",
