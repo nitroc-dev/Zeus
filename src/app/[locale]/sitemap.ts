@@ -1,32 +1,5 @@
-import type { MetadataRoute } from "next";
+// Per-locale sitemap at /en/sitemap.xml and /fr/sitemap.xml
+// The global sitemap at /sitemap.xml is the authoritative one.
+// This file exists for discovery by locale-aware crawlers.
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://nitroc.xyz";
-
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
-}
+export { default } from "../sitemap";

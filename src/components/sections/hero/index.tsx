@@ -1,63 +1,221 @@
-"use client";
-import { FolderOpen, Phone } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export function Hero() {
-  const t = useTranslations("hero");
-  const locale = useLocale();
+export async function Hero() {
+  const t = await getTranslations("hero");
+  const locale = await getLocale();
 
   return (
-    <section className="relative min-h-[95vh] flex items-center justify-center px-6 py-20 backdrop-blur-sm">
-      <div className="w-full max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-2">
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-50 leading-tight">
-                {t("greeting")}{" "}
-                <span className="text-blue-600">{t("name")}</span>
-              </h1>
-            </div>
+    <section className="px-6 py-20 w-full max-w-[1180px] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-15 items-center">
+        {/* Left: copy */}
+        <div>
+          {/* Heading */}
+          <h1
+            className="text-[clamp(48px,6vw,80px)] leading-[1.02] font-semibold tracking-tight mb-6"
+            style={{ color: "var(--text-p-0)" }}
+          >
+            {t("greeting")}{" "}
+            <span style={{ color: "var(--portfolio-accent)" }}>
+              {t("name")}
+            </span>{" "}
+            <br />
+            {t("headline")}
+          </h1>
 
-            <p className="text-lg text-gray-400 max-w-lg leading-relaxed">
-              {t("description")}
-            </p>
+          {/* Tagline */}
+          <p
+            className="text-[19px] leading-[1.55] mb-8 max-w-[540px]"
+            style={{ color: "var(--text-p-1)" }}
+          >
+            {t("tagline")}
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                <Link href={`/${locale}/contact`}>
-                  <Phone className="w-4 h-4 mr-2" />
-                  {t("getInTouch")}
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
-              >
-                <Link href={`/${locale}/projects`}>
-                  <FolderOpen className="w-4 h-4 mr-2" />
-                  {t("viewProjects")}
-                </Link>
-              </Button>
-            </div>
+          {/* Actions */}
+          <div className="flex gap-3 flex-wrap">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
+              style={{
+                background: "var(--portfolio-accent)",
+                color: "oklch(0.18 0.02 252)",
+                boxShadow:
+                  "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
+              }}
+            >
+              {t("seeWork")}
+            </a>
+            <Link
+              href={`/${locale}/about`}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
+            >
+              {t("about")}
+            </Link>
+          </div>
+        </div>
+
+        {/* Right: terminal ID card */}
+        <div
+          className="hidden lg:block rounded-[14px] overflow-hidden font-mono text-[13px] relative"
+          style={{
+            background: "linear-gradient(180deg, var(--navy-2), var(--navy-1))",
+            border: "1px solid var(--portfolio-line-2)",
+            boxShadow:
+              "0 20px 60px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04) inset",
+          }}
+        >
+          {/* Radial glow overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(500px 200px at 100% 0%, var(--portfolio-accent-soft), transparent 60%)",
+            }}
+          />
+
+          {/* Title bar */}
+          <div
+            className="flex items-center gap-1.5 px-3.5 py-2.5 relative"
+            style={{
+              background: "var(--navy-3)",
+              borderBottom: "1px solid var(--portfolio-line)",
+            }}
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+            <span
+              className="ml-3 text-[11px] tracking-wider"
+              style={{ color: "var(--text-p-2)" }}
+            >
+              ~/corentin - whoami.json
+            </span>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <Image
-              src="/hero.svg"
-              alt="Developer coding illustration"
-              width={350}
-              height={300}
-              className="w-full h-full object-contain"
-              priority
+          {/* Terminal body */}
+          <div
+            className="px-[22px] py-[22px] leading-[1.85] relative"
+            style={{ color: "var(--text-p-0)" }}
+          >
+            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
+            <span>cat whoami.json</span>
+            <br />
+            <span style={{ color: "var(--text-p-2)" }}>{"{"}</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"name"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Corentin"</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"role"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>
+              "Full-stack dev"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"location"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>
+              "Brussels, BE"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"company"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Eachstapp"</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"since"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 75)" }}>2024</span>
+            <span style={{ color: "var(--text-p-2)" }}>,</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"stack"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: [</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"TS"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"React"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>".NET"</span>
+            <span style={{ color: "var(--text-p-2)" }}>],</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"speaks"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: [</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"FR"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"EN"</span>
+            <span style={{ color: "var(--text-p-2)" }}>],</span>
+            <br />
+            <span
+              style={{
+                color:
+                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
+              }}
+            >
+              &nbsp;&nbsp;"focus"
+            </span>
+            <span style={{ color: "var(--text-p-2)" }}>: </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Helios"</span>
+            <br />
+            <span style={{ color: "var(--text-p-2)" }}>{"}"}</span>
+            <br />
+            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
+            <span
+              className="inline-block w-[7px] h-[14px] align-[-2px] ml-0.5"
+              style={{
+                background: "var(--portfolio-accent)",
+                animation: "cursor-blink 1s steps(2) infinite",
+              }}
             />
           </div>
         </div>

@@ -6,45 +6,41 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "experience": "Experience",
-    "skills": "Skills",
+    "uses": "Uses",
     "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Corentin",
-    "description": "A passionate full-stack developer specializing in web development and backend systems. I craft modern, scalable solutions that solve real-world problems through clean code and innovative thinking.",
-    "getInTouch": "Get in Touch",
-    "viewProjects": "View Projects"
+    "headline": "I build things for the web.",
+    "tagline": "Full-stack developer based in Brussels. Currently shipping product features at Eachstapp, a startup helping local businesses go digital. I care about clean code, fast UIs, and shipping things that actually get used.",
+    "seeWork": "See my work",
+    "about": "About me"
   },
   "about": {
-    "badge": "Available for work",
-    "title": "Building digital experiences that matter",
-    "description": "I'm a passionate full-stack developer who enjoys building real-world solutions through clean, maintainable code and creative thinking. Currently working at Eachstapp while exploring new opportunities.",
-    "basedInBelgium": "Based in Belgium",
-    "basedDescription": "Working remotely and available for collaborations worldwide",
-    "fullStackFocus": "Full-Stack Focus",
-    "fullStackDescription": "Specialized in modern web technologies and scalable solutions",
-    "innovationDriven": "Innovation Driven",
-    "innovationDescription": "Thriving on challenges and crafting impactful digital solutions",
-    "alwaysLearning": "Always Learning",
-    "learningDescription": "Continuously exploring new technologies to stay ahead"
-  },
-  "experience": {
-    "badge": "Professional Journey",
-    "title": "Experience & Expertise",
-    "description": "A journey through professional growth, technical challenges, and successful project deliveries across different industries and technologies."
-  },
-  "skills": {
-    "badge": "Technical Stack",
-    "title": "Skills & Technologies",
-    "description": "A comprehensive toolkit of modern technologies and frameworks I use to build scalable, performant, and user-friendly applications."
+    "name": "Corentin",
+    "role": "Full Stack Developer",
+    "location": "Brussels, Belgium",
+    "contactMe": "Contact me",
+    "bioTitle": "About me",
+    "bio": "I'm a full-stack developer based in Brussels, Belgium. I enjoy building modern, scalable web applications with a focus on clean code and great user experience. I'm currently working at Eachstapp, where I contribute to enterprise web applications using React, Next.js, and .NET. I studied Computer Science at Haute École Léonard de Vinci, where I built my foundation in software engineering.",
+    "bio2": "Outside of work I tinker on side projects, read about web security, and drink too much coffee. I care about readable code, fast feedback loops, and shipping things that actually get used.",
+    "languagesTitle": "Languages",
+    "french": "French",
+    "frenchLevel": "Native",
+    "english": "English",
+    "englishLevel": "Professional",
+    "dutch": "Dutch",
+    "dutchLevel": "Intermediate",
+    "learningTitle": "Currently learning",
+    "learningDescription": "Exploring Expo and mobile app development with React Native.",
+    "learningTech": "Expo & React Native",
+    "skillsTitle": "Skills",
+    "experienceTitle": "Experience",
+    "present": "Present"
   },
   "projects": {
-    "badge": "Portfolio Showcase",
-    "title": "Featured Projects",
-    "description": "A collection of projects that showcase my technical skills and creative problem-solving abilities.",
     "pageTitle": {
       "my": "My",
       "projects": "Projects"
@@ -52,14 +48,62 @@
     "pageDescription": "A showcase of my work spanning web development, backend systems, and innovative solutions. Each project represents a unique challenge and creative approach.",
     "callToAction": "Want to see more of my work or discuss a project?",
     "getInTouched": "Get in Touch",
-    "viewGithub": "View GitHub"
+    "viewGithub": "View GitHub",
+    "viewAll": "View all projects",
+    "backToProjects": "Back to projects",
+    "detailAbout": "About the project",
+    "detailHighlights": "Key highlights",
+    "detailYear": "Year",
+    "detailRole": "Role",
+    "detailStack": "Tech stack",
+    "detailTimeline": "Timeline",
+    "detailLighthouse": "Lighthouse",
+    "details": "Details",
+    "liveDemo": "Live demo",
+    "sourceCode": "Source code",
+    "backToHome": "Back to home",
+    "nextProjectLabel": "Next project",
+    "breadcrumbHome": "Home",
+    "statusLive": "Live",
+    "statusInProgress": "In progress",
+    "statusArchived": "Archived",
+    "contextEyebrow": "Context",
+    "contextTitle": "The problem & the goals",
+    "problemLabel": "Problem",
+    "goalLabel": "Goal",
+    "roleEyebrow": "My role",
+    "roleTitle": "What I owned",
+    "buildEyebrow": "The build",
+    "buildTitle": "Stack & why",
+    "buildIntro": "Each choice had to earn its place.",
+    "techLabel": "Tech",
+    "perfEyebrow": "Performance",
+    "perfTitle": "Lighthouse & web vitals",
+    "caseStudyEyebrow": "Case study",
+    "caseStudyTitle": "Deep dive",
+    "featuresEyebrow": "What it does",
+    "featuresTitle": "Key features"
   },
   "cta": {
-    "badge": "Ready to collaborate",
-    "title": "Ready to bring your ideas to life?",
-    "description": "Let's collaborate to build something amazing together. I'm here to turn your vision into reality with clean, scalable code and innovative solutions. Let's start your next project today.",
-    "getInTouch": "Get in Touch",
-    "viewProjects": "View Projects"
+    "title": "Have a project in mind?",
+    "description": "I'm taking on freelance work alongside my role at Eachstapp - small focused engagements where I can ship something polished end-to-end.",
+    "startConversation": "Start a conversation",
+    "moreAbout": "More about me"
+  },
+  "currently": {
+    "eyebrow": "Right now",
+    "title": "Currently",
+    "locationLabel": "Location",
+    "workingOnLabel": "Working on",
+    "workingSince": "since 2026",
+    "readingLabel": "Reading",
+    "learningLabel": "Learning",
+    "learningSublabel": "shipping a small app this quarter",
+    "locationValue": "Brussels, Belgium",
+    "workingOnValue": "Building Helios",
+    "readingValue": "Web Application Security",
+    "readingSublabel": "O'Reilly",
+    "learningValue": "Expo & React Native"
   },
   "contact": {
     "title": "Get in touch",
@@ -70,7 +114,24 @@
     "send": "Send Message",
     "success": "Message sent successfully! I'll get back to you soon.",
     "error": "Failed to send message. Please try again or contact me directly via email.",
-    "contactMe": "Contact me directly"
+    "contactMe": "Contact me directly",
+    "metaEmailSub": "Replies within 24h",
+    "metaLocationLabel": "Brussels, Belgium",
+    "metaLocationSub": "CET · open to remote",
+    "metaGithubSub": "Most code lives here",
+    "metaLinkedinSub": "For the recruiters out there",
+    "successTitle": "Message sent!",
+    "successDesc": "Thanks for reaching out. I'll get back to you soon.",
+    "successSend": "Send another message",
+    "faqTitle": "Frequently asked",
+    "faq1Q": "Are you available right now?",
+    "faq1A": "Yes - I take on freelance work alongside my role at Eachstapp. I prefer focused engagements where I can ship something polished end-to-end.",
+    "faq2Q": "What kind of projects do you work on?",
+    "faq2A": "Web apps, dashboards, marketing sites - anywhere a small team needs full-stack help. React/Next on the front, Node or .NET on the back.",
+    "faq3Q": "Do you work remotely?",
+    "faq3A": "Yes. I'm in Brussels (CET) and work async-friendly with teams across Europe and the US. Happy to come on-site occasionally if you're nearby.",
+    "faq4Q": "How fast do you reply?",
+    "faq4A": "Within 24 hours, usually faster. I keep a close eye on my messages."
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -86,35 +147,31 @@
     "provideServices": "Provide the services or information you requested",
     "communicateProjects": "Communicate with you about potential projects or collaborations"
   },
-  "skillCategories": {
-    "programmingLanguages": "Programming Languages",
-    "frameworksLibraries": "Frameworks & Libraries",
-    "toolsDatabases": "Tools & Databases"
-  },
-  "projectsData": {
-    "zeus": {
-      "name": "Zeus",
-      "description": "Zeus is a portfolio that showcases my skills, experience, and projects in software development. The goal of this project is to highlight my professional journey, technical skills, and the solutions I've created. Feel free to explore and connect!"
-    }
-  },
-  "experiencesData": {
-    "fullStackDev": {
-      "name": "Full Stack Developer",
-      "company": "Eachstapp",
-      "location": "Brussels, Belgium",
-      "description": "Leading the development and maintenance of enterprise web applications using React, Next.js, and .NET technologies. Collaborating with cross-functional teams to architect scalable solutions, implement RESTful APIs, and optimize application performance. Successfully delivered multiple features that improved user engagement and system efficiency while maintaining high code quality standards."
-    },
-    "internship": {
-      "name": "Fullstack Developer (Internship)",
-      "company": "Eachstapp",
-      "location": "Brussels, Belgium",
-      "description": "Contributed to the development of modern web applications by implementing responsive frontend components and backend API integrations. Gained practical experience with React, TypeScript, and .NET while working in an agile development environment. Participated in code reviews, sprint planning sessions, and learned industry best practices for building production-ready applications."
-    },
-    "education": {
-      "name": "Computer Science Student",
-      "company": "Haute Ecole Léonard de Vinci",
-      "location": "Brussels, Belgium",
-      "description": "Completed comprehensive studies in computer science covering programming fundamentals, data structures, algorithms, database management, and software engineering principles. Developed strong analytical and problem-solving skills through hands-on projects and coursework. Built a solid foundation in object-oriented programming, web development, and system design that directly applies to modern software development practices."
-    }
+  "uses": {
+    "eyebrow": "Setup",
+    "title": "What I use",
+    "description": "The gear, software, and tools I rely on day-to-day for development and design.",
+    "hardware": "Hardware",
+    "editorTerminal": "Editor & Terminal",
+    "dailySoftware": "Daily Software",
+    "devStack": "Dev Stack",
+    "customPcDesc": "Custom-built Windows desktop - AMD Ryzen 7 3700X, RTX 2060 Super, 32 GB RAM.",
+    "monitorDesc": "4K at 144Hz. Excellent for both gaming and side-by-side development layouts.",
+    "keyboardDesc": "Solid mechanical keyboard. Reliable and no-nonsense.",
+    "mouseDesc": "Wireless, precise, and heavy enough to feel planted. Hard pad, low DPI.",
+    "vscodeDesc": "Primary editor for web work. Copilot, Biome, GitLens extensions.",
+    "riderDesc": "JetBrains IDE for all .NET / C# projects.",
+    "terminalDesc": "Clean, fast, and supports multiple shell tabs. Does the job without getting in the way.",
+    "themeDesc": "One Dark Pro in both editors. Easy on the eyes for long sessions.",
+    "fontDesc": "JetBrains Mono everywhere - great ligatures, very readable.",
+    "firefoxDesc": "Fast, privacy-friendly, and great DevTools. My daily driver.",
+    "powertoysDesc": "Fast app and file launcher on Windows. Alt+Space, type, done.",
+    "obsidianDesc": "Local-first markdown notes. Fast, extensible, and my files stay on my machine.",
+    "nextjsDesc": "Go-to React framework. App router, server components, RSC.",
+    "reactDesc": "Component model for all frontends. Combined with Next.js or standalone.",
+    "dotnetDesc": "Backend APIs and services. Clean architecture, EF Core.",
+    "typescriptDesc": "Strict mode everywhere. Catches issues early.",
+    "postgresDesc": "Default relational database. Reliable and well-supported.",
+    "dockerDesc": "Containerised dev environments and deployments."
   }
 }

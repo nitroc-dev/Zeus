@@ -16,6 +16,27 @@
   --color-gray-800: #1f2937;
   --color-gray-900: #111827;
   --color-gray-950: #030712;
+
+  /* Portfolio navy scale */
+  --color-navy-0: #07090f;
+  --color-navy-1: #0b0f1a;
+  --color-navy-2: #111726;
+  --color-navy-3: #19202f;
+
+  /* Portfolio text scale */
+  --color-dp-0: #f4f6fb;
+  --color-dp-1: #c7cdd9;
+  --color-dp-2: #8a92a3;
+  --color-dp-3: #5b6273;
+
+  /* Portfolio status */
+  --color-dp-ok: oklch(0.74 0.16 145);
+  --color-dp-warn: oklch(0.78 0.16 75);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
 }
 
 @theme inline {
@@ -57,6 +78,42 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+}
+
+/* Portfolio design tokens */
+:root {
+  /* Navy background scale - must be in :root, not only @theme, so var(--navy-*) resolves in inline styles */
+  --navy-0: #07090f;
+  --navy-1: #0b0f1a;
+  --navy-2: #111726;
+  --navy-3: #19202f;
+
+  --portfolio-line: rgba(255, 255, 255, 0.07);
+  --portfolio-line-2: rgba(255, 255, 255, 0.12);
+  --portfolio-accent: oklch(0.68 0.18 252);
+  --portfolio-accent-soft: color-mix(
+    in oklch,
+    oklch(0.68 0.18 252) 18%,
+    transparent
+  );
+  --portfolio-accent-glow: color-mix(
+    in oklch,
+    oklch(0.68 0.18 252) 35%,
+    transparent
+  );
+  --portfolio-ok: oklch(0.74 0.16 145);
+  --portfolio-warn: oklch(0.78 0.16 75);
+  --portfolio-accent-ink: oklch(0.18 0.02 252);
+  --text-p-0: #f4f6fb;
+  --text-p-1: #c7cdd9;
+  --text-p-2: #8a92a3;
+  --text-p-3: #5b6273;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 :root {
@@ -149,4 +206,20 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Shared radial gradient background used by all full-page sections */
+.page-bg {
+  background:
+    radial-gradient(
+      1100px 600px at 80% -10%,
+      color-mix(in oklch, var(--portfolio-accent) 8%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at -10% 120%,
+      color-mix(in oklch, var(--portfolio-accent) 6%, transparent),
+      transparent 60%
+    ),
+    var(--navy-0);
 }

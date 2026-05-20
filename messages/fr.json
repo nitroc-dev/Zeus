@@ -6,45 +6,41 @@
   "nav": {
     "home": "Accueil",
     "about": "À propos",
-    "experience": "Expérience",
-    "skills": "Compétences",
+    "uses": "Outils",
     "projects": "Projets",
     "contact": "Contact"
   },
   "hero": {
     "greeting": "Bonjour, je suis",
     "name": "Corentin",
-    "description": "Un développeur full-stack passionné spécialisé dans le développement web et les systèmes backend. Je crée des solutions modernes et évolutives qui résolvent des problèmes réels grâce à un code propre et une pensée innovante.",
-    "getInTouch": "Me contacter",
-    "viewProjects": "Voir les projets"
+    "headline": "je construis des choses pour le web.",
+    "tagline": "Développeur full-stack basé à Bruxelles. Actuellement en train de livrer des features chez Eachstapp, une startup qui aide les commerces locaux à se digitaliser. Je m'intéresse au code propre, aux interfaces rapides et aux produits réellement utilisés.",
+    "seeWork": "Voir mon travail",
+    "about": "À propos"
   },
   "about": {
-    "badge": "Disponible pour travailler",
-    "title": "Créer des expériences numériques qui comptent",
-    "description": "Je suis un développeur full-stack passionné qui aime créer des solutions réelles grâce à un code propre et maintenable et une pensée créative. Je travaille actuellement chez Eachstapp tout en explorant de nouvelles opportunités.",
-    "basedInBelgium": "Basé en Belgique",
-    "basedDescription": "Travail à distance et disponible pour les collaborations mondiales",
-    "fullStackFocus": "Approche Full-Stack",
-    "fullStackDescription": "Spécialisé dans les technologies web modernes et les solutions évolutives",
-    "innovationDriven": "Orienté Innovation",
-    "innovationDescription": "Prospérant sur les défis et créant des solutions numériques percutantes",
-    "alwaysLearning": "Apprentissage Continu",
-    "learningDescription": "Exploration continue des nouvelles technologies pour rester en avant"
-  },
-  "experience": {
-    "badge": "Parcours Professionnel",
-    "title": "Expérience & Expertise",
-    "description": "Un parcours de croissance professionnelle, de défis techniques et de livraisons de projets réussis dans différents secteurs et technologies."
-  },
-  "skills": {
-    "badge": "Stack Technique",
-    "title": "Compétences & Technologies",
-    "description": "Un ensemble complet de technologies modernes et de frameworks que j'utilise pour créer des applications évolutives, performantes et conviviales."
+    "name": "Corentin",
+    "role": "Développeur Full Stack",
+    "location": "Bruxelles, Belgique",
+    "contactMe": "Me contacter",
+    "bioTitle": "À propos",
+    "bio": "Je suis un développeur full-stack basé à Bruxelles, en Belgique. J'aime créer des applications web modernes et évolutives en mettant l'accent sur un code propre et une excellente expérience utilisateur. Je travaille actuellement chez Eachstapp, où je contribue au développement d'applications web d'entreprise avec React, Next.js et .NET. J'ai étudié l'informatique à la Haute École Léonard de Vinci, où j'ai construit ma base en génie logiciel.",
+    "bio2": "En dehors du travail, je bricole des projets personnels, lis sur la sécurité web et bois trop de café. Je m'intéresse au code lisible, aux boucles de feedback rapides et aux produits qui se font réellement utiliser.",
+    "languagesTitle": "Langues",
+    "french": "Français",
+    "frenchLevel": "Langue maternelle",
+    "english": "Anglais",
+    "englishLevel": "Professionnel",
+    "dutch": "Néerlandais",
+    "dutchLevel": "Intermédiaire",
+    "learningTitle": "En cours d'apprentissage",
+    "learningDescription": "J'explore Expo et le développement d'applications mobiles avec React Native.",
+    "learningTech": "Expo & React Native",
+    "skillsTitle": "Compétences",
+    "experienceTitle": "Expérience",
+    "present": "Présent"
   },
   "projects": {
-    "badge": "Portfolio",
-    "title": "Projets en vedette",
-    "description": "Une collection de projets qui showcasent mes compétences techniques et mes capacités de résolution de problèmes créatifs.",
     "pageTitle": {
       "my": "Mes",
       "projects": "Projets"
@@ -52,14 +48,62 @@
     "pageDescription": "Un aperçu de mon travail couvrant le développement web, les systèmes backend et les solutions innovantes. Chaque projet représente un défi unique et une approche créative.",
     "callToAction": "Vous voulez voir plus de mon travail ou discuter d'un projet ?",
     "getInTouched": "Me contacter",
-    "viewGithub": "Voir GitHub"
+    "viewGithub": "Voir GitHub",
+    "viewAll": "Voir tous les projets",
+    "backToProjects": "Retour aux projets",
+    "detailAbout": "À propos du projet",
+    "detailHighlights": "Points clés",
+    "detailYear": "Année",
+    "detailRole": "Rôle",
+    "detailStack": "Stack technique",
+    "detailTimeline": "Durée",
+    "detailLighthouse": "Lighthouse",
+    "details": "Détails",
+    "liveDemo": "Démo en direct",
+    "sourceCode": "Code source",
+    "backToHome": "Retour à l'accueil",
+    "nextProjectLabel": "Projet suivant",
+    "breadcrumbHome": "Accueil",
+    "statusLive": "En ligne",
+    "statusInProgress": "En cours",
+    "statusArchived": "Archivé",
+    "contextEyebrow": "Contexte",
+    "contextTitle": "Le problème & les objectifs",
+    "problemLabel": "Problème",
+    "goalLabel": "Objectif",
+    "roleEyebrow": "Mon rôle",
+    "roleTitle": "Ce que j'ai géré",
+    "buildEyebrow": "La construction",
+    "buildTitle": "Stack & pourquoi",
+    "buildIntro": "Chaque choix devait mériter sa place.",
+    "techLabel": "Tech",
+    "perfEyebrow": "Performance",
+    "perfTitle": "Lighthouse & performances web",
+    "caseStudyEyebrow": "Étude de cas",
+    "caseStudyTitle": "Analyse approfondie",
+    "featuresEyebrow": "Fonctionnalités",
+    "featuresTitle": "Fonctionnalités clés"
   },
   "cta": {
-    "badge": "Prêt à collaborer",
-    "title": "Prêt à concrétiser vos idées ?",
-    "description": "Collaborons pour créer quelque chose d'extraordinaire. Je suis là pour transformer votre vision en réalité avec un code propre, des solutions évolutives et une approche innovante. Commençons votre prochain projet dès aujourd'hui.",
-    "getInTouch": "Me contacter",
-    "viewProjects": "Voir les projets"
+    "title": "Un projet en tête ?",
+    "description": "Je prends en charge des missions freelance en parallèle de mon poste chez Eachstapp - des engagements courts et ciblés pour livrer quelque chose de soigné de bout en bout.",
+    "startConversation": "Démarrer une conversation",
+    "moreAbout": "En savoir plus"
+  },
+  "currently": {
+    "eyebrow": "En ce moment",
+    "title": "Actuellement",
+    "locationLabel": "Lieu",
+    "workingOnLabel": "Projet actuel",
+    "workingSince": "depuis 2026",
+    "readingLabel": "Lecture",
+    "learningLabel": "Apprentissage",
+    "learningSublabel": "lancement d'une petite app ce trimestre",
+    "locationValue": "Bruxelles, Belgique",
+    "workingOnValue": "Construction de Helios",
+    "readingValue": "Web Application Security",
+    "readingSublabel": "O'Reilly",
+    "learningValue": "Expo & React Native"
   },
   "contact": {
     "title": "Me contacter",
@@ -70,7 +114,24 @@
     "send": "Envoyer le message",
     "success": "Message envoyé avec succès ! Je vous répondrai bientôt.",
     "error": "Échec de l'envoi du message. Veuillez réessayer ou me contacter directement par email.",
-    "contactMe": "Me contacter directement"
+    "contactMe": "Me contacter directement",
+    "metaEmailSub": "Réponse sous 24h",
+    "metaLocationLabel": "Bruxelles, Belgique",
+    "metaLocationSub": "CET · ouvert au télétravail",
+    "metaGithubSub": "La plupart du code vit ici",
+    "metaLinkedinSub": "Pour les recruteurs",
+    "successTitle": "Message envoyé !",
+    "successDesc": "Merci d'avoir pris contact. Je vous répondrai bientôt.",
+    "successSend": "Envoyer un autre message",
+    "faqTitle": "Questions fréquentes",
+    "faq1Q": "Êtes-vous disponible en ce moment ?",
+    "faq1A": "Oui - je prends des missions freelance en parallèle de mon poste chez Eachstapp. Je préfère des engagements ciblés où je peux livrer quelque chose de soigné de bout en bout.",
+    "faq2Q": "Sur quels types de projets travaillez-vous ?",
+    "faq2A": "Applications web, tableaux de bord, sites marketing - partout où une petite équipe a besoin d'aide full-stack. React/Next en front, Node ou .NET en back.",
+    "faq3Q": "Travaillez-vous à distance ?",
+    "faq3A": "Oui. Je suis à Bruxelles (CET) et travaille de manière asynchrone avec des équipes en Europe et aux États-Unis.",
+    "faq4Q": "Quelle est votre rapidité de réponse ?",
+    "faq4A": "Sous 24 heures, généralement plus vite. Je surveille de près mes messages."
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -86,35 +147,31 @@
     "provideServices": "Fournir les services ou informations que vous avez demandés",
     "communicateProjects": "Communiquer avec vous sur les projets ou collaborations potentiels"
   },
-  "skillCategories": {
-    "programmingLanguages": "Langages de Programmation",
-    "frameworksLibraries": "Frameworks & Bibliothèques",
-    "toolsDatabases": "Outils & Bases de données"
-  },
-  "projectsData": {
-    "zeus": {
-      "name": "Zeus",
-      "description": "Zeus est un portfolio qui présente mes compétences, mon expérience et mes projets en développement logiciel. L'objectif de ce projet est de mettre en valeur mon parcours professionnel, mes compétences techniques et les solutions que j'ai créées. N'hésitez pas à explorer et à me contacter !"
-    }
-  },
-  "experiencesData": {
-    "fullStackDev": {
-      "name": "Développeur Full Stack",
-      "company": "Eachstapp",
-      "location": "Bruxelles, Belgique",
-      "description": "Direction du développement et de la maintenance d'applications web d'entreprise utilisant React, Next.js et les technologies .NET. Collaboration avec des équipes interfonctionnelles pour concevoir des solutions évolutives, implémenter des API RESTful et optimiser les performances des applications. Livraison réussie de plusieurs fonctionnalités qui ont amélioré l'engagement des utilisateurs et l'efficacité du système tout en maintenant des normes de qualité de code élevées."
-    },
-    "internship": {
-      "name": "Développeur Fullstack (Stage)",
-      "company": "Eachstapp",
-      "location": "Bruxelles, Belgique",
-      "description": "Contribution au développement d'applications web modernes en implémentant des composants frontend réactifs et des intégrations d'API backend. Acquisition d'une expérience pratique avec React, TypeScript et .NET tout en travaillant dans un environnement de développement agile. Participation aux revues de code, aux sessions de planification de sprint et apprentissage des meilleures pratiques de l'industrie pour créer des applications prêtes pour la production."
-    },
-    "education": {
-      "name": "Étudiant en Informatique",
-      "company": "Haute École Léonard de Vinci",
-      "location": "Bruxelles, Belgique",
-      "description": "Études complètes en informatique couvrant les fondamentaux de la programmation, les structures de données, les algorithmes, la gestion des bases de données et les principes de génie logiciel. Développement de solides compétences analytiques et de résolution de problèmes grâce à des projets pratiques et des travaux de cours. Construction d'une base solide en programmation orientée objet, développement web et conception de systèmes qui s'applique directement aux pratiques modernes de développement logiciel."
-    }
+  "uses": {
+    "eyebrow": "Setup",
+    "title": "Ce que j'utilise",
+    "description": "Le matériel, les logiciels et les outils sur lesquels je m'appuie au quotidien.",
+    "hardware": "Matériel",
+    "editorTerminal": "Éditeur & Terminal",
+    "dailySoftware": "Logiciels quotidiens",
+    "devStack": "Stack de développement",
+    "customPcDesc": "PC Windows assemblé sur mesure - AMD Ryzen 7 3700X, RTX 2060 Super, 32 Go de RAM.",
+    "monitorDesc": "4K à 144Hz. Excellent pour le gaming et les mises en page côte à côte en développement.",
+    "keyboardDesc": "Clavier mécanique solide. Fiable et sans chichis.",
+    "mouseDesc": "Sans fil, précise et assez lourde pour rester en place. Tapis dur, faible DPI.",
+    "vscodeDesc": "Éditeur principal pour le web. Extensions Copilot, Biome, GitLens.",
+    "riderDesc": "IDE JetBrains pour tous les projets .NET / C#.",
+    "terminalDesc": "Propre, rapide et supporte plusieurs onglets de shell. Fait le travail sans se mettre en travers.",
+    "themeDesc": "One Dark Pro dans les deux éditeurs. Agréable pour les longues sessions.",
+    "fontDesc": "JetBrains Mono partout - excellentes ligatures, très lisible.",
+    "firefoxDesc": "Rapide, respectueux de la vie privée et excellents DevTools. Mon navigateur quotidien.",
+    "powertoysDesc": "Lanceur rapide d'applications et fichiers sur Windows. Alt+Espace, on tape, c'est fait.",
+    "obsidianDesc": "Notes markdown local-first. Rapide, extensible et mes fichiers restent sur ma machine.",
+    "nextjsDesc": "Framework React de référence. App router, server components, RSC.",
+    "reactDesc": "Modèle de composants pour tous les frontends. Combiné avec Next.js ou seul.",
+    "dotnetDesc": "APIs et services backend. Architecture propre, EF Core.",
+    "typescriptDesc": "Mode strict partout. Détecte les problèmes tôt.",
+    "postgresDesc": "Base de données relationnelle par défaut. Fiable et bien supportée.",
+    "dockerDesc": "Environnements de développement et déploiements conteneurisés."
   }
 }
