@@ -41,6 +41,9 @@
     "present": "Présent"
   },
   "projects": {
+    "badge": "Travaux sélectionnés",
+    "title": "Ce que j'ai construit",
+    "description": "Quelques projets livrés — applications web, outils et projets personnels.",
     "pageTitle": {
       "my": "Mes",
       "projects": "Projets"
