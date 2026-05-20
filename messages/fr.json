@@ -14,68 +14,33 @@
     "greeting": "Bonjour, je suis",
     "name": "Corentin",
     "headline": "je construis des choses pour le web.",
-    "availableStatus": "Disponible en freelance · Mai 2026",
     "tagline": "Développeur full-stack basé à Bruxelles. Actuellement en train de livrer des features chez Eachstapp, une startup qui aide les commerces locaux à se digitaliser. Je m'intéresse au code propre, aux interfaces rapides et aux produits réellement utilisés.",
     "seeWork": "Voir mon travail",
-    "about": "À propos",
-    "description": "Un développeur full-stack passionné spécialisé dans le développement web et les systèmes backend. Je crée des solutions modernes et évolutives qui résolvent des problèmes réels grâce à un code propre et une pensée innovante.",
-    "getInTouch": "Me contacter",
-    "viewProjects": "Voir les projets",
-    "downloadCV": "Télécharger CV"
+    "about": "À propos"
   },
   "about": {
-    "badge": "Disponible pour travailler",
-    "title": "Créer des expériences numériques qui comptent",
-    "description": "Je suis un développeur full-stack passionné qui aime créer des solutions réelles grâce à un code propre et maintenable et une pensée créative. Je travaille actuellement chez Eachstapp tout en explorant de nouvelles opportunités.",
-    "basedInBelgium": "Basé en Belgique",
-    "basedDescription": "Travail à distance et disponible pour les collaborations mondiales",
-    "fullStackFocus": "Approche Full-Stack",
-    "fullStackDescription": "Spécialisé dans les technologies web modernes et les solutions évolutives",
-    "innovationDriven": "Orienté Innovation",
-    "innovationDescription": "Prospérant sur les défis et créant des solutions numériques percutantes",
-    "alwaysLearning": "Apprentissage Continu",
     "name": "Corentin",
     "role": "Développeur Full Stack",
     "location": "Bruxelles, Belgique",
     "contactMe": "Me contacter",
-    "downloadCV": "Télécharger CV",
     "bioTitle": "À propos",
     "bio": "Je suis un développeur full-stack basé à Bruxelles, en Belgique. J'aime créer des applications web modernes et évolutives en mettant l'accent sur un code propre et une excellente expérience utilisateur. Je travaille actuellement chez Eachstapp, où je contribue au développement d'applications web d'entreprise avec React, Next.js et .NET. J'ai étudié l'informatique à la Haute École Léonard de Vinci, où j'ai construit ma base en génie logiciel.",
-    "yearsExp": "2+ ans d'expérience",
-    "status": "Disponible en freelance",
+    "bio2": "En dehors du travail, je bricole des projets personnels, lis sur la sécurité web et bois trop de café. Je m'intéresse au code lisible, aux boucles de feedback rapides et aux produits qui se font réellement utiliser.",
     "languagesTitle": "Langues",
     "french": "Français",
     "frenchLevel": "Langue maternelle",
     "english": "Anglais",
     "englishLevel": "Professionnel",
+    "dutch": "Néerlandais",
+    "dutchLevel": "Intermédiaire",
     "learningTitle": "En cours d'apprentissage",
     "learningDescription": "J'explore Expo et le développement d'applications mobiles avec React Native.",
     "learningTech": "Expo & React Native",
     "skillsTitle": "Compétences",
     "experienceTitle": "Expérience",
-    "present": "Présent",
-    "bio2": "En dehors du travail, je bricole des projets personnels, lis sur la sécurité web et bois trop de café. Je m'intéresse au code lisible, aux boucles de feedback rapides et aux produits qui se font réellement utiliser.",
-    "sinceYear": "depuis 2022",
-    "statusSub": "freelance · contrat",
-    "timelineTitle": "Chronologie",
-    "timeline2026": "Livraison de <strong>Zeus</strong> · construction de <strong>Helios</strong>",
-    "timeline2024": "Stage chez <strong>Eachstapp</strong> · poste à temps plein · diplômé de Vinci",
-    "timeline2021": "Début en Informatique à la <strong>Haute École Léonard de Vinci</strong>"
-  },
-  "experience": {
-    "badge": "Parcours Professionnel",
-    "title": "Expérience & Expertise",
-    "description": "Un parcours de croissance professionnelle, de défis techniques et de livraisons de projets réussis dans différents secteurs et technologies."
-  },
-  "skills": {
-    "badge": "Stack Technique",
-    "title": "Compétences & Technologies",
-    "description": "Un ensemble complet de technologies modernes et de frameworks que j'utilise pour créer des applications évolutives, performantes et conviviales."
+    "present": "Présent"
   },
   "projects": {
-    "badge": "Portfolio",
-    "title": "Projets en vedette",
-    "description": "Une collection de projets qui showcasent mes compétences techniques et mes capacités de résolution de problèmes créatifs.",
     "pageTitle": {
       "my": "Mes",
       "projects": "Projets"
@@ -120,34 +85,24 @@
     "featuresTitle": "Fonctionnalités clés"
   },
   "cta": {
-    "badge": "Prêt à collaborer",
     "title": "Un projet en tête ?",
     "description": "Je prends en charge des missions freelance en parallèle de mon poste chez Eachstapp - des engagements courts et ciblés pour livrer quelque chose de soigné de bout en bout.",
     "startConversation": "Démarrer une conversation",
-    "moreAbout": "En savoir plus",
-    "getInTouch": "Me contacter",
-    "viewProjects": "Voir les projets"
+    "moreAbout": "En savoir plus"
   },
   "currently": {
     "eyebrow": "En ce moment",
     "title": "Actuellement",
-    "liveLabel": "Live · mis à jour aujourd'hui",
     "locationLabel": "Lieu",
     "workingOnLabel": "Projet actuel",
     "workingSince": "depuis 2026",
     "readingLabel": "Lecture",
     "learningLabel": "Apprentissage",
     "learningSublabel": "lancement d'une petite app ce trimestre",
-    "commitLabel": "Dernier commit",
-    "statusLabel": "Statut",
-    "statusValue": "Disponible en freelance",
-    "statusSublabel": "réponse sous 24h",
     "locationValue": "Bruxelles, Belgique",
     "workingOnValue": "Construction de Helios",
     "readingValue": "Web Application Security",
     "readingSublabel": "O'Reilly",
-    "commitValue": "feat/docker-monitor",
-    "commitSublabel": "helios · en cours",
     "learningValue": "Expo & React Native"
   },
   "contact": {
@@ -176,7 +131,7 @@
     "faq3Q": "Travaillez-vous à distance ?",
     "faq3A": "Oui. Je suis à Bruxelles (CET) et travaille de manière asynchrone avec des équipes en Europe et aux États-Unis.",
     "faq4Q": "Quelle est votre rapidité de réponse ?",
-    "faq4A": "Sous 24 heures, généralement plus vite. Le formulaire va directement sur mon Discord, donc je le verrai sur ma montre."
+    "faq4A": "Sous 24 heures, généralement plus vite. Je surveille de près mes messages."
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -191,16 +146,6 @@
     "respondInquiries": "Répondre à vos demandes et messages",
     "provideServices": "Fournir les services ou informations que vous avez demandés",
     "communicateProjects": "Communiquer avec vous sur les projets ou collaborations potentiels"
-  },
-  "skillCategories": {
-    "programmingLanguages": "Langages de Programmation",
-    "frameworksLibraries": "Frameworks & Bibliothèques",
-    "toolsDatabases": "Outils & Bases de données"
-  },
-  "workingOn": {
-    "title": "Ce que je construis",
-    "description": "Projets personnels que j'explore en dehors du travail.",
-    "moreSoon": "Plus à venir"
   },
   "uses": {
     "eyebrow": "Setup",
@@ -228,25 +173,5 @@
     "typescriptDesc": "Mode strict partout. Détecte les problèmes tôt.",
     "postgresDesc": "Base de données relationnelle par défaut. Fiable et bien supportée.",
     "dockerDesc": "Environnements de développement et déploiements conteneurisés."
-  },
-  "experiencesData": {
-    "fullStackDev": {
-      "name": "Développeur Full Stack",
-      "company": "Eachstapp",
-      "location": "Bruxelles, Belgique",
-      "description": "Direction du développement et de la maintenance d'applications web d'entreprise utilisant React, Next.js et les technologies .NET. Collaboration avec des équipes interfonctionnelles pour concevoir des solutions évolutives, implémenter des API RESTful et optimiser les performances des applications. Livraison réussie de plusieurs fonctionnalités qui ont amélioré l'engagement des utilisateurs et l'efficacité du système tout en maintenant des normes de qualité de code élevées."
-    },
-    "internship": {
-      "name": "Développeur Fullstack (Stage)",
-      "company": "Eachstapp",
-      "location": "Bruxelles, Belgique",
-      "description": "Contribution au développement d'applications web modernes en implémentant des composants frontend réactifs et des intégrations d'API backend. Acquisition d'une expérience pratique avec React, TypeScript et .NET tout en travaillant dans un environnement de développement agile. Participation aux revues de code, aux sessions de planification de sprint et apprentissage des meilleures pratiques de l'industrie pour créer des applications prêtes pour la production."
-    },
-    "education": {
-      "name": "Étudiant en Informatique",
-      "company": "Haute École Léonard de Vinci",
-      "location": "Bruxelles, Belgique",
-      "description": "Études complètes en informatique couvrant les fondamentaux de la programmation, les structures de données, les algorithmes, la gestion des bases de données et les principes de génie logiciel. Développement de solides compétences analytiques et de résolution de problèmes grâce à des projets pratiques et des travaux de cours. Construction d'une base solide en programmation orientée objet, développement web et conception de systèmes qui s'applique directement aux pratiques modernes de développement logiciel."
-    }
   }
 }

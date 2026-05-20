@@ -43,29 +43,6 @@ export async function Currently() {
               {t("title")}
             </h2>
           </div>
-
-          {/* Availability */}
-          <div className="hidden sm:flex flex-col items-end gap-1.5">
-            <div
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full font-mono text-[11px] uppercase tracking-[0.1em]"
-              style={{
-                background:
-                  "color-mix(in oklch, var(--portfolio-ok) 12%, transparent)",
-                color: "var(--portfolio-ok)",
-                border:
-                  "1px solid color-mix(in oklch, var(--portfolio-ok) 25%, transparent)",
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: "var(--portfolio-ok)" }}
-              />
-              {t("statusValue")}
-            </div>
-            <div className="text-[11px]" style={{ color: "var(--text-p-3)" }}>
-              {t("statusSublabel")}
-            </div>
-          </div>
         </div>
 
         {/* Featured: Working On */}

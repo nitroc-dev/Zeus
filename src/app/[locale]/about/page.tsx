@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { ExperienceList } from "@/components/about/experience-list";
 import { ProfileHero } from "@/components/about/profile-hero";
 import { SectionTitle } from "@/components/ui/section-title";
+import { TechIcon } from "@/components/ui/tech-icon";
 import { getExperiencesData, getSkillsData } from "@/lib/data";
 import { createTranslator } from "@/utils/translate";
 
@@ -48,15 +49,10 @@ export default async function AboutPage({ params }: PageProps) {
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
   );
 
-  const statBadges = [
-    { label: t("yearsExp"), sub: t("sinceYear"), mono: "3+" },
-    { label: t("status"), sub: t("statusSub"), mono: "●" },
-    { label: t("french"), sub: t("englishLevel"), mono: "FR" },
-  ];
-
   const languageCards = [
     { lang: t("french"), level: t("frenchLevel"), flag: "🇫🇷" },
     { lang: t("english"), level: t("englishLevel"), flag: "🇬🇧" },
+    { lang: t("dutch"), level: t("dutchLevel"), flag: "🇳🇱" },
   ];
 
   return (
@@ -69,44 +65,6 @@ export default async function AboutPage({ params }: PageProps) {
           locale={locale}
           contactLabel={t("contactMe")}
         />
-
-        {/* Quick stat badges */}
-        <div className="flex flex-wrap gap-3 mb-10">
-          {statBadges.map(({ label, sub, mono }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
-              style={{
-                background: "var(--navy-1)",
-                border: "1px solid var(--portfolio-line)",
-              }}
-            >
-              <span
-                className="w-7 h-7 rounded-lg grid place-items-center font-mono text-sm font-semibold shrink-0"
-                style={{
-                  background: "var(--portfolio-accent-soft)",
-                  color: "var(--portfolio-accent)",
-                }}
-              >
-                {mono}
-              </span>
-              <div>
-                <p
-                  className="text-sm font-medium leading-none"
-                  style={{ color: "var(--text-p-0)" }}
-                >
-                  {label}
-                </p>
-                <p
-                  className="text-xs mt-0.5"
-                  style={{ color: "var(--text-p-2)" }}
-                >
-                  {sub}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {/* Bio */}
         <section
@@ -173,7 +131,7 @@ export default async function AboutPage({ params }: PageProps) {
           style={{ borderColor: "var(--portfolio-line)" }}
         >
           <SectionTitle>{t("languagesTitle")}</SectionTitle>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[600px]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[700px]">
             {languageCards.map(({ lang, level, flag }) => (
               <div
                 key={lang}
@@ -227,6 +185,7 @@ export default async function AboutPage({ params }: PageProps) {
                           color: "var(--text-p-1)",
                         }}
                       >
+                        <TechIcon name={tech} size={12} />
                         {tech}
                       </span>
                     ))}
@@ -248,42 +207,6 @@ export default async function AboutPage({ params }: PageProps) {
             locale={locale}
             presentLabel={t("present")}
           />
-        </section>
-
-        {/* Quick timeline */}
-        <section
-          className="py-8 border-t"
-          style={{ borderColor: "var(--portfolio-line)" }}
-        >
-          <SectionTitle>{t("timelineTitle")}</SectionTitle>
-          <div className="flex flex-col">
-            {(["2026", "2024", "2021"] as const).map((year) => (
-              <div
-                key={year}
-                className="grid gap-5 py-3.5 border-b text-sm last:border-b-0"
-                style={{
-                  gridTemplateColumns: "100px 1fr",
-                  borderColor: "var(--portfolio-line)",
-                }}
-              >
-                <span
-                  className="font-mono text-xs"
-                  style={{ color: "var(--text-p-3)" }}
-                >
-                  {year}
-                </span>
-                <span style={{ color: "var(--text-p-1)" }}>
-                  {t.rich(`timeline${year}`, {
-                    strong: (chunks) => (
-                      <strong style={{ color: "var(--text-p-0)" }}>
-                        {chunks}
-                      </strong>
-                    ),
-                  })}
-                </span>
-              </div>
-            ))}
-          </div>
         </section>
 
         <div className="pb-20" />

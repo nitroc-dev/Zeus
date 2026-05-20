@@ -200,23 +200,38 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </p>
 
             <div className="flex flex-wrap gap-2.5">
-              {project.websiteUrl && (
-                <Link
-                  href={project.websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
-                  style={{
-                    background: "var(--portfolio-accent)",
-                    color: "oklch(0.18 0.02 252)",
-                    boxShadow:
-                      "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
-                  }}
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  {t("liveDemo")}
-                </Link>
-              )}
+              {project.websiteUrl &&
+                (project.websiteUrl.includes("nitroc.xyz") ? (
+                  <span
+                    title="Bro you're literally on it right now 🙄"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium cursor-not-allowed select-none"
+                    style={{
+                      background: "var(--navy-2)",
+                      border: "1px solid var(--portfolio-line)",
+                      color: "var(--text-p-3)",
+                      opacity: 0.5,
+                    }}
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    {t("liveDemo")}
+                  </span>
+                ) : (
+                  <Link
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
+                    style={{
+                      background: "var(--portfolio-accent)",
+                      color: "oklch(0.18 0.02 252)",
+                      boxShadow:
+                        "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
+                    }}
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    {t("liveDemo")}
+                  </Link>
+                ))}
               {project.repositoryUrl && (
                 <Link
                   href={project.repositoryUrl}

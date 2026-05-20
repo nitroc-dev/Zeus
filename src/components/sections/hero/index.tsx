@@ -1,4 +1,3 @@
-import { ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -44,7 +43,6 @@ export async function Hero() {
                   "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
               }}
             >
-              <ArrowRight className="w-3.5 h-3.5" />
               {t("seeWork")}
             </a>
             <Link
@@ -52,16 +50,6 @@ export async function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
             >
               {t("about")}
-            </Link>
-            <Link
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:bg-[var(--navy-2)]"
-              style={{ color: "var(--text-p-1)" }}
-            >
-              <Download className="w-3.5 h-3.5" />
-              {t("downloadCV")}
             </Link>
           </div>
         </div>
@@ -214,10 +202,10 @@ export async function Hero() {
                   "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
               }}
             >
-              &nbsp;&nbsp;"available"
+              &nbsp;&nbsp;"focus"
             </span>
             <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "var(--portfolio-ok)" }}>true</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Helios"</span>
             <br />
             <span style={{ color: "var(--text-p-2)" }}>{"}"}</span>
             <br />

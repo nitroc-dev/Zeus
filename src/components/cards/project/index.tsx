@@ -99,21 +99,35 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
               {t("details")}
             </Link>
           )}
-          {project.websiteUrl && (
-            <Link
-              href={project.websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
-              style={{
-                background: "var(--navy-2)",
-                border: "1px solid var(--portfolio-line)",
-                color: "var(--text-p-1)",
-              }}
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
-          )}
+          {project.websiteUrl &&
+            (project.websiteUrl.includes("nitroc.xyz") ? (
+              <span
+                title="You're already on it 👀"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-lg cursor-not-allowed select-none"
+                style={{
+                  background: "var(--navy-2)",
+                  border: "1px solid var(--portfolio-line)",
+                  color: "var(--text-p-3)",
+                  opacity: 0.45,
+                }}
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+              </span>
+            ) : (
+              <Link
+                href={project.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
+                style={{
+                  background: "var(--navy-2)",
+                  border: "1px solid var(--portfolio-line)",
+                  color: "var(--text-p-1)",
+                }}
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
+            ))}
           {project.repositoryUrl && (
             <Link
               href={project.repositoryUrl}

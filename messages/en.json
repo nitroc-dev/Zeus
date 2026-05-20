@@ -14,68 +14,33 @@
     "greeting": "Hi, I'm",
     "name": "Corentin",
     "headline": "I build things for the web.",
-    "availableStatus": "Available for freelance · May 2026",
     "tagline": "Full-stack developer based in Brussels. Currently shipping product features at Eachstapp, a startup helping local businesses go digital. I care about clean code, fast UIs, and shipping things that actually get used.",
     "seeWork": "See my work",
-    "about": "About me",
-    "description": "A passionate full-stack developer specializing in web development and backend systems. I craft modern, scalable solutions that solve real-world problems through clean code and innovative thinking.",
-    "getInTouch": "Get in Touch",
-    "viewProjects": "View Projects",
-    "downloadCV": "Download CV"
+    "about": "About me"
   },
   "about": {
-    "badge": "Available for work",
-    "title": "Building digital experiences that matter",
-    "description": "I'm a passionate full-stack developer who enjoys building real-world solutions through clean, maintainable code and creative thinking. Currently working at Eachstapp while exploring new opportunities.",
-    "basedInBelgium": "Based in Belgium",
-    "basedDescription": "Working remotely and available for collaborations worldwide",
-    "fullStackFocus": "Full-Stack Focus",
-    "fullStackDescription": "Specialized in modern web technologies and scalable solutions",
-    "innovationDriven": "Innovation Driven",
-    "innovationDescription": "Thriving on challenges and crafting impactful digital solutions",
-    "alwaysLearning": "Always Learning",
     "name": "Corentin",
     "role": "Full Stack Developer",
     "location": "Brussels, Belgium",
     "contactMe": "Contact me",
-    "downloadCV": "Download CV",
     "bioTitle": "About me",
     "bio": "I'm a full-stack developer based in Brussels, Belgium. I enjoy building modern, scalable web applications with a focus on clean code and great user experience. I'm currently working at Eachstapp, where I contribute to enterprise web applications using React, Next.js, and .NET. I studied Computer Science at Haute École Léonard de Vinci, where I built my foundation in software engineering.",
-    "yearsExp": "2+ years of experience",
-    "status": "Open to freelance",
+    "bio2": "Outside of work I tinker on side projects, read about web security, and drink too much coffee. I care about readable code, fast feedback loops, and shipping things that actually get used.",
     "languagesTitle": "Languages",
     "french": "French",
     "frenchLevel": "Native",
     "english": "English",
     "englishLevel": "Professional",
+    "dutch": "Dutch",
+    "dutchLevel": "Intermediate",
     "learningTitle": "Currently learning",
     "learningDescription": "Exploring Expo and mobile app development with React Native.",
     "learningTech": "Expo & React Native",
     "skillsTitle": "Skills",
     "experienceTitle": "Experience",
-    "present": "Present",
-    "bio2": "Outside of work I tinker on side projects, read about web security, and drink too much coffee. I care about readable code, fast feedback loops, and shipping things that actually get used.",
-    "sinceYear": "since 2022",
-    "statusSub": "freelance · contract",
-    "timelineTitle": "Quick timeline",
-    "timeline2026": "Shipped <strong>Zeus</strong> · building <strong>Helios</strong>",
-    "timeline2024": "Internship at <strong>Eachstapp</strong> · joined full-time · graduated from Vinci",
-    "timeline2021": "Started Computer Science at <strong>Haute École Léonard de Vinci</strong>"
-  },
-  "experience": {
-    "badge": "Professional Journey",
-    "title": "Experience & Expertise",
-    "description": "A journey through professional growth, technical challenges, and successful project deliveries across different industries and technologies."
-  },
-  "skills": {
-    "badge": "Technical Stack",
-    "title": "Skills & Technologies",
-    "description": "A comprehensive toolkit of modern technologies and frameworks I use to build scalable, performant, and user-friendly applications."
+    "present": "Present"
   },
   "projects": {
-    "badge": "Portfolio Showcase",
-    "title": "Featured Projects",
-    "description": "A collection of projects that showcase my technical skills and creative problem-solving abilities.",
     "pageTitle": {
       "my": "My",
       "projects": "Projects"
@@ -120,34 +85,24 @@
     "featuresTitle": "Key features"
   },
   "cta": {
-    "badge": "Ready to collaborate",
     "title": "Have a project in mind?",
     "description": "I'm taking on freelance work alongside my role at Eachstapp - small focused engagements where I can ship something polished end-to-end.",
     "startConversation": "Start a conversation",
-    "moreAbout": "More about me",
-    "getInTouch": "Get in Touch",
-    "viewProjects": "View Projects"
+    "moreAbout": "More about me"
   },
   "currently": {
     "eyebrow": "Right now",
     "title": "Currently",
-    "liveLabel": "Live · updated today",
     "locationLabel": "Location",
     "workingOnLabel": "Working on",
     "workingSince": "since 2026",
     "readingLabel": "Reading",
     "learningLabel": "Learning",
     "learningSublabel": "shipping a small app this quarter",
-    "commitLabel": "Latest commit",
-    "statusLabel": "Status",
-    "statusValue": "Available for freelance",
-    "statusSublabel": "replies within 24h",
     "locationValue": "Brussels, Belgium",
     "workingOnValue": "Building Helios",
     "readingValue": "Web Application Security",
     "readingSublabel": "O'Reilly",
-    "commitValue": "feat/docker-monitor",
-    "commitSublabel": "helios · ongoing",
     "learningValue": "Expo & React Native"
   },
   "contact": {
@@ -176,7 +131,7 @@
     "faq3Q": "Do you work remotely?",
     "faq3A": "Yes. I'm in Brussels (CET) and work async-friendly with teams across Europe and the US. Happy to come on-site occasionally if you're nearby.",
     "faq4Q": "How fast do you reply?",
-    "faq4A": "Within 24 hours, usually faster. The form goes straight to my Discord, so I'll see it on my watch."
+    "faq4A": "Within 24 hours, usually faster. I keep a close eye on my messages."
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -191,16 +146,6 @@
     "respondInquiries": "Respond to your inquiries and messages",
     "provideServices": "Provide the services or information you requested",
     "communicateProjects": "Communicate with you about potential projects or collaborations"
-  },
-  "skillCategories": {
-    "programmingLanguages": "Programming Languages",
-    "frameworksLibraries": "Frameworks & Libraries",
-    "toolsDatabases": "Tools & Databases"
-  },
-  "workingOn": {
-    "title": "What I'm building",
-    "description": "Personal projects I'm exploring outside of work.",
-    "moreSoon": "More coming soon"
   },
   "uses": {
     "eyebrow": "Setup",
@@ -228,25 +173,5 @@
     "typescriptDesc": "Strict mode everywhere. Catches issues early.",
     "postgresDesc": "Default relational database. Reliable and well-supported.",
     "dockerDesc": "Containerised dev environments and deployments."
-  },
-  "experiencesData": {
-    "fullStackDev": {
-      "name": "Full Stack Developer",
-      "company": "Eachstapp",
-      "location": "Brussels, Belgium",
-      "description": "Leading the development and maintenance of enterprise web applications using React, Next.js, and .NET technologies. Collaborating with cross-functional teams to architect scalable solutions, implement RESTful APIs, and optimize application performance. Successfully delivered multiple features that improved user engagement and system efficiency while maintaining high code quality standards."
-    },
-    "internship": {
-      "name": "Fullstack Developer (Internship)",
-      "company": "Eachstapp",
-      "location": "Brussels, Belgium",
-      "description": "Contributed to the development of modern web applications by implementing responsive frontend components and backend API integrations. Gained practical experience with React, TypeScript, and .NET while working in an agile development environment. Participated in code reviews, sprint planning sessions, and learned industry best practices for building production-ready applications."
-    },
-    "education": {
-      "name": "Computer Science Student",
-      "company": "Haute Ecole Léonard de Vinci",
-      "location": "Brussels, Belgium",
-      "description": "Completed comprehensive studies in computer science covering programming fundamentals, data structures, algorithms, database management, and software engineering principles. Developed strong analytical and problem-solving skills through hands-on projects and coursework. Built a solid foundation in object-oriented programming, web development, and system design that directly applies to modern software development practices."
-    }
   }
 }
