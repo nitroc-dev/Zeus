@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildAlternates } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -13,13 +14,7 @@ export async function generateMetadata({
   return {
     title: `${t("title")} - Corentin`,
     description: t("collectDescription"),
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}/privacy`,
-      languages: {
-        en: "https://nitroc.xyz/en/privacy",
-        fr: "https://nitroc.xyz/fr/privacy",
-      },
-    },
+    alternates: buildAlternates(locale, "/privacy"),
   };
 }
 

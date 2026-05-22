@@ -1,8 +1,8 @@
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { BrowserMockup } from "@/components/project-detail/browser-mockup";
 import { LighthouseCard } from "@/components/project-detail/lighthouse-card";
@@ -11,6 +11,7 @@ import { Pillar } from "@/components/project-detail/pillar";
 import { Section } from "@/components/project-detail/section";
 import { SidebarRow } from "@/components/project-detail/sidebar-row";
 import { getProjectById, getProjectIds, getProjectsData } from "@/lib/data";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 
 interface PageProps {
@@ -53,17 +54,11 @@ export async function generateMetadata({
   return {
     title,
     description: desc,
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}/projects/${id}`,
-      languages: {
-        en: `https://nitroc.xyz/en/projects/${id}`,
-        fr: `https://nitroc.xyz/fr/projects/${id}`,
-      },
-    },
+    alternates: buildAlternates(locale, `/projects/${id}`),
     openGraph: {
       title,
       description: desc,
-      url: `https://nitroc.xyz/${locale}/projects/${id}`,
+      url: siteUrl(locale, `/projects/${id}`),
       images,
     },
     robots:
@@ -114,16 +109,41 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     project.tags?.map((name) => ({ name, reasonEn: "", reasonFr: "" })) ??
     [];
 
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name,
+    description,
+    url: project.websiteUrl ?? siteUrl("en", `/projects/${id}`),
+    applicationCategory: "WebApplication",
+    operatingSystem: "Web",
+    ...(project.year && { dateCreated: project.year }),
+    ...(project.tags && project.tags.length > 0 && {
+      keywords: project.tags.join(", "),
+    }),
+    author: {
+      "@type": "Person",
+      name: "Corentin",
+      url: "https://nitroc.xyz",
+    },
+  };
+
   return (
-    <main className="relative overflow-hidden page-bg">
-      <div className="px-8 max-w-[1180px] mx-auto">
-        {/* Breadcrumb */}
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
+      <main className="relative overflow-hidden page-bg">
+        <div className="px-8 max-w-[1180px] mx-auto">
+          {/* Breadcrumb */}
         <div
           className="pt-6 pb-0 font-mono text-xs"
           style={{ color: "var(--text-p-3)" }}
         >
           <Link
-            href={`/${locale}`}
+            href="/"
             className="transition-colors hover:opacity-80"
             style={{ color: "var(--text-p-2)" }}
           >
@@ -511,7 +531,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         {/* ── Next project ── */}
         {nextRaw ? (
           <Link
-            href={`/${locale}/projects/${nextRaw.id}`}
+            href={`/projects/${nextRaw.id}`}
             className="block mb-20 mt-10 px-10 py-10 rounded-[16px] transition-all group"
             style={{
               background: "var(--navy-1)",
@@ -552,7 +572,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         ) : (
           <div className="mb-20 mt-10">
             <Link
-              href={`/${locale}`}
+              href="/"
               className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-80"
               style={{ color: "var(--text-p-2)" }}
             >
@@ -563,5 +583,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         )}
       </div>
     </main>
+    </>
   );
 }

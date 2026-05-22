@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ExperienceList } from "@/components/about/experience-list";
 import { ProfileHero } from "@/components/about/profile-hero";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -20,17 +21,11 @@ export async function generateMetadata({
   return {
     title,
     description: t("bio"),
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}/about`,
-      languages: {
-        en: "https://nitroc.xyz/en/about",
-        fr: "https://nitroc.xyz/fr/about",
-      },
-    },
+    alternates: buildAlternates(locale, "/about"),
     openGraph: {
       title,
       description: t("bio"),
-      url: `https://nitroc.xyz/${locale}/about`,
+      url: siteUrl(locale, "/about"),
       images: [
         { url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 },
       ],
