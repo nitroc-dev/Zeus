@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ContactForm } from "@/components/contact/contact-form";
 
 interface PageProps {
@@ -14,17 +15,11 @@ export async function generateMetadata({
   return {
     title: `Contact - Corentin`,
     description: t("description"),
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}/contact`,
-      languages: {
-        en: "https://nitroc.xyz/en/contact",
-        fr: "https://nitroc.xyz/fr/contact",
-      },
-    },
+    alternates: buildAlternates(locale, "/contact"),
     openGraph: {
-      title: `Contact - Corentin`,
+      title: "Contact - Corentin",
       description: t("description"),
-      url: `https://nitroc.xyz/${locale}/contact`,
+      url: siteUrl(locale, "/contact"),
     },
   };
 }

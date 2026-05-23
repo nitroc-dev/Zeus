@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getUsesData } from "@/lib/data";
+import { buildAlternates } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 
 interface PageProps {
@@ -14,13 +15,7 @@ export async function generateMetadata({
     title: "Uses - Corentin",
     description:
       "An honest list of the hardware, software, and small tools I reach for daily.",
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}/uses`,
-      languages: {
-        en: "https://nitroc.xyz/en/uses",
-        fr: "https://nitroc.xyz/fr/uses",
-      },
-    },
+    alternates: buildAlternates(locale, "/uses"),
   };
 }
 

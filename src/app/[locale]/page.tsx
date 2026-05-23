@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { CTA } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
@@ -17,17 +18,11 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `https://nitroc.xyz/${locale}`,
-      languages: {
-        en: "https://nitroc.xyz/en",
-        fr: "https://nitroc.xyz/fr",
-      },
-    },
+    alternates: buildAlternates(locale, ""),
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `https://nitroc.xyz/${locale}`,
+      url: siteUrl(locale, ""),
       images: [
         { url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 },
       ],

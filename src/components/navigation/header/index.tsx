@@ -1,22 +1,20 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
-  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
-    { name: t("home"), href: `/${locale}` },
-    { name: t("about"), href: `/${locale}/about` },
-    { name: t("uses"), href: `/${locale}/uses` },
-    { name: t("contact"), href: `/${locale}/contact` },
+    { name: t("home"), href: "/" },
+    { name: t("about"), href: "/about" },
+    { name: t("uses"), href: "/uses" },
+    { name: t("contact"), href: "/contact" },
   ];
 
   return (
@@ -33,7 +31,7 @@ export function Header() {
       >
         {/* Brand */}
         <Link
-          href={`/${locale}`}
+          href="/"
           className="flex items-center gap-2.5 font-semibold tracking-tight no-underline"
           style={{ color: "var(--text-p-0)" }}
           onClick={() => setIsOpen(false)}
