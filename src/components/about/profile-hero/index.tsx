@@ -19,6 +19,7 @@ export function ProfileHero({
         alt={name}
         width={180}
         height={180}
+        priority
         className="object-cover shrink-0"
         style={{
           borderRadius: "24px",
