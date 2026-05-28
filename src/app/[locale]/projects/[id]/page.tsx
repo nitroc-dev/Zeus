@@ -223,17 +223,17 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               {project.websiteUrl &&
                 (project.websiteUrl.includes("nitroc.xyz") ? (
                   <span
-                    title="Bro you're literally on it right now 🙄"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium cursor-not-allowed select-none"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium select-none"
                     style={{
-                      background: "var(--navy-2)",
-                      border: "1px solid var(--portfolio-line)",
-                      color: "var(--text-p-3)",
-                      opacity: 0.5,
+                      background:
+                        "color-mix(in oklch, var(--portfolio-ok) 10%, transparent)",
+                      border:
+                        "1px solid color-mix(in oklch, var(--portfolio-ok) 30%, transparent)",
+                      color: "var(--portfolio-ok)",
                     }}
                   >
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    {t("liveDemo")}
+                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                    {t("youAreOnIt")}
                   </span>
                 ) : (
                   <Link

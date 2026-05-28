@@ -11,10 +11,10 @@
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Bonjour, je suis",
+    "greeting": "Salut, je suis",
     "name": "Corentin",
-    "headline": "je construis des choses pour le web.",
-    "tagline": "Développeur full-stack basé à Bruxelles. Actuellement en train de livrer des features chez Eachstapp, une startup qui aide les commerces locaux à se digitaliser. Je m'intéresse au code propre, aux interfaces rapides et aux produits réellement utilisés.",
+    "headline": "je construis pour le web.",
+    "tagline": "Développeur full-stack à Bruxelles. Je livre des features chez Eachstapp, startup qui aide les commerces locaux à se digitaliser. Code propre, UIs rapides, produits utiles.",
     "seeWork": "Voir mon travail",
     "about": "À propos"
   },
@@ -43,7 +43,7 @@
   "projects": {
     "badge": "Travaux sélectionnés",
     "title": "Ce que j'ai construit",
-    "description": "Quelques projets livrés — applications web, outils et projets personnels.",
+    "description": "Quelques projets livrés - applications web, outils et projets personnels.",
     "pageTitle": {
       "my": "Mes",
       "projects": "Projets"
@@ -63,6 +63,7 @@
     "detailLighthouse": "Lighthouse",
     "details": "Détails",
     "liveDemo": "Démo en direct",
+    "youAreOnIt": "Vous y êtes",
     "sourceCode": "Code source",
     "backToHome": "Retour à l'accueil",
     "nextProjectLabel": "Projet suivant",

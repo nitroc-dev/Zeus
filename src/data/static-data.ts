@@ -13,9 +13,9 @@ export const projects: Project[] = [
     nameEn: "Zeus",
     nameFr: "Zeus",
     descriptionEn:
-      "My personal portfolio — the site you're on right now. Built with Next.js, Tailwind CSS, and next-intl for bilingual support.",
+      "My personal portfolio - the site you're on right now. Built with Next.js, Tailwind CSS, and next-intl for bilingual support.",
     descriptionFr:
-      "Mon portfolio personnel — le site sur lequel vous vous trouvez. Construit avec Next.js, Tailwind CSS et next-intl pour le support bilingue.",
+      "Mon portfolio personnel - le site sur lequel vous vous trouvez. Construit avec Next.js, Tailwind CSS et next-intl pour le support bilingue.",
     longDescriptionEn:
       "Zeus is my personal portfolio, designed to showcase my work, skills, and background. It features a dark navy design with a terminal-styled hero, a bilingual interface (EN/FR), a project showcase, and a /uses page.",
     longDescriptionFr:
@@ -26,30 +26,37 @@ export const projects: Project[] = [
     techStack: [
       {
         name: "Next.js",
-        reasonEn: "App router, RSC, and static generation out of the box.",
-        reasonFr: "App router, RSC et génération statique intégrés nativement.",
+        reasonEn:
+          "Chosen over Astro for its built-in image optimisation and ISR. Static generation means zero server runtime - the whole site serves from Vercel's CDN at no cost.",
+        reasonFr:
+          "Préféré à Astro pour son pipeline d'optimisation d'images et l'ISR. La génération statique élimine tout runtime serveur - le site est servi depuis le CDN de Vercel sans coût.",
       },
       {
         name: "TypeScript",
-        reasonEn: "Strict mode everywhere — catches issues before they ship.",
+        reasonEn:
+          "Strict mode catches entire classes of bugs at compile time - especially critical when juggling bilingual content with complex type shapes across locales.",
         reasonFr:
-          "Mode strict partout — détecte les problèmes avant qu'ils ne partent en prod.",
+          "Le mode strict détecte des catégories entières de bugs à la compilation - particulièrement utile quand on jongle avec du contenu bilingue et des types complexes entre locales.",
       },
       {
         name: "Tailwind CSS",
-        reasonEn: "Fast to iterate on, minimal CSS output.",
-        reasonFr: "Itération rapide, CSS minimal en sortie.",
+        reasonEn:
+          "Utility classes live next to markup - no separate stylesheet to maintain. Tailwind v4's engine purges everything unused, landing under 10 kB of CSS in prod.",
+        reasonFr:
+          "Les classes utilitaires restent dans le markup - pas de feuille de style séparée. Le moteur Tailwind v4 purge tout l'inutilisé, moins de 10 kB de CSS en prod.",
       },
       {
         name: "next-intl",
-        reasonEn: "Simple and powerful i18n for the App Router.",
-        reasonFr: "i18n simple et puissant pour l'App Router.",
+        reasonEn:
+          "Works natively with async RSC and the App Router. Alternatives like next-i18next required client wrappers that broke server component boundaries.",
+        reasonFr:
+          "Fonctionne nativement avec les RSC asynchrones et l'App Router. Les alternatives comme next-i18next nécessitaient des wrappers client incompatibles avec les server components.",
       },
     ],
     highlights: [
       "Bilingual EN/FR with next-intl",
       "100 Lighthouse score across all categories",
-      "Fully static — no server runtime needed",
+      "Fully static - no server runtime needed",
       "Terminal-styled hero card",
     ],
     year: "2026",
@@ -79,29 +86,30 @@ export const projects: Project[] = [
       {
         name: "Tauri 2",
         reasonEn:
-          "Native desktop shell with a Rust backend — no Electron overhead.",
+          "Electron was ruled out - a 150 MB Node.js runtime for a local dashboard is overkill. Tauri's Rust core produces a ~5 MB binary with direct access to system APIs at near-native speed.",
         reasonFr:
-          "Shell bureau natif avec backend Rust — sans la surcharge d'Electron.",
+          "Electron a été écarté - un runtime Node.js de 150 Mo pour un tableau de bord local, c'est excessif. Le core Rust de Tauri produit un binaire de ~5 Mo avec un accès direct aux APIs système.",
       },
       {
         name: "React 19",
         reasonEn:
-          "Component model for the dashboard UI and plugin widgets.",
+          "Each plugin widget is an isolated React component - adding a new plugin means dropping a single file. React 19's concurrent rendering keeps the grid responsive during heavy data fetches.",
         reasonFr:
-          "Modèle de composants pour l'interface du tableau de bord et les widgets plugins.",
+          "Chaque widget est un composant React isolé - ajouter un plugin revient à déposer un seul fichier. Le rendu concurrent de React 19 maintient la réactivité du dashboard lors des fetchs lourds.",
       },
       {
         name: "Rust",
         reasonEn:
-          "Backend commands: system metrics, Docker, SQLite, network scanning.",
+          "System metrics and Docker socket calls require a compiled backend. Rust's ownership model prevents the memory bugs that would crash a long-running dashboard daemon.",
         reasonFr:
-          "Commandes backend : métriques système, Docker, SQLite, scan réseau.",
+          "Les métriques système et les appels au socket Docker nécessitent un backend compilé. Le modèle d'ownership de Rust empêche les bugs mémoire qui crasheraient un daemon de longue durée.",
       },
       {
         name: "SQLite",
-        reasonEn: "Embedded local database — zero config, bundled with the app.",
+        reasonEn:
+          "No database server to install or manage - the app bundles its own persistence layer. Users install once and run, with no setup wizard or connection string.",
         reasonFr:
-          "Base de données locale embarquée — zéro configuration, intégrée à l'app.",
+          "Pas de serveur de base de données à installer - l'app embarque sa propre couche de persistance. Installation unique, zéro wizard de configuration ni chaîne de connexion.",
       },
     ],
     highlights: [

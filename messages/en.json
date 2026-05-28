@@ -43,7 +43,7 @@
   "projects": {
     "badge": "Selected work",
     "title": "What I've built",
-    "description": "A few things I've shipped — web apps, tools, and side projects.",
+    "description": "A few things I've shipped - web apps, tools, and side projects.",
     "pageTitle": {
       "my": "My",
       "projects": "Projects"
@@ -63,6 +63,7 @@
     "detailLighthouse": "Lighthouse",
     "details": "Details",
     "liveDemo": "Live demo",
+    "youAreOnIt": "You're on it",
     "sourceCode": "Source code",
     "backToHome": "Back to home",
     "nextProjectLabel": "Next project",
