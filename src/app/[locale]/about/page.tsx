@@ -15,8 +15,7 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations("about");
+  const [{ locale }, t] = await Promise.all([params, getTranslations("about")]);
   const title = `${t("name")} - ${t("role")}`;
   return {
     title,
@@ -34,13 +33,15 @@ export async function generateMetadata({
 }
 
 export default async function AboutPage({ params }: PageProps) {
-  const { locale } = await params;
-  const t = await getTranslations("about");
+  const [{ locale }, t, experiences, skillCategories] = await Promise.all([
+    params,
+    getTranslations("about"),
+    getExperiencesData(),
+    getSkillsData(),
+  ]);
   const tr = createTranslator(locale);
-  const experiences = await getExperiencesData();
-  const skillCategories = await getSkillsData();
 
-  const sortedExperiences = [...experiences].sort(
+  const sortedExperiences = experiences.toSorted(
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
   );
 
@@ -95,7 +96,7 @@ export default async function AboutPage({ params }: PageProps) {
             }}
           >
             <span
-              className="w-7 h-7 rounded-lg grid place-items-center shrink-0 text-base"
+              className="size-7 rounded-lg grid place-items-center shrink-0 text-base"
               style={{
                 background: "var(--portfolio-accent-soft)",
                 color: "var(--portfolio-accent)",

@@ -3,8 +3,7 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export async function Footer() {
-  const locale = await getLocale();
-  const t = await getTranslations("nav");
+  const [locale, t] = await Promise.all([getLocale(), getTranslations("nav")]);
 
   const navLinks = [
     { label: t("home"), href: `/${locale}` },
@@ -32,7 +31,7 @@ export async function Footer() {
             style={{ color: "var(--text-p-0)" }}
           >
             <span
-              className="w-7 h-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
+              className="size-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
               style={{
                 background:
                   "linear-gradient(135deg, var(--portfolio-accent), color-mix(in oklch, var(--portfolio-accent) 50%, #6b21a8))",
@@ -144,7 +143,7 @@ export async function Footer() {
           color: "var(--text-p-3)",
         }}
       >
-        <span>
+        <span suppressHydrationWarning>
           &copy; {new Date().getFullYear()} Corentin. All rights reserved.
         </span>
         <div className="flex gap-3">
@@ -171,14 +170,14 @@ export async function Footer() {
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               aria-label={label}
-              className="w-8 h-8 grid place-items-center rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
+              className="size-8 grid place-items-center rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
               style={{
                 background: "var(--navy-2)",
                 border: "1px solid var(--portfolio-line)",
                 color: "var(--text-p-1)",
               }}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="size-4" />
             </Link>
           ))}
         </div>

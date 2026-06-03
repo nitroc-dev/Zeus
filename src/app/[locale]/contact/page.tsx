@@ -10,8 +10,7 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations("contact");
+  const [{ locale }, t] = await Promise.all([params, getTranslations("contact")]);
   return {
     title: `Contact - Corentin`,
     description: t("description"),

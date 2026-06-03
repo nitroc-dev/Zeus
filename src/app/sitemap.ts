@@ -29,9 +29,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   const projects = await getProjectsData();
-  const projectIds = projects
-    .filter((p) => p.status !== "in_progress")
-    .map((p) => p.id);
+  const projectIds = projects.flatMap((p) =>
+    p.status !== "in_progress" ? [p.id] : [],
+  );
 
   const projectEntries = LOCALES.flatMap((locale) =>
     projectIds.map((id) => ({

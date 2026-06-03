@@ -11,7 +11,7 @@ export function LighthouseCard({ score, label }: LighthouseCardProps) {
       }}
     >
       <div
-        className="w-20 h-20 rounded-full mx-auto mb-3 grid place-items-center relative"
+        className="size-20 rounded-full mx-auto mb-3 grid place-items-center relative"
         style={{
           background: `conic-gradient(var(--portfolio-ok, oklch(0.74 0.16 145)) ${pct}%, rgba(255,255,255,0.08) 0)`,
         }}

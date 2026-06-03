@@ -9,7 +9,7 @@ export function ContactSuccess({ onReset }: ContactSuccessProps) {
   return (
     <div className="text-center space-y-4 py-10">
       <div
-        className="w-14 h-14 rounded-full flex items-center justify-center mx-auto"
+        className="size-14 rounded-full flex items-center justify-center mx-auto"
         style={{
           background:
             "color-mix(in oklch, var(--portfolio-ok) 15%, transparent)",
@@ -17,7 +17,7 @@ export function ContactSuccess({ onReset }: ContactSuccessProps) {
             "1px solid color-mix(in oklch, var(--portfolio-ok) 40%, transparent)",
         }}
       >
-        <Check className="w-7 h-7" style={{ color: "var(--portfolio-ok)" }} />
+        <Check className="size-7" style={{ color: "var(--portfolio-ok)" }} />
       </div>
       <h3
         className="text-xl font-semibold"

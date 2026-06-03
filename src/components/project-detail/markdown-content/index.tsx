@@ -76,7 +76,7 @@ const components: Components = {
     <blockquote
       className="pl-4 my-4 italic"
       style={{
-        borderLeft: "3px solid var(--portfolio-accent)",
+        boxShadow: "inset 3px 0 0 var(--portfolio-accent)",
         color: "var(--text-p-2)",
       }}
     >

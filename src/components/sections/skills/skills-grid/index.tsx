@@ -22,9 +22,9 @@ const CATEGORY_COLORS = [
 ];
 
 const CATEGORY_ICONS = [
-  <Code key="code" className="w-4 h-4" />,
-  <Box key="box" className="w-4 h-4" />,
-  <Database key="db" className="w-4 h-4" />,
+  <Code key="code" className="size-4" />,
+  <Box key="box" className="size-4" />,
+  <Database key="db" className="size-4" />,
 ];
 
 export async function SkillsGrid() {
@@ -43,7 +43,7 @@ export async function SkillsGrid() {
           >
             <div className="flex items-center gap-3 mb-5">
               <div
-                className={`flex h-8 w-8 items-center justify-center rounded-lg ${colors.icon}`}
+                className={`flex size-8 items-center justify-center rounded-lg ${colors.icon}`}
               >
                 {CATEGORY_ICONS[index % CATEGORY_ICONS.length]}
               </div>

@@ -142,8 +142,7 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const { locale } = await params;
-  const messages = await getMessages();
+  const [{ locale }, messages] = await Promise.all([params, getMessages()]);
 
   return (
     <html
@@ -156,11 +155,13 @@ export default async function LocaleLayout({
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
+          // react-doctor-disable-next-line react-doctor/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
+          // react-doctor-disable-next-line react-doctor/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>

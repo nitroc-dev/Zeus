@@ -2,8 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ProjectsList } from "./projects-list";
 
 export async function Projects() {
-  const t = await getTranslations("projects");
-  const locale = await getLocale();
+  const [t, locale] = await Promise.all([getTranslations("projects"), getLocale()]);
 
   return (
     <section
