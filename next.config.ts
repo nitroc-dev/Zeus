@@ -24,6 +24,13 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Allow OG image to be fetched cross-origin by social platform crawlers
+        source: "/og-image.png",
+        headers: [
+          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
