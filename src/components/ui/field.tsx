@@ -1,9 +1,8 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: Parce que */
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Parce que */
 "use client";
 
 import { cva, type VariantProps } from "class-variance-authority";
-import { useMemo } from "react";
+import { memo } from "react";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -56,7 +55,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const fieldVariants = cva(
-  "group/field flex w-full gap-3 data-[invalid=true]:text-destructive",
+  "group/field flex w-full gap-3 data-[invalid=true]:text-destructive border-0 p-0 m-0 min-w-0",
   {
     variants: {
       orientation: {
@@ -83,10 +82,9 @@ function Field({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<"fieldset"> & VariantProps<typeof fieldVariants>) {
   return (
-    <div
-      role="group"
+    <fieldset
       data-slot="field"
       data-orientation={orientation}
       className={cn(fieldVariants({ orientation }), className)}
@@ -184,6 +182,33 @@ function FieldSeparator({
   );
 }
 
+const EMPTY_ERRORS: Array<{ message?: string } | undefined> = [];
+
+const FieldErrorList = memo(function FieldErrorList({
+  errors,
+}: {
+  errors: Array<{ message?: string } | undefined>;
+}) {
+  const uniqueErrors = [
+    ...new Map(errors.map((error) => [error?.message, error])).values(),
+  ];
+
+  if (uniqueErrors.length === 1) {
+    return uniqueErrors[0]?.message ?? null;
+  }
+
+  return (
+    <ul className="ml-4 flex list-disc flex-col gap-1">
+      {uniqueErrors.map(
+        (error, index) =>
+          error?.message && (
+            <li key={error?.message ?? String(index)}>{error.message}</li>
+          ),
+      )}
+    </ul>
+  );
+});
+
 function FieldError({
   className,
   children,
@@ -192,34 +217,7 @@ function FieldError({
 }: React.ComponentProps<"div"> & {
   errors?: Array<{ message?: string } | undefined>;
 }) {
-  const content = useMemo(() => {
-    if (children) {
-      return children;
-    }
-
-    if (!errors?.length) {
-      return null;
-    }
-
-    const uniqueErrors = [
-      ...new Map(errors.map((error) => [error?.message, error])).values(),
-    ];
-
-    if (uniqueErrors?.length === 1) {
-      return uniqueErrors[0]?.message;
-    }
-
-    return (
-      <ul className="ml-4 flex list-disc flex-col gap-1">
-        {uniqueErrors.map(
-          (error, index) =>
-            error?.message && <li key={index}>{error.message}</li>,
-        )}
-      </ul>
-    );
-  }, [children, errors]);
-
-  if (!content) {
+  if (!children && !errors?.length) {
     return null;
   }
 
@@ -230,7 +228,7 @@ function FieldError({
       className={cn("text-destructive text-sm font-normal", className)}
       {...props}
     >
-      {content}
+      {children || <FieldErrorList errors={errors ?? EMPTY_ERRORS} />}
     </div>
   );
 }

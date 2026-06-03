@@ -65,7 +65,7 @@ export default async function UsesPage({ params }: PageProps) {
                   style={{ color: "var(--text-p-0)" }}
                 >
                   <span
-                    className="w-7 h-7 rounded-lg grid place-items-center font-mono text-sm font-semibold shrink-0"
+                    className="size-7 rounded-lg grid place-items-center font-mono text-sm font-semibold shrink-0"
                     style={{
                       background: "var(--portfolio-accent-soft)",
                       color: "var(--portfolio-accent)",

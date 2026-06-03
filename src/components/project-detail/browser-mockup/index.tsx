@@ -25,9 +25,9 @@ export function BrowserMockup({ url }: BrowserMockupProps) {
             borderBottom: "1px solid var(--portfolio-line)",
           }}
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+          <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+          <span className="size-2.5 rounded-full bg-[#ffbd2e]" />
+          <span className="size-2.5 rounded-full bg-[#28c840]" />
           <div
             className="ml-4 flex-1 h-[18px] rounded flex items-center px-2 font-mono text-[10px]"
             style={{

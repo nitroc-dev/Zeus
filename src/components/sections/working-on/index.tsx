@@ -63,7 +63,7 @@ export async function Currently() {
           <div className="pl-6 py-5 relative">
             <div className="flex items-center gap-2.5 mb-3">
               <Building2
-                className="w-3.5 h-3.5"
+                className="size-3.5"
                 style={{ color: "var(--portfolio-accent)" }}
               />
               <span
@@ -83,7 +83,7 @@ export async function Currently() {
                 }}
               >
                 <span
-                  className="w-1 h-1 rounded-full animate-pulse"
+                  className="size-1 rounded-full animate-pulse"
                   style={{ background: "var(--portfolio-accent)" }}
                 />
                 active
@@ -116,7 +116,7 @@ export async function Currently() {
           >
             <div className="flex items-center gap-2 mb-0.5">
               <MapPin
-                className="w-3.5 h-3.5"
+                className="size-3.5"
                 style={{ color: "var(--text-p-3)" }}
               />
               <span
@@ -147,7 +147,7 @@ export async function Currently() {
           >
             <div className="flex items-center gap-2 mb-0.5">
               <BookOpen
-                className="w-3.5 h-3.5"
+                className="size-3.5"
                 style={{ color: "var(--text-p-3)" }}
               />
               <span
@@ -172,7 +172,7 @@ export async function Currently() {
           <div className="flex flex-col gap-1.5 pt-6 sm:pt-0 sm:pl-8">
             <div className="flex items-center gap-2 mb-0.5">
               <Sparkles
-                className="w-3.5 h-3.5"
+                className="size-3.5"
                 style={{ color: "var(--text-p-3)" }}
               />
               <span

@@ -52,25 +52,25 @@ export function ContactForm({ locale }: ContactFormProps) {
   const metaItems = [
     {
       href: "mailto:contact@nitroc.xyz",
-      icon: <Mail className="w-4 h-4" />,
+      icon: <Mail className="size-4" />,
       label: "contact@nitroc.xyz",
       sub: t("metaEmailSub"),
     },
     {
       href: null,
-      icon: <MapPin className="w-4 h-4" />,
+      icon: <MapPin className="size-4" />,
       label: t("metaLocationLabel"),
       sub: t("metaLocationSub"),
     },
     {
       href: "https://github.com/nitroc-dev",
-      icon: <Github className="w-4 h-4" />,
+      icon: <Github className="size-4" />,
       label: "github.com/nitroc-dev",
       sub: t("metaGithubSub"),
     },
     {
       href: "https://www.linkedin.com/in/corentin-d-02472724b",
-      icon: <Linkedin className="w-4 h-4" />,
+      icon: <Linkedin className="size-4" />,
       label: "linkedin.com/in/corentin-d",
       sub: t("metaLinkedinSub"),
     },
@@ -147,8 +147,8 @@ export function ContactForm({ locale }: ContactFormProps) {
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current" />
-                        Sending...
+                        <div className="animate-spin rounded-full size-4 border-b-2 border-current" />
+                        Sending…
                       </>
                     ) : (
                       "Send message →"
@@ -183,7 +183,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                 const inner = (
                   <>
                     <span
-                      className="w-8 h-8 rounded-lg grid place-items-center shrink-0"
+                      className="size-8 rounded-lg grid place-items-center shrink-0"
                       style={{
                         background: "var(--portfolio-accent-soft)",
                         color: "var(--portfolio-accent)",

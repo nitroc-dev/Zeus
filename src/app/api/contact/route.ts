@@ -21,6 +21,7 @@ export async function POST(request: NextRequest) {
 
     const discordResponse = await fetch(webhookUrl, {
       method: "POST",
+      cache: "no-store",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         embeds: [

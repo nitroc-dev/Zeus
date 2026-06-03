@@ -2,9 +2,8 @@ import { MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
-export async function CTA() {
-  const t = await getTranslations("cta");
-  const locale = await getLocale();
+export async function Cta() {
+  const [t, locale] = await Promise.all([getTranslations("cta"), getLocale()]);
 
   return (
     <section className="px-6 pb-20 pt-0 w-full max-w-[1180px] mx-auto">
@@ -49,7 +48,7 @@ export async function CTA() {
                 "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
             }}
           >
-            <MessageSquare className="w-3.5 h-3.5" />
+            <MessageSquare className="size-3.5" />
             {t("startConversation")}
           </Link>
           <Link

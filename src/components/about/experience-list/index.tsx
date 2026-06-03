@@ -15,7 +15,7 @@ export function ExperienceList({
       {experiences.map((exp) => (
         <div
           key={exp.id}
-          className="rounded-xl px-6 py-6"
+          className="rounded-xl p-6"
           style={{
             background: "var(--navy-1)",
             border: "1px solid var(--portfolio-line)",
@@ -38,7 +38,7 @@ export function ExperienceList({
                     style={{ color: "var(--portfolio-accent)" }}
                   >
                     {exp.companyName}
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="size-3" />
                   </Link>
                 </>
               ) : (

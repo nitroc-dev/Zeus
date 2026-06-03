@@ -37,7 +37,7 @@ export function Header() {
           onClick={() => setIsOpen(false)}
         >
           <span
-            className="w-7 h-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
+            className="size-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
             style={{
               background:
                 "linear-gradient(135deg, var(--portfolio-accent), color-mix(in oklch, var(--portfolio-accent) 50%, #6b21a8))",
@@ -84,7 +84,7 @@ export function Header() {
           aria-label="Toggle menu"
           aria-expanded={isOpen}
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 

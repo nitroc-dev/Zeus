@@ -60,7 +60,7 @@ export function ProfileHero({
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)]"
             style={{ color: "var(--text-p-0)" }}
           >
-            <Github className="w-3.5 h-3.5" />
+            <Github className="size-3.5" />
             GitHub
           </Link>
           <Link
@@ -70,7 +70,7 @@ export function ProfileHero({
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)]"
             style={{ color: "var(--text-p-0)" }}
           >
-            <Linkedin className="w-3.5 h-3.5" />
+            <Linkedin className="size-3.5" />
             LinkedIn
           </Link>
         </div>

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { createTranslator } from "@/utils/translate";
 import type { ProjectCardProps } from "./props";
 
-export default function ProjectCard({ project, locale }: ProjectCardProps) {
+export function ProjectCard({ project, locale }: ProjectCardProps) {
   const t = useTranslations("projects");
   const tr = createTranslator(locale);
   const name = tr(project, "name") ?? project.nameEn;
@@ -95,7 +95,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                 boxShadow: "0 2px 8px var(--portfolio-accent-glow)",
               }}
             >
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="size-3.5" />
               {t("details")}
             </Link>
           )}
@@ -103,7 +103,7 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
             (project.websiteUrl.includes("nitroc.xyz") ? (
               <span
                 title="You're already on it 👀"
-                className="inline-flex items-center justify-center w-8 h-8 rounded-lg cursor-not-allowed select-none"
+                className="inline-flex items-center justify-center size-8 rounded-lg cursor-not-allowed select-none"
                 style={{
                   background: "var(--navy-2)",
                   border: "1px solid var(--portfolio-line)",
@@ -111,21 +111,21 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
                   opacity: 0.45,
                 }}
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="size-3.5" />
               </span>
             ) : (
               <Link
                 href={project.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
+                className="inline-flex items-center justify-center size-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
                 style={{
                   background: "var(--navy-2)",
                   border: "1px solid var(--portfolio-line)",
                   color: "var(--text-p-1)",
                 }}
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="size-3.5" />
               </Link>
             ))}
           {project.repositoryUrl && (
@@ -133,14 +133,14 @@ export default function ProjectCard({ project, locale }: ProjectCardProps) {
               href={project.repositoryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center w-8 h-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
+              className="inline-flex items-center justify-center size-8 rounded-lg transition-all hover:[border-color:var(--portfolio-accent)] hover:[color:var(--portfolio-accent)]"
               style={{
                 background: "var(--navy-2)",
                 border: "1px solid var(--portfolio-line)",
                 color: "var(--text-p-1)",
               }}
             >
-              <Github className="w-3.5 h-3.5" />
+              <Github className="size-3.5" />
             </Link>
           )}
         </div>

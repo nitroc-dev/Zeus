@@ -50,11 +50,27 @@ The contact form at `src/app/api/contact/route.ts` forwards submissions to a **D
 ### Components
 
 - `src/components/sections/` - page sections (Hero, About, Experience, Skills, Projects, CTA)
-- `src/components/cards/` - ExperienceCard, ProjectCard with typed props in adjacent `props.ts` files
+- `src/components/cards/` - reusable card components (ProjectCard, ExperienceCard)
 - `src/components/navigation/` - Header, Footer
-- `src/components/ui/` - shadcn/ui primitives (Button, Card, Input, etc.)
+- `src/components/project-detail/` - sub-components for the project detail page
+- `src/components/ui/` - shadcn/ui primitives (Button, Input, etc.) — intentional exception to folder convention (flat files)
 - `src/components/inputs/` - form input wrappers built on top of the UI primitives
 - `src/components/icons/` - custom SVG icon components
+
+#### Component folder convention
+
+Every component lives in its own named folder with an `index.tsx` that uses a **named export**:
+
+```
+component-name/
+  index.tsx   ← export function ComponentName(...)
+  props.ts    ← export interface ComponentNameProps {...}  (only when the component has external props)
+```
+
+Rules:
+- Always **named exports** — never `export default`
+- `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
+- `ui/` is the only exception: it keeps shadcn's flat `.tsx` convention
 
 ### Styling
 

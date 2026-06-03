@@ -2,8 +2,7 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export async function Hero() {
-  const t = await getTranslations("hero");
-  const locale = await getLocale();
+  const [t, locale] = await Promise.all([getTranslations("hero"), getLocale()]);
 
   return (
     <section className="px-6 py-20 w-full max-w-[1180px] mx-auto">
@@ -81,9 +80,9 @@ export async function Hero() {
               borderBottom: "1px solid var(--portfolio-line)",
             }}
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+            <span className="size-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="size-2.5 rounded-full bg-[#ffbd2e]" />
+            <span className="size-2.5 rounded-full bg-[#28c840]" />
             <span
               className="ml-3 text-[11px] tracking-wider"
               style={{ color: "var(--text-p-2)" }}
@@ -94,7 +93,7 @@ export async function Hero() {
 
           {/* Terminal body */}
           <div
-            className="px-[22px] py-[22px] leading-[1.85] relative"
+            className="p-[22px] leading-[1.85] relative"
             style={{ color: "var(--text-p-0)" }}
           >
             <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
