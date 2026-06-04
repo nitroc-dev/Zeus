@@ -135,7 +135,13 @@
     "faq3Q": "Do you work remotely?",
     "faq3A": "Yes. I'm in Brussels (CET) and work async-friendly with teams across Europe and the US. Happy to come on-site occasionally if you're nearby.",
     "faq4Q": "How fast do you reply?",
-    "faq4A": "Within 24 hours, usually faster. I keep a close eye on my messages."
+    "faq4A": "Within 24 hours, usually faster. I keep a close eye on my messages.",
+    "namePlaceholder": "Your name",
+    "messagePlaceholder": "Tell me about your project - timeline, scope, anything I should know.",
+    "privacyAgreePre": "By submitting, you agree to our",
+    "privacyPolicyLabel": "Privacy Policy",
+    "sending": "Sending…",
+    "sendWithArrow": "Send message →"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -151,9 +157,22 @@
     "provideServices": "Provide the services or information you requested",
     "communicateProjects": "Communicate with you about potential projects or collaborations"
   },
+  "footer": {
+    "tagline": "Full-stack developer based in Brussels.",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "cvResume": "CV / Resume",
+    "navigation": "Navigation",
+    "social": "Social",
+    "legal": "Legal"
+  },
   "uses": {
     "eyebrow": "Setup",
     "title": "What I use",
+    "titleBase": "What I",
+    "titleHighlight": "use",
+    "pageDesc1": "An honest list of the hardware, software, and small tools I reach for daily. Inspired by",
+    "pageDesc2": ". Updated whenever I actually change something.",
     "description": "The gear, software, and tools I rely on day-to-day for development and design.",
     "hardware": "Hardware",
     "editorTerminal": "Editor & Terminal",

@@ -135,7 +135,13 @@
     "faq3Q": "Travaillez-vous à distance ?",
     "faq3A": "Oui. Je suis à Bruxelles (CET) et travaille de manière asynchrone avec des équipes en Europe et aux États-Unis.",
     "faq4Q": "Quelle est votre rapidité de réponse ?",
-    "faq4A": "Sous 24 heures, généralement plus vite. Je surveille de près mes messages."
+    "faq4A": "Sous 24 heures, généralement plus vite. Je surveille de près mes messages.",
+    "namePlaceholder": "Votre nom",
+    "messagePlaceholder": "Parlez-moi de votre projet - délai, portée, ce que je dois savoir.",
+    "privacyAgreePre": "En soumettant, vous acceptez notre",
+    "privacyPolicyLabel": "Politique de confidentialité",
+    "sending": "Envoi…",
+    "sendWithArrow": "Envoyer →"
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -151,9 +157,22 @@
     "provideServices": "Fournir les services ou informations que vous avez demandés",
     "communicateProjects": "Communiquer avec vous sur les projets ou collaborations potentiels"
   },
+  "footer": {
+    "tagline": "Développeur full-stack basé à Bruxelles.",
+    "allRightsReserved": "Tous droits réservés.",
+    "privacyPolicy": "Politique de confidentialité",
+    "cvResume": "CV",
+    "navigation": "Navigation",
+    "social": "Social",
+    "legal": "Légal"
+  },
   "uses": {
     "eyebrow": "Setup",
     "title": "Ce que j'utilise",
+    "titleBase": "Ce que j'",
+    "titleHighlight": "utilise",
+    "pageDesc1": "Une liste honnête du matériel, des logiciels et des outils que j'utilise au quotidien. Inspiré par",
+    "pageDesc2": ". Mis à jour dès que je change quelque chose.",
     "description": "Le matériel, les logiciels et les outils sur lesquels je m'appuie au quotidien.",
     "hardware": "Matériel",
     "editorTerminal": "Éditeur & Terminal",

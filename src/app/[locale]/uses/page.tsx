@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { getUsesData } from "@/lib/data";
 import { buildAlternates } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
@@ -21,7 +22,10 @@ export async function generateMetadata({
 
 export default async function UsesPage({ params }: PageProps) {
   const { locale } = await params;
-  const tr = createTranslator(locale);
+  const [tr, t] = await Promise.all([
+    Promise.resolve(createTranslator(locale)),
+    getTranslations("uses"),
+  ]);
   const usesData = await getUsesData();
 
   return (
@@ -36,21 +40,23 @@ export default async function UsesPage({ params }: PageProps) {
               color: "var(--text-p-0)",
             }}
           >
-            What I <span style={{ color: "var(--portfolio-accent)" }}>use</span>
+            {t("titleBase")}{" "}
+            <span style={{ color: "var(--portfolio-accent)" }}>
+              {t("titleHighlight")}
+            </span>
           </h1>
           <p
             className="max-w-[680px] text-[17px] leading-relaxed"
             style={{ color: "var(--text-p-1)" }}
           >
-            An honest list of the hardware, software, and small tools I reach
-            for daily. Inspired by{" "}
+            {t("pageDesc1")}{" "}
             <code
               className="font-mono px-1.5 py-0.5 rounded text-sm"
               style={{ background: "var(--navy-2)" }}
             >
               uses.tech
             </code>
-            . Updated whenever I actually change something.
+            {t("pageDesc2")}
           </p>
         </section>
 
