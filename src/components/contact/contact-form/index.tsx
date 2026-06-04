@@ -107,7 +107,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                     <FormInput
                       name="name"
                       label={`${t("name")} *`}
-                      placeholder="Your name"
+                      placeholder={t("namePlaceholder")}
                       required
                     />
                     <FormInput
@@ -122,17 +122,17 @@ export function ContactForm({ locale }: ContactFormProps) {
                     name="message"
                     label={`${t("message")} *`}
                     rows={5}
-                    placeholder="Tell me about your project - timeline, scope, anything I should know."
+                    placeholder={t("messagePlaceholder")}
                     required
                   />
                   <p className="text-xs" style={{ color: "var(--text-p-3)" }}>
-                    By submitting, you agree to our{" "}
+                    {t("privacyAgreePre")}{" "}
                     <Link
                       href={`/${locale}/privacy`}
                       className="underline transition-opacity hover:opacity-80"
                       style={{ color: "var(--portfolio-accent)" }}
                     >
-                      Privacy Policy
+                      {t("privacyPolicyLabel")}
                     </Link>
                     .
                   </p>
@@ -148,10 +148,10 @@ export function ContactForm({ locale }: ContactFormProps) {
                     {isSubmitting ? (
                       <>
                         <div className="animate-spin rounded-full size-4 border-b-2 border-current" />
-                        Sending…
+                        {t("sending")}
                       </>
                     ) : (
-                      "Send message →"
+                      t("sendWithArrow")
                     )}
                   </button>
                 </form>
@@ -169,8 +169,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                 color: "var(--text-p-0)",
               }}
             >
-              Get in{" "}
-              <span style={{ color: "var(--portfolio-accent)" }}>touch</span>
+              {t("title")}
             </h1>
             <p
               className="text-[17px] mb-8 max-w-[480px] leading-relaxed"

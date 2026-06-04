@@ -3,16 +3,20 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export async function Footer() {
-  const [locale, t] = await Promise.all([getLocale(), getTranslations("nav")]);
+  const [locale, tNav, tFooter] = await Promise.all([
+    getLocale(),
+    getTranslations("nav"),
+    getTranslations("footer"),
+  ]);
 
   const navLinks = [
-    { label: t("home"), href: `/${locale}` },
-    { label: t("about"), href: `/${locale}/about` },
-    { label: t("uses"), href: `/${locale}/uses` },
-    { label: t("contact"), href: `/${locale}/contact` },
+    { label: tNav("home"), href: `/${locale}` },
+    { label: tNav("about"), href: `/${locale}/about` },
+    { label: tNav("uses"), href: `/${locale}/uses` },
+    { label: tNav("contact"), href: `/${locale}/contact` },
   ];
 
-  const legalLinks = [{ label: "Privacy Policy", href: `/${locale}/privacy` }];
+  const legalLinks = [{ label: tFooter("privacyPolicy"), href: `/${locale}/privacy` }];
 
   return (
     <footer
@@ -43,7 +47,7 @@ export async function Footer() {
             Corentin
           </Link>
           <p className="text-sm" style={{ color: "var(--text-p-3)" }}>
-            Full-stack developer based in Brussels.
+            {tFooter("tagline")}
           </p>
         </div>
 
@@ -53,7 +57,7 @@ export async function Footer() {
             className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-4"
             style={{ color: "var(--text-p-3)" }}
           >
-            Navigation
+            {tFooter("navigation")}
           </h5>
           <ul className="flex flex-col gap-2.5">
             {navLinks.map((link) => (
@@ -76,7 +80,7 @@ export async function Footer() {
             className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-4"
             style={{ color: "var(--text-p-3)" }}
           >
-            Social
+            {tFooter("social")}
           </h5>
           <ul className="flex flex-col gap-2.5">
             {[
@@ -86,7 +90,7 @@ export async function Footer() {
                 href: "https://www.linkedin.com/in/corentin-d-02472724b",
               },
               { label: "Email", href: "mailto:contact@nitroc.xyz" },
-              { label: "CV / Resume", href: "/cv.pdf" },
+              { label: tFooter("cvResume"), href: "/cv.pdf" },
             ].map((link) => (
               <li key={link.href}>
                 <Link
@@ -117,7 +121,7 @@ export async function Footer() {
             className="font-mono text-[11px] font-medium tracking-[0.12em] uppercase mb-4"
             style={{ color: "var(--text-p-3)" }}
           >
-            Legal
+            {tFooter("legal")}
           </h5>
           <ul className="flex flex-col gap-2.5">
             {legalLinks.map((link) => (
@@ -144,7 +148,7 @@ export async function Footer() {
         }}
       >
         <span suppressHydrationWarning>
-          &copy; {new Date().getFullYear()} Corentin. All rights reserved.
+          &copy; {new Date().getFullYear()} Corentin. {tFooter("allRightsReserved")}
         </span>
         <div className="flex gap-3">
           {[
