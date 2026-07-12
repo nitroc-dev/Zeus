@@ -5,10 +5,7 @@ import type { ProjectHeroProps } from "./props";
 
 export function ProjectHero({ project, name, description, statusColor, statusLabel, t }: ProjectHeroProps) {
   return (
-    <section
-      className="pt-8 pb-12 grid gap-15 items-start"
-      style={{ gridTemplateColumns: "1.4fr 1fr" }}
-    >
+    <section className="pt-8 pb-12 grid gap-10 lg:gap-15 items-start grid-cols-1 lg:[grid-template-columns:1.4fr_1fr]">
       {/* Left */}
       <div>
         <div className="flex flex-wrap items-center gap-2 mb-4">

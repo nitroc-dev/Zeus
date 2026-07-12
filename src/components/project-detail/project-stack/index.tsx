@@ -14,8 +14,8 @@ export function ProjectStack({ stackItems, locale, t }: ProjectStackProps) {
           return (
             <div
               key={item.name}
-              className="grid gap-6 px-6 py-5 rounded-xl"
-              style={{ gridTemplateColumns: "200px 1fr", background: "var(--navy-1)", border: "1px solid var(--portfolio-line)" }}
+              className="grid gap-3 sm:gap-6 px-6 py-5 rounded-xl grid-cols-1 sm:[grid-template-columns:200px_1fr]"
+              style={{ background: "var(--navy-1)", border: "1px solid var(--portfolio-line)" }}
             >
               <div>
                 <p className="font-semibold text-base" style={{ color: "var(--text-p-0)" }}>{item.name}</p>
