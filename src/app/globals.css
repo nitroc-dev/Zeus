@@ -17,22 +17,6 @@
   --color-gray-900: #111827;
   --color-gray-950: #030712;
 
-  /* Portfolio navy scale */
-  --color-navy-0: #07090f;
-  --color-navy-1: #0b0f1a;
-  --color-navy-2: #111726;
-  --color-navy-3: #19202f;
-
-  /* Portfolio text scale */
-  --color-dp-0: #f4f6fb;
-  --color-dp-1: #c7cdd9;
-  --color-dp-2: #8a92a3;
-  --color-dp-3: #5b6273;
-
-  /* Portfolio status */
-  --color-dp-ok: oklch(0.74 0.16 145);
-  --color-dp-warn: oklch(0.78 0.16 75);
-
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
@@ -40,6 +24,25 @@
 }
 
 @theme inline {
+  /* Portfolio tokens — values live in :root below (single source of truth).
+     Gives utility classes: bg-navy-1, text-p-0, border-portfolio-line, ... */
+  --color-navy-0: var(--navy-0);
+  --color-navy-1: var(--navy-1);
+  --color-navy-2: var(--navy-2);
+  --color-navy-3: var(--navy-3);
+  --color-p-0: var(--text-p-0);
+  --color-p-1: var(--text-p-1);
+  --color-p-2: var(--text-p-2);
+  --color-p-3: var(--text-p-3);
+  --color-portfolio-line: var(--portfolio-line);
+  --color-portfolio-line-2: var(--portfolio-line-2);
+  --color-portfolio-accent: var(--portfolio-accent);
+  --color-portfolio-accent-soft: var(--portfolio-accent-soft);
+  --color-portfolio-accent-glow: var(--portfolio-accent-glow);
+  --color-portfolio-accent-ink: var(--portfolio-accent-ink);
+  --color-portfolio-ok: var(--portfolio-ok);
+  --color-portfolio-warn: var(--portfolio-warn);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
