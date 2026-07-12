@@ -53,8 +53,32 @@ export default async function AboutPage({ params }: PageProps) {
     { lang: t("dutch"), level: t("dutchLevel"), flag: "🇳🇱" },
   ];
 
+  const profileJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateModified: "2026-07-12",
+    mainEntity: {
+      "@type": "Person",
+      "@id": "https://nitroc.xyz/#person",
+      name: t("name"),
+      jobTitle: t("role"),
+      description: t("bio"),
+      image: "https://nitroc.xyz/profile.png",
+      sameAs: [
+        "https://github.com/nitroc-dev",
+        "https://www.linkedin.com/in/corentin-d-02472724b",
+      ],
+    },
+  };
+
   return (
     <main className="relative overflow-hidden page-bg">
+      <script
+        type="application/ld+json"
+        // react-doctor-disable-next-line react-doctor/no-danger
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
+      />
       <div className="px-8 max-w-[1180px] mx-auto">
         {/* Profile: photo, name, role, social links */}
         <ProfileHero

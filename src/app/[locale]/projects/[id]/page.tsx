@@ -100,13 +100,38 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     author: { "@type": "Person", name: "Corentin", url: "https://nitroc.xyz" },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl(locale, ""),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name,
+        item: siteUrl(locale, `/projects/${id}`),
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
         // react-doctor-disable-next-line react-doctor/no-danger
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // react-doctor-disable-next-line react-doctor/no-danger
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <main className="relative overflow-hidden page-bg">
         <div className="px-8 max-w-[1180px] mx-auto">

@@ -89,7 +89,6 @@ export async function Footer() {
                 href: "https://www.linkedin.com/in/corentin-d-02472724b",
               },
               { label: "Email", href: "mailto:contact@nitroc.xyz" },
-              { label: tFooter("cvResume"), href: "/cv.pdf" },
             ].map((link) => (
               <li key={link.href}>
                 <a

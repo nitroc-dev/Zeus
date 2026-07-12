@@ -105,9 +105,17 @@ export async function generateMetadata({
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://nitroc.xyz/#person",
   name: "Corentin",
   url: "https://nitroc.xyz",
+  image: "https://nitroc.xyz/profile.png",
+  email: "mailto:contact@nitroc.xyz",
   jobTitle: "Full Stack Developer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Eachstapp",
+  },
+  knowsLanguage: ["fr", "en", "nl"],
   sameAs: [
     "https://github.com/nitroc-dev",
     "https://www.linkedin.com/in/corentin-d-02472724b",
@@ -130,10 +138,13 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://nitroc.xyz/#website",
   name: "Corentin - Full Stack Developer",
   url: "https://nitroc.xyz",
   description:
     "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",
+  inLanguage: ["en", "fr"],
+  publisher: { "@id": "https://nitroc.xyz/#person" },
 };
 
 interface LocaleLayoutProps {
@@ -161,14 +172,14 @@ export default async function LocaleLayout({
         <link rel="preload" href="/profile.png" as="image" />
         <script
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           // react-doctor-disable-next-line react-doctor/no-danger
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <script
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           // react-doctor-disable-next-line react-doctor/no-danger
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
