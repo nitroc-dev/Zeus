@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildAlternates } from "@/lib/seo";
 
 interface PageProps {
@@ -9,7 +9,8 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("privacy")]);
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "privacy" });
   return {
     title: `${t("title")} - Corentin`,
     description: t("collectDescription"),
@@ -17,7 +18,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function PrivacyPolicy() {
+export default async function PrivacyPolicy({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("privacy");
 
   return (

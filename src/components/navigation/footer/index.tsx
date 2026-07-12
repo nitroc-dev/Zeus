@@ -1,22 +1,21 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export async function Footer() {
-  const [locale, tNav, tFooter] = await Promise.all([
-    getLocale(),
+  const [tNav, tFooter] = await Promise.all([
     getTranslations("nav"),
     getTranslations("footer"),
   ]);
 
   const navLinks = [
-    { label: tNav("home"), href: `/${locale}` },
-    { label: tNav("about"), href: `/${locale}/about` },
-    { label: tNav("uses"), href: `/${locale}/uses` },
-    { label: tNav("contact"), href: `/${locale}/contact` },
+    { label: tNav("home"), href: "/" },
+    { label: tNav("about"), href: "/about" },
+    { label: tNav("uses"), href: "/uses" },
+    { label: tNav("contact"), href: "/contact" },
   ];
 
-  const legalLinks = [{ label: tFooter("privacyPolicy"), href: `/${locale}/privacy` }];
+  const legalLinks = [{ label: tFooter("privacyPolicy"), href: "/privacy" }];
 
   return (
     <footer
@@ -30,7 +29,7 @@ export async function Footer() {
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">
           <Link
-            href={`/${locale}`}
+            href="/"
             className="inline-flex items-center gap-2.5 font-semibold tracking-tight no-underline mb-3"
             style={{ color: "var(--text-p-0)" }}
           >
@@ -93,7 +92,7 @@ export async function Footer() {
               { label: tFooter("cvResume"), href: "/cv.pdf" },
             ].map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
                   target={
                     link.href.startsWith("http") || link.href.endsWith(".pdf")
@@ -109,7 +108,7 @@ export async function Footer() {
                   style={{ color: "var(--text-p-1)" }}
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -168,7 +167,7 @@ export async function Footer() {
               Icon: Mail,
             },
           ].map(({ href, label, Icon }) => (
-            <Link
+            <a
               key={href}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
@@ -182,7 +181,7 @@ export async function Footer() {
               }}
             >
               <Icon className="size-4" />
-            </Link>
+            </a>
           ))}
         </div>
       </div>

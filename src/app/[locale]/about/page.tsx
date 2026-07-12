@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ExperienceList } from "@/components/about/experience-list";
 import { ProfileHero } from "@/components/about/profile-hero";
@@ -15,7 +15,8 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("about")]);
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
   const title = `${t("name")} - ${t("role")}`;
   return {
     title,
@@ -33,8 +34,9 @@ export async function generateMetadata({
 }
 
 export default async function AboutPage({ params }: PageProps) {
-  const [{ locale }, t, experiences, skillCategories] = await Promise.all([
-    params,
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const [t, experiences, skillCategories] = await Promise.all([
     getTranslations("about"),
     getExperiencesData(),
     getSkillsData(),
@@ -58,7 +60,6 @@ export default async function AboutPage({ params }: PageProps) {
         <ProfileHero
           name={t("name")}
           role={t("role")}
-          locale={locale}
           contactLabel={t("contactMe")}
         />
 

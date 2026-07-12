@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildAlternates, siteUrl } from "@/lib/seo";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
@@ -13,7 +13,8 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("metadata")]);
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
   return {
     title: t("title"),
     description: t("description"),
@@ -29,7 +30,9 @@ export async function generateMetadata({
   };
 }
 
-export default function Home() {
+export default async function Home({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <main
       className="relative overflow-hidden flex flex-col items-center"

@@ -1,9 +1,9 @@
 import { MessageSquare } from "lucide-react";
-import Link from "next/link";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export async function Cta() {
-  const [t, locale] = await Promise.all([getTranslations("cta"), getLocale()]);
+  const t = await getTranslations("cta");
 
   return (
     <section className="px-6 pb-20 pt-0 w-full max-w-[1180px] mx-auto">
@@ -39,7 +39,7 @@ export async function Cta() {
 
         <div className="flex gap-3 justify-center flex-wrap">
           <Link
-            href={`/${locale}/contact`}
+            href="/contact"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
             style={{
               background: "var(--portfolio-accent)",
@@ -52,7 +52,7 @@ export async function Cta() {
             {t("startConversation")}
           </Link>
           <Link
-            href={`/${locale}/about`}
+            href="/about"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
           >
             {t("moreAbout")}

@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 export async function Hero() {
-  const [t, locale] = await Promise.all([getTranslations("hero"), getLocale()]);
+  const t = await getTranslations("hero");
 
   return (
     <section className="px-6 py-20 w-full max-w-[1180px] mx-auto">
@@ -45,7 +45,7 @@ export async function Hero() {
               {t("seeWork")}
             </a>
             <Link
-              href={`/${locale}/about`}
+              href="/about"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
             >
               {t("about")}

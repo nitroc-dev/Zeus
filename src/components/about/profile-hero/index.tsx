@@ -1,19 +1,11 @@
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { ProfileHeroProps } from "./props";
 
-export function ProfileHero({
-  name,
-  role,
-  locale,
-  contactLabel,
-}: ProfileHeroProps) {
+export function ProfileHero({ name, role, contactLabel }: ProfileHeroProps) {
   return (
-    <section
-      className="pt-[60px] pb-10 grid gap-10 items-center"
-      style={{ gridTemplateColumns: "200px 1fr" }}
-    >
+    <section className="pt-[60px] pb-10 grid gap-10 items-center grid-cols-1 sm:[grid-template-columns:200px_1fr]">
       <Image
         src="/profile.png"
         alt={name}
@@ -42,7 +34,7 @@ export function ProfileHero({
         </p>
         <div className="flex flex-wrap gap-2.5">
           <Link
-            href={`/${locale}/contact`}
+            href="/contact"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
             style={{
               background: "var(--portfolio-accent)",
@@ -53,7 +45,7 @@ export function ProfileHero({
           >
             {contactLabel}
           </Link>
-          <Link
+          <a
             href="https://github.com/nitroc-dev"
             target="_blank"
             rel="noopener noreferrer"
@@ -62,8 +54,8 @@ export function ProfileHero({
           >
             <Github className="size-3.5" />
             GitHub
-          </Link>
-          <Link
+          </a>
+          <a
             href="https://www.linkedin.com/in/corentin-d-02472724b"
             target="_blank"
             rel="noopener noreferrer"
@@ -72,7 +64,7 @@ export function ProfileHero({
           >
             <Linkedin className="size-3.5" />
             LinkedIn
-          </Link>
+          </a>
         </div>
       </div>
     </section>

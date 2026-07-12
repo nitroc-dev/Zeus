@@ -3,7 +3,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
@@ -38,6 +42,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
   return {
     keywords: [
       "Full Stack Developer",
@@ -65,9 +70,8 @@ export async function generateMetadata({
       locale: ogLocale(locale),
       alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
       url: siteUrl(locale, ""),
-      title: "Corentin - Full Stack Developer",
-      description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+      title: t("title"),
+      description: t("description"),
       siteName: "Corentin Portfolio",
       images: [
         {
@@ -80,9 +84,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: "Corentin - Full Stack Developer",
-      description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+      title: t("title"),
+      description: t("description"),
       images: ["https://nitroc.xyz/og-image.png"],
     },
     robots: {
@@ -142,7 +145,11 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const [{ locale }, messages] = await Promise.all([params, getMessages()]);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const messages = await getMessages();
+  // Only ship namespaces that client components actually consume
+  const clientMessages = { nav: messages.nav, contact: messages.contact };
 
   return (
     <html
@@ -166,7 +173,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-screen">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={clientMessages}>
           <Header />
           {children}
           <Footer />

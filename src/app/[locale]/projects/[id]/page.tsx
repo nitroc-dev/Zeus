@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BrowserMockup } from "@/components/project-detail/browser-mockup";
 import { LighthouseCard } from "@/components/project-detail/lighthouse-card";
 import { MarkdownContent } from "@/components/project-detail/markdown-content";
@@ -55,7 +55,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const [{ locale, id }, t] = await Promise.all([params, getTranslations("projects")]);
+  const { locale, id } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("projects");
   // react-doctor-disable-next-line react-doctor/server-sequential-independent-await
   const [project, allProjects] = await Promise.all([getProjectById(id), getProjectsData()]);
 
@@ -162,7 +164,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
           {lhScores.length > 0 && (
             <Section eyebrow={t("perfEyebrow")} title={t("perfTitle")}>
-              <div className="grid gap-4 mt-2" style={{ gridTemplateColumns: `repeat(${Math.min(lhScores.length, 4)}, 1fr)` }}>
+              <div className="grid gap-4 mt-2 grid-cols-2 md:grid-cols-4">
                 {lhScores.slice(0, 4).map((score, i) => (
                   <LighthouseCard key={lhLabels[i] ?? i} score={score} label={lhLabels[i] ?? ""} />
                 ))}

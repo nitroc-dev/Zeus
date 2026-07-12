@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getUsesData } from "@/lib/data";
 import { buildAlternates } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
@@ -22,11 +22,12 @@ export async function generateMetadata({
 
 export default async function UsesPage({ params }: PageProps) {
   const { locale } = await params;
-  const [tr, t] = await Promise.all([
-    Promise.resolve(createTranslator(locale)),
+  setRequestLocale(locale);
+  const tr = createTranslator(locale);
+  const [t, usesData] = await Promise.all([
     getTranslations("uses"),
+    getUsesData(),
   ]);
-  const usesData = await getUsesData();
 
   return (
     <main className="relative overflow-hidden page-bg">
@@ -85,11 +86,8 @@ export default async function UsesPage({ params }: PageProps) {
                   {section.items.map((item) => (
                     <div
                       key={item.name}
-                      className="grid gap-6 py-4 border-b text-[15px] last:border-b-0"
-                      style={{
-                        gridTemplateColumns: "200px 1fr",
-                        borderColor: "var(--portfolio-line)",
-                      }}
+                      className="grid gap-2 sm:gap-6 py-4 border-b text-[15px] last:border-b-0 grid-cols-1 sm:[grid-template-columns:200px_1fr]"
+                      style={{ borderColor: "var(--portfolio-line)" }}
                     >
                       <div>
                         <p

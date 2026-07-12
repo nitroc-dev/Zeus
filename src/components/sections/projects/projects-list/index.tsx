@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getProjectsData } from "@/lib/data";
 import { createTranslator } from "@/utils/translate";
 import type { ProjectsListProps } from "./props";
@@ -19,11 +19,11 @@ export async function ProjectsList({
         return (
           <Link
             key={project.id}
-            href={`/${locale}/projects/${project.id}`}
-            className="group grid gap-8 py-6 px-3 border-b transition-all duration-200 no-underline
-              hover:pl-6 hover:[background:linear-gradient(90deg,var(--portfolio-accent-soft),transparent_40%)]"
+            href={`/projects/${project.id}`}
+            className="group grid gap-4 md:gap-8 py-6 px-3 border-b transition-all duration-200 no-underline
+              hover:pl-6 hover:[background:linear-gradient(90deg,var(--portfolio-accent-soft),transparent_40%)]
+              [grid-template-columns:32px_1fr_28px] md:[grid-template-columns:56px_1fr_auto_auto_28px]"
             style={{
-              gridTemplateColumns: "56px 1fr auto auto 28px",
               borderColor: "var(--portfolio-line)",
               color: "inherit",
             }}
