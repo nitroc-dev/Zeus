@@ -22,7 +22,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pageEntries = LOCALES.flatMap((locale) =>
     staticPages.map(({ path, changeFrequency, priority }) => ({
       url: localizedUrl(locale, path),
-      lastModified: new Date(),
       changeFrequency,
       priority,
     })),
@@ -36,7 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projectEntries = LOCALES.flatMap((locale) =>
     projectIds.map((id) => ({
       url: localizedUrl(locale, `/projects/${id}`),
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
