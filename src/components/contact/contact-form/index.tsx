@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -10,20 +9,21 @@ import { toast } from "sonner";
 import { ContactSuccess } from "@/components/contact/contact-success";
 import { FormInput } from "@/components/inputs/input";
 import { FormTextarea } from "@/components/inputs/textarea";
+import { Link } from "@/i18n/navigation";
 import {
   type ContactFormData,
   contactSchema,
 } from "@/utils/contact-validation";
-import type { ContactFormProps } from "./props";
 
-export function ContactForm({ locale }: ContactFormProps) {
+export function ContactForm() {
   const t = useTranslations("contact");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", message: "" },
+    mode: "onTouched",
+    defaultValues: { name: "", email: "", message: "", website: "" },
   });
 
   const handleSubmit = form.handleSubmit(async (values) => {
@@ -86,10 +86,7 @@ export function ContactForm({ locale }: ContactFormProps) {
   return (
     <main className="relative overflow-hidden page-bg">
       <div className="px-8 max-w-[1180px] mx-auto">
-        <section
-          className="pt-[60px] pb-20 grid gap-20 items-start"
-          style={{ gridTemplateColumns: "1fr 1fr" }}
-        >
+        <section className="pt-[60px] pb-20 grid gap-12 lg:gap-20 items-start grid-cols-1 lg:grid-cols-2">
           {/* Left: form */}
           <div
             className="rounded-[16px] p-8"
@@ -103,7 +100,15 @@ export function ContactForm({ locale }: ContactFormProps) {
             ) : (
               <FormProvider {...form}>
                 <form onSubmit={handleSubmit} className="space-y-[18px]">
-                  <div className="grid grid-cols-2 gap-3.5">
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
+                    {...form.register("website")}
+                  />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <FormInput
                       name="name"
                       label={`${t("name")} *`}
@@ -128,7 +133,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                   <p className="text-xs" style={{ color: "var(--text-p-3)" }}>
                     {t("privacyAgreePre")}{" "}
                     <Link
-                      href={`/${locale}/privacy`}
+                      href="/privacy"
                       className="underline transition-opacity hover:opacity-80"
                       style={{ color: "var(--portfolio-accent)" }}
                     >
@@ -210,7 +215,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                   "flex items-center gap-3 px-4 py-3 rounded-[10px] transition-colors text-sm border";
                 const baseStyle = { background: "var(--navy-1)" };
                 return href ? (
-                  <Link
+                  <a
                     key={label}
                     href={href}
                     target={href.startsWith("http") ? "_blank" : undefined}
@@ -223,7 +228,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                     style={baseStyle}
                   >
                     {inner}
-                  </Link>
+                  </a>
                 ) : (
                   <div
                     key={label}

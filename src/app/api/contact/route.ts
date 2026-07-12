@@ -1,14 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { contactSchema } from "@/utils/contact-validation";
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, message } = await request.json();
+    const body = await request.json();
+    const parsed = contactSchema.safeParse(body);
 
-    if (!name || !email || !message) {
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "All fields are required" },
+        { error: parsed.error.issues[0]?.message ?? "Invalid input" },
         { status: 400 },
       );
+    }
+
+    const { name, email, message, website } = parsed.data;
+
+    // Honeypot filled: silently accept without forwarding
+    if (website) {
+      return NextResponse.json({ message: "Message sent successfully" });
     }
 
     const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
@@ -29,9 +38,9 @@ export async function POST(request: NextRequest) {
             title: "New Contact Message",
             color: 0x4f46e5,
             fields: [
-              { name: "Name", value: String(name), inline: true },
-              { name: "Email", value: String(email), inline: true },
-              { name: "Message", value: String(message) },
+              { name: "Name", value: name, inline: true },
+              { name: "Email", value: email, inline: true },
+              { name: "Message", value: message },
             ],
             timestamp: new Date().toISOString(),
           },
