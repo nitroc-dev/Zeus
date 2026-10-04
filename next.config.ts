@@ -41,8 +41,10 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
           {
+            // No includeSubDomains/preload: *.nitroc.xyz homelab services
+            // (infra/homelab) are LAN-only and must not inherit this policy.
             key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload",
+            value: "max-age=31536000",
           },
           {
             key: "Content-Security-Policy",
