@@ -21,7 +21,7 @@ export async function Hero() {
         <div>
           <div className="flex items-center gap-5 sm:gap-6 mb-8">
             <Image
-              src="/avatar.webp"
+              src="/avatar-c.webp"
               alt=""
               width={96}
               height={96}
