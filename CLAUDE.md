@@ -46,11 +46,9 @@ When adding new content, use the localized functions and add the corresponding k
 ### Components
 
 - `src/components/sections/` - page sections (Hero, Projects, Currently)
-- `src/components/cards/` - reusable card components (ProjectCard, ExperienceCard)
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
 - `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention
-- `src/components/icons/` - custom SVG icon components
 
 #### Component folder convention
 
