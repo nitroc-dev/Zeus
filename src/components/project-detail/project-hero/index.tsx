@@ -67,7 +67,14 @@ export function ProjectHero({
           <SidebarRow
             label={t("detailStatus")}
             value={
-              <span style={{ color: statusColor ?? undefined }}>
+              <span
+                className="inline-flex items-center gap-2"
+                style={{ color: statusColor ?? undefined }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 rounded-full bg-current"
+                />
                 {statusLabel}
               </span>
             }

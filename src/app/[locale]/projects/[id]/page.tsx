@@ -20,9 +20,9 @@ interface PageProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  live: "var(--portfolio-ok, oklch(0.74 0.16 145))",
-  in_progress: "oklch(0.78 0.16 75)",
-  archived: "var(--text-p-3)",
+  live: "var(--ok)",
+  in_progress: "var(--warn)",
+  archived: "var(--text-3)",
 };
 
 const lhLabels = ["Performance", "Accessibility", "Best practices", "SEO"];

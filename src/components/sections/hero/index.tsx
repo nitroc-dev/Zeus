@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { localePath } from "@/lib/seo";
@@ -18,15 +19,34 @@ export async function Hero() {
     <section className="px-6 pt-24 pb-20 w-full max-w-[1180px] mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-end">
         <div>
-          <h1
-            className="text-[clamp(48px,7vw,88px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-8"
-            style={{ color: "var(--text-p-0)" }}
-          >
-            {t("name")}
-          </h1>
+          <div className="flex items-center gap-5 sm:gap-6 mb-8">
+            <Image
+              src="/avatar.webp"
+              alt=""
+              width={96}
+              height={96}
+              priority
+              className="size-16 sm:size-24 rounded-full shrink-0"
+              style={{ boxShadow: "0 0 0 1px var(--line-strong)" }}
+            />
+            <div>
+              <h1
+                className="m-0 text-[clamp(44px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)]"
+                style={{ color: "var(--text-1)" }}
+              >
+                {t("name")}
+              </h1>
+              <p
+                className="m-0 mt-2 text-[length:var(--fs-4)]"
+                style={{ color: "var(--text-3)" }}
+              >
+                {t("roleLine")}
+              </p>
+            </div>
+          </div>
 
           <p
-            className="text-[length:var(--fs-4)] leading-[1.5] mb-9 max-w-[34ch]"
+            className="text-[length:var(--fs-4)] leading-[1.5] mb-9 max-w-[46ch]"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("tagline")}

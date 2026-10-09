@@ -53,11 +53,16 @@ export async function ProjectsList({
             </div>
 
             <p
-              className="text-[length:var(--fs-2)] m-0 md:self-center md:text-right"
-              style={{
-                color: inProgress ? "var(--portfolio-warn)" : "var(--text-p-2)",
-              }}
+              className="text-[length:var(--fs-2)] m-0 md:self-center md:text-right inline-flex md:justify-end items-center gap-2"
+              style={{ color: inProgress ? "var(--warn)" : "var(--text-3)" }}
             >
+              <span
+                aria-hidden="true"
+                className="size-1.5 rounded-full shrink-0"
+                style={{
+                  background: inProgress ? "var(--warn)" : "var(--ok)",
+                }}
+              />
               {inProgress ? t("statusInProgress") : project.year}
             </p>
 

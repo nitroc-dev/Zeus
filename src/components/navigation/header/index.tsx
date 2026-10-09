@@ -2,13 +2,20 @@
 
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
+import { LocalTime } from "@/components/local-time";
 import { Link, usePathname } from "@/i18n/navigation";
 
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
+  const [modKey, setModKey] = useState("Ctrl");
+
+  useEffect(() => {
+    if (/Mac|iPhone|iPad/.test(navigator.platform)) setModKey("⌘");
+  }, []);
 
   const navigation = [
     { name: t("home"), href: "/" },
@@ -26,7 +33,7 @@ export function Header() {
       }}
     >
       <div
-        className="flex items-center justify-between px-8 max-w-[1180px] mx-auto"
+        className="flex items-center justify-between px-6 max-w-[1180px] mx-auto"
         style={{ height: "60px" }}
       >
         {/* Brand */}
@@ -40,7 +47,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)]">
+        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)] ml-auto">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -63,6 +70,28 @@ export function Header() {
             );
           })}
         </nav>
+
+        <div
+          className="hidden md:flex items-center gap-4 ml-4 pl-4 border-l"
+          style={{ borderColor: "var(--line)" }}
+        >
+          <span
+            className="font-mono text-[length:var(--fs-1)] tabular-nums"
+            style={{ color: "var(--text-3)" }}
+            title="Brussels"
+          >
+            <LocalTime />
+          </span>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT))}
+            className="ds-tag ds-tag--clickable cursor-pointer"
+            aria-label={t("jump")}
+          >
+            <kbd className="font-mono">{modKey}</kbd>
+            <kbd className="font-mono">K</kbd>
+          </button>
+        </div>
 
         {/* Mobile hamburger */}
         <button

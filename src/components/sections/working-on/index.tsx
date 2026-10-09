@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { LocalTime } from "./local-time";
+import { LocalTime } from "@/components/local-time";
 
 export async function Currently() {
   const t = await getTranslations("currently");

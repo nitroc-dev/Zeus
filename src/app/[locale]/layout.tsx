@@ -4,12 +4,15 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
+import { CommandPalette } from "@/components/command-palette";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { routing } from "@/i18n/routing";
+import { getProjectsData } from "@/lib/data";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
+import { createTranslator } from "@/utils/translate";
 import "../globals.css";
 
 const inter = Inter({
@@ -144,7 +147,35 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  const messages = await getMessages();
+  const [messages, tNav, tPalette, projects] = await Promise.all([
+    getMessages(),
+    getTranslations("nav"),
+    getTranslations("palette"),
+    getProjectsData(),
+  ]);
+  const tr = createTranslator(locale);
+  const paletteItems = [
+    { id: "home", label: tNav("home"), hint: tPalette("page"), href: "/" },
+    {
+      id: "about",
+      label: tNav("about"),
+      hint: tPalette("page"),
+      href: "/about",
+    },
+    { id: "uses", label: tNav("uses"), hint: tPalette("page"), href: "/uses" },
+    {
+      id: "contact",
+      label: tNav("contact"),
+      hint: tPalette("page"),
+      href: "/contact",
+    },
+    ...projects.map((p) => ({
+      id: `project-${p.id}`,
+      label: tr(p, "name") ?? p.nameEn,
+      hint: tPalette("project"),
+      href: `/projects/${p.id}`,
+    })),
+  ];
 
   return (
     <html
@@ -172,6 +203,7 @@ export default async function LocaleLayout({
           {children}
           <Footer />
           <ScrollToTop />
+          <CommandPalette items={paletteItems} />
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />

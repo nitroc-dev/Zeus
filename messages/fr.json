@@ -8,11 +8,12 @@
     "about": "À propos",
     "uses": "Outils",
     "projects": "Projets",
-    "contact": "Contact"
+    "contact": "Contact",
+    "jump": "Aller à une page ou un projet"
   },
   "hero": {
     "name": "Corentin",
-    "tagline": "Software engineer à Bruxelles. Je construis des produits web et mobiles de bout en bout chez Eachstapp, une agence produit, du modèle de données jusqu'à la publication sur les stores.",
+    "tagline": "Je construis des produits web et mobiles de bout en bout chez Eachstapp, une agence produit, du modèle de données jusqu'à la publication sur les stores. Chez moi, je développe des applications desktop et des logiciels pour mon homelab.",
     "seeWork": "Voir les projets",
     "about": "À propos",
     "factRole": "rôle",
@@ -23,7 +24,8 @@
     "factStack": "stack",
     "factSpeaks": "langues",
     "factSpeaksValue": "français, anglais, néerlandais",
-    "factBuilding": "en cours"
+    "factBuilding": "en cours",
+    "roleLine": "Software engineer à Bruxelles"
   },
   "about": {
     "name": "Corentin",
@@ -124,5 +126,15 @@
     "pageDesc1": "Le matériel, les logiciels et les outils que j'utilise au quotidien. Inspiré par",
     "pageDesc2": ".",
     "description": "Le matériel, les logiciels et les outils sur lesquels je m'appuie au quotidien."
+  },
+  "palette": {
+    "label": "Aller à",
+    "placeholder": "Aller à une page ou un projet…",
+    "empty": "Aucun résultat",
+    "page": "Page",
+    "project": "Projet",
+    "navigate": "naviguer",
+    "open": "ouvrir",
+    "close": "fermer"
   }
 }
