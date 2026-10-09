@@ -79,6 +79,7 @@ export function CommandPalette({ items }: CommandPaletteProps) {
   };
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: click-outside to dismiss; Escape closes from the keyboard
     <div
       className="fixed inset-0 z-[60] flex items-start justify-center px-4 pt-[14vh]"
       style={{ background: "var(--scrim)" }}
@@ -119,22 +120,23 @@ export function CommandPalette({ items }: CommandPaletteProps) {
             boxShadow: "none",
           }}
         />
-        <ul
+        <div
           id={listId}
           role="listbox"
-          className="m-0 p-1.5 list-none max-h-[50vh] overflow-y-auto"
+          className="p-1.5 max-h-[50vh] overflow-y-auto"
         >
           {results.length === 0 && (
-            <li
+            <div
               className="px-3 py-3 text-[length:var(--fs-2)]"
               style={{ color: "var(--text-3)" }}
             >
               {t("empty")}
-            </li>
+            </div>
           )}
           {results.map((item, i) => (
-            <li
+            <div
               key={item.id}
+              tabIndex={-1}
               id={`${listId}-${item.id}`}
               role="option"
               aria-selected={i === active}
@@ -160,9 +162,9 @@ export function CommandPalette({ items }: CommandPaletteProps) {
               >
                 {item.hint}
               </span>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
         <div
           className="flex gap-4 px-4 h-9 items-center text-[length:var(--fs-1)]"
           style={{ color: "var(--text-3)", borderTop: "1px solid var(--line)" }}
