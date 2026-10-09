@@ -2,6 +2,7 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { localePath } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 import type { ProjectCardProps } from "./props";
 
@@ -87,7 +88,7 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
         <div className="flex gap-2 mt-4">
           {locale && (
             <Link
-              href={`/${locale}/projects/${project.id}`}
+              href={localePath(locale, `/projects/${project.id}`)}
               className="inline-flex items-center gap-1.5 flex-1 justify-center px-3 py-1.5 rounded-lg text-sm font-medium transition-all hover:-translate-y-px"
               style={{
                 background: "var(--portfolio-accent)",

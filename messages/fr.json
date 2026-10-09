@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Corentin - Développeur Full Stack",
-    "description": "Développeur Full Stack passionné par la création d'applications web modernes avec React, Next.js et .NET. Découvrez mon portfolio, mes projets et mon parcours professionnel."
+    "title": "Corentin - Software Engineer",
+    "description": "Software engineer qui construit des produits web et mobiles de bout en bout avec TypeScript, React, Next.js, React Native et .NET. Découvrez mon portfolio, mes projets et mon parcours professionnel."
   },
   "nav": {
     "home": "Accueil",
@@ -14,17 +14,17 @@
     "greeting": "Salut, je suis",
     "name": "Corentin",
     "headline": "je construis pour le web.",
-    "tagline": "Développeur full-stack à Bruxelles. Je livre des features chez Eachstapp, startup qui aide les commerces locaux à se digitaliser. Code propre, UIs rapides, produits utiles.",
+    "tagline": "Software engineer à Bruxelles. Je construis des produits web et mobiles de bout en bout chez Eachstapp, une agence produit, du modèle de données jusqu'à la publication sur les stores.",
     "seeWork": "Voir mon travail",
     "about": "À propos"
   },
   "about": {
     "name": "Corentin",
-    "role": "Développeur Full Stack",
+    "role": "Software Engineer",
     "location": "Bruxelles, Belgique",
     "contactMe": "Me contacter",
     "bioTitle": "À propos",
-    "bio": "Je suis un développeur full-stack basé à Bruxelles, en Belgique. J'aime créer des applications web modernes et évolutives en mettant l'accent sur un code propre et une excellente expérience utilisateur. Je travaille actuellement chez Eachstapp, où je contribue au développement d'applications web d'entreprise avec React, Next.js et .NET. J'ai étudié l'informatique à la Haute École Léonard de Vinci, où j'ai construit ma base en génie logiciel.",
+    "bio": "Je suis software engineer à Bruxelles, en Belgique. Je construis des produits web et mobiles de bout en bout, du modèle de données jusqu'à la publication sur l'App Store. Chez Eachstapp, une agence produit bruxelloise, je travaille sur un SaaS B2B utilisé par 7 services de médiation, des applications React Native dans le sport et le voyage, et les API C#/.NET qui les alimentent. J'ai étudié l'informatique à la Haute École Léonard de Vinci.",
     "bio2": "En dehors du travail, je bricole des projets personnels, lis sur la sécurité web et bois trop de café. Je m'intéresse au code lisible, aux boucles de feedback rapides et aux produits qui se font réellement utiliser.",
     "languagesTitle": "Langues",
     "french": "Français",
@@ -32,7 +32,7 @@
     "english": "Anglais",
     "englishLevel": "Professionnel",
     "dutch": "Néerlandais",
-    "dutchLevel": "Intermédiaire",
+    "dutchLevel": "Notions de base",
     "learningTitle": "En cours d'apprentissage",
     "learningDescription": "J'explore Expo et le développement d'applications mobiles avec React Native.",
     "learningTech": "Expo & React Native",
@@ -88,12 +88,6 @@
     "featuresEyebrow": "Fonctionnalités",
     "featuresTitle": "Fonctionnalités clés"
   },
-  "cta": {
-    "title": "Un projet en tête ?",
-    "description": "Je prends en charge des missions freelance en parallèle de mon poste chez Eachstapp - des engagements courts et ciblés pour livrer quelque chose de soigné de bout en bout.",
-    "startConversation": "Démarrer une conversation",
-    "moreAbout": "En savoir plus"
-  },
   "currently": {
     "eyebrow": "En ce moment",
     "title": "Actuellement",
@@ -129,7 +123,7 @@
     "successSend": "Envoyer un autre message",
     "faqTitle": "Questions fréquentes",
     "faq1Q": "Êtes-vous disponible en ce moment ?",
-    "faq1A": "Oui - je prends des missions freelance en parallèle de mon poste chez Eachstapp. Je préfère des engagements ciblés où je peux livrer quelque chose de soigné de bout en bout.",
+    "faq1A": "Je suis actuellement à temps plein chez Eachstapp, mais toujours partant pour discuter de problèmes techniques intéressants.",
     "faq2Q": "Sur quels types de projets travaillez-vous ?",
     "faq2A": "Applications web, tableaux de bord, sites marketing - partout où une petite équipe a besoin d'aide full-stack. React/Next en front, Node ou .NET en back.",
     "faq3Q": "Travaillez-vous à distance ?",
@@ -158,7 +152,7 @@
     "communicateProjects": "Communiquer avec vous sur les projets ou collaborations potentiels"
   },
   "footer": {
-    "tagline": "Développeur full-stack basé à Bruxelles.",
+    "tagline": "Software engineer basé à Bruxelles.",
     "allRightsReserved": "Tous droits réservés.",
     "privacyPolicy": "Politique de confidentialité",
     "cvResume": "CV",

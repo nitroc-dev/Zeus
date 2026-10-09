@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { localePath } from "@/lib/seo";
 
 export async function Footer() {
   const [locale, tNav, tFooter] = await Promise.all([
@@ -10,13 +11,15 @@ export async function Footer() {
   ]);
 
   const navLinks = [
-    { label: tNav("home"), href: `/${locale}` },
-    { label: tNav("about"), href: `/${locale}/about` },
-    { label: tNav("uses"), href: `/${locale}/uses` },
-    { label: tNav("contact"), href: `/${locale}/contact` },
+    { label: tNav("home"), href: localePath(locale) },
+    { label: tNav("about"), href: localePath(locale, "/about") },
+    { label: tNav("uses"), href: localePath(locale, "/uses") },
+    { label: tNav("contact"), href: localePath(locale, "/contact") },
   ];
 
-  const legalLinks = [{ label: tFooter("privacyPolicy"), href: `/${locale}/privacy` }];
+  const legalLinks = [
+    { label: tFooter("privacyPolicy"), href: localePath(locale, "/privacy") },
+  ];
 
   return (
     <footer
@@ -30,7 +33,7 @@ export async function Footer() {
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">
           <Link
-            href={`/${locale}`}
+            href={localePath(locale)}
             className="inline-flex items-center gap-2.5 font-semibold tracking-tight no-underline mb-3"
             style={{ color: "var(--text-p-0)" }}
           >
@@ -148,7 +151,8 @@ export async function Footer() {
         }}
       >
         <span suppressHydrationWarning>
-          &copy; {new Date().getFullYear()} Corentin. {tFooter("allRightsReserved")}
+          &copy; {new Date().getFullYear()} Corentin.{" "}
+          {tFooter("allRightsReserved")}
         </span>
         <div className="flex gap-3">
           {[

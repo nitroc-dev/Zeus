@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { ContactSuccess } from "@/components/contact/contact-success";
 import { FormInput } from "@/components/inputs/input";
 import { FormTextarea } from "@/components/inputs/textarea";
+import { localePath } from "@/lib/seo";
 import {
   type ContactFormData,
   contactSchema,
@@ -128,7 +129,7 @@ export function ContactForm({ locale }: ContactFormProps) {
                   <p className="text-xs" style={{ color: "var(--text-p-3)" }}>
                     {t("privacyAgreePre")}{" "}
                     <Link
-                      href={`/${locale}/privacy`}
+                      href={localePath(locale, "/privacy")}
                       className="underline transition-opacity hover:opacity-80"
                       style={{ color: "var(--portfolio-accent)" }}
                     >

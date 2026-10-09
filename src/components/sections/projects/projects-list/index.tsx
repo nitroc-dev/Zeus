@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getProjectsData } from "@/lib/data";
+import { localePath } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 import type { ProjectsListProps } from "./props";
 
@@ -19,7 +20,7 @@ export async function ProjectsList({
         return (
           <Link
             key={project.id}
-            href={`/${locale}/projects/${project.id}`}
+            href={localePath(locale, `/projects/${project.id}`)}
             className="group grid gap-8 py-6 px-3 border-b transition-all duration-200 no-underline
               hover:pl-6 hover:[background:linear-gradient(90deg,var(--portfolio-accent-soft),transparent_40%)]"
             style={{

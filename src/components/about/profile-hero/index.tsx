@@ -1,6 +1,7 @@
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { localePath } from "@/lib/seo";
 import type { ProfileHeroProps } from "./props";
 
 export function ProfileHero({
@@ -42,7 +43,7 @@ export function ProfileHero({
         </p>
         <div className="flex flex-wrap gap-2.5">
           <Link
-            href={`/${locale}/contact`}
+            href={localePath(locale, "/contact")}
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
             style={{
               background: "var(--portfolio-accent)",

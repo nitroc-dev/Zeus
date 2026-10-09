@@ -4,11 +4,11 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { Toaster } from "@/components/ui/sonner";
+import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
 const inter = Inter({
@@ -40,7 +40,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return {
     keywords: [
-      "Full Stack Developer",
+      "React Native Developer",
       "React Developer",
       "Next.js Developer",
       ".NET Developer",
@@ -65,24 +65,24 @@ export async function generateMetadata({
       locale: ogLocale(locale),
       alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
       url: siteUrl(locale, ""),
-      title: "Corentin - Full Stack Developer",
+      title: "Corentin - Software Engineer",
       description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
       siteName: "Corentin Portfolio",
       images: [
         {
           url: "https://nitroc.xyz/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Corentin - Full Stack Developer",
+          alt: "Corentin - Software Engineer",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Corentin - Full Stack Developer",
+      title: "Corentin - Software Engineer",
       description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
       images: ["https://nitroc.xyz/og-image.png"],
     },
     robots: {
@@ -104,7 +104,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "Corentin",
   url: "https://nitroc.xyz",
-  jobTitle: "Full Stack Developer",
+  jobTitle: "Software Engineer",
   sameAs: [
     "https://github.com/nitroc-dev",
     "https://www.linkedin.com/in/corentin-d-02472724b",
@@ -127,10 +127,10 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Corentin - Full Stack Developer",
+  name: "Corentin - Software Engineer",
   url: "https://nitroc.xyz",
   description:
-    "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",
+    "Software engineer specializing in TypeScript, React, Next.js, React Native and .NET. Based in Brussels.",
 };
 
 interface LocaleLayoutProps {

@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Corentin - Full Stack Developer",
-    "description": "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET. Explore my portfolio, projects, and professional journey."
+    "title": "Corentin - Software Engineer",
+    "description": "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET. Explore my portfolio, projects, and professional journey."
   },
   "nav": {
     "home": "Home",
@@ -14,17 +14,17 @@
     "greeting": "Hi, I'm",
     "name": "Corentin",
     "headline": "I build things for the web.",
-    "tagline": "Full-stack developer based in Brussels. Currently shipping product features at Eachstapp, a startup helping local businesses go digital. I care about clean code, fast UIs, and shipping things that actually get used.",
+    "tagline": "Software engineer in Brussels. I build web and mobile products end to end at Eachstapp, a product agency, from data model to App Store release.",
     "seeWork": "See my work",
     "about": "About me"
   },
   "about": {
     "name": "Corentin",
-    "role": "Full Stack Developer",
+    "role": "Software Engineer",
     "location": "Brussels, Belgium",
     "contactMe": "Contact me",
     "bioTitle": "About me",
-    "bio": "I'm a full-stack developer based in Brussels, Belgium. I enjoy building modern, scalable web applications with a focus on clean code and great user experience. I'm currently working at Eachstapp, where I contribute to enterprise web applications using React, Next.js, and .NET. I studied Computer Science at Haute École Léonard de Vinci, where I built my foundation in software engineering.",
+    "bio": "I'm a software engineer based in Brussels, Belgium. I build web and mobile products end to end, from the data model to the App Store release. At Eachstapp, a Brussels product agency, I work on a B2B SaaS used by 7 mediation services, React Native apps in sports and travel, and the C#/.NET APIs behind them. I studied Computer Science at Haute École Léonard de Vinci.",
     "bio2": "Outside of work I tinker on side projects, read about web security, and drink too much coffee. I care about readable code, fast feedback loops, and shipping things that actually get used.",
     "languagesTitle": "Languages",
     "french": "French",
@@ -32,7 +32,7 @@
     "english": "English",
     "englishLevel": "Professional",
     "dutch": "Dutch",
-    "dutchLevel": "Intermediate",
+    "dutchLevel": "Basic",
     "learningTitle": "Currently learning",
     "learningDescription": "Exploring Expo and mobile app development with React Native.",
     "learningTech": "Expo & React Native",
@@ -88,12 +88,6 @@
     "featuresEyebrow": "What it does",
     "featuresTitle": "Key features"
   },
-  "cta": {
-    "title": "Have a project in mind?",
-    "description": "I'm taking on freelance work alongside my role at Eachstapp - small focused engagements where I can ship something polished end-to-end.",
-    "startConversation": "Start a conversation",
-    "moreAbout": "More about me"
-  },
   "currently": {
     "eyebrow": "Right now",
     "title": "Currently",
@@ -129,7 +123,7 @@
     "successSend": "Send another message",
     "faqTitle": "Frequently asked",
     "faq1Q": "Are you available right now?",
-    "faq1A": "Yes - I take on freelance work alongside my role at Eachstapp. I prefer focused engagements where I can ship something polished end-to-end.",
+    "faq1A": "I'm currently full-time at Eachstapp, but always happy to talk about interesting engineering problems.",
     "faq2Q": "What kind of projects do you work on?",
     "faq2A": "Web apps, dashboards, marketing sites - anywhere a small team needs full-stack help. React/Next on the front, Node or .NET on the back.",
     "faq3Q": "Do you work remotely?",
@@ -158,7 +152,7 @@
     "communicateProjects": "Communicate with you about potential projects or collaborations"
   },
   "footer": {
-    "tagline": "Full-stack developer based in Brussels.",
+    "tagline": "Software engineer based in Brussels.",
     "allRightsReserved": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "cvResume": "CV / Resume",

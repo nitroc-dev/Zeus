@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { buildAlternates, siteUrl } from "@/lib/seo";
-import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Currently } from "@/components/sections/working-on";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -13,7 +12,10 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("metadata")]);
+  const [{ locale }, t] = await Promise.all([
+    params,
+    getTranslations("metadata"),
+  ]);
   return {
     title: t("title"),
     description: t("description"),
@@ -41,7 +43,6 @@ export default function Home() {
       <Hero />
       <Projects />
       <Currently />
-      <Cta />
     </main>
   );
 }

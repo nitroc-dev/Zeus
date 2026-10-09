@@ -172,14 +172,14 @@ export const skillCategories: SkillCategoryData[] = [
 export const experiences: ExperienceData[] = [
   {
     id: "eachstapp-fullstack",
-    nameEn: "Full Stack Developer",
-    nameFr: "Développeur Full Stack",
+    nameEn: "Software Engineer",
+    nameFr: "Software Engineer",
     companyName: "Eachstapp",
     descriptionEn:
-      "Leading the development and maintenance of enterprise web applications using React, Next.js, and .NET technologies. Collaborating with cross-functional teams to architect scalable solutions, implement RESTful APIs, and optimize application performance.",
+      "Build and run a B2B SaaS for mediation services, now used by 7 services. Ship React Native apps (bare and Expo) in sports and travel, owning App Store and Google Play releases. Make architecture and data-model decisions on new features, deploy and maintain production systems, and work directly with clients on requirements, demos and support.",
     descriptionFr:
-      "Direction du développement et de la maintenance d'applications web d'entreprise utilisant React, Next.js et les technologies .NET. Collaboration avec des équipes interfonctionnelles pour concevoir des solutions évolutives, implémenter des API RESTful et optimiser les performances.",
-    startDate: "2024-09-01",
+      "Développement et exploitation d'un SaaS B2B pour services de médiation, utilisé par 7 services. Livraison d'applications React Native (bare et Expo) dans le sport et le voyage, avec gestion des publications App Store et Google Play. Décisions d'architecture et de modèle de données sur les nouvelles fonctionnalités, déploiement et maintenance en production, et travail direct avec les clients sur les besoins, démos et support.",
+    startDate: "2024-10-01",
     locationEn: "Brussels, Belgium",
     locationFr: "Bruxelles, Belgique",
     experienceType: "work",
@@ -187,15 +187,15 @@ export const experiences: ExperienceData[] = [
   },
   {
     id: "eachstapp-internship",
-    nameEn: "Fullstack Developer (Internship)",
-    nameFr: "Développeur Fullstack (Stage)",
+    nameEn: "Software Engineer Intern",
+    nameFr: "Software Engineer (Stage)",
     companyName: "Eachstapp",
     descriptionEn:
-      "Contributed to the development of modern web applications by implementing responsive frontend components and backend API integrations. Gained practical experience with React, TypeScript, and .NET while working in an agile environment.",
+      "Delivered features on client web and mobile projects in TypeScript, React and React Native.",
     descriptionFr:
-      "Contribution au développement d'applications web modernes en implémentant des composants frontend réactifs et des intégrations d'API backend. Acquisition d'une expérience pratique avec React, TypeScript et .NET dans un environnement agile.",
-    startDate: "2024-02-01",
-    endDate: "2024-06-30",
+      "Développement de fonctionnalités sur des projets web et mobiles clients en TypeScript, React et React Native.",
+    startDate: "2024-01-01",
+    endDate: "2024-05-31",
     locationEn: "Brussels, Belgium",
     locationFr: "Bruxelles, Belgique",
     experienceType: "internship",

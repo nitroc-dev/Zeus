@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { localePath } from "@/lib/seo";
 
 export async function Hero() {
   const [t, locale] = await Promise.all([getTranslations("hero"), getLocale()]);
@@ -45,7 +46,7 @@ export async function Hero() {
               {t("seeWork")}
             </a>
             <Link
-              href={`/${locale}/about`}
+              href={localePath(locale, "/about")}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
             >
               {t("about")}
@@ -123,7 +124,7 @@ export async function Hero() {
             </span>
             <span style={{ color: "var(--text-p-2)" }}>: </span>
             <span style={{ color: "oklch(0.78 0.16 145)" }}>
-              "Full-stack dev"
+              "Software engineer"
             </span>
             <span style={{ color: "var(--text-p-2)" }}>,</span>
             <br />
@@ -193,6 +194,8 @@ export async function Hero() {
             <span style={{ color: "oklch(0.78 0.16 145)" }}>"FR"</span>
             <span style={{ color: "var(--text-p-2)" }}>, </span>
             <span style={{ color: "oklch(0.78 0.16 145)" }}>"EN"</span>
+            <span style={{ color: "var(--text-p-2)" }}>, </span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"NL"</span>
             <span style={{ color: "var(--text-p-2)" }}>],</span>
             <br />
             <span
