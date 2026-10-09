@@ -31,26 +31,13 @@ export default async function PrivacyPolicy() {
       <section className="relative px-6 py-20">
         <div className="w-full max-w-[720px] mx-auto">
           <div className="mb-12">
-            <div
-              className="flex items-center gap-2.5 font-mono text-xs tracking-[0.1em] uppercase mb-3.5"
-              style={{ color: "var(--portfolio-accent)" }}
-            >
-              <span
-                className="w-6 h-px"
-                style={{ background: "var(--portfolio-accent)" }}
-              />
-              Legal
-            </div>
             <h1
               className="text-4xl font-semibold tracking-tight"
               style={{ color: "var(--text-p-0)" }}
             >
               {t("title")}
             </h1>
-            <p
-              className="mt-2 text-sm font-mono"
-              style={{ color: "var(--text-p-3)" }}
-            >
+            <p className="mt-2 text-sm" style={{ color: "var(--text-p-3)" }}>
               {t("lastUpdated")}
             </p>
           </div>

@@ -30,94 +30,77 @@ export default async function UsesPage({ params }: PageProps) {
 
   return (
     <main className="relative overflow-hidden page-bg">
-      <div className="px-8 max-w-[1180px] mx-auto">
-        {/* Hero */}
-        <section className="pt-[60px] pb-8">
+      <div className="px-6 max-w-[1180px] mx-auto pb-20">
+        <section className="pt-24 pb-12">
           <h1
-            className="font-semibold tracking-tight mb-3.5"
-            style={{
-              fontSize: "clamp(40px, 5vw, 64px)",
-              color: "var(--text-p-0)",
-            }}
+            className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[-0.03em] mb-5"
+            style={{ color: "var(--text-p-0)" }}
           >
-            {t("titleBase")}{" "}
-            <span style={{ color: "var(--portfolio-accent)" }}>
-              {t("titleHighlight")}
-            </span>
+            {t("title")}
           </h1>
           <p
-            className="max-w-[680px] text-[17px] leading-relaxed"
+            className="max-w-[60ch] text-[17px] leading-[1.65] m-0"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("pageDesc1")}{" "}
-            <code
-              className="font-mono px-1.5 py-0.5 rounded text-sm"
-              style={{ background: "var(--navy-2)" }}
+            <a
+              href="https://uses.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
             >
               uses.tech
-            </code>
+            </a>
             {t("pageDesc2")}
           </p>
         </section>
 
-        {/* Sections grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-20">
-          {usesData.map((section) => {
-            const title = tr(section, "title") ?? section.titleEn;
-            return (
-              <section key={section.id} className="py-2">
-                <h2
-                  className="flex items-center gap-2.5 text-[22px] font-semibold tracking-tight mb-4"
-                  style={{ color: "var(--text-p-0)" }}
-                >
-                  <span
-                    className="size-7 rounded-lg grid place-items-center font-mono text-sm font-semibold shrink-0"
-                    style={{
-                      background: "var(--portfolio-accent-soft)",
-                      color: "var(--portfolio-accent)",
-                    }}
+        {usesData.map((section) => {
+          const title = tr(section, "title") ?? section.titleEn;
+          return (
+            <section
+              key={section.id}
+              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-x-10 gap-y-4 py-10 border-t"
+              style={{ borderColor: "var(--portfolio-line)" }}
+            >
+              <h2
+                className="text-[17px] font-semibold tracking-tight m-0"
+                style={{ color: "var(--text-p-0)" }}
+              >
+                {title}
+              </h2>
+              <dl className="m-0">
+                {section.items.map((item) => (
+                  <div
+                    key={item.name}
+                    className="grid grid-cols-1 sm:grid-cols-[240px_1fr] gap-x-8 gap-y-1 py-3 first:pt-0"
                   >
-                    {section.icon}
-                  </span>
-                  {title}
-                </h2>
-                <div className="flex flex-col">
-                  {section.items.map((item) => (
-                    <div
-                      key={item.name}
-                      className="grid gap-6 py-4 border-b text-[15px] last:border-b-0"
-                      style={{
-                        gridTemplateColumns: "200px 1fr",
-                        borderColor: "var(--portfolio-line)",
-                      }}
-                    >
-                      <div>
-                        <p
-                          className="font-medium"
-                          style={{ color: "var(--text-p-0)" }}
-                        >
-                          {item.name}
-                        </p>
-                        <p
-                          className="font-mono text-[11px] uppercase tracking-[0.08em] mt-1"
-                          style={{ color: "var(--text-p-3)" }}
-                        >
-                          {item.sub}
-                        </p>
-                      </div>
-                      <p
-                        className="leading-[1.55]"
+                    <dt>
+                      <span
+                        className="block text-[15px] font-medium"
+                        style={{ color: "var(--text-p-0)" }}
+                      >
+                        {item.name}
+                      </span>
+                      <span
+                        className="block text-sm"
                         style={{ color: "var(--text-p-2)" }}
                       >
-                        {tr(item, "why") ?? item.whyEn}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
+                        {item.sub}
+                      </span>
+                    </dt>
+                    <dd
+                      className="m-0 text-[15px] leading-[1.6] max-w-[60ch]"
+                      style={{ color: "var(--text-p-1)" }}
+                    >
+                      {tr(item, "why") ?? item.whyEn}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          );
+        })}
       </div>
     </main>
   );

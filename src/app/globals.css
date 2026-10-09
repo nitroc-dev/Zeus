@@ -18,25 +18,24 @@
   --color-gray-950: #030712;
 
   /* Portfolio navy scale */
-  --color-navy-0: #07090f;
-  --color-navy-1: #0b0f1a;
-  --color-navy-2: #111726;
-  --color-navy-3: #19202f;
+  --color-navy-0: #101113;
+  --color-navy-1: #16171a;
+  --color-navy-2: #1c1d21;
+  --color-navy-3: #24262b;
 
   /* Portfolio text scale */
-  --color-dp-0: #f4f6fb;
-  --color-dp-1: #c7cdd9;
-  --color-dp-2: #8a92a3;
-  --color-dp-3: #5b6273;
+  --color-dp-0: #ededee;
+  --color-dp-1: #c4c6cb;
+  --color-dp-2: #8d9097;
+  --color-dp-3: #6b6e75;
 
   /* Portfolio status */
   --color-dp-ok: oklch(0.74 0.16 145);
   --color-dp-warn: oklch(0.78 0.16 75);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono:
-    var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
-    monospace;
+    var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 @theme inline {
@@ -83,37 +82,31 @@
 /* Portfolio design tokens */
 :root {
   /* Navy background scale - must be in :root, not only @theme, so var(--navy-*) resolves in inline styles */
-  --navy-0: #07090f;
-  --navy-1: #0b0f1a;
-  --navy-2: #111726;
-  --navy-3: #19202f;
+  --navy-0: #101113;
+  --navy-1: #16171a;
+  --navy-2: #1c1d21;
+  --navy-3: #24262b;
 
-  --portfolio-line: rgba(255, 255, 255, 0.07);
-  --portfolio-line-2: rgba(255, 255, 255, 0.12);
-  --portfolio-accent: oklch(0.68 0.18 252);
+  --portfolio-line: rgba(255, 255, 255, 0.08);
+  --portfolio-line-2: rgba(255, 255, 255, 0.14);
+  --portfolio-accent: oklch(0.72 0.11 245);
   --portfolio-accent-soft: color-mix(
     in oklch,
-    oklch(0.68 0.18 252) 18%,
+    oklch(0.72 0.11 245) 14%,
     transparent
   );
   --portfolio-accent-glow: color-mix(
     in oklch,
-    oklch(0.68 0.18 252) 35%,
+    oklch(0.72 0.11 245) 0%,
     transparent
   );
   --portfolio-ok: oklch(0.74 0.16 145);
   --portfolio-warn: oklch(0.78 0.16 75);
   --portfolio-accent-ink: oklch(0.18 0.02 252);
-  --text-p-0: #f4f6fb;
-  --text-p-1: #c7cdd9;
-  --text-p-2: #8a92a3;
-  --text-p-3: #8593ac;
-}
-
-@keyframes cursor-blink {
-  50% {
-    opacity: 0;
-  }
+  --text-p-0: #ededee;
+  --text-p-1: #c4c6cb;
+  --text-p-2: #8d9097;
+  --text-p-3: #8d9097;
 }
 
 :root {
@@ -194,7 +187,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: var(--navy-0);
   }
 }
 
@@ -208,18 +202,7 @@
   display: none;
 }
 
-/* Shared radial gradient background used by all full-page sections */
+/* Shared page background */
 .page-bg {
-  background:
-    radial-gradient(
-      1100px 600px at 80% -10%,
-      color-mix(in oklch, var(--portfolio-accent) 8%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 500px at -10% 120%,
-      color-mix(in oklch, var(--portfolio-accent) 6%, transparent),
-      transparent 60%
-    ),
-    var(--navy-0);
+  background: var(--navy-0);
 }

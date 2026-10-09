@@ -7,9 +7,11 @@ const formatter = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
+  timeZoneName: "short",
 });
 
-const fmt = () => formatter.format(new Date());
+const fmt = () =>
+  formatter.format(new Date()).replace("GMT+1", "CET").replace("GMT+2", "CEST");
 
 function subscribe(callback: () => void) {
   const id = setInterval(callback, 30_000);
@@ -19,5 +21,5 @@ function subscribe(callback: () => void) {
 export function LocalTime() {
   const time = useSyncExternalStore(subscribe, fmt, () => "");
 
-  return <span>{time && `${time} CET`}</span>;
+  return <span>{time}</span>;
 }

@@ -11,21 +11,27 @@
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi, I'm",
     "name": "Corentin",
-    "headline": "I build things for the web.",
     "tagline": "Software engineer in Brussels. I build web and mobile products end to end at Eachstapp, a product agency, from data model to App Store release.",
-    "seeWork": "See my work",
-    "about": "About me"
+    "seeWork": "See projects",
+    "about": "About me",
+    "factRole": "role",
+    "factRoleValue": "Software engineer",
+    "factBased": "based in",
+    "factBasedValue": "Brussels, BE",
+    "factAt": "at",
+    "factStack": "stack",
+    "factSpeaks": "speaks",
+    "factSpeaksValue": "French, English, Dutch",
+    "factBuilding": "building"
   },
   "about": {
     "name": "Corentin",
     "role": "Software Engineer",
     "location": "Brussels, Belgium",
     "contactMe": "Contact me",
-    "bioTitle": "About me",
     "bio": "I'm a software engineer based in Brussels, Belgium. I build web and mobile products end to end, from the data model to the App Store release. At Eachstapp, a Brussels product agency, I work on a B2B SaaS used by 7 mediation services, React Native apps in sports and travel, and the C#/.NET APIs behind them. I studied Computer Science at Haute École Léonard de Vinci.",
-    "bio2": "Outside of work I tinker on side projects, read about web security, and drink too much coffee. I care about readable code, fast feedback loops, and shipping things that actually get used.",
+    "bio2": "Outside of work I build my own tools, mostly desktop apps and homelab software, and read about web security.",
     "languagesTitle": "Languages",
     "french": "French",
     "frenchLevel": "Native",
@@ -33,35 +39,19 @@
     "englishLevel": "Professional",
     "dutch": "Dutch",
     "dutchLevel": "Basic",
-    "learningTitle": "Currently learning",
-    "learningDescription": "Going deeper into Rust through Helios, my Tauri desktop dashboard and launcher.",
-    "learningTech": "Rust",
     "skillsTitle": "Skills",
     "experienceTitle": "Experience",
-    "present": "Present"
+    "present": "Present",
+    "roleLine": "Software engineer in Brussels, Belgium"
   },
   "projects": {
-    "badge": "Selected work",
-    "title": "What I've built",
+    "title": "Projects",
     "description": "A few things I've shipped - web apps, tools, and side projects.",
-    "pageTitle": {
-      "my": "My",
-      "projects": "Projects"
-    },
-    "pageDescription": "A showcase of my work spanning web development, backend systems, and innovative solutions. Each project represents a unique challenge and creative approach.",
-    "callToAction": "Want to see more of my work or discuss a project?",
-    "getInTouched": "Get in Touch",
-    "viewGithub": "View GitHub",
-    "viewAll": "View all projects",
-    "backToProjects": "Back to projects",
-    "detailAbout": "About the project",
-    "detailHighlights": "Key highlights",
     "detailYear": "Year",
     "detailRole": "Role",
     "detailStack": "Tech stack",
     "detailTimeline": "Timeline",
     "detailLighthouse": "Lighthouse",
-    "details": "Details",
     "liveDemo": "Live demo",
     "youAreOnIt": "You're on it",
     "sourceCode": "Source code",
@@ -72,25 +62,26 @@
     "statusInProgress": "In progress",
     "statusArchived": "Archived",
     "contextEyebrow": "Context",
-    "contextTitle": "The problem & the goals",
+    "contextTitle": "Context",
     "problemLabel": "Problem",
     "goalLabel": "Goal",
     "roleEyebrow": "My role",
-    "roleTitle": "What I owned",
+    "roleTitle": "Role",
     "buildEyebrow": "The build",
-    "buildTitle": "Stack & why",
+    "buildTitle": "Stack",
     "buildIntro": "Each choice had to earn its place.",
     "techLabel": "Tech",
     "perfEyebrow": "Performance",
-    "perfTitle": "Lighthouse & web vitals",
+    "perfTitle": "Performance",
     "caseStudyEyebrow": "Case study",
-    "caseStudyTitle": "Deep dive",
+    "caseStudyTitle": "Case study",
     "featuresEyebrow": "What it does",
-    "featuresTitle": "Key features"
+    "featuresTitle": "Features",
+    "detailStatus": "Status",
+    "detailVersion": "Version"
   },
   "currently": {
-    "eyebrow": "Right now",
-    "title": "Currently",
+    "title": "Now",
     "locationLabel": "Location",
     "workingOnLabel": "Working on",
     "workingSince": "since 2026",
@@ -104,14 +95,14 @@
     "learningValue": "Rust"
   },
   "contact": {
-    "eyebrow": "Contact",
     "title": "Get in touch",
     "description": "The fastest way to reach me is email. I'm also on GitHub and LinkedIn.",
     "metaEmailSub": "Replies within 24h",
     "metaLocationLabel": "Brussels, Belgium",
-    "metaLocationSub": "CET · open to remote",
-    "metaGithubSub": "Most code lives here",
-    "metaLinkedinSub": "For the recruiters out there"
+    "metaLocationSub": "Brussels time, open to remote",
+    "metaGithubSub": "Most of my code",
+    "labelEmail": "Email",
+    "labelLocation": "Location"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -125,20 +116,13 @@
     "contactBody": "Questions about this policy? Email me at"
   },
   "footer": {
-    "tagline": "Software engineer based in Brussels.",
-    "allRightsReserved": "All rights reserved.",
-    "privacyPolicy": "Privacy Policy",
-    "navigation": "Navigation",
-    "social": "Social",
-    "legal": "Legal"
+    "tagline": "Software engineer in Brussels.",
+    "privacyPolicy": "Privacy Policy"
   },
   "uses": {
-    "eyebrow": "Setup",
-    "title": "What I use",
-    "titleBase": "What I",
-    "titleHighlight": "use",
-    "pageDesc1": "An honest list of the hardware, software, and small tools I reach for daily. Inspired by",
-    "pageDesc2": ". Updated whenever I actually change something.",
+    "title": "Uses",
+    "pageDesc1": "Hardware, software and tools I use every day. Inspired by",
+    "pageDesc2": ".",
     "description": "The gear, software, and tools I rely on day-to-day for development and design."
   }
 }

@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -12,17 +12,18 @@ import { routing } from "@/i18n/routing";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-plex-sans",
   display: "swap",
+  weight: ["400", "500", "600"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-plex-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400"],
 });
 
 export function generateStaticParams() {
@@ -150,11 +151,10 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`dark ${plexSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preload" href="/profile.png" as="image" />
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD

@@ -2,8 +2,8 @@
 
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
 
 export function Header() {
   const pathname = usePathname();
@@ -21,7 +21,7 @@ export function Header() {
     <header
       className="sticky top-0 z-50 backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)]"
       style={{
-        background: "color-mix(in oklch, var(--navy-0) 85%, transparent)",
+        background: "var(--navy-0)",
         borderBottom: "1px solid var(--portfolio-line)",
       }}
     >
@@ -32,21 +32,10 @@ export function Header() {
         {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 font-semibold tracking-tight no-underline"
+          className="font-semibold no-underline"
           style={{ color: "var(--text-p-0)" }}
           onClick={() => setIsOpen(false)}
         >
-          <span
-            className="size-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--portfolio-accent), color-mix(in oklch, var(--portfolio-accent) 50%, #6b21a8))",
-              boxShadow:
-                "0 0 0 1px var(--portfolio-line-2), 0 4px 12px var(--portfolio-accent-glow)",
-            }}
-          >
-            C
-          </span>
           Corentin
         </Link>
 

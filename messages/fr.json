@@ -11,21 +11,27 @@
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Salut, je suis",
     "name": "Corentin",
-    "headline": "je construis pour le web.",
     "tagline": "Software engineer à Bruxelles. Je construis des produits web et mobiles de bout en bout chez Eachstapp, une agence produit, du modèle de données jusqu'à la publication sur les stores.",
-    "seeWork": "Voir mon travail",
-    "about": "À propos"
+    "seeWork": "Voir les projets",
+    "about": "À propos",
+    "factRole": "rôle",
+    "factRoleValue": "Software engineer",
+    "factBased": "basé à",
+    "factBasedValue": "Bruxelles, BE",
+    "factAt": "chez",
+    "factStack": "stack",
+    "factSpeaks": "langues",
+    "factSpeaksValue": "français, anglais, néerlandais",
+    "factBuilding": "en cours"
   },
   "about": {
     "name": "Corentin",
     "role": "Software Engineer",
     "location": "Bruxelles, Belgique",
     "contactMe": "Me contacter",
-    "bioTitle": "À propos",
     "bio": "Je suis software engineer à Bruxelles, en Belgique. Je construis des produits web et mobiles de bout en bout, du modèle de données jusqu'à la publication sur l'App Store. Chez Eachstapp, une agence produit bruxelloise, je travaille sur un SaaS B2B utilisé par 7 services de médiation, des applications React Native dans le sport et le voyage, et les API C#/.NET qui les alimentent. J'ai étudié l'informatique à la Haute École Léonard de Vinci.",
-    "bio2": "En dehors du travail, je bricole des projets personnels, lis sur la sécurité web et bois trop de café. Je m'intéresse au code lisible, aux boucles de feedback rapides et aux produits qui se font réellement utiliser.",
+    "bio2": "En dehors du travail, je construis mes propres outils, surtout des applications desktop et des logiciels pour mon homelab, et je lis sur la sécurité web.",
     "languagesTitle": "Langues",
     "french": "Français",
     "frenchLevel": "Langue maternelle",
@@ -33,35 +39,19 @@
     "englishLevel": "Professionnel",
     "dutch": "Néerlandais",
     "dutchLevel": "Notions de base",
-    "learningTitle": "En cours d'apprentissage",
-    "learningDescription": "J'approfondis Rust à travers Helios, mon tableau de bord et lanceur desktop en Tauri.",
-    "learningTech": "Rust",
     "skillsTitle": "Compétences",
     "experienceTitle": "Expérience",
-    "present": "Présent"
+    "present": "Présent",
+    "roleLine": "Software engineer à Bruxelles, Belgique"
   },
   "projects": {
-    "badge": "Travaux sélectionnés",
-    "title": "Ce que j'ai construit",
+    "title": "Projets",
     "description": "Quelques projets livrés - applications web, outils et projets personnels.",
-    "pageTitle": {
-      "my": "Mes",
-      "projects": "Projets"
-    },
-    "pageDescription": "Un aperçu de mon travail couvrant le développement web, les systèmes backend et les solutions innovantes. Chaque projet représente un défi unique et une approche créative.",
-    "callToAction": "Vous voulez voir plus de mon travail ou discuter d'un projet ?",
-    "getInTouched": "Me contacter",
-    "viewGithub": "Voir GitHub",
-    "viewAll": "Voir tous les projets",
-    "backToProjects": "Retour aux projets",
-    "detailAbout": "À propos du projet",
-    "detailHighlights": "Points clés",
     "detailYear": "Année",
     "detailRole": "Rôle",
     "detailStack": "Stack technique",
     "detailTimeline": "Durée",
     "detailLighthouse": "Lighthouse",
-    "details": "Détails",
     "liveDemo": "Démo en direct",
     "youAreOnIt": "Vous y êtes",
     "sourceCode": "Code source",
@@ -72,25 +62,26 @@
     "statusInProgress": "En cours",
     "statusArchived": "Archivé",
     "contextEyebrow": "Contexte",
-    "contextTitle": "Le problème & les objectifs",
+    "contextTitle": "Contexte",
     "problemLabel": "Problème",
     "goalLabel": "Objectif",
     "roleEyebrow": "Mon rôle",
-    "roleTitle": "Ce que j'ai géré",
+    "roleTitle": "Rôle",
     "buildEyebrow": "La construction",
-    "buildTitle": "Stack & pourquoi",
+    "buildTitle": "Stack",
     "buildIntro": "Chaque choix devait mériter sa place.",
     "techLabel": "Tech",
     "perfEyebrow": "Performance",
-    "perfTitle": "Lighthouse & performances web",
+    "perfTitle": "Performance",
     "caseStudyEyebrow": "Étude de cas",
-    "caseStudyTitle": "Analyse approfondie",
+    "caseStudyTitle": "Étude de cas",
     "featuresEyebrow": "Fonctionnalités",
-    "featuresTitle": "Fonctionnalités clés"
+    "featuresTitle": "Fonctionnalités",
+    "detailStatus": "Statut",
+    "detailVersion": "Version"
   },
   "currently": {
-    "eyebrow": "En ce moment",
-    "title": "Actuellement",
+    "title": "En ce moment",
     "locationLabel": "Lieu",
     "workingOnLabel": "Projet actuel",
     "workingSince": "depuis 2026",
@@ -104,14 +95,14 @@
     "learningValue": "Rust"
   },
   "contact": {
-    "eyebrow": "Contact",
     "title": "Me contacter",
     "description": "Le moyen le plus rapide de me joindre reste l'email. Je suis aussi sur GitHub et LinkedIn.",
     "metaEmailSub": "Réponse sous 24h",
     "metaLocationLabel": "Bruxelles, Belgique",
-    "metaLocationSub": "CET · ouvert au télétravail",
-    "metaGithubSub": "La plupart du code vit ici",
-    "metaLinkedinSub": "Pour les recruteurs"
+    "metaLocationSub": "Heure de Bruxelles, ouvert au télétravail",
+    "metaGithubSub": "La plupart de mon code",
+    "labelEmail": "E-mail",
+    "labelLocation": "Localisation"
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -125,20 +116,13 @@
     "contactBody": "Une question sur cette politique ? Écrivez-moi à"
   },
   "footer": {
-    "tagline": "Software engineer basé à Bruxelles.",
-    "allRightsReserved": "Tous droits réservés.",
-    "privacyPolicy": "Politique de confidentialité",
-    "navigation": "Navigation",
-    "social": "Social",
-    "legal": "Légal"
+    "tagline": "Software engineer à Bruxelles.",
+    "privacyPolicy": "Politique de confidentialité"
   },
   "uses": {
-    "eyebrow": "Setup",
-    "title": "Ce que j'utilise",
-    "titleBase": "Ce que j'",
-    "titleHighlight": "utilise",
-    "pageDesc1": "Une liste honnête du matériel, des logiciels et des outils que j'utilise au quotidien. Inspiré par",
-    "pageDesc2": ". Mis à jour dès que je change quelque chose.",
+    "title": "Outils",
+    "pageDesc1": "Le matériel, les logiciels et les outils que j'utilise au quotidien. Inspiré par",
+    "pageDesc2": ".",
     "description": "Le matériel, les logiciels et les outils sur lesquels je m'appuie au quotidien."
   }
 }

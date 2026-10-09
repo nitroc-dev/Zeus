@@ -176,8 +176,8 @@ export const projects: Project[] = [
 export const skillCategories: SkillCategoryData[] = [
   {
     id: "languages",
-    labelEn: "Programming Languages",
-    labelFr: "Langages de Programmation",
+    labelEn: "Languages",
+    labelFr: "Langages",
     technologies: [
       "TypeScript",
       "JavaScript",
@@ -191,8 +191,8 @@ export const skillCategories: SkillCategoryData[] = [
   },
   {
     id: "frameworks",
-    labelEn: "Frameworks & Libraries",
-    labelFr: "Frameworks & Bibliothèques",
+    labelEn: "Frameworks and libraries",
+    labelFr: "Frameworks et bibliothèques",
     technologies: [
       "React",
       "Next.js",
@@ -204,8 +204,8 @@ export const skillCategories: SkillCategoryData[] = [
   },
   {
     id: "tools",
-    labelEn: "Tools & Databases",
-    labelFr: "Outils & Bases de données",
+    labelEn: "Tools and databases",
+    labelFr: "Outils et bases de données",
     technologies: [
       "PostgreSQL",
       "SQL Server",
@@ -275,13 +275,12 @@ export const experiences: ExperienceData[] = [
 export const usesSections: UseSectionData[] = [
   {
     id: "hardware",
-    icon: "🖥️",
     titleEn: "Hardware",
     titleFr: "Matériel",
     items: [
       {
         name: "Custom PC",
-        sub: "Windows Desktop",
+        sub: "Windows desktop",
         whyEn:
           "Custom-built Windows desktop - AMD Ryzen 7 3700X, RTX 2060 Super, 32 GB RAM.",
         whyFr:
@@ -289,7 +288,7 @@ export const usesSections: UseSectionData[] = [
       },
       {
         name: 'Samsung Odyssey G7 28"',
-        sub: "4K Monitor",
+        sub: "4K monitor",
         whyEn:
           "LS28AG700N - 4K at 144Hz. Sharp text for code and plenty of room for side-by-side layouts.",
         whyFr:
@@ -313,9 +312,8 @@ export const usesSections: UseSectionData[] = [
   },
   {
     id: "editor",
-    icon: "⌨️",
-    titleEn: "Editor & Terminal",
-    titleFr: "Éditeur & Terminal",
+    titleEn: "Editor and terminal",
+    titleFr: "Éditeur et terminal",
     items: [
       {
         name: "VS Code",
@@ -350,8 +348,7 @@ export const usesSections: UseSectionData[] = [
   },
   {
     id: "software",
-    icon: "🛠️",
-    titleEn: "Daily Software",
+    titleEn: "Daily software",
     titleFr: "Logiciels quotidiens",
     items: [
       {
@@ -380,8 +377,7 @@ export const usesSections: UseSectionData[] = [
   },
   {
     id: "devstack",
-    icon: "⚡",
-    titleEn: "Dev Stack",
+    titleEn: "Dev stack",
     titleFr: "Stack de développement",
     items: [
       {
@@ -393,7 +389,7 @@ export const usesSections: UseSectionData[] = [
       },
       {
         name: "React",
-        sub: "UI Library",
+        sub: "UI library",
         whyEn:
           "Component model for all frontends. Combined with Next.js or standalone.",
         whyFr:
@@ -428,7 +424,6 @@ export const usesSections: UseSectionData[] = [
   },
   {
     id: "homelab",
-    icon: "🗄️",
     titleEn: "Homelab",
     titleFr: "Homelab",
     items: [

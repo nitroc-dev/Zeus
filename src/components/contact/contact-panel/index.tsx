@@ -1,122 +1,92 @@
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 export async function ContactPanel() {
   const t = await getTranslations("contact");
 
-  const metaItems = [
+  const rows = [
     {
+      label: t("labelEmail"),
+      value: "contact@nitroc.xyz",
       href: "mailto:contact@nitroc.xyz",
-      icon: <Mail className="size-4" />,
-      label: "contact@nitroc.xyz",
-      sub: t("metaEmailSub"),
+      note: t("metaEmailSub"),
     },
     {
-      href: null,
-      icon: <MapPin className="size-4" />,
-      label: t("metaLocationLabel"),
-      sub: t("metaLocationSub"),
-    },
-    {
+      label: "GitHub",
+      value: "github.com/nitroc-dev",
       href: "https://github.com/nitroc-dev",
-      icon: <Github className="size-4" />,
-      label: "github.com/nitroc-dev",
-      sub: t("metaGithubSub"),
+      note: t("metaGithubSub"),
     },
     {
+      label: "LinkedIn",
+      value: "linkedin.com/in/corentin-d",
       href: "https://www.linkedin.com/in/corentin-d-02472724b",
-      icon: <Linkedin className="size-4" />,
-      label: "linkedin.com/in/corentin-d",
-      sub: t("metaLinkedinSub"),
+      note: null,
+    },
+    {
+      label: t("labelLocation"),
+      value: t("metaLocationLabel"),
+      href: null,
+      note: t("metaLocationSub"),
     },
   ];
 
   return (
     <main className="relative overflow-hidden page-bg flex items-center min-h-[calc(100svh-60px)]">
-      <section className="w-full px-6 sm:px-8 py-16 max-w-[720px] mx-auto">
-        <div
-          className="flex items-center gap-2.5 font-mono text-xs tracking-[0.1em] uppercase mb-3.5"
-          style={{ color: "var(--portfolio-accent)" }}
-        >
-          <span
-            className="w-6 h-px"
-            style={{ background: "var(--portfolio-accent)" }}
-          />
-          {t("eyebrow")}
-        </div>
+      <section className="w-full px-6 py-16 max-w-[1180px] mx-auto">
         <h1
-          className="font-semibold tracking-tight mb-5"
-          style={{
-            fontSize: "clamp(40px, 5vw, 64px)",
-            lineHeight: "1.05",
-            color: "var(--text-p-0)",
-          }}
+          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[-0.03em] mb-5"
+          style={{ color: "var(--text-p-0)" }}
         >
           {t("title")}
         </h1>
         <p
-          className="text-[17px] mb-10 max-w-[520px] leading-relaxed"
+          className="text-[19px] leading-[1.5] mb-12 max-w-[48ch]"
           style={{ color: "var(--text-p-1)" }}
         >
           {t("description")}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {metaItems.map(({ href, icon, label, sub }) => {
-            const inner = (
-              <>
-                <span
-                  className="size-8 rounded-lg grid place-items-center shrink-0"
-                  style={{
-                    background: "var(--portfolio-accent-soft)",
-                    color: "var(--portfolio-accent)",
-                  }}
-                >
-                  {icon}
-                </span>
-                <div className="min-w-0">
-                  <b
-                    className="block text-sm font-medium truncate"
-                    style={{ color: "var(--text-p-0)" }}
-                  >
-                    {label}
-                  </b>
-                  <small
-                    className="font-mono text-xs"
-                    style={{ color: "var(--text-p-2)" }}
-                  >
-                    {sub}
-                  </small>
-                </div>
-              </>
-            );
-            const cls =
-              "flex items-center gap-3 px-4 py-3 rounded-[10px] transition-colors text-sm border";
-            const baseStyle = { background: "var(--navy-1)" };
-            return href ? (
-              <Link
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  href.startsWith("http") ? "noopener noreferrer" : undefined
-                }
-                className={`${cls} border-[var(--portfolio-line)] hover:border-[var(--portfolio-accent)]`}
-                style={baseStyle}
-              >
-                {inner}
-              </Link>
-            ) : (
+        <dl
+          className="m-0 max-w-[760px]"
+          style={{ borderTop: "1px solid var(--portfolio-line)" }}
+        >
+          {rows.map(({ label, value, href, note }) => {
+            const external = href?.startsWith("http");
+            return (
               <div
                 key={label}
-                className={`${cls} border-[var(--portfolio-line)]`}
-                style={baseStyle}
+                className="grid grid-cols-1 sm:grid-cols-[140px_1fr_auto] gap-x-8 gap-y-1 py-4 border-b items-baseline"
+                style={{ borderColor: "var(--portfolio-line)" }}
               >
-                {inner}
+                <dt className="text-sm" style={{ color: "var(--text-p-2)" }}>
+                  {label}
+                </dt>
+                <dd className="m-0 text-[17px]">
+                  {href ? (
+                    <a
+                      href={href}
+                      target={external ? "_blank" : undefined}
+                      rel={external ? "noopener noreferrer" : undefined}
+                      className="underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
+                      style={{ color: "var(--text-p-0)" }}
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    <span style={{ color: "var(--text-p-0)" }}>{value}</span>
+                  )}
+                </dd>
+                {note && (
+                  <dd
+                    className="m-0 text-sm sm:text-right"
+                    style={{ color: "var(--text-p-2)" }}
+                  >
+                    {note}
+                  </dd>
+                )}
               </div>
             );
           })}
-        </div>
+        </dl>
       </section>
     </main>
   );

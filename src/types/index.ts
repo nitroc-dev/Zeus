@@ -55,7 +55,6 @@ export interface UseItemData {
 
 export interface UseSectionData {
   id: string;
-  icon: string;
   titleEn: string;
   titleFr: string;
   items: UseItemData[];
