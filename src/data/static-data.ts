@@ -21,15 +21,23 @@ export const projects: Project[] = [
     longDescriptionFr:
       "Zeus est mon portfolio personnel, conçu pour présenter mon travail, mes compétences et mon parcours. Il propose un design sombre avec un héros en style terminal, une interface bilingue (EN/FR), une vitrine de projets, et une page /uses.",
     websiteUrl: "https://nitroc.xyz",
+    problemEn:
+      "My old portfolio was a generic template that didn't show how I actually build.",
+    problemFr:
+      "Mon ancien portfolio était un template générique qui ne montrait pas ma façon de construire.",
+    goalEn:
+      "A fast, bilingual site that presents my work clearly, with no backend to maintain.",
+    goalFr:
+      "Un site rapide et bilingue qui présente clairement mon travail, sans backend à maintenir.",
     repositoryUrl: "https://github.com/nitroc-dev/zeus",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     techStack: [
       {
         name: "Next.js",
         reasonEn:
-          "Chosen over Astro for its built-in image optimisation and ISR. Static generation means zero server runtime - the whole site serves from Vercel's CDN at no cost.",
+          "App Router and server components render almost everything on the server, and next-intl plugs straight into them for EN/FR. Deployed on Vercel with no backend to maintain.",
         reasonFr:
-          "Préféré à Astro pour son pipeline d'optimisation d'images et l'ISR. La génération statique élimine tout runtime serveur - le site est servi depuis le CDN de Vercel sans coût.",
+          "L'App Router et les server components rendent presque tout côté serveur, et next-intl s'y intègre directement pour l'EN/FR. Déployé sur Vercel, sans backend à maintenir.",
       },
       {
         name: "TypeScript",
@@ -56,7 +64,7 @@ export const projects: Project[] = [
     highlights: [
       "Bilingual EN/FR with next-intl",
       "100 Lighthouse score across all categories",
-      "Fully static - no server runtime needed",
+      "No backend: no forms, database or API routes",
       "Terminal-styled hero card",
     ],
     year: "2026",
@@ -65,7 +73,7 @@ export const projects: Project[] = [
     isFeatured: true,
     lighthouseScore: "100 · 100 · 100 · 100",
     timeline: "2 weeks",
-    version: "v2.0",
+    version: "v2.1",
     category: "portfolio",
   },
   {
@@ -73,51 +81,86 @@ export const projects: Project[] = [
     nameEn: "Helios",
     nameFr: "Helios",
     descriptionEn:
-      "A personal desktop dashboard built with Tauri 2 and React. 28+ plugin widgets, Kanban project management, network topology graph, and system monitoring.",
+      "My personal day dashboard and Raycast replacement, built with Tauri 2, Rust and React. Today, Week and Money spaces, plus a launcher on the Windows key.",
     descriptionFr:
-      "Un tableau de bord bureau personnel construit avec Tauri 2 et React. 28+ widgets, gestion de projets Kanban, graphe réseau interactif et surveillance système.",
+      "Mon tableau de bord quotidien et remplaçant de Raycast, construit avec Tauri 2, Rust et React. Espaces Today, Week et Money, plus un lanceur sur la touche Windows.",
     longDescriptionEn:
-      "Helios is a self-hosted desktop dashboard built on Tauri 2 (Rust backend) and React 19. It features a drag-and-drop widget grid, a 28-plugin ecosystem covering system stats, Docker monitoring, RSS feeds, notes, finance, and more. It also includes a full Kanban project management system, an interactive network topology graph, and a remote agent for monitoring headless servers.",
+      "Helios is a native Windows app that runs my day. It's organised as spaces: Today (now/next, calendar, tasks, habits, spending, morning plan and evening review), Week (a 7-day board of events and due tasks) and Money (hand-entered transactions, budgets and subscriptions), built from 21 widgets that can go on any space. A second hidden window replaces Raycast: tap the Windows key for apps, files, a calculator, web search, clipboard history, timers and quick task or expense capture. Everything stays local: SQLite, no server, no account.",
     longDescriptionFr:
-      "Helios est un tableau de bord bureau auto-hébergé construit sur Tauri 2 (backend Rust) et React 19. Il propose une grille de widgets glisser-déposer, un écosystème de 28 plugins couvrant les stats système, Docker, les flux RSS, les notes, la finance et bien plus. Il inclut également un système de gestion de projets Kanban, un graphe de topologie réseau interactif et un agent distant pour surveiller des serveurs headless.",
+      "Helios est une application Windows native qui organise ma journée. Elle est structurée en espaces : Today (maintenant/ensuite, agenda, tâches, habitudes, dépenses, plan du matin et bilan du soir), Week (un tableau de 7 jours avec événements et tâches à échéance) et Money (transactions saisies à la main, budgets et abonnements), composés de 21 widgets placables sur n'importe quel espace. Une seconde fenêtre cachée remplace Raycast : une pression sur la touche Windows donne accès aux applications, fichiers, calculatrice, recherche web, historique du presse-papiers, minuteurs et à la saisie rapide de tâches ou de dépenses. Tout reste local : SQLite, pas de serveur, pas de compte.",
+    problemEn:
+      "My day was spread across a calendar, a to-do app, a budgeting sheet and Raycast, none of which talked to each other.",
+    problemFr:
+      "Ma journée était éparpillée entre un agenda, une app de tâches, un tableur de budget et Raycast, sans aucun lien entre eux.",
+    goalEn:
+      "One local app that shows the day at a glance and is one keypress away from anywhere.",
+    goalFr:
+      "Une seule app locale qui montre la journée d'un coup d'œil, accessible d'une seule touche depuis n'importe où.",
     repositoryUrl: "https://github.com/nitroc-dev/helios",
-    tags: ["Tauri 2", "React 19", "Rust", "TypeScript"],
+    tags: ["Tauri 2", "Rust", "React 19", "TypeScript", "SQLite"],
     techStack: [
       {
         name: "Tauri 2",
         reasonEn:
-          "Electron was ruled out - a 150 MB Node.js runtime for a local dashboard is overkill. Tauri's Rust core produces a ~5 MB binary with direct access to system APIs at near-native speed.",
+          "Electron ships a full Chromium and Node runtime for what is a local tool. Tauri gives a small native binary, a tray icon and two windows (dashboard and launcher) from one bundle.",
         reasonFr:
-          "Electron a été écarté - un runtime Node.js de 150 Mo pour un tableau de bord local, c'est excessif. Le core Rust de Tauri produit un binaire de ~5 Mo avec un accès direct aux APIs système.",
-      },
-      {
-        name: "React 19",
-        reasonEn:
-          "Each plugin widget is an isolated React component - adding a new plugin means dropping a single file. React 19's concurrent rendering keeps the grid responsive during heavy data fetches.",
-        reasonFr:
-          "Chaque widget est un composant React isolé - ajouter un plugin revient à déposer un seul fichier. Le rendu concurrent de React 19 maintient la réactivité du dashboard lors des fetchs lourds.",
+          "Electron embarque tout Chromium et Node pour ce qui reste un outil local. Tauri fournit un petit binaire natif, une icône dans la zone de notification et deux fenêtres (tableau de bord et lanceur) à partir d'un seul bundle.",
       },
       {
         name: "Rust",
         reasonEn:
-          "System metrics and Docker socket calls require a compiled backend. Rust's ownership model prevents the memory bugs that would crash a long-running dashboard daemon.",
+          "Owns the data layer and the Windows integration: a low-level keyboard hook for the bare Windows-key hotkey, media controls and Start-menu app icons through the windows crate.",
         reasonFr:
-          "Les métriques système et les appels au socket Docker nécessitent un backend compilé. Le modèle d'ownership de Rust empêche les bugs mémoire qui crasheraient un daemon de longue durée.",
+          "Gère la couche de données et l'intégration Windows : un hook clavier bas niveau pour le raccourci sur la seule touche Windows, les contrôles média et les icônes d'applications du menu Démarrer via la crate windows.",
+      },
+      {
+        name: "React 19",
+        reasonEn:
+          "Every widget is a self-contained component registered once and placeable on any space; layouts persist per space.",
+        reasonFr:
+          "Chaque widget est un composant autonome, enregistré une seule fois et placable sur n'importe quel espace ; les dispositions sont conservées par espace.",
       },
       {
         name: "SQLite",
         reasonEn:
-          "No database server to install or manage - the app bundles its own persistence layer. Users install once and run, with no setup wizard or connection string.",
+          "All data lives in one local file. Money is stored as integer cents, and domain logic takes a connection so it's tested against an in-memory database.",
         reasonFr:
-          "Pas de serveur de base de données à installer - l'app embarque sa propre couche de persistance. Installation unique, zéro wizard de configuration ni chaîne de connexion.",
+          "Toutes les données vivent dans un seul fichier local. Les montants sont stockés en centimes entiers, et la logique métier reçoit une connexion pour être testée sur une base en mémoire.",
       },
     ],
     highlights: [
-      "28+ plugin widgets (system stats, Docker, RSS, notes, finance…)",
-      "Drag-and-drop grid dashboard",
-      "Kanban project management",
-      "Interactive network topology graph",
+      "Today, Week and Money spaces built from 21 widgets",
+      "Launcher on the bare Windows key, replacing Raycast",
+      "Recurring tasks, habits and subscriptions handled in Rust",
+      "Unit-tested domain logic in Rust and TypeScript",
     ],
+    year: "2026",
+    status: "in_progress",
+    role: "Solo",
+    isFeatured: true,
+    timeline: "Ongoing",
+    version: "v0.1",
+    category: "tool",
+  },
+  {
+    id: "selene",
+    nameEn: "Selene",
+    nameFr: "Selene",
+    descriptionEn:
+      "A native homelab dashboard split out of Helios: servers, services, containers and network on one page. Work in progress.",
+    descriptionFr:
+      "Un tableau de bord homelab natif issu de Helios : serveurs, services, conteneurs et réseau sur une seule page. En cours de développement.",
+    longDescriptionEn:
+      "Selene is the homelab counterpart to Helios: a Tauri desktop app that pulls the status of servers, services, containers, network and certificates into a single overview. It's under active development, so details are coming later.",
+    longDescriptionFr:
+      "Selene est le pendant homelab de Helios : une application desktop Tauri qui rassemble l'état des serveurs, services, conteneurs, du réseau et des certificats dans une seule vue d'ensemble. Elle est en développement actif, les détails arriveront plus tard.",
+    problemEn: "Homelab status was spread across a dozen separate admin UIs.",
+    problemFr:
+      "L'état du homelab était éparpillé dans une dizaine d'interfaces d'administration.",
+    goalEn: 'One native window that answers "is everything OK?" at a glance.',
+    goalFr:
+      "Une seule fenêtre native qui répond à « tout va bien ? » d'un coup d'œil.",
+    tags: ["Tauri 2", "Rust", "React 19", "TypeScript"],
     year: "2026",
     status: "in_progress",
     role: "Solo",

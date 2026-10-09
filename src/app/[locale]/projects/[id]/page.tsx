@@ -66,6 +66,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const description = tr(project, "description") ?? project.descriptionEn;
   const longDescription = tr(project, "longDescription") ?? project.longDescriptionEn;
   const content = tr(project, "content");
+  const problem = tr(project, "problem") ?? project.problemEn;
+  const goal = tr(project, "goal") ?? project.goalEn;
 
   const statusColor = project.status ? STATUS_COLORS[project.status] : null;
   const statusLabels: Record<string, string> = {
@@ -83,7 +85,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const currentIdx = featured.findIndex((p) => p.id === id);
   const nextRaw = featured.length > 1 ? featured[(currentIdx + 1) % featured.length] : null;
 
-  const stackItems = project.techStack ?? project.tags?.map((n) => ({ name: n, reasonEn: "", reasonFr: "" })) ?? [];
+  const stackItems = project.techStack ?? [];
 
   const projectJsonLd = {
     "@context": "https://schema.org",
@@ -134,10 +136,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <p className="leading-[1.7] mb-6 max-w-[720px]" style={{ fontSize: "16px", color: "var(--text-p-1)" }}>
                 {longDescription ?? description}
               </p>
-              {project.highlights && project.highlights.length >= 2 && (
+              {problem && goal && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
-                  <Pillar label={t("problemLabel")} value={project.highlights[0]} />
-                  <Pillar label={t("goalLabel")} value={project.highlights[1]} />
+                  <Pillar label={t("problemLabel")} value={problem} />
+                  <Pillar label={t("goalLabel")} value={goal} />
                 </div>
               )}
             </Section>
@@ -148,17 +150,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               <p className="leading-[1.7] mb-4 max-w-[720px]" style={{ fontSize: "16px", color: "var(--text-p-1)" }}>
                 {project.role}
               </p>
-              {project.highlights && project.highlights.length > 2 && (
-                <ul className="space-y-2 mt-4 pl-5" style={{ listStyleType: "disc" }}>
-                  {project.highlights.slice(2).map((h) => (
-                    <li key={h} className="text-[16px] leading-[1.7]" style={{ color: "var(--text-p-1)" }}>{h}</li>
-                  ))}
-                </ul>
-              )}
             </Section>
           )}
 
-          <ProjectStack stackItems={stackItems} locale={locale} t={t} />
+          {stackItems.length > 0 && <ProjectStack stackItems={stackItems} locale={locale} t={t} />}
 
           {lhScores.length > 0 && (
             <Section eyebrow={t("perfEyebrow")} title={t("perfTitle")}>

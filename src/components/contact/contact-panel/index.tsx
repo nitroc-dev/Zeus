@@ -33,8 +33,8 @@ export async function ContactPanel() {
   ];
 
   return (
-    <main className="relative overflow-hidden page-bg">
-      <section className="px-6 sm:px-8 pt-[60px] pb-24 max-w-[720px] mx-auto">
+    <main className="relative overflow-hidden page-bg flex items-center min-h-[calc(100svh-60px)]">
+      <section className="w-full px-6 sm:px-8 py-16 max-w-[720px] mx-auto">
         <div
           className="flex items-center gap-2.5 font-mono text-xs tracking-[0.1em] uppercase mb-3.5"
           style={{ color: "var(--portfolio-accent)" }}
