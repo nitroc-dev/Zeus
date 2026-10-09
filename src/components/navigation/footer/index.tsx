@@ -23,7 +23,7 @@ export async function Footer() {
       className="mt-auto"
       style={{ borderTop: "1px solid var(--portfolio-line)" }}
     >
-      <div className="max-w-[1180px] mx-auto px-6 py-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-sm">
+      <div className="max-w-[1180px] mx-auto px-6 py-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[length:var(--fs-2)]">
         <p className="m-0" style={{ color: "var(--text-p-2)" }}>
           &copy; {new Date().getFullYear()} Corentin. {tFooter("tagline")}
         </p>

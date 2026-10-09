@@ -26,39 +26,48 @@ export async function ProjectsList({
           <Link
             key={project.id}
             href={localePath(locale, `/projects/${project.id}`)}
-            className="group grid grid-cols-1 md:grid-cols-[1fr_220px_110px] gap-x-10 gap-y-2 py-6 border-b no-underline"
+            className="group grid grid-cols-1 md:grid-cols-[1fr_auto_110px_24px] gap-x-10 gap-y-2 py-6 border-b no-underline"
             style={{ borderColor: "var(--portfolio-line)", color: "inherit" }}
           >
             <div className="min-w-0">
               <h3
-                className="text-[22px] font-semibold tracking-tight mb-1 leading-tight underline-offset-4 decoration-1 group-hover:underline"
+                className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] mb-1 leading-tight underline-offset-4 decoration-1 group-hover:underline"
                 style={{ color: "var(--text-p-0)" }}
               >
                 {name}
               </h3>
               <p
-                className="text-[15px] leading-relaxed m-0 max-w-[62ch]"
+                className="text-[length:var(--fs-3)] leading-relaxed m-0 max-w-[62ch]"
                 style={{ color: "var(--text-p-2)" }}
               >
                 {description}
               </p>
             </div>
 
-            <p
-              className="hidden md:block text-sm leading-relaxed m-0 pt-1.5"
-              style={{ color: "var(--text-p-2)" }}
-            >
-              {(project.tags ?? []).slice(0, 3).join(", ")}
-            </p>
+            <div className="hidden md:flex flex-wrap gap-1.5 self-center justify-end">
+              {(project.tags ?? []).slice(0, 3).map((tag) => (
+                <span key={tag} className="ds-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
 
             <p
-              className="text-sm m-0 md:pt-1.5 md:text-right"
+              className="text-[length:var(--fs-2)] m-0 md:self-center md:text-right"
               style={{
                 color: inProgress ? "var(--portfolio-warn)" : "var(--text-p-2)",
               }}
             >
               {inProgress ? t("statusInProgress") : project.year}
             </p>
+
+            <span
+              aria-hidden="true"
+              className="hidden md:block self-center text-[length:var(--fs-4)] transition-transform duration-150 group-hover:translate-x-1"
+              style={{ color: "var(--text-p-2)" }}
+            >
+              →
+            </span>
           </Link>
         );
       })}

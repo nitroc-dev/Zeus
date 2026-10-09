@@ -33,13 +33,13 @@ export default async function UsesPage({ params }: PageProps) {
       <div className="px-6 max-w-[1180px] mx-auto pb-20">
         <section className="pt-24 pb-12">
           <h1
-            className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[-0.03em] mb-5"
+            className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
             style={{ color: "var(--text-p-0)" }}
           >
             {t("title")}
           </h1>
           <p
-            className="max-w-[60ch] text-[17px] leading-[1.65] m-0"
+            className="max-w-[60ch] text-[length:var(--fs-4)] leading-[1.65] m-0"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("pageDesc1")}{" "}
@@ -64,7 +64,7 @@ export default async function UsesPage({ params }: PageProps) {
               style={{ borderColor: "var(--portfolio-line)" }}
             >
               <h2
-                className="text-[17px] font-semibold tracking-tight m-0"
+                className="text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] m-0"
                 style={{ color: "var(--text-p-0)" }}
               >
                 {title}
@@ -77,20 +77,20 @@ export default async function UsesPage({ params }: PageProps) {
                   >
                     <dt>
                       <span
-                        className="block text-[15px] font-medium"
+                        className="block text-[length:var(--fs-3)] font-medium"
                         style={{ color: "var(--text-p-0)" }}
                       >
                         {item.name}
                       </span>
                       <span
-                        className="block text-sm"
+                        className="block text-[length:var(--fs-2)]"
                         style={{ color: "var(--text-p-2)" }}
                       >
                         {item.sub}
                       </span>
                     </dt>
                     <dd
-                      className="m-0 text-[15px] leading-[1.6] max-w-[60ch]"
+                      className="m-0 text-[length:var(--fs-3)] leading-[1.6] max-w-[60ch]"
                       style={{ color: "var(--text-p-1)" }}
                     >
                       {tr(item, "why") ?? item.whyEn}

@@ -19,33 +19,26 @@ export async function Hero() {
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-end">
         <div>
           <h1
-            className="text-[clamp(56px,8vw,104px)] leading-[0.95] font-semibold tracking-[-0.03em] mb-8"
+            className="text-[clamp(48px,7vw,88px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-8"
             style={{ color: "var(--text-p-0)" }}
           >
             {t("name")}
           </h1>
 
           <p
-            className="text-[20px] leading-[1.5] mb-9 max-w-[34ch]"
+            className="text-[length:var(--fs-4)] leading-[1.5] mb-9 max-w-[34ch]"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("tagline")}
           </p>
 
           <div className="flex gap-3 flex-wrap">
-            <a
-              href="#projects"
-              className="inline-flex items-center px-4 py-2.5 rounded-md text-sm font-medium transition-colors hover:brightness-110"
-              style={{
-                background: "var(--portfolio-accent)",
-                color: "var(--portfolio-accent-ink)",
-              }}
-            >
+            <a href="#projects" className="ds-btn ds-btn--lg ds-btn--primary">
               {t("seeWork")}
             </a>
             <Link
               href={localePath(locale, "/about")}
-              className="inline-flex items-center px-4 py-2.5 rounded-md text-sm font-medium transition-colors border border-[var(--portfolio-line-2)] text-[var(--text-p-0)] hover:bg-[var(--navy-2)]"
+              className="ds-btn ds-btn--lg ds-btn--secondary"
             >
               {t("about")}
             </Link>
@@ -53,7 +46,7 @@ export async function Hero() {
         </div>
 
         <dl
-          className="hidden lg:grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 font-mono text-[13px] leading-[1.5] pl-6"
+          className="hidden lg:grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 font-mono text-[length:var(--fs-2)] leading-[1.5] pl-6"
           style={{ borderLeft: "1px solid var(--portfolio-line-2)" }}
         >
           {facts.map(({ label, value }) => (

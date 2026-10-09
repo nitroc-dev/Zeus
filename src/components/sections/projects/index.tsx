@@ -10,7 +10,7 @@ export async function Projects() {
   return (
     <section id="projects" className="px-6 py-16 w-full max-w-[1180px] mx-auto">
       <h2
-        className="text-[28px] font-semibold tracking-tight mb-6"
+        className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] mb-6"
         style={{ color: "var(--text-p-0)" }}
       >
         {t("title")}

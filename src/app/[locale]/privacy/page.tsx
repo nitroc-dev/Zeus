@@ -32,12 +32,15 @@ export default async function PrivacyPolicy() {
         <div className="w-full max-w-[720px] mx-auto">
           <div className="mb-12">
             <h1
-              className="text-4xl font-semibold tracking-tight"
+              className="text-4xl font-semibold tracking-[var(--tracking-title)]"
               style={{ color: "var(--text-p-0)" }}
             >
               {t("title")}
             </h1>
-            <p className="mt-2 text-sm" style={{ color: "var(--text-p-3)" }}>
+            <p
+              className="mt-2 text-[length:var(--fs-2)]"
+              style={{ color: "var(--text-p-3)" }}
+            >
               {t("lastUpdated")}
             </p>
           </div>
@@ -52,7 +55,7 @@ export default async function PrivacyPolicy() {
             ).map(([title, body]) => (
               <section key={title} className="space-y-3">
                 <h2
-                  className="text-lg font-semibold"
+                  className="text-[length:var(--fs-4)] font-semibold"
                   style={{ color: "var(--text-p-0)" }}
                 >
                   {t(title)}
@@ -62,7 +65,7 @@ export default async function PrivacyPolicy() {
             ))}
             <section className="space-y-3">
               <h2
-                className="text-lg font-semibold"
+                className="text-[length:var(--fs-4)] font-semibold"
                 style={{ color: "var(--text-p-0)" }}
               >
                 {t("contactTitle")}

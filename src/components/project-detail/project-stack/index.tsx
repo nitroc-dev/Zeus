@@ -15,14 +15,14 @@ export function ProjectStack({ stackItems, locale, t }: ProjectStackProps) {
               className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-x-8 gap-y-1"
             >
               <dt
-                className="text-[15px] font-medium"
+                className="text-[length:var(--fs-3)] font-medium"
                 style={{ color: "var(--text-p-0)" }}
               >
                 {item.name}
               </dt>
               {reason && (
                 <dd
-                  className="m-0 text-[15px] leading-[1.6] max-w-[64ch]"
+                  className="m-0 text-[length:var(--fs-3)] leading-[1.6] max-w-[64ch]"
                   style={{ color: "var(--text-p-1)" }}
                 >
                   {reason}

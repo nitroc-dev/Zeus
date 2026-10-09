@@ -34,13 +34,13 @@ export async function ContactPanel() {
     <main className="relative overflow-hidden page-bg flex items-center min-h-[calc(100svh-60px)]">
       <section className="w-full px-6 py-16 max-w-[1180px] mx-auto">
         <h1
-          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[-0.03em] mb-5"
+          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
           style={{ color: "var(--text-p-0)" }}
         >
           {t("title")}
         </h1>
         <p
-          className="text-[19px] leading-[1.5] mb-12 max-w-[48ch]"
+          className="text-[length:var(--fs-4)] leading-[1.5] mb-12 max-w-[48ch]"
           style={{ color: "var(--text-p-1)" }}
         >
           {t("description")}
@@ -57,10 +57,13 @@ export async function ContactPanel() {
                 className="grid grid-cols-1 sm:grid-cols-[140px_1fr_auto] gap-x-8 gap-y-1 py-4 border-b items-baseline"
                 style={{ borderColor: "var(--portfolio-line)" }}
               >
-                <dt className="text-sm" style={{ color: "var(--text-p-2)" }}>
+                <dt
+                  className="text-[length:var(--fs-2)]"
+                  style={{ color: "var(--text-p-2)" }}
+                >
                   {label}
                 </dt>
-                <dd className="m-0 text-[17px]">
+                <dd className="m-0 text-[length:var(--fs-4)]">
                   {href ? (
                     <a
                       href={href}
@@ -77,7 +80,7 @@ export async function ContactPanel() {
                 </dd>
                 {note && (
                   <dd
-                    className="m-0 text-sm sm:text-right"
+                    className="m-0 text-[length:var(--fs-2)] sm:text-right"
                     style={{ color: "var(--text-p-2)" }}
                   >
                     {note}

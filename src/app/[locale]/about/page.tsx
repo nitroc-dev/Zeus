@@ -52,7 +52,8 @@ export default async function AboutPage({ params }: PageProps) {
   const sectionCls =
     "grid grid-cols-1 md:grid-cols-[200px_1fr] gap-x-10 gap-y-4 py-10 border-t";
   const sectionStyle = { borderColor: "var(--portfolio-line)" };
-  const labelCls = "text-[17px] font-semibold tracking-tight m-0";
+  const labelCls =
+    "text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] m-0";
 
   return (
     <main className="relative overflow-hidden page-bg">
@@ -66,13 +67,13 @@ export default async function AboutPage({ params }: PageProps) {
 
         <section className="pb-12 max-w-[68ch]">
           <p
-            className="text-[17px] leading-[1.65] mt-0 mb-4"
+            className="text-[length:var(--fs-4)] leading-[1.65] mt-0 mb-4"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("bio")}
           </p>
           <p
-            className="text-[17px] leading-[1.65] m-0"
+            className="text-[length:var(--fs-4)] leading-[1.65] m-0"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("bio2")}
@@ -102,13 +103,13 @@ export default async function AboutPage({ params }: PageProps) {
                   className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-6"
                 >
                   <dt
-                    className="text-sm pt-0.5"
+                    className="text-[length:var(--fs-2)] pt-0.5"
                     style={{ color: "var(--text-p-2)" }}
                   >
                     {tr(category, "label") ?? category.labelEn}
                   </dt>
                   <dd
-                    className="m-0 text-[15px]"
+                    className="m-0 text-[length:var(--fs-3)]"
                     style={{ color: "var(--text-p-1)" }}
                   >
                     {category.technologies.join(", ")}
@@ -130,13 +131,13 @@ export default async function AboutPage({ params }: PageProps) {
                 className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-6"
               >
                 <dt
-                  className="text-[15px]"
+                  className="text-[length:var(--fs-3)]"
                   style={{ color: "var(--text-p-1)" }}
                 >
                   {lang}
                 </dt>
                 <dd
-                  className="m-0 text-sm pt-0.5"
+                  className="m-0 text-[length:var(--fs-2)] pt-0.5"
                   style={{ color: "var(--text-p-2)" }}
                 >
                   {level}

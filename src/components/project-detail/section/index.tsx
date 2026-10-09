@@ -7,7 +7,7 @@ export function Section({ title, children }: SectionProps) {
       style={{ borderColor: "var(--portfolio-line)" }}
     >
       <h2
-        className="text-[17px] font-semibold tracking-tight m-0"
+        className="text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] m-0"
         style={{ color: "var(--text-p-0)" }}
       >
         {title}

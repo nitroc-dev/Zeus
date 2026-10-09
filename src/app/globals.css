@@ -1,198 +1,79 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* Personal Design System (copied from Helios src/styles/ds) */
+@import "../styles/ds/tokens/colors.css";
+@import "../styles/ds/tokens/theme.css";
+@import "../styles/ds/tokens/typography.css";
+@import "../styles/ds/tokens/spacing.css";
+@import "../styles/ds/tokens/effects.css";
+@import "../styles/ds/components.css";
 
 @theme {
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-  --color-gray-950: #030712;
-
-  /* Portfolio navy scale */
-  --color-navy-0: #101113;
-  --color-navy-1: #16171a;
-  --color-navy-2: #1c1d21;
-  --color-navy-3: #24262b;
-
-  /* Portfolio text scale */
-  --color-dp-0: #ededee;
-  --color-dp-1: #c4c6cb;
-  --color-dp-2: #8d9097;
-  --color-dp-3: #6b6e75;
-
-  /* Portfolio status */
-  --color-dp-ok: oklch(0.74 0.16 145);
-  --color-dp-warn: oklch(0.78 0.16 75);
-
-  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono:
-    var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
-}
-
-/* Portfolio design tokens */
-:root {
-  /* Navy background scale - must be in :root, not only @theme, so var(--navy-*) resolves in inline styles */
-  --navy-0: #101113;
-  --navy-1: #16171a;
-  --navy-2: #1c1d21;
-  --navy-3: #24262b;
-
-  --portfolio-line: rgba(255, 255, 255, 0.08);
-  --portfolio-line-2: rgba(255, 255, 255, 0.14);
-  --portfolio-accent: oklch(0.72 0.11 245);
-  --portfolio-accent-soft: color-mix(
-    in oklch,
-    oklch(0.72 0.11 245) 14%,
-    transparent
-  );
-  --portfolio-accent-glow: color-mix(
-    in oklch,
-    oklch(0.72 0.11 245) 0%,
-    transparent
-  );
-  --portfolio-ok: oklch(0.74 0.16 145);
-  --portfolio-warn: oklch(0.78 0.16 75);
-  --portfolio-accent-ink: oklch(0.18 0.02 252);
-  --text-p-0: #ededee;
-  --text-p-1: #c4c6cb;
-  --text-p-2: #8d9097;
-  --text-p-3: #8d9097;
+    var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Custom dark theme matching original design */ /* gray-950 */ /* gray-50 */
-  --card: oklch(1 0 0); /* gray-800 */
-  --card-foreground: oklch(0.145 0 0); /* gray-50 */
-  --popover: oklch(1 0 0); /* gray-800 */
-  --popover-foreground: oklch(0.145 0 0); /* gray-50 */
-  --primary: oklch(0.205 0 0); /* blue-600 - your original blue */
-  --primary-foreground: oklch(0.985 0 0); /* gray-50 */
-  --secondary: oklch(0.97 0 0); /* gray-600 */
-  --secondary-foreground: oklch(0.205 0 0); /* gray-50 */
-  --muted: oklch(0.97 0 0); /* gray-600 */
-  --muted-foreground: oklch(0.556 0 0); /* gray-400 */
-  --accent: oklch(0.97 0 0); /* gray-700 */
-  --accent-foreground: oklch(0.205 0 0); /* gray-50 */
-  --destructive: oklch(0.577 0.245 27.325); /* red-600 */
-  --destructive-foreground: #f9fafb; /* gray-50 */
-  --border: oklch(0.922 0 0); /* gray-700 */
-  --input: oklch(0.922 0 0); /* gray-700 */
-  --ring: oklch(0.708 0 0); /* blue-600 */
-  --chart-1: oklch(0.646 0.222 41.116); /* blue-600 */
-  --chart-2: oklch(0.6 0.118 184.704); /* emerald-600 */
-  --chart-3: oklch(0.398 0.07 227.392); /* violet-600 */
-  --chart-4: oklch(0.828 0.189 84.429); /* amber-600 */
-  --chart-5: oklch(0.769 0.188 70.08); /* red-600 */
-  --sidebar: oklch(0.985 0 0); /* gray-800 */
-  --sidebar-foreground: oklch(0.145 0 0); /* gray-50 */
-  --sidebar-primary: oklch(0.205 0 0); /* blue-600 */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* gray-50 */
-  --sidebar-accent: oklch(0.97 0 0); /* gray-700 */
-  --sidebar-accent-foreground: oklch(0.205 0 0); /* gray-50 */
-  --sidebar-border: oklch(0.922 0 0); /* gray-700 */
-  --sidebar-ring: oklch(0.708 0 0); /* blue-600 */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Fonts are loaded by next/font; point the DS families at them */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
+    monospace;
+
+  /* Portfolio names kept as aliases of DS semantic tokens */
+  --navy-0: var(--bg);
+  --navy-1: var(--surface-1);
+  --navy-2: var(--surface-2);
+  --navy-3: var(--surface-overlay);
+  --portfolio-line: var(--line);
+  --portfolio-line-2: var(--line-strong);
+  --portfolio-accent: var(--accent);
+  --portfolio-accent-soft: var(--accent-soft);
+  --portfolio-accent-ink: var(--on-accent);
+  --portfolio-ok: var(--ok);
+  --portfolio-warn: var(--warn);
+  --text-p-0: var(--text-1);
+  --text-p-1: var(--text-2);
+  --text-p-2: var(--text-3);
+  --text-p-3: var(--text-3);
 }
 
-.dark {
-  /* Same as root since we want consistent dark theme */
-  --background: oklch(0.145 0 0); /* gray-950 */
-  --foreground: oklch(0.985 0 0); /* gray-50 */
-  --card: oklch(0.205 0 0); /* gray-800 */
-  --card-foreground: oklch(0.985 0 0); /* gray-50 */
-  --popover: oklch(0.205 0 0); /* gray-800 */
-  --popover-foreground: oklch(0.985 0 0); /* gray-50 */
-  --primary: oklch(0.922 0 0); /* blue-600 */
-  --primary-foreground: oklch(0.205 0 0); /* gray-50 */
-  --secondary: oklch(0.269 0 0); /* gray-600 */
-  --secondary-foreground: oklch(0.985 0 0); /* gray-50 */
-  --muted: oklch(0.269 0 0); /* gray-600 */
-  --muted-foreground: oklch(0.708 0 0); /* gray-400 */
-  --accent: oklch(0.269 0 0); /* gray-700 */
-  --accent-foreground: oklch(0.985 0 0); /* gray-50 */
-  --destructive: oklch(0.704 0.191 22.216); /* red-600 */
-  --destructive-foreground: #f9fafb; /* gray-50 */
-  --border: oklch(1 0 0 / 10%); /* gray-700 */
-  --input: oklch(1 0 0 / 15%); /* gray-700 */
-  --ring: oklch(0.556 0 0); /* blue-600 */
-  --chart-1: oklch(0.488 0.243 264.376); /* blue-600 */
-  --chart-2: oklch(0.696 0.17 162.48); /* emerald-600 */
-  --chart-3: oklch(0.769 0.188 70.08); /* violet-600 */
-  --chart-4: oklch(0.627 0.265 303.9); /* amber-600 */
-  --chart-5: oklch(0.645 0.246 16.439); /* red-600 */
-  --sidebar: oklch(0.205 0 0); /* gray-800 */
-  --sidebar-foreground: oklch(0.985 0 0); /* gray-50 */
-  --sidebar-primary: oklch(0.488 0.243 264.376); /* blue-600 */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* gray-50 */
-  --sidebar-accent: oklch(0.269 0 0); /* gray-700 */
-  --sidebar-accent-foreground: oklch(0.985 0 0); /* gray-50 */
-  --sidebar-border: oklch(1 0 0 / 10%); /* gray-700 */
-  --sidebar-ring: oklch(0.556 0 0); /* blue-600 */
+html {
+  background: var(--bg);
 }
 
+/* DS page base (tokens/base.css) minus its link rules, which would override
+   button colours and the underline styles used for text links here.
+   Kept in the base layer so Tailwind utilities and .ds-* classes win. */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  .ds {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: var(--font-sans);
+    font-size: var(--fs-3);
+    line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased;
   }
-  body {
-    @apply text-foreground;
-    background: var(--navy-0);
+  :where(.ds) a {
+    color: inherit;
+    text-decoration: none;
+  }
+  :where(.ds) :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+  :where(.ds) ::selection {
+    background: var(--accent-soft);
   }
 }
 
-/* Custom utility for hiding scrollbars */
+.page-bg {
+  background: var(--bg);
+}
+
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -200,9 +81,4 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-/* Shared page background */
-.page-bg {
-  background: var(--navy-0);
 }

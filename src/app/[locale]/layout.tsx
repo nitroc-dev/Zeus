@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -12,18 +12,16 @@ import { routing } from "@/i18n/routing";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
-const plexSans = IBM_Plex_Sans({
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-plex-sans",
+  variable: "--font-inter",
   display: "swap",
-  weight: ["400", "500", "600"],
 });
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-plex-mono",
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
-  weight: ["400"],
 });
 
 export function generateStaticParams() {
@@ -151,7 +149,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`dark ${plexSans.variable} ${plexMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -168,7 +166,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="min-h-screen">
+      <body className="ds min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}

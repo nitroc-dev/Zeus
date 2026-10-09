@@ -40,7 +40,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1 text-sm">
+        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)]">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -91,7 +91,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                  className="px-3 py-2.5 rounded-lg text-[length:var(--fs-2)] font-medium transition-colors"
                   style={{
                     background: isActive ? "var(--navy-2)" : "transparent",
                     color: isActive ? "var(--text-p-0)" : "var(--text-p-1)",

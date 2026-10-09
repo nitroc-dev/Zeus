@@ -11,7 +11,7 @@ export function ProjectFeatures({ highlights, t }: ProjectFeaturesProps) {
         {highlights.map((item) => (
           <li
             key={item}
-            className="text-[15px] leading-[1.6] marker:text-[var(--text-p-2)]"
+            className="text-[length:var(--fs-3)] leading-[1.6] marker:text-[var(--text-p-2)]"
             style={{ color: "var(--text-p-1)" }}
           >
             {item}

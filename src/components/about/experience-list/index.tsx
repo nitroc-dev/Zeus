@@ -18,14 +18,14 @@ export function ExperienceList({
           style={{ borderColor: "var(--portfolio-line)" }}
         >
           <p
-            className="text-sm m-0 pt-0.5 tabular-nums"
+            className="text-[length:var(--fs-2)] m-0 pt-0.5 tabular-nums"
             style={{ color: "var(--text-p-2)" }}
           >
             {formatWhen(exp, locale, presentLabel)}
           </p>
           <div>
             <h3
-              className="font-semibold text-[17px] mb-1.5"
+              className="font-semibold text-[length:var(--fs-4)] mb-1.5"
               style={{ color: "var(--text-p-0)" }}
             >
               {tr(exp, "name") ?? exp.nameEn},{" "}
@@ -49,7 +49,7 @@ export function ExperienceList({
               )}
             </h3>
             <p
-              className="text-[15px] leading-relaxed m-0 max-w-[70ch]"
+              className="text-[length:var(--fs-3)] leading-relaxed m-0 max-w-[70ch]"
               style={{ color: "var(--text-p-2)" }}
             >
               {tr(exp, "description") ?? exp.descriptionEn}

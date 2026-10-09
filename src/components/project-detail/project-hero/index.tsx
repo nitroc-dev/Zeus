@@ -18,30 +18,26 @@ export function ProjectHero({
     <section className="pt-10 pb-12 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-x-16 gap-y-10 items-start">
       <div>
         <h1
-          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[-0.03em] mb-5"
+          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
           style={{ color: "var(--text-p-0)" }}
         >
           {name}
         </h1>
 
         <p
-          className="text-[19px] leading-[1.5] mb-7 max-w-[56ch]"
+          className="text-[length:var(--fs-4)] leading-[1.5] mb-7 max-w-[56ch]"
           style={{ color: "var(--text-p-1)" }}
         >
           {description}
         </p>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[length:var(--fs-2)]">
           {project.websiteUrl && !isThisSite && (
             <Link
               href={project.websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2.5 rounded-md font-medium transition-colors hover:brightness-110"
-              style={{
-                background: "var(--portfolio-accent)",
-                color: "var(--portfolio-accent-ink)",
-              }}
+              className="ds-btn ds-btn--md ds-btn--primary"
             >
               {t("liveDemo")}
             </Link>

@@ -4,8 +4,8 @@ import LocaleNotFound from "./[locale]/not-found";
 // The root layout has no <html>, so this page provides its own.
 export default function RootNotFound() {
   return (
-    <html lang="en" className="dark">
-      <body>
+    <html lang="en">
+      <body className="ds">
         <LocaleNotFound />
       </body>
     </html>

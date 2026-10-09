@@ -139,7 +139,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       />
       <main className="relative overflow-hidden page-bg">
         <div className="px-6 max-w-[1180px] mx-auto">
-          <nav className="pt-8 text-sm" style={{ color: "var(--text-p-2)" }}>
+          <nav
+            className="pt-8 text-[length:var(--fs-2)]"
+            style={{ color: "var(--text-p-2)" }}
+          >
             <Link
               href="/"
               className="underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
@@ -182,7 +185,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {(longDescription ?? description) && (
             <Section title={t("contextTitle")}>
               <p
-                className="text-[15px] leading-[1.7] m-0 max-w-[68ch]"
+                className="text-[length:var(--fs-3)] leading-[1.7] m-0 max-w-[68ch]"
                 style={{ color: "var(--text-p-1)" }}
               >
                 {longDescription ?? description}

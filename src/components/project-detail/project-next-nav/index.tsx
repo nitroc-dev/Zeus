@@ -9,7 +9,7 @@ export function ProjectNextNav({ nextRaw, tr, t }: ProjectNextNavProps) {
     >
       <Link
         href="/"
-        className="text-sm underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
+        className="text-[length:var(--fs-2)] underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
         style={{ color: "var(--text-p-1)" }}
       >
         {t("backToHome")}
@@ -20,11 +20,14 @@ export function ProjectNextNav({ nextRaw, tr, t }: ProjectNextNavProps) {
           className="group text-right no-underline"
           style={{ color: "inherit" }}
         >
-          <span className="block text-sm" style={{ color: "var(--text-p-2)" }}>
+          <span
+            className="block text-[length:var(--fs-2)]"
+            style={{ color: "var(--text-p-2)" }}
+          >
             {t("nextProjectLabel")}
           </span>
           <span
-            className="text-[22px] font-semibold tracking-tight underline-offset-4 decoration-1 group-hover:underline"
+            className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] underline-offset-4 decoration-1 group-hover:underline"
             style={{ color: "var(--text-p-0)" }}
           >
             {tr(nextRaw, "name") ?? nextRaw.nameEn}

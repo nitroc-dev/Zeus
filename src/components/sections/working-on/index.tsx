@@ -30,7 +30,7 @@ export async function Currently() {
   return (
     <section className="px-6 py-16 w-full max-w-[1180px] mx-auto">
       <h2
-        className="text-[28px] font-semibold tracking-tight mb-6"
+        className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] mb-6"
         style={{ color: "var(--text-p-0)" }}
       >
         {t("title")}
@@ -42,18 +42,21 @@ export async function Currently() {
             className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-x-10 gap-y-1 py-4 border-b"
             style={{ borderColor: "var(--portfolio-line)" }}
           >
-            <dt className="text-sm pt-0.5" style={{ color: "var(--text-p-2)" }}>
+            <dt
+              className="text-[length:var(--fs-2)] pt-0.5"
+              style={{ color: "var(--text-p-2)" }}
+            >
               {label}
             </dt>
             <dd className="m-0">
               <span
-                className="text-[17px] font-medium"
+                className="text-[length:var(--fs-4)] font-medium"
                 style={{ color: "var(--text-p-0)" }}
               >
                 {value}
               </span>
               <span
-                className="text-sm ml-3"
+                className="text-[length:var(--fs-2)] ml-3"
                 style={{ color: "var(--text-p-2)" }}
               >
                 {sub}
