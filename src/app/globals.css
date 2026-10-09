@@ -22,6 +22,9 @@
     var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, Consolas,
     monospace;
 
+  /* No accent glow under primary buttons on the site */
+  --shadow-accent: none;
+
   /* Portfolio names kept as aliases of DS semantic tokens */
   --navy-0: var(--bg);
   --navy-1: var(--surface-1);

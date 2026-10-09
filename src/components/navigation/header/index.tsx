@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
-import { LocalTime } from "@/components/local-time";
 import { Link, usePathname } from "@/i18n/navigation";
 
 export function Header() {
@@ -71,17 +70,7 @@ export function Header() {
           })}
         </nav>
 
-        <div
-          className="hidden md:flex items-center gap-4 ml-4 pl-4 border-l"
-          style={{ borderColor: "var(--line)" }}
-        >
-          <span
-            className="font-mono text-[length:var(--fs-1)] tabular-nums"
-            style={{ color: "var(--text-3)" }}
-            title="Brussels"
-          >
-            <LocalTime />
-          </span>
+        <div className="hidden md:flex items-center ml-4">
           <button
             type="button"
             onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT))}

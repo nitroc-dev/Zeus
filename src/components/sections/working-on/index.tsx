@@ -1,5 +1,4 @@
 import { getTranslations } from "next-intl/server";
-import { LocalTime } from "@/components/local-time";
 
 export async function Currently() {
   const t = await getTranslations("currently");
@@ -23,7 +22,7 @@ export async function Currently() {
     {
       label: t("locationLabel"),
       value: t("locationValue"),
-      sub: <LocalTime />,
+      sub: null,
     },
   ];
 
@@ -55,12 +54,14 @@ export async function Currently() {
               >
                 {value}
               </span>
-              <span
-                className="text-[length:var(--fs-2)] ml-3"
-                style={{ color: "var(--text-p-2)" }}
-              >
-                {sub}
-              </span>
+              {sub && (
+                <span
+                  className="text-[length:var(--fs-2)] ml-3"
+                  style={{ color: "var(--text-p-2)" }}
+                >
+                  {sub}
+                </span>
+              )}
             </dd>
           </div>
         ))}
