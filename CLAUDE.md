@@ -49,7 +49,7 @@ When adding new content, use the localized functions and add the corresponding k
 - `src/components/cards/` - reusable card components (ProjectCard, ExperienceCard)
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
-- `src/components/ui/` - shadcn/ui primitives (Button, Input, etc.) — intentional exception to folder convention (flat files)
+- `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention
 - `src/components/icons/` - custom SVG icon components
 
 #### Component folder convention
@@ -65,11 +65,18 @@ component-name/
 Rules:
 - Always **named exports** — never `export default`
 - `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
-- `ui/` is the only exception: it keeps shadcn's flat `.tsx` convention
+- `ui/` is the only exception: it keeps flat `.tsx` files
 
 ### Styling
 
-Tailwind CSS v4 with `tw-animate-css`. The linter is **Biome** (not ESLint/Prettier). Biome is configured to use space indentation and has Next.js + React recommended rules enabled.
+The site uses the **Personal Design System** (same as Helios). Tokens live in `src/styles/ds/` (copied from Helios `src/styles/ds/`; update them there first, then copy). `src/styles/ds/components.css` holds only the `ds-btn` and `ds-tag` rules.
+
+- Colours: use DS semantic tokens (`--bg`, `--surface-*`, `--text-1..3`, `--line*`, `--accent*`, `--ok/--warn`). The older `--navy-*`, `--text-p-*` and `--portfolio-*` names in `globals.css` are aliases of them.
+- Type: sizes come from `--fs-1..6` only (`text-[length:var(--fs-3)]`); page titles are the one deliberate exception. Inter + JetBrains Mono via `next/font`.
+- Buttons are `ds-btn ds-btn--md|lg ds-btn--primary|secondary|ghost`; chips are `ds-tag`.
+- No gradients, glows, eyebrow labels or card grids; lists and hairlines instead.
+
+Tailwind CSS v4 for layout utilities. The linter is **Biome** (not ESLint/Prettier).
 
 ### Environment Variables
 
