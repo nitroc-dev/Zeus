@@ -9,10 +9,13 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("privacy")]);
+  const [{ locale }, t] = await Promise.all([
+    params,
+    getTranslations("privacy"),
+  ]);
   return {
     title: `${t("title")} - Corentin`,
-    description: t("collectDescription"),
+    description: t("summary"),
     alternates: buildAlternates(locale, "/privacy"),
   };
 }
@@ -53,84 +56,40 @@ export default async function PrivacyPolicy() {
           </div>
 
           <div className="space-y-10" style={{ color: "var(--text-p-1)" }}>
+            <p className="leading-relaxed">{t("summary")}</p>
+            {(
+              [
+                ["analyticsTitle", "analyticsBody"],
+                ["hostingTitle", "hostingBody"],
+              ] as const
+            ).map(([title, body]) => (
+              <section key={title} className="space-y-3">
+                <h2
+                  className="text-lg font-semibold"
+                  style={{ color: "var(--text-p-0)" }}
+                >
+                  {t(title)}
+                </h2>
+                <p className="leading-relaxed">{t(body)}</p>
+              </section>
+            ))}
             <section className="space-y-3">
               <h2
                 className="text-lg font-semibold"
                 style={{ color: "var(--text-p-0)" }}
               >
-                {t("informationCollected")}
-              </h2>
-              <p className="leading-relaxed">{t("collectDescription")}</p>
-              <ul
-                className="space-y-1.5 ml-4 list-disc list-inside"
-                style={{ color: "var(--text-p-2)" }}
-              >
-                <li>{t("name")}</li>
-                <li>{t("emailAddress")}</li>
-                <li>{t("messageContent")}</li>
-              </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2
-                className="text-lg font-semibold"
-                style={{ color: "var(--text-p-0)" }}
-              >
-                {t("howWeUse")}
-              </h2>
-              <p className="leading-relaxed">{t("useDescription")}</p>
-              <ul
-                className="space-y-1.5 ml-4 list-disc list-inside"
-                style={{ color: "var(--text-p-2)" }}
-              >
-                <li>{t("respondInquiries")}</li>
-                <li>{t("provideServices")}</li>
-                <li>{t("communicateProjects")}</li>
-              </ul>
-            </section>
-
-            <section className="space-y-3">
-              <h2
-                className="text-lg font-semibold"
-                style={{ color: "var(--text-p-0)" }}
-              >
-                Data Protection
+                {t("contactTitle")}
               </h2>
               <p className="leading-relaxed">
-                Your personal information is never shared with third parties
-                without your consent, stored securely using industry-standard
-                practices, and retained only as long as necessary to fulfill the
-                stated purpose.
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <h2
-                className="text-lg font-semibold"
-                style={{ color: "var(--text-p-0)" }}
-              >
-                Your Rights
-              </h2>
-              <p className="leading-relaxed">
-                You have the right to request access to, correction of, or
-                deletion of your personal data, and to withdraw consent at any
-                time.
-              </p>
-            </section>
-
-            <section className="space-y-3">
-              <h2
-                className="text-lg font-semibold"
-                style={{ color: "var(--text-p-0)" }}
-              >
-                Contact
-              </h2>
-              <p className="leading-relaxed">
-                Questions about this policy? Reach out through the{" "}
-                <span style={{ color: "var(--portfolio-accent)" }}>
-                  contact form
-                </span>{" "}
-                on the site.
+                {t("contactBody")}{" "}
+                <a
+                  href="mailto:contact@nitroc.xyz"
+                  className="underline transition-opacity hover:opacity-80"
+                  style={{ color: "var(--portfolio-accent)" }}
+                >
+                  contact@nitroc.xyz
+                </a>
+                .
               </p>
             </section>
           </div>

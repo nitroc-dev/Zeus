@@ -136,32 +136,40 @@ export const skillCategories: SkillCategoryData[] = [
     labelEn: "Programming Languages",
     labelFr: "Langages de Programmation",
     technologies: [
+      "TypeScript",
+      "JavaScript",
+      "C#",
+      "SQL",
       "HTML",
       "CSS",
-      "JavaScript",
-      "TypeScript",
-      "C",
-      "C#",
       "Java",
+      "C",
     ],
   },
   {
     id: "frameworks",
     labelEn: "Frameworks & Libraries",
     labelFr: "Frameworks & Bibliothèques",
-    technologies: ["React", "Next.js", "NestJS", ".NET", "Express", "Spring"],
+    technologies: [
+      "React",
+      "Next.js",
+      "React Native",
+      "Expo",
+      ".NET",
+      "EF Core",
+    ],
   },
   {
     id: "tools",
     labelEn: "Tools & Databases",
     labelFr: "Outils & Bases de données",
     technologies: [
-      "MySQL",
       "PostgreSQL",
-      "MongoDB",
+      "SQL Server",
+      "Azure",
+      "Vercel",
       "Docker",
       "Git",
-      "GitHub",
       "GitHub Actions",
     ],
   },
@@ -237,12 +245,12 @@ export const usesSections: UseSectionData[] = [
           "PC Windows assemblé sur mesure - AMD Ryzen 7 3700X, RTX 2060 Super, 32 Go de RAM.",
       },
       {
-        name: "LG 27GP950-B",
+        name: 'Samsung Odyssey G7 28"',
         sub: "4K Monitor",
         whyEn:
-          "4K at 144Hz. Excellent for both gaming and side-by-side development layouts.",
+          "LS28AG700N - 4K at 144Hz. Sharp text for code and plenty of room for side-by-side layouts.",
         whyFr:
-          "4K à 144Hz. Excellent pour le gaming et les mises en page côte à côte en développement.",
+          "LS28AG700N - 4K à 144Hz. Texte net pour le code et assez d'espace pour travailler côte à côte.",
       },
       {
         name: "Mechanical keyboard",
@@ -251,12 +259,12 @@ export const usesSections: UseSectionData[] = [
         whyFr: "Clavier mécanique solide. Fiable et sans chichis.",
       },
       {
-        name: "Logitech G Pro X Superlight 2",
+        name: "Logitech G502 Lightspeed",
         sub: "Mouse",
         whyEn:
-          "Wireless, precise, and heavy enough to feel planted. Hard pad, low DPI.",
+          "Wireless, comfortable for long sessions, and the extra buttons are mapped to editor shortcuts.",
         whyFr:
-          "Sans fil, précise et assez lourde pour rester en place. Tapis dur, faible DPI.",
+          "Sans fil, confortable sur de longues sessions, et les boutons supplémentaires sont mappés sur des raccourcis d'éditeur.",
       },
     ],
   },
@@ -275,26 +283,19 @@ export const usesSections: UseSectionData[] = [
           "Éditeur principal pour le web. Extensions Copilot, Biome, GitLens.",
       },
       {
-        name: "JetBrains Rider",
-        sub: "IDE",
-        whyEn: "JetBrains IDE for all .NET / C# projects.",
-        whyFr: "IDE JetBrains pour tous les projets .NET / C#.",
-      },
-      {
-        name: "Windows Terminal",
+        name: "Warp",
         sub: "Terminal",
         whyEn:
-          "Clean, fast, and supports multiple shell tabs. Does the job without getting in the way.",
+          "Fast, modern terminal with blocks, command search and good defaults out of the box.",
         whyFr:
-          "Propre, rapide et supporte plusieurs onglets de shell. Fait le travail sans se mettre en travers.",
+          "Terminal moderne et rapide, avec blocs, recherche de commandes et de bons réglages par défaut.",
       },
       {
-        name: "One Dark Pro",
+        name: "Dark 2026",
         sub: "Theme",
-        whyEn:
-          "One Dark Pro in both editors. Easy on the eyes for long sessions.",
+        whyEn: "VS Code's Dark 2026 theme. Easy on the eyes for long sessions.",
         whyFr:
-          "One Dark Pro dans les deux éditeurs. Agréable pour les longues sessions.",
+          "Le thème Dark 2026 de VS Code. Agréable pour les longues sessions.",
       },
       {
         name: "JetBrains Mono",
@@ -318,11 +319,11 @@ export const usesSections: UseSectionData[] = [
           "Rapide, respectueux de la vie privée et excellents DevTools. Mon navigateur quotidien.",
       },
       {
-        name: "PowerToys",
+        name: "Helios",
         sub: "Launcher",
-        whyEn: "Fast app and file launcher on Windows. Alt+Space, type, done.",
+        whyEn: "My own app and file launcher, built in Rust as part of Helios.",
         whyFr:
-          "Lanceur rapide d'applications et fichiers sur Windows. Alt+Espace, on tape, c'est fait.",
+          "Mon propre lanceur d'applications et de fichiers, écrit en Rust dans le cadre de Helios.",
       },
       {
         name: "Obsidian",
@@ -379,6 +380,50 @@ export const usesSections: UseSectionData[] = [
         sub: "Containers",
         whyEn: "Containerised dev environments and deployments.",
         whyFr: "Environnements de développement et déploiements conteneurisés.",
+      },
+    ],
+  },
+  {
+    id: "homelab",
+    icon: "🗄️",
+    titleEn: "Homelab",
+    titleFr: "Homelab",
+    items: [
+      {
+        name: "NITROC-SERVER",
+        sub: "TrueNAS SCALE",
+        whyEn:
+          "Main home server on TrueNAS SCALE with a ZFS pool for storage and containerised services.",
+        whyFr:
+          "Serveur principal sous TrueNAS SCALE avec un pool ZFS pour le stockage et les services conteneurisés.",
+      },
+      {
+        name: "Traefik + Cloudflare",
+        sub: "Reverse proxy",
+        whyEn:
+          "Traefik managed in Portainer, with a Cloudflare DNS-01 wildcard certificate for *.nitroc.xyz.",
+        whyFr:
+          "Traefik géré via Portainer, avec un certificat wildcard Cloudflare DNS-01 pour *.nitroc.xyz.",
+      },
+      {
+        name: "Raspberry Pi 5 & 4B",
+        sub: "Network services",
+        whyEn: "Small always-on boxes for network services like AdGuard.",
+        whyFr:
+          "Petites machines toujours allumées pour les services réseau comme AdGuard.",
+      },
+      {
+        name: 'Lab Rax 10"',
+        sub: "Rack",
+        whyEn: "3D-printed 5U 10-inch rack holding the network core.",
+        whyFr:
+          "Rack 10 pouces 5U imprimé en 3D qui accueille le cœur du réseau.",
+      },
+      {
+        name: "2.5GbE PoE+ switch",
+        sub: "Network",
+        whyEn: "Unmanaged 5-port 2.5Gb switch with PoE+ for the Pis.",
+        whyFr: "Switch non managé 5 ports 2,5 Gb avec PoE+ pour les Pi.",
       },
     ],
   },

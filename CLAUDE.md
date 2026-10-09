@@ -28,7 +28,7 @@ The app uses `next-intl` with two locales: `en` (default) and `fr`. All routes a
 
 ### Data Layer
 
-Content (projects, skills, experiences) lives in [src/data/hardcoded-data.tsx](src/data/hardcoded-data.tsx). There are two versions of each dataset:
+Content (projects, skills, experiences, uses) lives in [src/data/static-data.ts](src/data/static-data.ts). There are two versions of each dataset:
 - **Localized functions** (`getLocalizedProjects`, `getLocalizedSkills`, `getLocalizedExperiences`) - accept a `t()` translator and are the **preferred approach**
 - **Hardcoded exports** (`projects`, `skills`, `experiences`) - legacy, kept for reference only
 
@@ -37,24 +37,19 @@ When adding new content, use the localized functions and add the corresponding k
 ### Page Structure
 
 - `src/app/layout.tsx` - root layout (metadata only, passes through children)
-- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`, `Toaster`
+- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`
 - `src/app/[locale]/page.tsx` - home page composing all sections with Framer Motion scroll animations
 - `src/app/[locale]/projects/page.tsx` - standalone projects page
-- `src/app/[locale]/contact/page.tsx` - contact form page
+- `src/app/[locale]/contact/page.tsx` - contact page (email and social links, no form)
 - `src/app/[locale]/privacy/page.tsx` - privacy policy
-
-### Contact Form
-
-The contact form at `src/app/api/contact/route.ts` forwards submissions to a **Discord webhook** via `DISCORD_WEBHOOK_URL` environment variable. Validation uses Formik + Yup (`src/utils/contact-validation.ts`).
 
 ### Components
 
-- `src/components/sections/` - page sections (Hero, About, Experience, Skills, Projects, CTA)
+- `src/components/sections/` - page sections (Hero, Projects, Currently)
 - `src/components/cards/` - reusable card components (ProjectCard, ExperienceCard)
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
 - `src/components/ui/` - shadcn/ui primitives (Button, Input, etc.) — intentional exception to folder convention (flat files)
-- `src/components/inputs/` - form input wrappers built on top of the UI primitives
 - `src/components/icons/` - custom SVG icon components
 
 #### Component folder convention
@@ -78,6 +73,4 @@ Tailwind CSS v4 with `tw-animate-css`. The linter is **Biome** (not ESLint/Prett
 
 ### Environment Variables
 
-| Variable | Purpose |
-|---|---|
-| `DISCORD_WEBHOOK_URL` | Required - receives contact form submissions |
+None required. The site has no server-side integrations.

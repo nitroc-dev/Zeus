@@ -2,12 +2,13 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { Toaster } from "@/components/ui/sonner";
+import { routing } from "@/i18n/routing";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
@@ -142,7 +143,9 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const [{ locale }, messages] = await Promise.all([params, getMessages()]);
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  const messages = await getMessages();
 
   return (
     <html
@@ -174,7 +177,6 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
-        <Toaster />
       </body>
     </html>
   );
