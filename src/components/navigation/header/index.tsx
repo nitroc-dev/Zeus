@@ -20,7 +20,6 @@ export function Header() {
     { name: t("home"), href: "/" },
     { name: t("about"), href: "/about" },
     { name: t("uses"), href: "/uses" },
-    { name: t("contact"), href: "/#contact" },
   ];
 
   return (
