@@ -2,22 +2,19 @@ import type { SidebarRowProps } from "./props";
 
 export function SidebarRow({ label, value }: SidebarRowProps) {
   return (
-    <div
-      className="py-3 border-b last:border-0"
-      style={{ borderColor: "var(--portfolio-line)" }}
-    >
-      <h5
-        className="font-mono text-[10px] uppercase tracking-[0.1em] font-medium mb-1.5"
-        style={{ color: "var(--text-p-3)" }}
+    <div className="grid grid-cols-[110px_1fr] gap-4 py-2">
+      <dt
+        className="text-[length:var(--fs-2)]"
+        style={{ color: "var(--text-p-2)" }}
       >
         {label}
-      </h5>
-      <div
-        className="text-sm leading-[1.5]"
+      </dt>
+      <dd
+        className="m-0 text-[length:var(--fs-2)]"
         style={{ color: "var(--text-p-0)" }}
       >
         {value}
-      </div>
+      </dd>
     </div>
   );
 }

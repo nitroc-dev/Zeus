@@ -21,6 +21,14 @@ const csp = [
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  async redirects() {
+    // The contact page was folded into a section at the end of the home page.
+    return [
+      { source: "/contact", destination: "/#contact", permanent: true },
+      { source: "/fr/contact", destination: "/fr#contact", permanent: true },
+      { source: "/en/contact", destination: "/#contact", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

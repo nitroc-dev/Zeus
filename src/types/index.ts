@@ -14,6 +14,10 @@ export interface Project {
   descriptionFr: string;
   longDescriptionEn?: string;
   longDescriptionFr?: string;
+  problemEn?: string;
+  problemFr?: string;
+  goalEn?: string;
+  goalFr?: string;
   contentEn?: string;
   contentFr?: string;
   imageUrl?: string;
@@ -51,7 +55,6 @@ export interface UseItemData {
 
 export interface UseSectionData {
   id: string;
-  icon: string;
   titleEn: string;
   titleFr: string;
   items: UseItemData[];

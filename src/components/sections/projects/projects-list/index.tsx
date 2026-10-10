@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { getProjectsData } from "@/lib/data";
+import { localePath } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 import type { ProjectsListProps } from "./props";
 
@@ -8,84 +10,70 @@ export async function ProjectsList({
   featuredOnly = false,
 }: ProjectsListProps) {
   const tr = createTranslator(locale);
-  const all = await getProjectsData();
+  const [all, t] = await Promise.all([
+    getProjectsData(),
+    getTranslations({ locale, namespace: "projects" }),
+  ]);
   const projects = all.filter((p) => !featuredOnly || p.isFeatured);
 
   return (
-    <div style={{ borderTop: "1px solid var(--portfolio-line)" }}>
-      {projects.map((project, i) => {
+    <div style={{ borderTop: "1px solid var(--line)" }}>
+      {projects.map((project) => {
         const name = tr(project, "name") ?? project.nameEn;
         const description = tr(project, "description") ?? project.descriptionEn;
+        const inProgress = project.status === "in_progress";
         return (
           <Link
             key={project.id}
-            href={`/${locale}/projects/${project.id}`}
-            className="group grid gap-8 py-6 px-3 border-b transition-all duration-200 no-underline
-              hover:pl-6 hover:[background:linear-gradient(90deg,var(--portfolio-accent-soft),transparent_40%)]"
-            style={{
-              gridTemplateColumns: "56px 1fr auto auto 28px",
-              borderColor: "var(--portfolio-line)",
-              color: "inherit",
-            }}
+            href={localePath(locale, `/projects/${project.id}`)}
+            className="group grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-x-6 py-5 border-b no-underline"
+            style={{ borderColor: "var(--line)", color: "inherit" }}
           >
-            <div
-              className="font-mono text-xs self-center"
-              style={{ color: "var(--text-p-3)" }}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </div>
-
             <div className="min-w-0">
               <h3
-                className="text-[22px] font-semibold tracking-tight mb-1 leading-tight"
-                style={{ color: "var(--text-p-0)" }}
+                className="m-0 mb-1 text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] leading-tight underline-offset-4 decoration-1 group-hover:underline"
+                style={{ color: "var(--text-1)" }}
               >
                 {name}
               </h3>
               <p
-                className="text-sm leading-relaxed m-0 line-clamp-2"
-                style={{ color: "var(--text-p-2)" }}
+                className="m-0 text-[length:var(--fs-3)] leading-relaxed"
+                style={{ color: "var(--text-3)" }}
               >
                 {description}
               </p>
-            </div>
-
-            <div className="hidden md:flex flex-wrap gap-1.5 self-center">
-              {(project.tags ?? []).slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center px-2.5 py-1 rounded-md font-mono text-xs"
-                  style={{
-                    background: "var(--navy-2)",
-                    border: "1px solid var(--portfolio-line)",
-                    color: "var(--text-p-1)",
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <div
-              className="hidden md:block font-mono text-[13px] text-right self-center"
-              style={{ color: "var(--text-p-2)" }}
-            >
-              {project.year ?? "-"}
-              {project.role && (
-                <small
-                  className="block text-[11px] mt-1"
-                  style={{ color: "var(--text-p-3)" }}
-                >
-                  {project.role}
-                </small>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="ds-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               )}
             </div>
 
-            <div
-              className="self-center text-lg transition-transform duration-200 group-hover:translate-x-1.5"
-              style={{ color: "var(--portfolio-accent)" }}
-            >
-              →
+            <div className="flex items-center gap-4 self-start mt-3 sm:mt-0 sm:pt-0.5 sm:row-start-1 sm:col-start-2">
+              <span
+                className="inline-flex items-center gap-2 text-[length:var(--fs-2)] whitespace-nowrap"
+                style={{ color: inProgress ? "var(--warn)" : "var(--text-3)" }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 rounded-full shrink-0"
+                  style={{
+                    background: inProgress ? "var(--warn)" : "var(--ok)",
+                  }}
+                />
+                {inProgress ? t("statusInProgress") : project.year}
+              </span>
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-150 group-hover:translate-x-1"
+                style={{ color: "var(--text-3)" }}
+              >
+                →
+              </span>
             </div>
           </Link>
         );

@@ -1,223 +1,81 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { localePath } from "@/lib/seo";
 
 export async function Hero() {
   const [t, locale] = await Promise.all([getTranslations("hero"), getLocale()]);
 
-  return (
-    <section className="px-6 py-20 w-full max-w-[1180px] mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-15 items-center">
-        {/* Left: copy */}
-        <div>
-          {/* Heading */}
-          <h1
-            className="text-[clamp(48px,6vw,80px)] leading-[1.02] font-semibold tracking-tight mb-6"
-            style={{ color: "var(--text-p-0)" }}
-          >
-            {t("greeting")}{" "}
-            <span style={{ color: "var(--portfolio-accent)" }}>
-              {t("name")}
-            </span>{" "}
-            <br />
-            {t("headline")}
-          </h1>
+  const facts = [
+    { label: t("factRole"), value: t("factRoleValue") },
+    { label: t("factBased"), value: t("factBasedValue") },
+    { label: t("factAt"), value: "Eachstapp, 2024" },
+    { label: t("factStack"), value: "TypeScript, React, React Native, .NET" },
+    { label: t("factSpeaks"), value: t("factSpeaksValue") },
+    { label: t("factBuilding"), value: "Helios, Selene" },
+  ];
 
-          {/* Tagline */}
+  return (
+    <section className="px-6 pt-16 pb-10 w-full max-w-[680px] mx-auto">
+      <div>
+        <div>
+          <div className="flex items-center gap-5 sm:gap-6 mb-8">
+            <Image
+              src="/avatar-c.webp"
+              alt=""
+              width={96}
+              height={96}
+              priority
+              className="size-16 sm:size-24 rounded-full shrink-0"
+              style={{ boxShadow: "0 0 0 1px var(--line-strong)" }}
+            />
+            <div>
+              <h1
+                className="m-0 text-[clamp(44px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)]"
+                style={{ color: "var(--text-1)" }}
+              >
+                {t("name")}
+              </h1>
+              <p
+                className="m-0 mt-2 text-[length:var(--fs-4)]"
+                style={{ color: "var(--text-3)" }}
+              >
+                {t("roleLine")}
+              </p>
+            </div>
+          </div>
+
           <p
-            className="text-[19px] leading-[1.55] mb-8 max-w-[540px]"
+            className="text-[length:var(--fs-4)] leading-[1.5] mb-8 max-w-[56ch]"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("tagline")}
           </p>
 
-          {/* Actions */}
           <div className="flex gap-3 flex-wrap">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all hover:-translate-y-px"
-              style={{
-                background: "var(--portfolio-accent)",
-                color: "oklch(0.18 0.02 252)",
-                boxShadow:
-                  "0 4px 16px var(--portfolio-accent-glow), inset 0 1px 0 rgba(255,255,255,0.25)",
-              }}
-            >
+            <a href="#projects" className="ds-btn ds-btn--lg ds-btn--primary">
               {t("seeWork")}
             </a>
             <Link
-              href={`/${locale}/about`}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] text-sm font-medium transition-all bg-[var(--navy-2)] hover:bg-[var(--navy-3)] border border-[var(--portfolio-line-2)] text-[var(--text-p-0)]"
+              href={localePath(locale, "/about")}
+              className="ds-btn ds-btn--lg ds-btn--secondary"
             >
               {t("about")}
             </Link>
           </div>
         </div>
 
-        {/* Right: terminal ID card */}
-        <div
-          className="hidden lg:block rounded-[14px] overflow-hidden font-mono text-[13px] relative"
-          style={{
-            background: "linear-gradient(180deg, var(--navy-2), var(--navy-1))",
-            border: "1px solid var(--portfolio-line-2)",
-            boxShadow:
-              "0 20px 60px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04) inset",
-          }}
+        <dl
+          className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 mt-10 pt-6 font-mono text-[length:var(--fs-2)] leading-[1.5]"
+          style={{ borderTop: "1px solid var(--line)" }}
         >
-          {/* Radial glow overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(500px 200px at 100% 0%, var(--portfolio-accent-soft), transparent 60%)",
-            }}
-          />
-
-          {/* Title bar */}
-          <div
-            className="flex items-center gap-1.5 px-3.5 py-2.5 relative"
-            style={{
-              background: "var(--navy-3)",
-              borderBottom: "1px solid var(--portfolio-line)",
-            }}
-          >
-            <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-            <span className="size-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="size-2.5 rounded-full bg-[#28c840]" />
-            <span
-              className="ml-3 text-[11px] tracking-wider"
-              style={{ color: "var(--text-p-2)" }}
-            >
-              ~/corentin - whoami.json
-            </span>
-          </div>
-
-          {/* Terminal body */}
-          <div
-            className="p-[22px] leading-[1.85] relative"
-            style={{ color: "var(--text-p-0)" }}
-          >
-            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
-            <span>cat whoami.json</span>
-            <br />
-            <span style={{ color: "var(--text-p-2)" }}>{"{"}</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"name"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Corentin"</span>
-            <span style={{ color: "var(--text-p-2)" }}>,</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"role"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>
-              "Full-stack dev"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>,</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"location"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>
-              "Brussels, BE"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>,</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"company"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Eachstapp"</span>
-            <span style={{ color: "var(--text-p-2)" }}>,</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"since"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 75)" }}>2024</span>
-            <span style={{ color: "var(--text-p-2)" }}>,</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"stack"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: [</span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"TS"</span>
-            <span style={{ color: "var(--text-p-2)" }}>, </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"React"</span>
-            <span style={{ color: "var(--text-p-2)" }}>, </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>".NET"</span>
-            <span style={{ color: "var(--text-p-2)" }}>],</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"speaks"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: [</span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"FR"</span>
-            <span style={{ color: "var(--text-p-2)" }}>, </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"EN"</span>
-            <span style={{ color: "var(--text-p-2)" }}>],</span>
-            <br />
-            <span
-              style={{
-                color:
-                  "color-mix(in oklch, var(--portfolio-accent) 75%, white)",
-              }}
-            >
-              &nbsp;&nbsp;"focus"
-            </span>
-            <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Helios"</span>
-            <br />
-            <span style={{ color: "var(--text-p-2)" }}>{"}"}</span>
-            <br />
-            <span style={{ color: "var(--portfolio-accent)" }}>$</span>{" "}
-            <span
-              className="inline-block w-[7px] h-[14px] align-[-2px] ml-0.5"
-              style={{
-                background: "var(--portfolio-accent)",
-                animation: "cursor-blink 1s steps(2) infinite",
-              }}
-            />
-          </div>
-        </div>
+          {facts.map(({ label, value }) => (
+            <div key={label} className="contents">
+              <dt style={{ color: "var(--text-p-2)" }}>{label}</dt>
+              <dd style={{ color: "var(--text-p-0)" }}>{value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

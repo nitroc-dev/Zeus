@@ -2,56 +2,51 @@
 
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
 import { Link, usePathname } from "@/i18n/navigation";
-import { useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
   const [isOpen, setIsOpen] = useState(false);
+  const [modKey, setModKey] = useState("Ctrl");
+
+  useEffect(() => {
+    if (/Mac|iPhone|iPad/.test(navigator.platform)) setModKey("⌘");
+  }, []);
 
   const navigation = [
     { name: t("home"), href: "/" },
     { name: t("about"), href: "/about" },
     { name: t("uses"), href: "/uses" },
-    { name: t("contact"), href: "/contact" },
+    { name: t("contact"), href: "/#contact" },
   ];
 
   return (
     <header
       className="sticky top-0 z-50 backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)]"
       style={{
-        background: "color-mix(in oklch, var(--navy-0) 85%, transparent)",
+        background: "var(--navy-0)",
         borderBottom: "1px solid var(--portfolio-line)",
       }}
     >
       <div
-        className="flex items-center justify-between px-8 max-w-[1180px] mx-auto"
+        className="flex items-center justify-between px-6 max-w-[680px] mx-auto"
         style={{ height: "60px" }}
       >
         {/* Brand */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 font-semibold tracking-tight no-underline"
+          className="font-semibold no-underline"
           style={{ color: "var(--text-p-0)" }}
           onClick={() => setIsOpen(false)}
         >
-          <span
-            className="size-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--portfolio-accent), color-mix(in oklch, var(--portfolio-accent) 50%, #6b21a8))",
-              boxShadow:
-                "0 0 0 1px var(--portfolio-line-2), 0 4px 12px var(--portfolio-accent-glow)",
-            }}
-          >
-            C
-          </span>
           Corentin
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1 text-sm">
+        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)] ml-auto">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -74,6 +69,18 @@ export function Header() {
             );
           })}
         </nav>
+
+        <div className="hidden md:flex items-center ml-4">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT))}
+            className="ds-tag ds-tag--clickable cursor-pointer"
+            aria-label={t("jump")}
+          >
+            <kbd className="font-mono">{modKey}</kbd>
+            <kbd className="font-mono">K</kbd>
+          </button>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -102,7 +109,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                  className="px-3 py-2.5 rounded-lg text-[length:var(--fs-2)] font-medium transition-colors"
                   style={{
                     background: isActive ? "var(--navy-2)" : "transparent",
                     color: isActive ? "var(--text-p-0)" : "var(--text-p-1)",

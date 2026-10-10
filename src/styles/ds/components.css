@@ -1,0 +1,98 @@
+/* Subset of Helios src/styles/ds/components.css (Personal Design System): buttons and tags. */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-ctl);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--dur-base),
+    color var(--dur-base),
+    filter var(--dur-base),
+    transform var(--dur-fast);
+}
+.ds-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.ds-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.ds-btn--full {
+  display: flex;
+  width: 100%;
+}
+.ds-btn--sm {
+  height: var(--control-h-sm);
+  padding: 0 10px;
+  font-size: var(--fs-1);
+  gap: 6px;
+}
+.ds-btn--md {
+  height: var(--control-h-md);
+  padding: 0 14px;
+  font-size: var(--fs-2);
+  gap: 8px;
+}
+.ds-btn--lg {
+  height: var(--control-h-lg);
+  padding: 0 18px;
+  font-size: var(--fs-3);
+  gap: 8px;
+}
+.ds-btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: var(--shadow-accent);
+}
+.ds-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.ds-btn--secondary {
+  background: var(--surface-2);
+  color: var(--text-1);
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 var(--highlight);
+}
+.ds-btn--secondary:hover:not(:disabled) {
+  background: var(--surface-overlay);
+}
+.ds-btn--ghost {
+  background: transparent;
+  color: var(--text-2);
+}
+.ds-btn--ghost:hover:not(:disabled) {
+  background: var(--hover);
+  color: var(--text-1);
+}
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 7px;
+  font-size: var(--fs-1);
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--text-2);
+  border: 1px solid var(--line);
+}
+.ds-tag--clickable {
+  cursor: pointer;
+}
+.ds-tag--clickable:hover {
+  border-color: var(--line-strong);
+}
+.ds-tag--selected {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-color: var(--accent-line);
+}

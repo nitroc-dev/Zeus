@@ -2,26 +2,29 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getMessages, getTranslations } from "next-intl/server";
+import { CommandPalette } from "@/components/command-palette";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { Toaster } from "@/components/ui/sonner";
+import { routing } from "@/i18n/routing";
+import { getProjectsData } from "@/lib/data";
+import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
+import { createTranslator } from "@/utils/translate";
 import "../globals.css";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-jetbrains-mono",
   display: "swap",
-  weight: ["400", "500"],
 });
 
 export function generateStaticParams() {
@@ -40,7 +43,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return {
     keywords: [
-      "Full Stack Developer",
+      "React Native Developer",
       "React Developer",
       "Next.js Developer",
       ".NET Developer",
@@ -65,24 +68,24 @@ export async function generateMetadata({
       locale: ogLocale(locale),
       alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
       url: siteUrl(locale, ""),
-      title: "Corentin - Full Stack Developer",
+      title: "Corentin - Software Engineer",
       description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
       siteName: "Corentin Portfolio",
       images: [
         {
           url: "https://nitroc.xyz/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Corentin - Full Stack Developer",
+          alt: "Corentin - Software Engineer",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Corentin - Full Stack Developer",
+      title: "Corentin - Software Engineer",
       description:
-        "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET.",
+        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
       images: ["https://nitroc.xyz/og-image.png"],
     },
     robots: {
@@ -104,7 +107,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "Corentin",
   url: "https://nitroc.xyz",
-  jobTitle: "Full Stack Developer",
+  jobTitle: "Software Engineer",
   sameAs: [
     "https://github.com/nitroc-dev",
     "https://www.linkedin.com/in/corentin-d-02472724b",
@@ -127,10 +130,10 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Corentin - Full Stack Developer",
+  name: "Corentin - Software Engineer",
   url: "https://nitroc.xyz",
   description:
-    "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",
+    "Software engineer specializing in TypeScript, React, Next.js, React Native and .NET. Based in Brussels.",
 };
 
 interface LocaleLayoutProps {
@@ -142,16 +145,45 @@ export default async function LocaleLayout({
   children,
   params,
 }: LocaleLayoutProps) {
-  const [{ locale }, messages] = await Promise.all([params, getMessages()]);
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  const [messages, tNav, tPalette, projects] = await Promise.all([
+    getMessages(),
+    getTranslations("nav"),
+    getTranslations("palette"),
+    getProjectsData(),
+  ]);
+  const tr = createTranslator(locale);
+  const paletteItems = [
+    { id: "home", label: tNav("home"), hint: tPalette("page"), href: "/" },
+    {
+      id: "about",
+      label: tNav("about"),
+      hint: tPalette("page"),
+      href: "/about",
+    },
+    { id: "uses", label: tNav("uses"), hint: tPalette("page"), href: "/uses" },
+    {
+      id: "contact",
+      label: tNav("contact"),
+      hint: tPalette("page"),
+      href: "/#contact",
+    },
+    ...projects.map((p) => ({
+      id: `project-${p.id}`,
+      label: tr(p, "name") ?? p.nameEn,
+      hint: tPalette("project"),
+      href: `/projects/${p.id}`,
+    })),
+  ];
 
   return (
     <html
       lang={locale}
-      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preload" href="/profile.png" as="image" />
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
@@ -165,16 +197,16 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="min-h-screen">
+      <body className="ds min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}
           <Footer />
           <ScrollToTop />
+          <CommandPalette items={paletteItems} />
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
-        <Toaster />
       </body>
     </html>
   );

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ExperienceList } from "@/components/about/experience-list";
 import { ProfileHero } from "@/components/about/profile-hero";
-import { SectionTitle } from "@/components/ui/section-title";
-import { TechIcon } from "@/components/ui/tech-icon";
 import { getExperiencesData, getSkillsData } from "@/lib/data";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 
 interface PageProps {
@@ -45,159 +43,46 @@ export default async function AboutPage({ params }: PageProps) {
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime(),
   );
 
-  const languageCards = [
-    { lang: t("french"), level: t("frenchLevel"), flag: "🇫🇷" },
-    { lang: t("english"), level: t("englishLevel"), flag: "🇬🇧" },
-    { lang: t("dutch"), level: t("dutchLevel"), flag: "🇳🇱" },
+  const languages = [
+    { lang: t("french"), level: t("frenchLevel") },
+    { lang: t("english"), level: t("englishLevel") },
+    { lang: t("dutch"), level: t("dutchLevel") },
   ];
+
+  const sectionCls = "grid grid-cols-1 gap-y-4 py-8 border-t";
+  const sectionStyle = { borderColor: "var(--portfolio-line)" };
+  const labelCls =
+    "text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] m-0";
 
   return (
     <main className="relative overflow-hidden page-bg">
-      <div className="px-8 max-w-[1180px] mx-auto">
-        {/* Profile: photo, name, role, social links */}
+      <div className="px-6 max-w-[680px] mx-auto pb-20">
         <ProfileHero
           name={t("name")}
-          role={t("role")}
+          role={t("roleLine")}
           locale={locale}
           contactLabel={t("contactMe")}
         />
 
-        {/* Bio */}
-        <section
-          className="py-8 border-t"
-          style={{ borderColor: "var(--portfolio-line)" }}
-        >
-          <SectionTitle>{t("bioTitle")}</SectionTitle>
+        <section className="pb-8">
           <p
-            className="text-base leading-relaxed max-w-[760px]"
+            className="text-[length:var(--fs-4)] leading-[1.65] mt-0 mb-4"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("bio")}
           </p>
           <p
-            className="text-base leading-relaxed max-w-[760px] mt-4"
+            className="text-[length:var(--fs-4)] leading-[1.65] m-0"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("bio2")}
           </p>
         </section>
 
-        {/* Currently learning */}
-        <section
-          className="py-8 border-t"
-          style={{ borderColor: "var(--portfolio-line)" }}
-        >
-          <SectionTitle>{t("learningTitle")}</SectionTitle>
-          <div
-            className="flex items-center gap-3 px-4 py-3.5 rounded-xl max-w-[600px]"
-            style={{
-              background: "var(--navy-1)",
-              border: "1px solid var(--portfolio-line)",
-            }}
-          >
-            <span
-              className="size-7 rounded-lg grid place-items-center shrink-0 text-base"
-              style={{
-                background: "var(--portfolio-accent-soft)",
-                color: "var(--portfolio-accent)",
-              }}
-            >
-              📱
-            </span>
-            <div>
-              <p
-                className="text-sm font-medium"
-                style={{ color: "var(--text-p-0)" }}
-              >
-                {t("learningTech")}
-              </p>
-              <p
-                className="text-xs mt-0.5"
-                style={{ color: "var(--text-p-2)" }}
-              >
-                {t("learningDescription")}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Languages */}
-        <section
-          className="py-8 border-t"
-          style={{ borderColor: "var(--portfolio-line)" }}
-        >
-          <SectionTitle>{t("languagesTitle")}</SectionTitle>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[700px]">
-            {languageCards.map(({ lang, level, flag }) => (
-              <div
-                key={lang}
-                className="flex items-center justify-between px-5 py-4 rounded-xl"
-                style={{
-                  background: "var(--navy-1)",
-                  border: "1px solid var(--portfolio-line)",
-                }}
-              >
-                <div>
-                  <p
-                    className="font-medium"
-                    style={{ color: "var(--text-p-0)" }}
-                  >
-                    {lang}
-                  </p>
-                  <p className="text-sm" style={{ color: "var(--text-p-2)" }}>
-                    {level}
-                  </p>
-                </div>
-                <span className="text-3xl">{flag}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills */}
-        {skillCategories.length > 0 && (
-          <section
-            className="py-8 border-t"
-            style={{ borderColor: "var(--portfolio-line)" }}
-          >
-            <SectionTitle>{t("skillsTitle")}</SectionTitle>
-            <div className="space-y-5">
-              {skillCategories.map((category) => (
-                <div key={category.id}>
-                  <h4
-                    className="font-mono text-[11px] uppercase tracking-[0.1em] font-medium mb-3"
-                    style={{ color: "var(--text-p-3)" }}
-                  >
-                    {tr(category, "label") ?? category.labelEn}
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    {category.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono text-xs"
-                        style={{
-                          background: "var(--navy-2)",
-                          border: "1px solid var(--portfolio-line)",
-                          color: "var(--text-p-1)",
-                        }}
-                      >
-                        <TechIcon name={tech} size={12} />
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Experience */}
-        <section
-          className="py-8 border-t"
-          style={{ borderColor: "var(--portfolio-line)" }}
-        >
-          <SectionTitle>{t("experienceTitle")}</SectionTitle>
+        <section className={sectionCls} style={sectionStyle}>
+          <h2 className={labelCls} style={{ color: "var(--text-p-0)" }}>
+            {t("experienceTitle")}
+          </h2>
           <ExperienceList
             experiences={sortedExperiences}
             locale={locale}
@@ -205,7 +90,61 @@ export default async function AboutPage({ params }: PageProps) {
           />
         </section>
 
-        <div className="pb-20" />
+        {skillCategories.length > 0 && (
+          <section className={sectionCls} style={sectionStyle}>
+            <h2 className={labelCls} style={{ color: "var(--text-p-0)" }}>
+              {t("skillsTitle")}
+            </h2>
+            <dl className="m-0 space-y-3">
+              {skillCategories.map((category) => (
+                <div
+                  key={category.id}
+                  className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-6"
+                >
+                  <dt
+                    className="text-[length:var(--fs-2)] pt-0.5"
+                    style={{ color: "var(--text-p-2)" }}
+                  >
+                    {tr(category, "label") ?? category.labelEn}
+                  </dt>
+                  <dd
+                    className="m-0 text-[length:var(--fs-3)]"
+                    style={{ color: "var(--text-p-1)" }}
+                  >
+                    {category.technologies.join(", ")}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
+        <section className={sectionCls} style={sectionStyle}>
+          <h2 className={labelCls} style={{ color: "var(--text-p-0)" }}>
+            {t("languagesTitle")}
+          </h2>
+          <dl className="m-0 space-y-3">
+            {languages.map(({ lang, level }) => (
+              <div
+                key={lang}
+                className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-6"
+              >
+                <dt
+                  className="text-[length:var(--fs-3)]"
+                  style={{ color: "var(--text-p-1)" }}
+                >
+                  {lang}
+                </dt>
+                <dd
+                  className="m-0 text-[length:var(--fs-2)] pt-0.5"
+                  style={{ color: "var(--text-p-2)" }}
+                >
+                  {level}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       </div>
     </main>
   );

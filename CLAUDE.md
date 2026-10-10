@@ -28,7 +28,7 @@ The app uses `next-intl` with two locales: `en` (default) and `fr`. All routes a
 
 ### Data Layer
 
-Content (projects, skills, experiences) lives in [src/data/hardcoded-data.tsx](src/data/hardcoded-data.tsx). There are two versions of each dataset:
+Content (projects, skills, experiences, uses) lives in [src/data/static-data.ts](src/data/static-data.ts). There are two versions of each dataset:
 - **Localized functions** (`getLocalizedProjects`, `getLocalizedSkills`, `getLocalizedExperiences`) - accept a `t()` translator and are the **preferred approach**
 - **Hardcoded exports** (`projects`, `skills`, `experiences`) - legacy, kept for reference only
 
@@ -37,25 +37,17 @@ When adding new content, use the localized functions and add the corresponding k
 ### Page Structure
 
 - `src/app/layout.tsx` - root layout (metadata only, passes through children)
-- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`, `Toaster`
+- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`
 - `src/app/[locale]/page.tsx` - home page composing all sections with Framer Motion scroll animations
 - `src/app/[locale]/projects/page.tsx` - standalone projects page
-- `src/app/[locale]/contact/page.tsx` - contact form page
 - `src/app/[locale]/privacy/page.tsx` - privacy policy
-
-### Contact Form
-
-The contact form at `src/app/api/contact/route.ts` forwards submissions to a **Discord webhook** via `DISCORD_WEBHOOK_URL` environment variable. Validation uses Formik + Yup (`src/utils/contact-validation.ts`).
 
 ### Components
 
-- `src/components/sections/` - page sections (Hero, About, Experience, Skills, Projects, CTA)
-- `src/components/cards/` - reusable card components (ProjectCard, ExperienceCard)
+- `src/components/sections/` - page sections (Hero, Projects, Currently, Contact — `/contact` redirects to `/#contact`)
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
-- `src/components/ui/` - shadcn/ui primitives (Button, Input, etc.) — intentional exception to folder convention (flat files)
-- `src/components/inputs/` - form input wrappers built on top of the UI primitives
-- `src/components/icons/` - custom SVG icon components
+- `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention
 
 #### Component folder convention
 
@@ -70,14 +62,19 @@ component-name/
 Rules:
 - Always **named exports** — never `export default`
 - `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
-- `ui/` is the only exception: it keeps shadcn's flat `.tsx` convention
+- `ui/` is the only exception: it keeps flat `.tsx` files
 
 ### Styling
 
-Tailwind CSS v4 with `tw-animate-css`. The linter is **Biome** (not ESLint/Prettier). Biome is configured to use space indentation and has Next.js + React recommended rules enabled.
+The site uses the **Personal Design System** (same as Helios). Tokens live in `src/styles/ds/` (copied from Helios `src/styles/ds/`; update them there first, then copy). `src/styles/ds/components.css` holds only the `ds-btn` and `ds-tag` rules.
+
+- Colours: use DS semantic tokens (`--bg`, `--surface-*`, `--text-1..3`, `--line*`, `--accent*`, `--ok/--warn`). The older `--navy-*`, `--text-p-*` and `--portfolio-*` names in `globals.css` are aliases of them.
+- Type: sizes come from `--fs-1..6` only (`text-[length:var(--fs-3)]`); page titles are the one deliberate exception. Inter + JetBrains Mono via `next/font`.
+- Buttons are `ds-btn ds-btn--md|lg ds-btn--primary|secondary|ghost`; chips are `ds-tag`.
+- No gradients, glows, eyebrow labels or card grids; lists and hairlines instead.
+
+Tailwind CSS v4 for layout utilities. The linter is **Biome** (not ESLint/Prettier).
 
 ### Environment Variables
 
-| Variable | Purpose |
-|---|---|
-| `DISCORD_WEBHOOK_URL` | Required - receives contact form submissions |
+None required. The site has no server-side integrations.
