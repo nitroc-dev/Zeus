@@ -167,7 +167,7 @@ export default async function LocaleLayout({
       id: "contact",
       label: tNav("contact"),
       hint: tPalette("page"),
-      href: "/contact",
+      href: "/#contact",
     },
     ...projects.map((p) => ({
       id: `project-${p.id}`,

@@ -40,12 +40,11 @@ When adding new content, use the localized functions and add the corresponding k
 - `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `Analytics`, `SpeedInsights`
 - `src/app/[locale]/page.tsx` - home page composing all sections with Framer Motion scroll animations
 - `src/app/[locale]/projects/page.tsx` - standalone projects page
-- `src/app/[locale]/contact/page.tsx` - contact page (email and social links, no form)
 - `src/app/[locale]/privacy/page.tsx` - privacy policy
 
 ### Components
 
-- `src/components/sections/` - page sections (Hero, Projects, Currently)
+- `src/components/sections/` - page sections (Hero, Projects, Currently, Contact — `/contact` redirects to `/#contact`)
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
 - `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention

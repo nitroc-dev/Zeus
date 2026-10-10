@@ -26,7 +26,7 @@ export function ProfileHero({
       </p>
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[length:var(--fs-2)]">
         <Link
-          href={localePath(locale, "/contact")}
+          href={`${localePath(locale, "/")}#contact`}
           className="ds-btn ds-btn--md ds-btn--primary"
         >
           {contactLabel}

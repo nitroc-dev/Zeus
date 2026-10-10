@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { Contact } from "@/components/sections/contact";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Currently } from "@/components/sections/working-on";
@@ -37,6 +38,7 @@ export default function Home() {
       <Hero />
       <Projects />
       <Currently />
+      <Contact />
     </main>
   );
 }

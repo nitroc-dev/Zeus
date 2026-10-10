@@ -101,14 +101,11 @@
     "homelabSub": "in a 3D-printed 10\" rack"
   },
   "contact": {
-    "title": "Get in touch",
-    "description": "The fastest way to reach me is email. I'm also on GitHub and LinkedIn.",
+    "title": "Contact",
+    "description": "Email is the fastest way to reach me.",
     "metaEmailSub": "Replies within 24h",
-    "metaLocationLabel": "Brussels, Belgium",
-    "metaLocationSub": "Brussels time, open to remote",
     "metaGithubSub": "Most of my code",
     "labelEmail": "Email",
-    "labelLocation": "Location",
     "copy": "Copy",
     "copied": "Copied"
   },
