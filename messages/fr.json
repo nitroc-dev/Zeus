@@ -8,7 +8,6 @@
     "about": "À propos",
     "uses": "Outils",
     "projects": "Projets",
-    "contact": "Contact",
     "jump": "Aller à une page ou un projet"
   },
   "hero": {
@@ -25,13 +24,16 @@
     "factSpeaks": "langues",
     "factSpeaksValue": "français, anglais, néerlandais",
     "factBuilding": "en cours",
-    "roleLine": "Software engineer à Bruxelles"
+    "roleLine": "Software engineer à Bruxelles",
+    "factEmail": "email",
+    "copy": "copier",
+    "copied": "copié"
   },
   "about": {
     "name": "Corentin",
     "role": "Software Engineer",
     "location": "Bruxelles, Belgique",
-    "contactMe": "Me contacter",
+    "contactMe": "M'écrire",
     "bio": "Je suis software engineer à Bruxelles, en Belgique. Je construis des produits web et mobiles de bout en bout, du modèle de données jusqu'à la publication sur l'App Store. Chez Eachstapp, une agence produit bruxelloise, je travaille sur un SaaS B2B utilisé par 7 services de médiation, des applications React Native dans le sport et le voyage, et les API C#/.NET qui les alimentent. J'ai étudié l'informatique à la Haute École Léonard de Vinci.",
     "bio2": "En dehors du travail, je construis mes propres outils, surtout des applications desktop et des logiciels pour mon homelab, que je fais tourner sur un serveur TrueNAS et deux Raspberry Pi dans un rack 10 pouces. Chaque projet porte le nom d’un dieu grec.",
     "languagesTitle": "Langues",
@@ -99,15 +101,6 @@
     "homelabLabel": "Homelab",
     "homelabValue": "TrueNAS SCALE, Traefik, deux Raspberry Pi",
     "homelabSub": "dans un rack 10\" imprimé en 3D"
-  },
-  "contact": {
-    "title": "Contact",
-    "description": "L'email reste le moyen le plus rapide de me joindre.",
-    "metaEmailSub": "Réponse sous 24h",
-    "metaGithubSub": "La plupart de mon code",
-    "labelEmail": "E-mail",
-    "copy": "Copier",
-    "copied": "Copié"
   },
   "privacy": {
     "title": "Politique de confidentialité",

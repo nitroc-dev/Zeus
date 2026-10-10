@@ -60,7 +60,6 @@ export default async function AboutPage({ params }: PageProps) {
         <ProfileHero
           name={t("name")}
           role={t("roleLine")}
-          locale={locale}
           contactLabel={t("contactMe")}
         />
 

@@ -44,7 +44,7 @@ When adding new content, use the localized functions and add the corresponding k
 
 ### Components
 
-- `src/components/sections/` - page sections (Hero, Projects, Currently, Contact — `/contact` redirects to `/#contact`)
+- `src/components/sections/` - page sections (Hero, Projects, Currently). There is no contact page: the email lives in the hero facts and `/contact` redirects to `/`
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
 - `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention

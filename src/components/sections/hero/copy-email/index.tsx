@@ -25,7 +25,7 @@ export function CopyEmail({ email, copyLabel, copiedLabel }: CopyEmailProps) {
     <button
       type="button"
       onClick={copy}
-      className="ds-btn ds-btn--md ds-btn--ghost"
+      className="ml-3 cursor-pointer bg-transparent border-0 p-0 font-mono text-[length:var(--fs-1)] underline underline-offset-4 decoration-[var(--portfolio-line-2)] text-[var(--text-p-2)] hover:text-[var(--text-p-0)] transition-colors"
       aria-live="polite"
     >
       {copied ? copiedLabel : copyLabel}

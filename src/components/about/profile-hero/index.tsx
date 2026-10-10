@@ -1,13 +1,7 @@
 import Link from "next/link";
-import { localePath } from "@/lib/seo";
 import type { ProfileHeroProps } from "./props";
 
-export function ProfileHero({
-  name,
-  role,
-  locale,
-  contactLabel,
-}: ProfileHeroProps) {
+export function ProfileHero({ name, role, contactLabel }: ProfileHeroProps) {
   const linkCls =
     "text-[var(--text-p-1)] underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)] transition-colors";
   return (
@@ -26,7 +20,7 @@ export function ProfileHero({
       </p>
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[length:var(--fs-2)]">
         <Link
-          href={`${localePath(locale, "/")}#contact`}
+          href="mailto:contact@nitroc.xyz"
           className="ds-btn ds-btn--md ds-btn--primary"
         >
           {contactLabel}

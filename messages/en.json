@@ -8,7 +8,6 @@
     "about": "About",
     "uses": "Uses",
     "projects": "Projects",
-    "contact": "Contact",
     "jump": "Jump to a page or project"
   },
   "hero": {
@@ -25,13 +24,16 @@
     "factSpeaks": "speaks",
     "factSpeaksValue": "French, English, Dutch",
     "factBuilding": "building",
-    "roleLine": "Software engineer in Brussels"
+    "roleLine": "Software engineer in Brussels",
+    "factEmail": "email",
+    "copy": "copy",
+    "copied": "copied"
   },
   "about": {
     "name": "Corentin",
     "role": "Software Engineer",
     "location": "Brussels, Belgium",
-    "contactMe": "Contact me",
+    "contactMe": "Email me",
     "bio": "I'm a software engineer based in Brussels, Belgium. I build web and mobile products end to end, from the data model to the App Store release. At Eachstapp, a Brussels product agency, I work on a B2B SaaS used by 7 mediation services, React Native apps in sports and travel, and the C#/.NET APIs behind them. I studied Computer Science at Haute École Léonard de Vinci.",
     "bio2": "Outside of work I build my own tools, mostly desktop apps and homelab software, and run a small homelab: a TrueNAS server and two Raspberry Pis in a 10-inch rack. Every project is named after a Greek god.",
     "languagesTitle": "Languages",
@@ -99,15 +101,6 @@
     "homelabLabel": "Homelab",
     "homelabValue": "TrueNAS SCALE, Traefik, two Raspberry Pis",
     "homelabSub": "in a 3D-printed 10\" rack"
-  },
-  "contact": {
-    "title": "Contact",
-    "description": "Email is the fastest way to reach me.",
-    "metaEmailSub": "Replies within 24h",
-    "metaGithubSub": "Most of my code",
-    "labelEmail": "Email",
-    "copy": "Copy",
-    "copied": "Copied"
   },
   "privacy": {
     "title": "Privacy Policy",

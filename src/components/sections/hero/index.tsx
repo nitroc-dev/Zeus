@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { localePath } from "@/lib/seo";
+import { CopyEmail } from "./copy-email";
+
+const EMAIL = "contact@nitroc.xyz";
 
 export async function Hero() {
   const [t, locale] = await Promise.all([getTranslations("hero"), getLocale()]);
@@ -75,6 +78,21 @@ export async function Hero() {
               <dd style={{ color: "var(--text-p-0)" }}>{value}</dd>
             </div>
           ))}
+          <dt style={{ color: "var(--text-p-2)" }}>{t("factEmail")}</dt>
+          <dd style={{ color: "var(--text-p-0)" }}>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
+              style={{ color: "var(--text-p-0)" }}
+            >
+              {EMAIL}
+            </a>
+            <CopyEmail
+              email={EMAIL}
+              copyLabel={t("copy")}
+              copiedLabel={t("copied")}
+            />
+          </dd>
         </dl>
       </div>
     </section>

@@ -163,12 +163,6 @@ export default async function LocaleLayout({
       href: "/about",
     },
     { id: "uses", label: tNav("uses"), hint: tPalette("page"), href: "/uses" },
-    {
-      id: "contact",
-      label: tNav("contact"),
-      hint: tPalette("page"),
-      href: "/#contact",
-    },
     ...projects.map((p) => ({
       id: `project-${p.id}`,
       label: tr(p, "name") ?? p.nameEn,
