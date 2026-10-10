@@ -32,7 +32,7 @@ export function Header() {
       }}
     >
       <div
-        className="flex items-center justify-between px-6 max-w-[1180px] mx-auto"
+        className="flex items-center justify-between px-6 max-w-[680px] mx-auto"
         style={{ height: "60px" }}
       >
         {/* Brand */}

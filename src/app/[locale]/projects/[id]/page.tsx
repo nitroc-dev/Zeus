@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
       <main className="relative overflow-hidden page-bg">
-        <div className="px-6 max-w-[1180px] mx-auto">
+        <div className="px-6 max-w-[680px] mx-auto">
           <nav
             className="pt-8 text-[length:var(--fs-2)]"
             style={{ color: "var(--text-p-2)" }}

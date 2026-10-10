@@ -49,15 +49,14 @@ export default async function AboutPage({ params }: PageProps) {
     { lang: t("dutch"), level: t("dutchLevel") },
   ];
 
-  const sectionCls =
-    "grid grid-cols-1 md:grid-cols-[200px_1fr] gap-x-10 gap-y-4 py-10 border-t";
+  const sectionCls = "grid grid-cols-1 gap-y-4 py-8 border-t";
   const sectionStyle = { borderColor: "var(--portfolio-line)" };
   const labelCls =
     "text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] m-0";
 
   return (
     <main className="relative overflow-hidden page-bg">
-      <div className="px-6 max-w-[1180px] mx-auto pb-20">
+      <div className="px-6 max-w-[680px] mx-auto pb-20">
         <ProfileHero
           name={t("name")}
           role={t("roleLine")}
@@ -65,7 +64,7 @@ export default async function AboutPage({ params }: PageProps) {
           contactLabel={t("contactMe")}
         />
 
-        <section className="pb-12 max-w-[68ch]">
+        <section className="pb-8">
           <p
             className="text-[length:var(--fs-4)] leading-[1.65] mt-0 mb-4"
             style={{ color: "var(--text-p-1)" }}

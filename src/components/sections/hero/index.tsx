@@ -16,8 +16,8 @@ export async function Hero() {
   ];
 
   return (
-    <section className="px-6 pt-24 pb-20 w-full max-w-[1180px] mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-16 items-end">
+    <section className="px-6 pt-16 pb-10 w-full max-w-[680px] mx-auto">
+      <div>
         <div>
           <div className="flex items-center gap-5 sm:gap-6 mb-8">
             <Image
@@ -46,7 +46,7 @@ export async function Hero() {
           </div>
 
           <p
-            className="text-[length:var(--fs-4)] leading-[1.5] mb-9 max-w-[46ch]"
+            className="text-[length:var(--fs-4)] leading-[1.5] mb-8 max-w-[56ch]"
             style={{ color: "var(--text-p-1)" }}
           >
             {t("tagline")}
@@ -66,8 +66,8 @@ export async function Hero() {
         </div>
 
         <dl
-          className="hidden lg:grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 font-mono text-[length:var(--fs-2)] leading-[1.5] pl-6"
-          style={{ borderLeft: "1px solid var(--portfolio-line-2)" }}
+          className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 mt-10 pt-6 font-mono text-[length:var(--fs-2)] leading-[1.5]"
+          style={{ borderTop: "1px solid var(--line)" }}
         >
           {facts.map(({ label, value }) => (
             <div key={label} className="contents">

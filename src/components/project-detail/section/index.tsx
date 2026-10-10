@@ -3,7 +3,7 @@ import type { SectionProps } from "./props";
 export function Section({ title, children }: SectionProps) {
   return (
     <section
-      className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-x-10 gap-y-4 py-10 border-t"
+      className="grid grid-cols-1 gap-y-4 py-8 border-t"
       style={{ borderColor: "var(--portfolio-line)" }}
     >
       <h2

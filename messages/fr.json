@@ -33,7 +33,7 @@
     "location": "Bruxelles, Belgique",
     "contactMe": "Me contacter",
     "bio": "Je suis software engineer à Bruxelles, en Belgique. Je construis des produits web et mobiles de bout en bout, du modèle de données jusqu'à la publication sur l'App Store. Chez Eachstapp, une agence produit bruxelloise, je travaille sur un SaaS B2B utilisé par 7 services de médiation, des applications React Native dans le sport et le voyage, et les API C#/.NET qui les alimentent. J'ai étudié l'informatique à la Haute École Léonard de Vinci.",
-    "bio2": "En dehors du travail, je construis mes propres outils, surtout des applications desktop et des logiciels pour mon homelab, et je lis sur la sécurité web.",
+    "bio2": "En dehors du travail, je construis mes propres outils, surtout des applications desktop et des logiciels pour mon homelab, que je fais tourner sur un serveur TrueNAS et deux Raspberry Pi dans un rack 10 pouces. Chaque projet porte le nom d’un dieu grec.",
     "languagesTitle": "Langues",
     "french": "Français",
     "frenchLevel": "Langue maternelle",
@@ -80,7 +80,8 @@
     "featuresEyebrow": "Fonctionnalités",
     "featuresTitle": "Fonctionnalités",
     "detailStatus": "Statut",
-    "detailVersion": "Version"
+    "detailVersion": "Version",
+    "namingNote": "Chacun porte le nom d’un dieu grec"
   },
   "currently": {
     "title": "En ce moment",
@@ -94,7 +95,10 @@
     "workingOnValue": "Construction de Helios",
     "readingValue": "Web Application Security",
     "readingSublabel": "O'Reilly",
-    "learningValue": "Rust"
+    "learningValue": "Rust",
+    "homelabLabel": "Homelab",
+    "homelabValue": "TrueNAS SCALE, Traefik, deux Raspberry Pi",
+    "homelabSub": "dans un rack 10\" imprimé en 3D"
   },
   "contact": {
     "title": "Me contacter",
@@ -104,7 +108,9 @@
     "metaLocationSub": "Heure de Bruxelles, ouvert au télétravail",
     "metaGithubSub": "La plupart de mon code",
     "labelEmail": "E-mail",
-    "labelLocation": "Localisation"
+    "labelLocation": "Localisation",
+    "copy": "Copier",
+    "copied": "Copié"
   },
   "privacy": {
     "title": "Politique de confidentialité",
@@ -118,7 +124,6 @@
     "contactBody": "Une question sur cette politique ? Écrivez-moi à"
   },
   "footer": {
-    "tagline": "Software engineer à Bruxelles.",
     "privacyPolicy": "Politique de confidentialité"
   },
   "uses": {

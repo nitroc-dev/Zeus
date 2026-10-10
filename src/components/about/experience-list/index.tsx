@@ -14,7 +14,7 @@ export function ExperienceList({
       {experiences.map((exp) => (
         <li
           key={exp.id}
-          className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-x-8 gap-y-1 py-5 border-b first:pt-0"
+          className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-x-8 gap-y-1 py-5 border-b first:pt-0 last:border-b-0 last:pb-0"
           style={{ borderColor: "var(--portfolio-line)" }}
         >
           <p

@@ -8,13 +8,21 @@ export async function Projects() {
   ]);
 
   return (
-    <section id="projects" className="px-6 py-16 w-full max-w-[1180px] mx-auto">
-      <h2
-        className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] mb-6"
-        style={{ color: "var(--text-p-0)" }}
-      >
-        {t("title")}
-      </h2>
+    <section id="projects" className="px-6 py-10 w-full max-w-[680px] mx-auto">
+      <div className="flex items-baseline justify-between gap-4 mb-4">
+        <h2
+          className="m-0 text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)]"
+          style={{ color: "var(--text-1)" }}
+        >
+          {t("title")}
+        </h2>
+        <p
+          className="m-0 text-[length:var(--fs-2)]"
+          style={{ color: "var(--text-3)" }}
+        >
+          {t("namingNote")}
+        </p>
+      </div>
 
       <ProjectsList locale={locale} featuredOnly />
     </section>

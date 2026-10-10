@@ -30,8 +30,8 @@ export default async function UsesPage({ params }: PageProps) {
 
   return (
     <main className="relative overflow-hidden page-bg">
-      <div className="px-6 max-w-[1180px] mx-auto pb-20">
-        <section className="pt-24 pb-12">
+      <div className="px-6 max-w-[680px] mx-auto pb-20">
+        <section className="pt-16 pb-8">
           <h1
             className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
             style={{ color: "var(--text-p-0)" }}
@@ -60,7 +60,7 @@ export default async function UsesPage({ params }: PageProps) {
           return (
             <section
               key={section.id}
-              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-x-10 gap-y-4 py-10 border-t"
+              className="grid grid-cols-1 gap-y-4 py-8 border-t"
               style={{ borderColor: "var(--portfolio-line)" }}
             >
               <h2
@@ -73,7 +73,7 @@ export default async function UsesPage({ params }: PageProps) {
                 {section.items.map((item) => (
                   <div
                     key={item.name}
-                    className="grid grid-cols-1 sm:grid-cols-[240px_1fr] gap-x-8 gap-y-1 py-3 first:pt-0"
+                    className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-3 first:pt-0"
                   >
                     <dt>
                       <span

@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CopyEmail } from "@/components/contact/copy-email";
 
 export async function ContactPanel() {
   const t = await getTranslations("contact");
@@ -9,6 +10,7 @@ export async function ContactPanel() {
       value: "contact@nitroc.xyz",
       href: "mailto:contact@nitroc.xyz",
       note: t("metaEmailSub"),
+      copy: true,
     },
     {
       label: "GitHub",
@@ -32,7 +34,7 @@ export async function ContactPanel() {
 
   return (
     <main className="relative overflow-hidden page-bg flex items-center min-h-[calc(100svh-60px)]">
-      <section className="w-full px-6 py-16 max-w-[1180px] mx-auto">
+      <section className="w-full px-6 py-16 max-w-[680px] mx-auto">
         <h1
           className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
           style={{ color: "var(--text-p-0)" }}
@@ -49,12 +51,12 @@ export async function ContactPanel() {
           className="m-0 max-w-[760px]"
           style={{ borderTop: "1px solid var(--portfolio-line)" }}
         >
-          {rows.map(({ label, value, href, note }) => {
+          {rows.map(({ label, value, href, note, copy }) => {
             const external = href?.startsWith("http");
             return (
               <div
                 key={label}
-                className="grid grid-cols-1 sm:grid-cols-[140px_1fr_auto] gap-x-8 gap-y-1 py-4 border-b items-baseline"
+                className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-8 gap-y-1 py-4 border-b items-baseline"
                 style={{ borderColor: "var(--portfolio-line)" }}
               >
                 <dt
@@ -77,10 +79,19 @@ export async function ContactPanel() {
                   ) : (
                     <span style={{ color: "var(--text-p-0)" }}>{value}</span>
                   )}
+                  {copy && (
+                    <span className="ml-2 align-middle">
+                      <CopyEmail
+                        email={value}
+                        copyLabel={t("copy")}
+                        copiedLabel={t("copied")}
+                      />
+                    </span>
+                  )}
                 </dd>
                 {note && (
                   <dd
-                    className="m-0 text-[length:var(--fs-2)] sm:text-right"
+                    className="m-0 text-[length:var(--fs-2)] sm:col-start-2"
                     style={{ color: "var(--text-p-2)" }}
                   >
                     {note}

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <main className="page-bg min-h-[70vh] flex items-center px-6">
-      <div className="w-full max-w-[1180px] mx-auto">
+      <div className="w-full max-w-[680px] mx-auto">
         <p
           className="m-0 mb-2 font-mono text-[length:var(--fs-2)]"
           style={{ color: "var(--text-3)" }}

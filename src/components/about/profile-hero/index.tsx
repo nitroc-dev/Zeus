@@ -11,7 +11,7 @@ export function ProfileHero({
   const linkCls =
     "text-[var(--text-p-1)] underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)] transition-colors";
   return (
-    <section className="pt-24 pb-12">
+    <section className="pt-16 pb-8">
       <h1
         className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
         style={{ color: "var(--text-p-0)" }}

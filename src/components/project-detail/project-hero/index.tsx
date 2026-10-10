@@ -15,7 +15,7 @@ export function ProjectHero({
     "underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]";
 
   return (
-    <section className="pt-10 pb-12 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-x-16 gap-y-10 items-start">
+    <section className="pt-8 pb-8 grid grid-cols-1 gap-y-8">
       <div>
         <h1
           className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
@@ -59,10 +59,7 @@ export function ProjectHero({
         </div>
       </div>
 
-      <dl
-        className="m-0 lg:pl-8 lg:border-l"
-        style={{ borderColor: "var(--portfolio-line-2)" }}
-      >
+      <dl className="m-0 pt-4 border-t" style={{ borderColor: "var(--line)" }}>
         {statusLabel && (
           <SidebarRow
             label={t("detailStatus")}

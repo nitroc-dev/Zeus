@@ -17,7 +17,7 @@ export async function ProjectsList({
   const projects = all.filter((p) => !featuredOnly || p.isFeatured);
 
   return (
-    <div style={{ borderTop: "1px solid var(--portfolio-line)" }}>
+    <div style={{ borderTop: "1px solid var(--line)" }}>
       {projects.map((project) => {
         const name = tr(project, "name") ?? project.nameEn;
         const description = tr(project, "description") ?? project.descriptionEn;
@@ -26,53 +26,55 @@ export async function ProjectsList({
           <Link
             key={project.id}
             href={localePath(locale, `/projects/${project.id}`)}
-            className="group grid grid-cols-1 md:grid-cols-[1fr_auto_110px_24px] gap-x-10 gap-y-2 py-6 border-b no-underline"
-            style={{ borderColor: "var(--portfolio-line)", color: "inherit" }}
+            className="group grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-x-6 py-5 border-b no-underline"
+            style={{ borderColor: "var(--line)", color: "inherit" }}
           >
             <div className="min-w-0">
               <h3
-                className="text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)] mb-1 leading-tight underline-offset-4 decoration-1 group-hover:underline"
-                style={{ color: "var(--text-p-0)" }}
+                className="m-0 mb-1 text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] leading-tight underline-offset-4 decoration-1 group-hover:underline"
+                style={{ color: "var(--text-1)" }}
               >
                 {name}
               </h3>
               <p
-                className="text-[length:var(--fs-3)] leading-relaxed m-0 max-w-[62ch]"
-                style={{ color: "var(--text-p-2)" }}
+                className="m-0 text-[length:var(--fs-3)] leading-relaxed"
+                style={{ color: "var(--text-3)" }}
               >
                 {description}
               </p>
+              {project.tags && project.tags.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="ds-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="hidden md:flex flex-wrap gap-1.5 self-center justify-end">
-              {(project.tags ?? []).slice(0, 3).map((tag) => (
-                <span key={tag} className="ds-tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <p
-              className="text-[length:var(--fs-2)] m-0 md:self-center md:text-right inline-flex md:justify-end items-center gap-2"
-              style={{ color: inProgress ? "var(--warn)" : "var(--text-3)" }}
-            >
+            <div className="flex items-center gap-4 self-start mt-3 sm:mt-0 sm:pt-0.5 sm:row-start-1 sm:col-start-2">
+              <span
+                className="inline-flex items-center gap-2 text-[length:var(--fs-2)] whitespace-nowrap"
+                style={{ color: inProgress ? "var(--warn)" : "var(--text-3)" }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="size-1.5 rounded-full shrink-0"
+                  style={{
+                    background: inProgress ? "var(--warn)" : "var(--ok)",
+                  }}
+                />
+                {inProgress ? t("statusInProgress") : project.year}
+              </span>
               <span
                 aria-hidden="true"
-                className="size-1.5 rounded-full shrink-0"
-                style={{
-                  background: inProgress ? "var(--warn)" : "var(--ok)",
-                }}
-              />
-              {inProgress ? t("statusInProgress") : project.year}
-            </p>
-
-            <span
-              aria-hidden="true"
-              className="hidden md:block self-center text-[length:var(--fs-4)] transition-transform duration-150 group-hover:translate-x-1"
-              style={{ color: "var(--text-p-2)" }}
-            >
-              →
-            </span>
+                className="transition-transform duration-150 group-hover:translate-x-1"
+                style={{ color: "var(--text-3)" }}
+              >
+                →
+              </span>
+            </div>
           </Link>
         );
       })}

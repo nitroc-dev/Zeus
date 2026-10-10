@@ -33,7 +33,7 @@
     "location": "Brussels, Belgium",
     "contactMe": "Contact me",
     "bio": "I'm a software engineer based in Brussels, Belgium. I build web and mobile products end to end, from the data model to the App Store release. At Eachstapp, a Brussels product agency, I work on a B2B SaaS used by 7 mediation services, React Native apps in sports and travel, and the C#/.NET APIs behind them. I studied Computer Science at Haute École Léonard de Vinci.",
-    "bio2": "Outside of work I build my own tools, mostly desktop apps and homelab software, and read about web security.",
+    "bio2": "Outside of work I build my own tools, mostly desktop apps and homelab software, and run a small homelab: a TrueNAS server and two Raspberry Pis in a 10-inch rack. Every project is named after a Greek god.",
     "languagesTitle": "Languages",
     "french": "French",
     "frenchLevel": "Native",
@@ -80,7 +80,8 @@
     "featuresEyebrow": "What it does",
     "featuresTitle": "Features",
     "detailStatus": "Status",
-    "detailVersion": "Version"
+    "detailVersion": "Version",
+    "namingNote": "Each named after a Greek god"
   },
   "currently": {
     "title": "Now",
@@ -94,7 +95,10 @@
     "workingOnValue": "Building Helios",
     "readingValue": "Web Application Security",
     "readingSublabel": "O'Reilly",
-    "learningValue": "Rust"
+    "learningValue": "Rust",
+    "homelabLabel": "Homelab",
+    "homelabValue": "TrueNAS SCALE, Traefik, two Raspberry Pis",
+    "homelabSub": "in a 3D-printed 10\" rack"
   },
   "contact": {
     "title": "Get in touch",
@@ -104,7 +108,9 @@
     "metaLocationSub": "Brussels time, open to remote",
     "metaGithubSub": "Most of my code",
     "labelEmail": "Email",
-    "labelLocation": "Location"
+    "labelLocation": "Location",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -118,7 +124,6 @@
     "contactBody": "Questions about this policy? Email me at"
   },
   "footer": {
-    "tagline": "Software engineer in Brussels.",
     "privacyPolicy": "Privacy Policy"
   },
   "uses": {
