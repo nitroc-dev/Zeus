@@ -37,18 +37,8 @@ export function Header() {
         className="flex items-center justify-between px-6 max-w-[680px] mx-auto"
         style={{ height: "60px" }}
       >
-        {/* Brand */}
-        <Link
-          href="/"
-          className="font-semibold no-underline"
-          style={{ color: "var(--text-p-0)" }}
-          onClick={() => setIsOpen(false)}
-        >
-          Corentin
-        </Link>
-
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)] ml-auto">
+        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)] -ml-3.5">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -72,7 +62,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2 ml-3">
+        <div className="hidden md:flex items-center gap-2 ml-auto">
           <button
             type="button"
             onClick={openPalette}
@@ -120,7 +110,7 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="md:hidden p-2 rounded-lg transition-colors"
+          className="md:hidden order-first -ml-2 p-2 rounded-lg transition-colors"
           style={{ color: "var(--text-p-2)" }}
           onClick={() => setIsOpen((o) => !o)}
           aria-label="Toggle menu"
