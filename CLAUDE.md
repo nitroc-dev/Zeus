@@ -47,6 +47,7 @@ When adding new content, use the localized functions and add the corresponding k
 - `src/components/sections/` - page sections (Hero, Projects, Currently). There is no contact page: the email lives in the hero facts and `/contact` redirects to `/`
 - `src/components/navigation/` - Header, Footer
 - `src/components/project-detail/` - sub-components for the project detail page
+- `src/components/god-emblem/` - line SVG mark per project god (bolt, sun, crescent), keyed by `Project.god.id`. Every project is named after a Greek god; its `god` field (Greek name, domain, why) feeds the emblem, the "The name" section and the jump menu
 - `src/components/ui/` - small shared primitives (scroll-to-top) — flat files, intentional exception to folder convention
 
 #### Component folder convention
@@ -63,6 +64,10 @@ Rules:
 - Always **named exports** — never `export default`
 - `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
 - `ui/` is the only exception: it keeps flat `.tsx` files
+
+### Static files
+
+- `public/cv/corentin-cv-{en,fr}.pdf` - one-page CV, linked from the header Resume button for the current locale
 
 ### Styling
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { GodEmblem } from "@/components/god-emblem";
 import { getProjectsData } from "@/lib/data";
 import { localePath } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
@@ -30,12 +31,30 @@ export async function ProjectsList({
             style={{ borderColor: "var(--line)", color: "inherit" }}
           >
             <div className="min-w-0">
-              <h3
-                className="m-0 mb-1 text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] leading-tight underline-offset-4 decoration-1 group-hover:underline"
-                style={{ color: "var(--text-1)" }}
-              >
-                {name}
-              </h3>
+              <div className="flex items-center gap-2.5 mb-1">
+                {project.god && (
+                  <GodEmblem
+                    god={project.god.id}
+                    size={18}
+                    className="shrink-0 text-[var(--accent)] transition-transform duration-200 group-hover:-rotate-6"
+                  />
+                )}
+                <h3
+                  className="m-0 text-[length:var(--fs-4)] font-semibold tracking-[var(--tracking-title)] leading-tight underline-offset-4 decoration-1 group-hover:underline"
+                  style={{ color: "var(--text-1)" }}
+                >
+                  {name}
+                </h3>
+                {project.god && (
+                  <span
+                    lang="grc"
+                    className="text-[length:var(--fs-2)]"
+                    style={{ color: "var(--text-3)" }}
+                  >
+                    {project.god.greek}
+                  </span>
+                )}
+              </div>
               <p
                 className="m-0 text-[length:var(--fs-3)] leading-relaxed"
                 style={{ color: "var(--text-3)" }}

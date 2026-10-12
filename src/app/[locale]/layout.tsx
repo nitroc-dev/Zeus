@@ -16,7 +16,8 @@ import { createTranslator } from "@/utils/translate";
 import "../globals.css";
 
 const inter = Inter({
-  subsets: ["latin", "latin-ext"],
+  // Greek subsets are only fetched where the god names (Ζεύς, Ἥλιος…) appear.
+  subsets: ["latin", "latin-ext", "greek", "greek-ext"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -168,6 +169,7 @@ export default async function LocaleLayout({
       label: tr(p, "name") ?? p.nameEn,
       hint: tPalette("project"),
       href: `/projects/${p.id}`,
+      god: p.god?.id,
     })),
   ];
 

@@ -8,7 +8,9 @@
     "about": "About",
     "uses": "Uses",
     "projects": "Projects",
-    "jump": "Jump to a page or project"
+    "jump": "Jump to a page or project",
+    "search": "Search…",
+    "resume": "Resume"
   },
   "hero": {
     "name": "Corentin",
@@ -83,7 +85,11 @@
     "featuresTitle": "Features",
     "detailStatus": "Status",
     "detailVersion": "Version",
-    "namingNote": "Each named after a Greek god"
+    "namingNote": "Each project is named after the Greek god whose domain matches what it does.",
+    "nameTitle": "The name",
+    "nameGod": "God",
+    "nameDomain": "Domain",
+    "nameWhy": "Why"
   },
   "currently": {
     "title": "Now",

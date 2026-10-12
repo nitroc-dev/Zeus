@@ -6,6 +6,17 @@ export interface TechStackItem {
   reasonFr: string;
 }
 
+export type GodId = "zeus" | "helios" | "selene";
+
+export interface ProjectGod {
+  id: GodId;
+  greek: string;
+  domainEn: string;
+  domainFr: string;
+  whyEn: string;
+  whyFr: string;
+}
+
 export interface Project {
   id: string;
   nameEn: string;
@@ -21,6 +32,7 @@ export interface Project {
   contentEn?: string;
   contentFr?: string;
   imageUrl?: string;
+  god?: ProjectGod;
   repositoryUrl?: string;
   websiteUrl?: string;
   tags?: string[];

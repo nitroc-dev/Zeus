@@ -7,6 +7,7 @@ import { MarkdownContent } from "@/components/project-detail/markdown-content";
 import { Pillar } from "@/components/project-detail/pillar";
 import { ProjectFeatures } from "@/components/project-detail/project-features";
 import { ProjectHero } from "@/components/project-detail/project-hero";
+import { ProjectName } from "@/components/project-detail/project-name";
 import { ProjectNextNav } from "@/components/project-detail/project-next-nav";
 import { ProjectStack } from "@/components/project-detail/project-stack";
 import { Section } from "@/components/project-detail/section";
@@ -180,6 +181,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 priority
               />
             </div>
+          )}
+
+          {project.god && (
+            <ProjectName god={project.god} name={name} locale={locale} t={t} />
           )}
 
           {(longDescription ?? description) && (

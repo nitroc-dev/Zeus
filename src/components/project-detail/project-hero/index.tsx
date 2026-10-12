@@ -1,3 +1,4 @@
+import { GodEmblem } from "@/components/god-emblem";
 import { SidebarRow } from "@/components/project-detail/sidebar-row";
 import { Link } from "@/i18n/navigation";
 import type { ProjectHeroProps } from "./props";
@@ -17,12 +18,28 @@ export function ProjectHero({
   return (
     <section className="pt-8 pb-8 grid grid-cols-1 gap-y-8">
       <div>
+        {project.god && (
+          <GodEmblem
+            god={project.god.id}
+            size={56}
+            className="mb-6 text-[var(--accent)]"
+          />
+        )}
         <h1
-          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-5"
+          className="text-[clamp(48px,6vw,72px)] leading-[1] font-semibold tracking-[var(--tracking-metric)] mb-2"
           style={{ color: "var(--text-p-0)" }}
         >
           {name}
         </h1>
+        {project.god && (
+          <p
+            lang="grc"
+            className="m-0 mb-5 text-[length:var(--fs-5)]"
+            style={{ color: "var(--text-3)" }}
+          >
+            {project.god.greek}
+          </p>
+        )}
 
         <p
           className="text-[length:var(--fs-4)] leading-[1.5] mb-7 max-w-[56ch]"

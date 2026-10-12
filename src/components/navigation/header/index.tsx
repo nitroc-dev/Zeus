@@ -1,7 +1,7 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Download, Menu, Search, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -9,6 +9,9 @@ import { Link, usePathname } from "@/i18n/navigation";
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const resumeHref = `/cv/corentin-cv-${locale}.pdf`;
+  const openPalette = () => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT));
   const [isOpen, setIsOpen] = useState(false);
   const [modKey, setModKey] = useState("Ctrl");
 
@@ -69,17 +72,50 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex items-center ml-4">
+        <div className="hidden md:flex items-center gap-2 ml-3">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT))}
-            className="ds-tag ds-tag--clickable cursor-pointer"
+            onClick={openPalette}
             aria-label={t("jump")}
+            className="flex items-center gap-2 h-[var(--control-h-md)] pl-2.5 pr-1.5 min-w-[168px] whitespace-nowrap rounded-[var(--radius-ctl)] cursor-pointer text-[length:var(--fs-2)] transition-colors hover:border-[var(--line-strong)]"
+            style={{
+              background: "var(--surface-1)",
+              border: "1px solid var(--line)",
+              color: "var(--text-3)",
+            }}
           >
-            <kbd className="font-mono">{modKey}</kbd>
-            <kbd className="font-mono">K</kbd>
+            <Search className="size-3.5 shrink-0" aria-hidden="true" />
+            <span className="flex-1 text-left pr-2">{t("search")}</span>
+            <kbd
+              className="font-mono text-[length:var(--fs-1)] px-1.5 rounded"
+              style={{
+                border: "1px solid var(--line)",
+                color: "var(--text-2)",
+              }}
+            >
+              {modKey} K
+            </kbd>
           </button>
+          <a
+            href={resumeHref}
+            download
+            className="ds-btn ds-btn--md ds-btn--secondary"
+          >
+            <Download className="size-3.5" aria-hidden="true" />
+            {t("resume")}
+          </a>
         </div>
+
+        {/* Mobile search */}
+        <button
+          type="button"
+          className="md:hidden ml-auto p-2 rounded-lg"
+          style={{ color: "var(--text-p-2)" }}
+          onClick={openPalette}
+          aria-label={t("jump")}
+        >
+          <Search className="size-5" />
+        </button>
 
         {/* Mobile hamburger */}
         <button
@@ -118,6 +154,16 @@ export function Header() {
                 </Link>
               );
             })}
+            <a
+              href={resumeHref}
+              download
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-[length:var(--fs-2)] font-medium"
+              style={{ color: "var(--text-p-1)" }}
+            >
+              <Download className="size-4" aria-hidden="true" />
+              {t("resume")}
+            </a>
           </nav>
         </div>
       )}

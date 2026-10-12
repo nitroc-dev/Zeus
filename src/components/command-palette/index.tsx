@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { GodEmblem } from "@/components/god-emblem";
 import { useRouter } from "@/i18n/navigation";
 import type { CommandPaletteProps } from "./props";
 
@@ -151,9 +152,16 @@ export function CommandPalette({ items }: CommandPaletteProps) {
               }}
             >
               <span
-                className="text-[length:var(--fs-3)]"
+                className="inline-flex items-center gap-2.5 text-[length:var(--fs-3)]"
                 style={{ color: "var(--text-1)" }}
               >
+                {item.god && (
+                  <GodEmblem
+                    god={item.god}
+                    size={16}
+                    className="text-[var(--accent)]"
+                  />
+                )}
                 {item.label}
               </span>
               <span

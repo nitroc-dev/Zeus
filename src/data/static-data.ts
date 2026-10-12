@@ -11,15 +11,25 @@ export const projects: Project[] = [
   {
     id: "zeus",
     nameEn: "Zeus",
+    god: {
+      id: "zeus",
+      greek: "Ζεύς",
+      domainEn: "King of the gods, ruler of Olympus",
+      domainFr: "Roi des dieux, maître de l'Olympe",
+      whyEn:
+        "The portfolio sits above every other project and presents them, so it takes the name of the god who rules over the rest.",
+      whyFr:
+        "Le portfolio chapeaute tous les autres projets et les présente : il prend le nom du dieu qui règne sur les autres.",
+    },
     nameFr: "Zeus",
     descriptionEn:
       "My personal portfolio - the site you're on right now. Built with Next.js, Tailwind CSS, and next-intl for bilingual support.",
     descriptionFr:
       "Mon portfolio personnel - le site sur lequel vous vous trouvez. Construit avec Next.js, Tailwind CSS et next-intl pour le support bilingue.",
     longDescriptionEn:
-      "Zeus is my personal portfolio, designed to showcase my work, skills, and background. It features a dark navy design with a terminal-styled hero, a bilingual interface (EN/FR), a project showcase, and a /uses page.",
+      "Zeus is my personal portfolio: a bilingual (EN/FR) Next.js site with a project showcase, a /uses page and a ⌘K jump menu. It runs on my own design system, shared with Helios, and has no backend.",
     longDescriptionFr:
-      "Zeus est mon portfolio personnel, conçu pour présenter mon travail, mes compétences et mon parcours. Il propose un design sombre avec un héros en style terminal, une interface bilingue (EN/FR), une vitrine de projets, et une page /uses.",
+      "Zeus est mon portfolio personnel : un site Next.js bilingue (EN/FR) avec une vitrine de projets, une page /uses et un menu de navigation ⌘K. Il repose sur mon propre design system, partagé avec Helios, et n'a aucun backend.",
     websiteUrl: "https://nitroc.xyz",
     problemEn:
       "My old portfolio was a generic template that didn't show how I actually build.",
@@ -65,7 +75,7 @@ export const projects: Project[] = [
       "Bilingual EN/FR with next-intl",
       "100 Lighthouse score across all categories",
       "No backend: no forms, database or API routes",
-      "Terminal-styled hero card",
+      "Built on my own design system, shared with Helios",
     ],
     year: "2026",
     status: "live",
@@ -79,6 +89,18 @@ export const projects: Project[] = [
   {
     id: "helios",
     nameEn: "Helios",
+    god: {
+      id: "helios",
+      greek: "Ἥλιος",
+      domainEn:
+        "Titan of the sun, who crosses the sky every day and sees everything below",
+      domainFr:
+        "Titan du soleil, qui traverse le ciel chaque jour et voit tout ce qui se passe en dessous",
+      whyEn:
+        "Helios is the app that runs my day: calendar, tasks, habits and spending in one window. It takes the name of the god who carries the sun across the sky from morning to evening.",
+      whyFr:
+        "Helios est l'application qui organise ma journée : agenda, tâches, habitudes et dépenses dans une seule fenêtre. Elle porte le nom du dieu qui mène le soleil à travers le ciel, du matin au soir.",
+    },
     nameFr: "Helios",
     descriptionEn:
       "My personal day dashboard and Raycast replacement, built with Tauri 2, Rust and React. Today, Week and Money spaces, plus a launcher on the Windows key.",
@@ -145,6 +167,16 @@ export const projects: Project[] = [
   {
     id: "selene",
     nameEn: "Selene",
+    god: {
+      id: "selene",
+      greek: "Σελήνη",
+      domainEn: "Titan of the moon, sister of Helios",
+      domainFr: "Titanide de la lune, sœur d'Hélios",
+      whyEn:
+        "Selene was split out of Helios to watch the homelab, the servers that keep running after the day is over. Helios has the day, his sister Selene has the night.",
+      whyFr:
+        "Selene est née d'Hélios pour surveiller le homelab, les serveurs qui tournent encore une fois la journée finie. Hélios a le jour, sa sœur Séléné a la nuit.",
+    },
     nameFr: "Selene",
     descriptionEn:
       "A native homelab dashboard split out of Helios: servers, services, containers and network on one page. Work in progress.",

@@ -8,7 +8,9 @@
     "about": "À propos",
     "uses": "Outils",
     "projects": "Projets",
-    "jump": "Aller à une page ou un projet"
+    "jump": "Aller à une page ou un projet",
+    "search": "Rechercher…",
+    "resume": "CV"
   },
   "hero": {
     "name": "Corentin",
@@ -83,7 +85,11 @@
     "featuresTitle": "Fonctionnalités",
     "detailStatus": "Statut",
     "detailVersion": "Version",
-    "namingNote": "Chacun porte le nom d’un dieu grec"
+    "namingNote": "Chaque projet porte le nom du dieu grec dont le domaine correspond à ce qu'il fait.",
+    "nameTitle": "Le nom",
+    "nameGod": "Dieu",
+    "nameDomain": "Domaine",
+    "nameWhy": "Pourquoi"
   },
   "currently": {
     "title": "En ce moment",

@@ -9,15 +9,15 @@ export async function Projects() {
 
   return (
     <section id="projects" className="px-6 py-10 w-full max-w-[680px] mx-auto">
-      <div className="flex items-baseline justify-between gap-4 mb-4">
+      <div className="mb-4">
         <h2
-          className="m-0 text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)]"
+          className="m-0 mb-2 text-[length:var(--fs-5)] font-semibold tracking-[var(--tracking-title)]"
           style={{ color: "var(--text-1)" }}
         >
           {t("title")}
         </h2>
         <p
-          className="m-0 text-[length:var(--fs-2)]"
+          className="m-0 text-[length:var(--fs-3)] leading-[1.5] max-w-[56ch]"
           style={{ color: "var(--text-3)" }}
         >
           {t("namingNote")}
