@@ -286,13 +286,13 @@ export const experiences: ExperienceData[] = [
   },
   {
     id: "vinci-education",
-    nameEn: "Computer Science Student",
-    nameFr: "Étudiant en Informatique",
-    companyName: "Haute École Léonard de Vinci",
+    nameEn: "Bachelor in Business Computing",
+    nameFr: "Bachelier en Informatique de gestion",
+    companyName: "Institut Paul Lambin (Haute École Léonard de Vinci)",
     descriptionEn:
-      "Completed comprehensive studies in computer science covering programming fundamentals, data structures, algorithms, database management, and software engineering principles. Built a solid foundation in object-oriented programming, web development, and system design.",
+      "Three-year professional bachelor (Informatique de gestion) covering programming, databases, web development and software engineering. Team projects included a Stack Overflow clone in JavaScript. Final-year internship at Eachstapp, where I was hired afterwards.",
     descriptionFr:
-      "Études complètes en informatique couvrant les fondamentaux de la programmation, les structures de données, les algorithmes, la gestion des bases de données et les principes de génie logiciel. Construction d'une base solide en POO, développement web et conception de systèmes.",
+      "Bachelier professionnalisant en trois ans couvrant la programmation, les bases de données, le développement web et le génie logiciel. Projets en équipe, dont un clone de Stack Overflow en JavaScript. Stage de fin d'études chez Eachstapp, où j'ai été engagé ensuite.",
     startDate: "2021-09-01",
     endDate: "2024-06-30",
     locationEn: "Brussels, Belgium",
