@@ -5,7 +5,7 @@ import type { MarkdownContentProps } from "./props";
 const components: Components = {
   h2: ({ children }) => (
     <h2
-      className="text-2xl font-semibold mt-8 mb-4"
+      className="text-[length:var(--fs-5)] font-semibold mt-8 mb-4"
       style={{ color: "var(--text-p-0)" }}
     >
       {children}
@@ -13,7 +13,7 @@ const components: Components = {
   ),
   h3: ({ children }) => (
     <h3
-      className="text-xl font-semibold mt-6 mb-3"
+      className="text-[length:var(--fs-4)] font-semibold mt-6 mb-3"
       style={{ color: "var(--text-p-0)" }}
     >
       {children}
@@ -49,7 +49,7 @@ const components: Components = {
     if (isBlock) {
       return (
         <code
-          className="block px-4 py-3 rounded-lg font-mono text-sm my-4"
+          className="block px-4 py-3 rounded-lg font-mono text-[length:var(--fs-2)] my-4"
           style={{
             background: "var(--navy-2)",
             border: "1px solid var(--portfolio-line)",
@@ -62,7 +62,7 @@ const components: Components = {
     }
     return (
       <code
-        className="px-1.5 py-0.5 rounded font-mono text-[13px]"
+        className="px-1.5 py-0.5 rounded font-mono text-[length:var(--fs-2)]"
         style={{
           background: "var(--navy-2)",
           color: "var(--portfolio-accent)",
