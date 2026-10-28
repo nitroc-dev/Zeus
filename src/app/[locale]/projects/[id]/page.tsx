@@ -42,19 +42,9 @@ export async function generateMetadata({
   const tr = createTranslator(locale);
   const name = tr(project, "name") ?? project.nameEn;
   const description = tr(project, "description") ?? project.descriptionEn;
-  const title = project.seoTitle ?? `${name} - Corentin`;
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
+  const title = project.seoTitle ?? tMeta("projectTitle", { name });
   const desc = project.seoDescription ?? description;
-  const images = project.imageUrl
-    ? [
-        {
-          url: project.imageUrl.startsWith("http")
-            ? project.imageUrl
-            : `https://nitroc.xyz${project.imageUrl}`,
-          width: 1200,
-          height: 630,
-        },
-      ]
-    : [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }];
   return {
     title,
     description: desc,
@@ -63,12 +53,8 @@ export async function generateMetadata({
       title,
       description: desc,
       url: siteUrl(locale, `/projects/${id}`),
-      images,
+      type: "article",
     },
-    robots:
-      project.status === "in_progress"
-        ? { index: false, follow: false }
-        : undefined,
   };
 }
 

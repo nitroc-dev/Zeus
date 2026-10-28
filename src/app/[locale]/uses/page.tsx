@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { getUsesData } from "@/lib/data";
-import { buildAlternates } from "@/lib/seo";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 
 interface PageProps {
@@ -12,11 +12,17 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const [tMeta, t] = await Promise.all([
+    getTranslations({ locale, namespace: "metadata" }),
+    getTranslations({ locale, namespace: "uses" }),
+  ]);
+  const title = tMeta("usesTitle");
+  const description = t("description");
   return {
-    title: "Uses - Corentin",
-    description:
-      "An honest list of the hardware, software, and small tools I reach for daily.",
+    title,
+    description,
     alternates: buildAlternates(locale, "/uses"),
+    openGraph: { title, description, url: siteUrl(locale, "/uses") },
   };
 }
 

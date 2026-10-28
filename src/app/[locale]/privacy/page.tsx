@@ -13,8 +13,9 @@ export async function generateMetadata({
     params,
     getTranslations("privacy"),
   ]);
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
   return {
-    title: `${t("title")} - Corentin`,
+    title: tMeta("privacyTitle"),
     description: t("summary"),
     alternates: buildAlternates(locale, "/privacy"),
   };

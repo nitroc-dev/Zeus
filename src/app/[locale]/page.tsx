@@ -24,9 +24,7 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       url: siteUrl(locale, ""),
-      images: [
-        { url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 },
-      ],
+      type: "website",
     },
   };
 }
