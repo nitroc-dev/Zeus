@@ -27,17 +27,20 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/", permanent: true },
       { source: "/fr/contact", destination: "/fr", permanent: true },
       { source: "/en/contact", destination: "/", permanent: true },
+      // English is served without a prefix; make /en URLs a permanent
+      // redirect so Google consolidates them instead of seeing duplicates.
+      { source: "/en", destination: "/", permanent: true },
+      // Generated preview images keep their /en URL (that is where Next
+      // serves them), so they are excluded.
+      {
+        source: "/en/:path((?!.*opengraph-image).*)",
+        destination: "/:path",
+        permanent: true,
+      },
     ];
   },
   async headers() {
     return [
-      {
-        // Allow OG image to be fetched cross-origin by social platform crawlers
-        source: "/og-image.png",
-        headers: [
-          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
-        ],
-      },
       {
         source: "/(.*)",
         headers: [
@@ -74,6 +77,20 @@ const nextConfig: NextConfig = {
             key: "Cross-Origin-Embedder-Policy",
             value: "credentialless",
           },
+        ],
+      },
+      {
+        // Social crawlers and other sites must be able to load the preview
+        // images. Listed last so it overrides the same-origin default above.
+        source: "/(.*)/opengraph-image(.*)",
+        headers: [
+          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+        ],
+      },
+      {
+        source: "/opengraph-image(.*)",
+        headers: [
+          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
         ],
       },
     ];

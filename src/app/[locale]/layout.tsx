@@ -33,7 +33,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#07090f",
+  themeColor: "#0b0b0b",
 };
 
 export async function generateMetadata({
@@ -42,6 +42,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
   return {
     keywords: [
       "React Native Developer",
@@ -54,14 +55,16 @@ export async function generateMetadata({
       "Brussels Developer",
       "Portfolio",
     ],
-    authors: [{ name: "Corentin" }],
-    creator: "Corentin",
-    publisher: "Corentin",
+    authors: [{ name: "Corentin D'haeyere", url: "https://nitroc.xyz" }],
+    creator: "Corentin D'haeyere",
+    publisher: "Corentin D'haeyere",
     formatDetection: { email: false, address: false, telephone: false },
     icons: {
       icon: "/favicon.ico",
       shortcut: "/favicon.ico",
-      apple: [{ url: "/profile.png", sizes: "180x180", type: "image/png" }],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     alternates: buildAlternates(locale, ""),
     openGraph: {
@@ -69,25 +72,14 @@ export async function generateMetadata({
       locale: ogLocale(locale),
       alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
       url: siteUrl(locale, ""),
-      title: "Corentin - Software Engineer",
-      description:
-        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
-      siteName: "Corentin Portfolio",
-      images: [
-        {
-          url: "https://nitroc.xyz/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "Corentin - Software Engineer",
-        },
-      ],
+      title: t("title"),
+      description: t("description"),
+      siteName: "Corentin D'haeyere",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Corentin - Software Engineer",
-      description:
-        "Software engineer building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
-      images: ["https://nitroc.xyz/og-image.png"],
+      title: t("title"),
+      description: t("description"),
     },
     robots: {
       index: true,
@@ -106,21 +98,37 @@ export async function generateMetadata({
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Corentin",
+  "@id": "https://nitroc.xyz/#person",
+  name: "Corentin D'haeyere",
+  givenName: "Corentin",
+  familyName: "D'haeyere",
+  alternateName: "Corentin",
   url: "https://nitroc.xyz",
+  image: "https://nitroc.xyz/avatar-c.webp",
   jobTitle: "Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "Eachstapp",
+    url: "https://eachstapp.com",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Haute École Léonard de Vinci",
+    url: "https://www.vinci.be",
+  },
   sameAs: [
     "https://github.com/nitroc-dev",
     "https://www.linkedin.com/in/corentin-d-02472724b",
   ],
   knowsAbout: [
+    "TypeScript",
     "React",
     "Next.js",
+    "React Native",
     ".NET",
-    "TypeScript",
-    "PostgreSQL",
-    "Docker",
+    "SQL Server",
   ],
+  knowsLanguage: ["fr", "en", "nl"],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Brussels",
@@ -131,10 +139,12 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Corentin - Software Engineer",
+  "@id": "https://nitroc.xyz/#website",
+  name: "Corentin D'haeyere",
+  alternateName: "nitroc.xyz",
   url: "https://nitroc.xyz",
-  description:
-    "Software engineer specializing in TypeScript, React, Next.js, React Native and .NET. Based in Brussels.",
+  inLanguage: ["en", "fr"],
+  author: { "@id": "https://nitroc.xyz/#person" },
 };
 
 interface LocaleLayoutProps {

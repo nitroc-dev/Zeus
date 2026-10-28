@@ -13,19 +13,21 @@ interface PageProps {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const [{ locale }, t] = await Promise.all([params, getTranslations("about")]);
-  const title = `${t("name")} - ${t("role")}`;
+  const [{ locale }, t] = await Promise.all([
+    params,
+    getTranslations("metadata"),
+  ]);
+  const title = t("aboutTitle");
+  const description = t("aboutDescription");
   return {
     title,
-    description: t("bio"),
+    description,
     alternates: buildAlternates(locale, "/about"),
     openGraph: {
       title,
-      description: t("bio"),
+      description,
       url: siteUrl(locale, "/about"),
-      images: [
-        { url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 },
-      ],
+      type: "profile",
     },
   };
 }

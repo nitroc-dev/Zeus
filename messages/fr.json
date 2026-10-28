@@ -1,7 +1,17 @@
 {
   "metadata": {
-    "title": "Corentin - Software Engineer",
-    "description": "Software engineer qui construit des produits web et mobiles de bout en bout avec TypeScript, React, Next.js, React Native et .NET. Découvrez mon portfolio, mes projets et mon parcours professionnel."
+    "title": "Corentin D'haeyere – Software Engineer à Bruxelles",
+    "description": "Software engineer à Bruxelles, je construis des produits web et mobiles de bout en bout avec TypeScript, React, Next.js, React Native et .NET.",
+    "ogSubtitle": "Software engineer à Bruxelles. Produits web et mobiles, de bout en bout.",
+    "aboutTitle": "À propos – Corentin D'haeyere",
+    "aboutDescription": "Software engineer chez Eachstapp à Bruxelles : expérience, compétences, formation et langues.",
+    "usesTitle": "Outils – Corentin D'haeyere",
+    "projectTitle": "{name} – Corentin D'haeyere",
+    "privacyTitle": "Politique de confidentialité – Corentin D'haeyere",
+    "aboutOgTitle": "À propos",
+    "aboutOgSubtitle": "Software engineer chez Eachstapp à Bruxelles : expérience, compétences, formation et langues.",
+    "usesOgTitle": "Outils",
+    "usesOgSubtitle": "Le matériel, les logiciels et les outils que j'utilise au quotidien."
   },
   "nav": {
     "home": "Accueil",
