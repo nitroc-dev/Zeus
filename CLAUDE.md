@@ -65,10 +65,6 @@ Rules:
 - `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
 - `ui/` is the only exception: it keeps flat `.tsx` files
 
-### Static files
-
-- `public/cv/corentin-cv-{en,fr}.pdf` - one-page CV, linked from the header Resume button for the current locale
-
 ### Styling
 
 The site uses the **Personal Design System** (same as Helios). Tokens live in `src/styles/ds/` (copied from Helios `src/styles/ds/`; update them there first, then copy). `src/styles/ds/components.css` holds only the `ds-btn` and `ds-tag` rules.

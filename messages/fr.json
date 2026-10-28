@@ -9,8 +9,7 @@
     "uses": "Outils",
     "projects": "Projets",
     "jump": "Aller à une page ou un projet",
-    "search": "Rechercher…",
-    "resume": "CV"
+    "search": "Rechercher…"
   },
   "hero": {
     "name": "Corentin",

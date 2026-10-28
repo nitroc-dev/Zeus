@@ -1,7 +1,7 @@
 "use client";
 
-import { Download, Menu, Search, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { Menu, Search, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -9,8 +9,6 @@ import { Link, usePathname } from "@/i18n/navigation";
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
-  const locale = useLocale();
-  const resumeHref = `/cv/corentin-cv-${locale}.pdf`;
   const openPalette = () => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT));
   const [isOpen, setIsOpen] = useState(false);
   const [modKey, setModKey] = useState("Ctrl");
@@ -86,14 +84,6 @@ export function Header() {
               {modKey} K
             </kbd>
           </button>
-          <a
-            href={resumeHref}
-            download
-            className="ds-btn ds-btn--md ds-btn--secondary"
-          >
-            <Download className="size-3.5" aria-hidden="true" />
-            {t("resume")}
-          </a>
         </div>
 
         {/* Mobile search */}
@@ -144,16 +134,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <a
-              href={resumeHref}
-              download
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-[length:var(--fs-2)] font-medium"
-              style={{ color: "var(--text-p-1)" }}
-            >
-              <Download className="size-4" aria-hidden="true" />
-              {t("resume")}
-            </a>
           </nav>
         </div>
       )}
