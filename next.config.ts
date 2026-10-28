@@ -21,6 +21,14 @@ const csp = [
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  async redirects() {
+    // The contact page was removed; the email now sits in the home hero.
+    return [
+      { source: "/contact", destination: "/", permanent: true },
+      { source: "/fr/contact", destination: "/fr", permanent: true },
+      { source: "/en/contact", destination: "/", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

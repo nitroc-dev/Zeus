@@ -1,57 +1,42 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import { OPEN_PALETTE_EVENT } from "@/components/command-palette";
 import { Link, usePathname } from "@/i18n/navigation";
-import { useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const openPalette = () => window.dispatchEvent(new Event(OPEN_PALETTE_EVENT));
   const [isOpen, setIsOpen] = useState(false);
+  const [modKey, setModKey] = useState("Ctrl");
+
+  useEffect(() => {
+    if (/Mac|iPhone|iPad/.test(navigator.platform)) setModKey("⌘");
+  }, []);
 
   const navigation = [
     { name: t("home"), href: "/" },
     { name: t("about"), href: "/about" },
     { name: t("uses"), href: "/uses" },
-    { name: t("contact"), href: "/contact" },
   ];
 
   return (
     <header
       className="sticky top-0 z-50 backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)]"
       style={{
-        background: "color-mix(in oklch, var(--navy-0) 85%, transparent)",
+        background: "var(--navy-0)",
         borderBottom: "1px solid var(--portfolio-line)",
       }}
     >
       <div
-        className="flex items-center justify-between px-8 max-w-[1180px] mx-auto"
+        className="flex items-center justify-between px-6 max-w-[680px] mx-auto"
         style={{ height: "60px" }}
       >
-        {/* Brand */}
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 font-semibold tracking-tight no-underline"
-          style={{ color: "var(--text-p-0)" }}
-          onClick={() => setIsOpen(false)}
-        >
-          <span
-            className="size-7 rounded-lg grid place-items-center font-mono text-sm font-bold text-white"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--portfolio-accent), color-mix(in oklch, var(--portfolio-accent) 50%, #6b21a8))",
-              boxShadow:
-                "0 0 0 1px var(--portfolio-line-2), 0 4px 12px var(--portfolio-accent-glow)",
-            }}
-          >
-            C
-          </span>
-          Corentin
-        </Link>
-
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-1 text-sm">
+        <nav className="hidden md:flex gap-1 text-[length:var(--fs-2)] -ml-3.5">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -75,10 +60,47 @@ export function Header() {
           })}
         </nav>
 
+        <div className="hidden md:flex items-center gap-2 ml-auto">
+          <button
+            type="button"
+            onClick={openPalette}
+            aria-label={t("jump")}
+            className="flex items-center gap-2 h-[var(--control-h-md)] pl-2.5 pr-1.5 min-w-[168px] whitespace-nowrap rounded-[var(--radius-ctl)] cursor-pointer text-[length:var(--fs-2)] transition-colors hover:border-[var(--line-strong)]"
+            style={{
+              background: "var(--surface-1)",
+              border: "1px solid var(--line)",
+              color: "var(--text-3)",
+            }}
+          >
+            <Search className="size-3.5 shrink-0" aria-hidden="true" />
+            <span className="flex-1 text-left pr-2">{t("search")}</span>
+            <kbd
+              className="font-mono text-[length:var(--fs-1)] px-1.5 rounded"
+              style={{
+                border: "1px solid var(--line)",
+                color: "var(--text-2)",
+              }}
+            >
+              {modKey} K
+            </kbd>
+          </button>
+        </div>
+
+        {/* Mobile search */}
+        <button
+          type="button"
+          className="md:hidden ml-auto p-2 rounded-lg"
+          style={{ color: "var(--text-p-2)" }}
+          onClick={openPalette}
+          aria-label={t("jump")}
+        >
+          <Search className="size-5" />
+        </button>
+
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="md:hidden p-2 rounded-lg transition-colors"
+          className="md:hidden order-first -ml-2 p-2 rounded-lg transition-colors"
           style={{ color: "var(--text-p-2)" }}
           onClick={() => setIsOpen((o) => !o)}
           aria-label="Toggle menu"
@@ -102,7 +124,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
+                  className="px-3 py-2.5 rounded-lg text-[length:var(--fs-2)] font-medium transition-colors"
                   style={{
                     background: isActive ? "var(--navy-2)" : "transparent",
                     color: isActive ? "var(--text-p-0)" : "var(--text-p-1)",

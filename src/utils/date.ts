@@ -14,7 +14,7 @@ export function formatWhen(
   const fmt = (d: string) =>
     format(parseISO(d), "MMM yyyy", { locale: dateLocale });
   const end = exp.endDate ? fmt(exp.endDate) : presentLabel;
-  return `${fmt(exp.startDate)} - ${end}`;
+  return `${fmt(exp.startDate)} – ${end}`;
 }
 
 export function formatExperience(experience: {
@@ -24,5 +24,5 @@ export function formatExperience(experience: {
   const fmt = (d: string) => format(parseISO(d), "MMMM yyyy", { locale: enUS });
   const start = fmt(experience.startDate);
   if (!experience.endDate) return start;
-  return `${start} - ${fmt(experience.endDate)}`;
+  return `${start} – ${fmt(experience.endDate)}`;
 }

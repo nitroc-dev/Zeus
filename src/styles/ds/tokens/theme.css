@@ -1,0 +1,177 @@
+/* Semantic tokens. :root is dark (the default).
+   .theme-light flips surfaces, text, lines and status.
+   .accent-cobalt | .accent-violet | .accent-ember | .accent-teal pick the app accent.
+   Derived accent tokens are re-declared wherever --accent or the theme changes,
+   because custom properties resolve where they are declared. */
+:root {
+  color-scheme: dark;
+  --bg: var(--grey-150);
+  --surface-1: var(--grey-190);
+  --surface-2: var(--grey-230);
+  --surface-inset: var(--grey-120);
+  --surface-overlay: var(--grey-200);
+  --text-1: oklch(0.97 0 0);
+  --text-2: var(--grey-780);
+  --text-3: var(--grey-600);
+  --line: rgb(255 255 255 / 8%);
+  --line-strong: rgb(255 255 255 / 14%);
+  --highlight: rgb(255 255 255 / 6%);
+  --scrim: rgb(0 0 0 / 60%);
+  --hover: rgb(255 255 255 / 5%);
+  --ok: var(--ok-dark);
+  --warn: var(--warn-dark);
+  --bad: var(--bad-dark);
+  --info: var(--info-dark);
+  --on-accent: var(--ink);
+  --shadow-card:
+    inset 0 1px 0 var(--highlight), 0 18px 40px -26px rgb(0 0 0 / 90%);
+  --shadow-pop:
+    inset 0 1px 0 var(--highlight), 0 34px 80px -26px rgb(0 0 0 / 95%);
+  --shadow-float: 0 12px 32px -12px rgb(0 0 0 / 60%);
+  --accent: var(--cobalt);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+
+.theme-light {
+  color-scheme: light;
+  --bg: var(--grey-975);
+  --surface-1: var(--grey-1000);
+  --surface-2: var(--grey-955);
+  --surface-inset: var(--grey-955);
+  --surface-overlay: var(--grey-1000);
+  --text-1: oklch(0.2 0 0);
+  --text-2: var(--grey-420);
+  --text-3: var(--grey-550);
+  --line: rgb(0 0 0 / 8%);
+  --line-strong: rgb(0 0 0 / 14%);
+  --highlight: rgb(255 255 255 / 90%);
+  --scrim: rgb(0 0 0 / 32%);
+  --hover: rgb(0 0 0 / 4%);
+  --ok: var(--ok-light);
+  --warn: var(--warn-light);
+  --bad: var(--bad-light);
+  --info: var(--info-light);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 5%), 0 18px 40px -30px rgb(0 0 0 / 35%);
+  --shadow-pop: 0 1px 2px rgb(0 0 0 / 6%), 0 34px 80px -30px rgb(0 0 0 / 40%);
+  --shadow-float: 0 12px 32px -12px rgb(0 0 0 / 22%);
+  --accent-text: color-mix(in oklch, var(--accent) 68%, black);
+  --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 45%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+
+.theme-dark {
+  color-scheme: dark;
+  --bg: var(--grey-150);
+  --surface-1: var(--grey-190);
+  --surface-2: var(--grey-230);
+  --surface-inset: var(--grey-120);
+  --surface-overlay: var(--grey-200);
+  --text-1: oklch(0.97 0 0);
+  --text-2: var(--grey-780);
+  --text-3: var(--grey-600);
+  --line: rgb(255 255 255 / 8%);
+  --line-strong: rgb(255 255 255 / 14%);
+  --highlight: rgb(255 255 255 / 6%);
+  --scrim: rgb(0 0 0 / 60%);
+  --hover: rgb(255 255 255 / 5%);
+  --ok: var(--ok-dark);
+  --warn: var(--warn-dark);
+  --bad: var(--bad-dark);
+  --info: var(--info-dark);
+  --shadow-card:
+    inset 0 1px 0 var(--highlight), 0 18px 40px -26px rgb(0 0 0 / 90%);
+  --shadow-pop:
+    inset 0 1px 0 var(--highlight), 0 34px 80px -26px rgb(0 0 0 / 95%);
+  --shadow-float: 0 12px 32px -12px rgb(0 0 0 / 60%);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+
+.accent-cobalt {
+  --accent: var(--cobalt);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.accent-violet {
+  --accent: var(--violet);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.accent-ember {
+  --accent: var(--ember);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.accent-teal {
+  --accent: var(--teal);
+  --accent-text: var(--accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 15%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 35%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.theme-light.accent-cobalt,
+.theme-light .accent-cobalt {
+  --accent: var(--cobalt);
+  --accent-text: color-mix(in oklch, var(--accent) 68%, black);
+  --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 45%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.theme-light.accent-violet,
+.theme-light .accent-violet {
+  --accent: var(--violet);
+  --accent-text: color-mix(in oklch, var(--accent) 68%, black);
+  --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 45%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.theme-light.accent-ember,
+.theme-light .accent-ember {
+  --accent: var(--ember);
+  --accent-text: color-mix(in oklch, var(--accent) 68%, black);
+  --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 45%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
+.theme-light.accent-teal,
+.theme-light .accent-teal {
+  --accent: var(--teal);
+  --accent-text: color-mix(in oklch, var(--accent) 68%, black);
+  --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent) 45%, transparent);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 25%), 0 6px 16px -8px var(--accent); /* @kind shadow */
+  --focus-ring: 0 0 0 3px color-mix(in oklch, var(--accent) 35%, transparent); /* @kind shadow */
+}
