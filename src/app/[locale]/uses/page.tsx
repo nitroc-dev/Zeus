@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getUsesData } from "@/lib/data";
 import { buildAlternates, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
@@ -28,6 +28,7 @@ export async function generateMetadata({
 
 export default async function UsesPage({ params }: PageProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const [tr, t] = await Promise.all([
     Promise.resolve(createTranslator(locale)),
     getTranslations("uses"),

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { LighthouseResults } from "@/components/project-detail/lighthouse-results";
 import { MarkdownContent } from "@/components/project-detail/markdown-content";
 import { Pillar } from "@/components/project-detail/pillar";
@@ -57,6 +57,7 @@ export async function generateMetadata({
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
+  setRequestLocale((await params).locale);
   const [{ locale, id }, t] = await Promise.all([
     params,
     getTranslations("projects"),
