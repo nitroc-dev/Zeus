@@ -28,7 +28,6 @@ export async function Hero() {
               alt=""
               width={96}
               height={96}
-              priority
               className="size-16 sm:size-24 rounded-full shrink-0"
               style={{ boxShadow: "0 0 0 1px var(--line-strong)" }}
             />

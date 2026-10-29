@@ -4,7 +4,11 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { CommandPalette } from "@/components/command-palette";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
@@ -15,9 +19,11 @@ import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 import "../globals.css";
 
+// Only the Latin file is preloaded. The CSS still declares every Inter
+// subset (accents, Greek for Ζεύς, Ἥλιος…) and the browser fetches those on
+// demand; preloading all four cost ~180 KB before the first paint on mobile.
 const inter = Inter({
-  // Greek subsets are only fetched where the god names (Ζεύς, Ἥλιος…) appear.
-  subsets: ["latin", "latin-ext", "greek", "greek-ext"],
+  subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -26,6 +32,8 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin", "latin-ext"],
   variable: "--font-jetbrains-mono",
   display: "swap",
+  // Mono is only used for small details, never the first thing to render.
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -161,6 +169,8 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
+  // Lets every page under this layout render statically instead of per request.
+  setRequestLocale(locale);
   const [messages, tNav, tPalette, projects] = await Promise.all([
     getMessages(),
     getTranslations("nav"),
@@ -207,7 +217,15 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="ds min-h-screen flex flex-col">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider
+          messages={{
+            // Only what client components read; the rest stays on the server
+            // instead of being inlined into every page's HTML.
+            nav: messages.nav,
+            palette: messages.palette,
+            notFound: messages.notFound,
+          }}
+        >
           <Header />
           {children}
           <Footer />
