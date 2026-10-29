@@ -14,7 +14,7 @@ export async function Footer() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/corentin-d-02472724b",
     },
-    { label: "Email", href: "mailto:contact@nitroc.xyz" },
+    { label: tFooter("email"), href: "mailto:contact@nitroc.xyz" },
     { label: tFooter("privacyPolicy"), href: localePath(locale, "/privacy") },
   ];
 

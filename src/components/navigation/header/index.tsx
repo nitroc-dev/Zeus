@@ -103,7 +103,7 @@ export function Header() {
           className="md:hidden order-first -ml-2 p-2 rounded-lg transition-colors"
           style={{ color: "var(--text-p-2)" }}
           onClick={() => setIsOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={t("menu")}
           aria-expanded={isOpen}
         >
           {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}

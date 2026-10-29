@@ -73,16 +73,50 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Bilingual EN/FR with next-intl",
-      "100 Lighthouse score across all categories",
+      "Lighthouse 100 in every category on desktop, 95+ on mobile",
       "No backend: no forms, database or API routes",
       "Built on my own design system, shared with Helios",
+    ],
+    highlightsFr: [
+      "Bilingue FR/EN avec next-intl",
+      "Lighthouse 100 dans toutes les catégories sur ordinateur, 95+ sur mobile",
+      "Aucun backend : ni formulaire, ni base de données, ni route API",
+      "Construit sur mon propre design system, partagé avec Helios",
     ],
     year: "2026",
     status: "live",
     role: "Solo",
     isFeatured: true,
-    lighthouseScore: "100 · 100 · 100 · 100",
+    lighthouse: {
+      date: "2026-10-29",
+      version: "13.5.0",
+      reportUrl:
+        "https://pagespeed.web.dev/analysis/https-nitroc-xyz/duvcdnx6r9",
+      mobile: {
+        performance: 95,
+        accessibility: 100,
+        bestPractices: 100,
+        seo: 100,
+        fcp: 0.9,
+        lcp: 3.0,
+        tbt: 0,
+        cls: 0,
+        si: 1.1,
+      },
+      desktop: {
+        performance: 100,
+        accessibility: 100,
+        bestPractices: 100,
+        seo: 100,
+        fcp: 0.2,
+        lcp: 0.6,
+        tbt: 0,
+        cls: 0,
+        si: 0.7,
+      },
+    },
     timeline: "2 weeks",
+    timelineFr: "2 semaines",
     version: "v2.1",
     category: "portfolio",
   },
@@ -156,11 +190,18 @@ export const projects: Project[] = [
       "Recurring tasks, habits and subscriptions handled in Rust",
       "Unit-tested domain logic in Rust and TypeScript",
     ],
+    highlightsFr: [
+      "Espaces Today, Week et Money composés de 21 widgets",
+      "Lanceur sur la seule touche Windows, en remplacement de Raycast",
+      "Tâches récurrentes, habitudes et abonnements gérés en Rust",
+      "Logique métier testée unitairement en Rust et TypeScript",
+    ],
     year: "2026",
     status: "in_progress",
     role: "Solo",
     isFeatured: true,
     timeline: "Ongoing",
+    timelineFr: "En cours",
     version: "v0.1",
     category: "tool",
   },
@@ -198,6 +239,7 @@ export const projects: Project[] = [
     role: "Solo",
     isFeatured: true,
     timeline: "Ongoing",
+    timelineFr: "En cours",
     version: "v0.1",
     category: "tool",
   },
@@ -312,7 +354,9 @@ export const usesSections: UseSectionData[] = [
     items: [
       {
         name: "Custom PC",
+        nameFr: "PC sur mesure",
         sub: "Windows desktop",
+        subFr: "PC Windows",
         whyEn:
           "Custom-built Windows desktop - AMD Ryzen 7 3700X, RTX 2060 Super, 32 GB RAM.",
         whyFr:
@@ -321,6 +365,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: 'Samsung Odyssey G7 28"',
         sub: "4K monitor",
+        subFr: "Écran 4K",
         whyEn:
           "LS28AG700N - 4K at 144Hz. Sharp text for code and plenty of room for side-by-side layouts.",
         whyFr:
@@ -328,13 +373,16 @@ export const usesSections: UseSectionData[] = [
       },
       {
         name: "Mechanical keyboard",
+        nameFr: "Clavier mécanique",
         sub: "Keyboard",
+        subFr: "Clavier",
         whyEn: "Solid mechanical keyboard. Reliable and no-nonsense.",
         whyFr: "Clavier mécanique solide. Fiable et sans chichis.",
       },
       {
         name: "Logitech G502 Lightspeed",
         sub: "Mouse",
+        subFr: "Souris",
         whyEn:
           "Wireless, comfortable for long sessions, and the extra buttons are mapped to editor shortcuts.",
         whyFr:
@@ -350,6 +398,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "VS Code",
         sub: "Editor",
+        subFr: "Éditeur",
         whyEn:
           "Primary editor for web work. Copilot, Biome, GitLens extensions.",
         whyFr:
@@ -358,6 +407,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Warp",
         sub: "Terminal",
+        subFr: "Terminal",
         whyEn:
           "Fast, modern terminal with blocks, command search and good defaults out of the box.",
         whyFr:
@@ -366,6 +416,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Dark 2026",
         sub: "Theme",
+        subFr: "Thème",
         whyEn: "VS Code's Dark 2026 theme. Easy on the eyes for long sessions.",
         whyFr:
           "Le thème Dark 2026 de VS Code. Agréable pour les longues sessions.",
@@ -373,6 +424,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "JetBrains Mono",
         sub: "Font",
+        subFr: "Police",
         whyEn: "JetBrains Mono everywhere - great ligatures, very readable.",
         whyFr: "JetBrains Mono partout - excellentes ligatures, très lisible.",
       },
@@ -386,6 +438,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Firefox",
         sub: "Browser",
+        subFr: "Navigateur",
         whyEn: "Fast, privacy-friendly, and great DevTools. My daily driver.",
         whyFr:
           "Rapide, respectueux de la vie privée et excellents DevTools. Mon navigateur quotidien.",
@@ -393,6 +446,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Helios",
         sub: "Launcher",
+        subFr: "Lanceur",
         whyEn: "My own app and file launcher, built in Rust as part of Helios.",
         whyFr:
           "Mon propre lanceur d'applications et de fichiers, écrit en Rust dans le cadre de Helios.",
@@ -400,6 +454,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Obsidian",
         sub: "Notes",
+        subFr: "Notes",
         whyEn:
           "Local-first markdown notes. Fast, extensible, and my files stay on my machine.",
         whyFr:
@@ -415,6 +470,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Next.js",
         sub: "Framework",
+        subFr: "Framework",
         whyEn: "Go-to React framework. App router, server components, RSC.",
         whyFr:
           "Framework React de référence. App router, server components, RSC.",
@@ -422,6 +478,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "React",
         sub: "UI library",
+        subFr: "Bibliothèque d'interface",
         whyEn:
           "Component model for all frontends. Combined with Next.js or standalone.",
         whyFr:
@@ -430,18 +487,21 @@ export const usesSections: UseSectionData[] = [
       {
         name: ".NET",
         sub: "Backend",
+        subFr: "Backend",
         whyEn: "Backend APIs and services. Clean architecture, EF Core.",
         whyFr: "APIs et services backend. Architecture propre, EF Core.",
       },
       {
         name: "TypeScript",
         sub: "Language",
+        subFr: "Langage",
         whyEn: "Strict mode everywhere. Catches issues early.",
         whyFr: "Mode strict partout. Détecte les problèmes tôt.",
       },
       {
         name: "PostgreSQL",
         sub: "Database",
+        subFr: "Base de données",
         whyEn: "Default relational database. Reliable and well-supported.",
         whyFr:
           "Base de données relationnelle par défaut. Fiable et bien supportée.",
@@ -449,6 +509,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Docker",
         sub: "Containers",
+        subFr: "Conteneurs",
         whyEn: "Containerised dev environments and deployments.",
         whyFr: "Environnements de développement et déploiements conteneurisés.",
       },
@@ -462,6 +523,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "NITROC-SERVER",
         sub: "TrueNAS SCALE",
+        subFr: "TrueNAS SCALE",
         whyEn:
           "Main home server on TrueNAS SCALE with a ZFS pool for storage and containerised services.",
         whyFr:
@@ -470,6 +532,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Traefik + Cloudflare",
         sub: "Reverse proxy",
+        subFr: "Reverse proxy",
         whyEn:
           "Traefik managed in Portainer, with a Cloudflare DNS-01 wildcard certificate for *.nitroc.xyz.",
         whyFr:
@@ -478,6 +541,7 @@ export const usesSections: UseSectionData[] = [
       {
         name: "Raspberry Pi 5 & 4B",
         sub: "Network services",
+        subFr: "Services réseau",
         whyEn: "Small always-on boxes for network services like AdGuard.",
         whyFr:
           "Petites machines toujours allumées pour les services réseau comme AdGuard.",
@@ -485,13 +549,16 @@ export const usesSections: UseSectionData[] = [
       {
         name: 'Lab Rax 10"',
         sub: "Rack",
+        subFr: "Rack",
         whyEn: "3D-printed 5U 10-inch rack holding the network core.",
         whyFr:
           "Rack 10 pouces 5U imprimé en 3D qui accueille le cœur du réseau.",
       },
       {
         name: "2.5GbE PoE+ switch",
+        nameFr: "Switch 2,5GbE PoE+",
         sub: "Network",
+        subFr: "Réseau",
         whyEn: "Unmanaged 5-port 2.5Gb switch with PoE+ for the Pis.",
         whyFr: "Switch non managé 5 ports 2,5 Gb avec PoE+ pour les Pi.",
       },

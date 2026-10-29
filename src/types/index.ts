@@ -6,6 +6,28 @@ export interface TechStackItem {
   reasonFr: string;
 }
 
+export interface LighthouseRun {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+  /** Lab metrics: seconds for FCP/LCP/SI, milliseconds for TBT, unitless CLS. */
+  fcp: number;
+  lcp: number;
+  tbt: number;
+  cls: number;
+  si: number;
+}
+
+export interface LighthouseReport {
+  /** ISO date the run was captured. */
+  date: string;
+  version: string;
+  reportUrl: string;
+  mobile: LighthouseRun;
+  desktop: LighthouseRun;
+}
+
 export type GodId = "zeus" | "helios" | "selene";
 
 export interface ProjectGod {
@@ -38,12 +60,14 @@ export interface Project {
   tags?: string[];
   techStack?: TechStackItem[];
   highlights?: string[];
+  highlightsFr?: string[];
   year?: string;
   status?: "live" | "in_progress" | "archived";
   role?: string;
   isFeatured: boolean;
-  lighthouseScore?: string;
+  lighthouse?: LighthouseReport;
   timeline?: string;
+  timelineFr?: string;
   version?: string;
   category?: string;
   seoTitle?: string;
@@ -60,7 +84,10 @@ export interface SkillCategoryData {
 
 export interface UseItemData {
   name: string;
+  /** French name, only where the English one is a description, not a product name. */
+  nameFr?: string;
   sub: string;
+  subFr: string;
   whyEn: string;
   whyFr: string;
 }

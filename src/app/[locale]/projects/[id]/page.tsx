@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { LighthouseCard } from "@/components/project-detail/lighthouse-card";
+import { LighthouseResults } from "@/components/project-detail/lighthouse-results";
 import { MarkdownContent } from "@/components/project-detail/markdown-content";
 import { Pillar } from "@/components/project-detail/pillar";
 import { ProjectFeatures } from "@/components/project-detail/project-features";
@@ -25,8 +25,6 @@ const STATUS_COLORS: Record<string, string> = {
   in_progress: "var(--warn)",
   archived: "var(--text-3)",
 };
-
-const lhLabels = ["Performance", "Accessibility", "Best practices", "SEO"];
 
 export async function generateStaticParams() {
   const ids = await getProjectIds();
@@ -79,6 +77,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const content = tr(project, "content");
   const problem = tr(project, "problem") ?? project.problemEn;
   const goal = tr(project, "goal") ?? project.goalEn;
+  const highlights =
+    (locale === "fr" ? project.highlightsFr : undefined) ?? project.highlights;
 
   const statusColor = project.status ? STATUS_COLORS[project.status] : null;
   const statusLabels: Record<string, string> = {
@@ -87,13 +87,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     archived: t("statusArchived"),
   };
   const statusLabel = project.status ? statusLabels[project.status] : null;
-
-  const lhScores = project.lighthouseScore
-    ? project.lighthouseScore
-        .split(/[·|·]/)
-        .map((s) => parseInt(s.trim(), 10))
-        .filter((n) => !Number.isNaN(n))
-    : [];
 
   const featured = allProjects.filter((p) => p.isFeatured);
   const currentIdx = featured.findIndex((p) => p.id === id);
@@ -194,18 +187,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <ProjectStack stackItems={stackItems} locale={locale} t={t} />
           )}
 
-          {lhScores.length > 0 && (
-            <Section title={t("perfTitle")}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-[560px]">
-                {lhScores.slice(0, 4).map((score, i) => (
-                  <LighthouseCard
-                    key={lhLabels[i] ?? i}
-                    score={score}
-                    label={lhLabels[i] ?? ""}
-                  />
-                ))}
-              </div>
-            </Section>
+          {project.lighthouse && (
+            <LighthouseResults
+              report={project.lighthouse}
+              locale={locale}
+              t={t}
+            />
           )}
 
           {content && (
@@ -214,8 +201,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </Section>
           )}
 
-          {!content && project.highlights && project.highlights.length > 0 && (
-            <ProjectFeatures highlights={project.highlights} t={t} />
+          {!content && highlights && highlights.length > 0 && (
+            <ProjectFeatures highlights={highlights} t={t} />
           )}
 
           <ProjectNextNav nextRaw={nextRaw} tr={tr} t={t} />

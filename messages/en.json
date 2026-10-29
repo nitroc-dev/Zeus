@@ -19,7 +19,8 @@
     "uses": "Uses",
     "projects": "Projects",
     "jump": "Jump to a page or project",
-    "search": "Search…"
+    "search": "Search…",
+    "menu": "Open or close the menu"
   },
   "hero": {
     "name": "Corentin",
@@ -98,7 +99,22 @@
     "nameTitle": "The name",
     "nameGod": "God",
     "nameDomain": "Domain",
-    "nameWhy": "Why"
+    "nameWhy": "Why",
+    "perfLead": "Lab scores from PageSpeed Insights (Lighthouse {version}), measured on {date}.",
+    "perfMobile": "Mobile",
+    "perfDesktop": "Desktop",
+    "perfScorePerformance": "Performance",
+    "perfScoreAccessibility": "Accessibility",
+    "perfScoreBestPractices": "Best practices",
+    "perfScoreSeo": "SEO",
+    "perfMetric": "Metric",
+    "perfFcp": "First Contentful Paint",
+    "perfLcp": "Largest Contentful Paint",
+    "perfTbt": "Total Blocking Time",
+    "perfCls": "Cumulative Layout Shift",
+    "perfSi": "Speed Index",
+    "perfReport": "Full report",
+    "perfMobileNote": "Mobile runs on an emulated mid-range phone with slow 4G."
   },
   "currently": {
     "title": "Now",
@@ -129,7 +145,8 @@
     "contactBody": "Questions about this policy? Email me at"
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "email": "Email"
   },
   "uses": {
     "title": "Uses",
@@ -146,5 +163,10 @@
     "navigate": "navigate",
     "open": "open",
     "close": "close"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page doesn't exist or has moved.",
+    "back": "Back to home"
   }
 }
