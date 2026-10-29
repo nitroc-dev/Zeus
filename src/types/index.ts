@@ -6,6 +6,28 @@ export interface TechStackItem {
   reasonFr: string;
 }
 
+export interface LighthouseRun {
+  performance: number;
+  accessibility: number;
+  bestPractices: number;
+  seo: number;
+  /** Lab metrics: seconds for FCP/LCP/SI, milliseconds for TBT, unitless CLS. */
+  fcp: number;
+  lcp: number;
+  tbt: number;
+  cls: number;
+  si: number;
+}
+
+export interface LighthouseReport {
+  /** ISO date the run was captured. */
+  date: string;
+  version: string;
+  reportUrl: string;
+  mobile: LighthouseRun;
+  desktop: LighthouseRun;
+}
+
 export type GodId = "zeus" | "helios" | "selene";
 
 export interface ProjectGod {
@@ -42,7 +64,7 @@ export interface Project {
   status?: "live" | "in_progress" | "archived";
   role?: string;
   isFeatured: boolean;
-  lighthouseScore?: string;
+  lighthouse?: LighthouseReport;
   timeline?: string;
   version?: string;
   category?: string;

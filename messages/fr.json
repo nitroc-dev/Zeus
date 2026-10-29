@@ -98,7 +98,22 @@
     "nameTitle": "Le nom",
     "nameGod": "Dieu",
     "nameDomain": "Domaine",
-    "nameWhy": "Pourquoi"
+    "nameWhy": "Pourquoi",
+    "perfLead": "Scores de laboratoire PageSpeed Insights (Lighthouse {version}), mesurés le {date}.",
+    "perfMobile": "Mobile",
+    "perfDesktop": "Ordinateur",
+    "perfScorePerformance": "Performance",
+    "perfScoreAccessibility": "Accessibilité",
+    "perfScoreBestPractices": "Bonnes pratiques",
+    "perfScoreSeo": "SEO",
+    "perfMetric": "Mesure",
+    "perfFcp": "First Contentful Paint",
+    "perfLcp": "Largest Contentful Paint",
+    "perfTbt": "Total Blocking Time",
+    "perfCls": "Cumulative Layout Shift",
+    "perfSi": "Speed Index",
+    "perfReport": "Rapport complet",
+    "perfMobileNote": "Le test mobile émule un téléphone milieu de gamme en 4G lente."
   },
   "currently": {
     "title": "En ce moment",
