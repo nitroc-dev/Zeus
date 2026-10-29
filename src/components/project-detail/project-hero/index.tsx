@@ -9,6 +9,7 @@ export function ProjectHero({
   description,
   statusColor,
   statusLabel,
+  locale,
   t,
 }: ProjectHeroProps) {
   const isThisSite = project.websiteUrl?.includes("nitroc.xyz");
@@ -101,7 +102,13 @@ export function ProjectHero({
           <SidebarRow label={t("detailRole")} value={project.role} />
         )}
         {project.timeline && (
-          <SidebarRow label={t("detailTimeline")} value={project.timeline} />
+          <SidebarRow
+            label={t("detailTimeline")}
+            value={
+              (locale === "fr" ? project.timelineFr : undefined) ??
+              project.timeline
+            }
+          />
         )}
         {project.version && (
           <SidebarRow label={t("detailVersion")} value={project.version} />

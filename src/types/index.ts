@@ -60,12 +60,14 @@ export interface Project {
   tags?: string[];
   techStack?: TechStackItem[];
   highlights?: string[];
+  highlightsFr?: string[];
   year?: string;
   status?: "live" | "in_progress" | "archived";
   role?: string;
   isFeatured: boolean;
   lighthouse?: LighthouseReport;
   timeline?: string;
+  timelineFr?: string;
   version?: string;
   category?: string;
   seoTitle?: string;
@@ -82,7 +84,10 @@ export interface SkillCategoryData {
 
 export interface UseItemData {
   name: string;
+  /** French name, only where the English one is a description, not a product name. */
+  nameFr?: string;
   sub: string;
+  subFr: string;
   whyEn: string;
   whyFr: string;
 }

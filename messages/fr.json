@@ -19,7 +19,8 @@
     "uses": "Outils",
     "projects": "Projets",
     "jump": "Aller à une page ou un projet",
-    "search": "Rechercher…"
+    "search": "Rechercher…",
+    "menu": "Ouvrir ou fermer le menu"
   },
   "hero": {
     "name": "Corentin",
@@ -144,7 +145,8 @@
     "contactBody": "Une question sur cette politique ? Écrivez-moi à"
   },
   "footer": {
-    "privacyPolicy": "Politique de confidentialité"
+    "privacyPolicy": "Politique de confidentialité",
+    "email": "E-mail"
   },
   "uses": {
     "title": "Outils",
@@ -161,5 +163,10 @@
     "navigate": "naviguer",
     "open": "ouvrir",
     "close": "fermer"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "Cette page n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
   }
 }

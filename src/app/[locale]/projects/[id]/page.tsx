@@ -77,6 +77,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const content = tr(project, "content");
   const problem = tr(project, "problem") ?? project.problemEn;
   const goal = tr(project, "goal") ?? project.goalEn;
+  const highlights =
+    (locale === "fr" ? project.highlightsFr : undefined) ?? project.highlights;
 
   const statusColor = project.status ? STATUS_COLORS[project.status] : null;
   const statusLabels: Record<string, string> = {
@@ -199,8 +201,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             </Section>
           )}
 
-          {!content && project.highlights && project.highlights.length > 0 && (
-            <ProjectFeatures highlights={project.highlights} t={t} />
+          {!content && highlights && highlights.length > 0 && (
+            <ProjectFeatures highlights={highlights} t={t} />
           )}
 
           <ProjectNextNav nextRaw={nextRaw} tr={tr} t={t} />

@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
+import { localePath } from "@/lib/seo";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const [t, locale] = await Promise.all([
+    getTranslations("notFound"),
+    getLocale(),
+  ]);
   return (
     <main className="page-bg min-h-[70vh] flex items-center px-6">
       <div className="w-full max-w-[680px] mx-auto">
@@ -14,16 +20,19 @@ export default function NotFound() {
           className="m-0 mb-3 font-semibold text-[length:var(--fs-6)] tracking-[var(--tracking-title)]"
           style={{ color: "var(--text-1)" }}
         >
-          Page not found
+          {t("title")}
         </h1>
         <p
           className="m-0 mb-8 text-[length:var(--fs-3)]"
           style={{ color: "var(--text-2)" }}
         >
-          This page doesn&apos;t exist or has moved.
+          {t("body")}
         </p>
-        <Link href="/" className="ds-btn ds-btn--md ds-btn--primary">
-          Back to home
+        <Link
+          href={localePath(locale, "/")}
+          className="ds-btn ds-btn--md ds-btn--primary"
+        >
+          {t("back")}
         </Link>
       </div>
     </main>

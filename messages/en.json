@@ -19,7 +19,8 @@
     "uses": "Uses",
     "projects": "Projects",
     "jump": "Jump to a page or project",
-    "search": "Search…"
+    "search": "Search…",
+    "menu": "Open or close the menu"
   },
   "hero": {
     "name": "Corentin",
@@ -144,7 +145,8 @@
     "contactBody": "Questions about this policy? Email me at"
   },
   "footer": {
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "email": "Email"
   },
   "uses": {
     "title": "Uses",
@@ -161,5 +163,10 @@
     "navigate": "navigate",
     "open": "open",
     "close": "close"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page doesn't exist or has moved.",
+    "back": "Back to home"
   }
 }

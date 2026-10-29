@@ -86,13 +86,13 @@ export default async function UsesPage({ params }: PageProps) {
                         className="block text-[length:var(--fs-3)] font-medium"
                         style={{ color: "var(--text-p-0)" }}
                       >
-                        {item.name}
+                        {tr(item, "name") ?? item.name}
                       </span>
                       <span
                         className="block text-[length:var(--fs-2)]"
                         style={{ color: "var(--text-p-2)" }}
                       >
-                        {item.sub}
+                        {tr(item, "sub") ?? item.sub}
                       </span>
                     </dt>
                     <dd

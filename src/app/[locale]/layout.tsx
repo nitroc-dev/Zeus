@@ -44,6 +44,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
   return {
+    // Localized defaults; pages override them. The 404 page inherits these.
+    title: t("title"),
+    description: t("description"),
     keywords: [
       "React Native Developer",
       "React Developer",
