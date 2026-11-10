@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { getProjectsData } from "@/lib/data";
 import { siteUrl } from "@/lib/seo";
 
+// Built once at deploy time, served from the CDN like the pages.
+export const dynamic = "force-static";
+
 const LOCALES = ["en", "fr"] as const;
 
 // One entry per locale, each listing its translations so Google pairs

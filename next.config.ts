@@ -85,12 +85,16 @@ const nextConfig: NextConfig = {
         source: "/(.*)/opengraph-image(.*)",
         headers: [
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+          // Preview images are not pages: keep them out of Google's index
+          // reports. Link previews (LinkedIn, X, Slack) ignore this header.
+          { key: "X-Robots-Tag", value: "noindex" },
         ],
       },
       {
         source: "/opengraph-image(.*)",
         headers: [
           { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+          { key: "X-Robots-Tag", value: "noindex" },
         ],
       },
     ];

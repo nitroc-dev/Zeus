@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
+import { LocaleSwitch } from "@/components/navigation/locale-switch";
 import { localePath } from "@/lib/seo";
 
 export async function Footer() {
@@ -43,6 +44,9 @@ export async function Footer() {
               </li>
             );
           })}
+          <li>
+            <LocaleSwitch />
+          </li>
         </ul>
       </div>
     </footer>
