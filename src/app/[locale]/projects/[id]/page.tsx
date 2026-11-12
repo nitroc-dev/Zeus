@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { BrowserMockup } from "@/components/project-detail/browser-mockup";
-import { LighthouseCard } from "@/components/project-detail/lighthouse-card";
+import { LighthouseResults } from "@/components/project-detail/lighthouse-results";
 import { MarkdownContent } from "@/components/project-detail/markdown-content";
 import { Pillar } from "@/components/project-detail/pillar";
 import { ProjectFeatures } from "@/components/project-detail/project-features";
 import { ProjectHero } from "@/components/project-detail/project-hero";
+import { ProjectName } from "@/components/project-detail/project-name";
 import { ProjectNextNav } from "@/components/project-detail/project-next-nav";
 import { ProjectStack } from "@/components/project-detail/project-stack";
 import { Section } from "@/components/project-detail/section";
@@ -21,12 +21,10 @@ interface PageProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  live: "var(--portfolio-ok, oklch(0.74 0.16 145))",
-  in_progress: "oklch(0.78 0.16 75)",
-  archived: "var(--text-p-3)",
+  live: "var(--ok)",
+  in_progress: "var(--warn)",
+  archived: "var(--text-3)",
 };
-
-const lhLabels = ["Performance", "Accessibility", "Best practices", "SEO"];
 
 export async function generateStaticParams() {
   const ids = await getProjectIds();
@@ -42,19 +40,9 @@ export async function generateMetadata({
   const tr = createTranslator(locale);
   const name = tr(project, "name") ?? project.nameEn;
   const description = tr(project, "description") ?? project.descriptionEn;
-  const title = project.seoTitle ?? `${name} - Corentin`;
+  const tMeta = await getTranslations({ locale, namespace: "metadata" });
+  const title = project.seoTitle ?? tMeta("projectTitle", { name });
   const desc = project.seoDescription ?? description;
-  const images = project.imageUrl
-    ? [
-        {
-          url: project.imageUrl.startsWith("http")
-            ? project.imageUrl
-            : `https://nitroc.xyz${project.imageUrl}`,
-          width: 1200,
-          height: 630,
-        },
-      ]
-    : [{ url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 }];
   return {
     title,
     description: desc,
@@ -63,19 +51,17 @@ export async function generateMetadata({
       title,
       description: desc,
       url: siteUrl(locale, `/projects/${id}`),
-      images,
+      type: "article",
     },
-    robots:
-      project.status === "in_progress"
-        ? { index: false, follow: false }
-        : undefined,
   };
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-  const { locale, id } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations("projects");
+  setRequestLocale((await params).locale);
+  const [{ locale, id }, t] = await Promise.all([
+    params,
+    getTranslations("projects"),
+  ]);
   // react-doctor-disable-next-line react-doctor/server-sequential-independent-await
   const [project, allProjects] = await Promise.all([
     getProjectById(id),
@@ -90,6 +76,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const longDescription =
     tr(project, "longDescription") ?? project.longDescriptionEn;
   const content = tr(project, "content");
+  const problem = tr(project, "problem") ?? project.problemEn;
+  const goal = tr(project, "goal") ?? project.goalEn;
+  const highlights =
+    (locale === "fr" ? project.highlightsFr : undefined) ?? project.highlights;
 
   const statusColor = project.status ? STATUS_COLORS[project.status] : null;
   const statusLabels: Record<string, string> = {
@@ -99,22 +89,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   };
   const statusLabel = project.status ? statusLabels[project.status] : null;
 
-  const lhScores = project.lighthouseScore
-    ? project.lighthouseScore
-        .split(/[·|·]/)
-        .map((s) => parseInt(s.trim(), 10))
-        .filter((n) => !Number.isNaN(n))
-    : [];
-
   const featured = allProjects.filter((p) => p.isFeatured);
   const currentIdx = featured.findIndex((p) => p.id === id);
   const nextRaw =
     featured.length > 1 ? featured[(currentIdx + 1) % featured.length] : null;
 
-  const stackItems =
-    project.techStack ??
-    project.tags?.map((n) => ({ name: n, reasonEn: "", reasonFr: "" })) ??
-    [];
+  const stackItems = project.techStack ?? [];
 
   const projectJsonLd = {
     "@context": "https://schema.org",
@@ -130,25 +110,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     author: { "@type": "Person", name: "Corentin", url: "https://nitroc.xyz" },
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteUrl(locale, ""),
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name,
-        item: siteUrl(locale, `/projects/${id}`),
-      },
-    ],
-  };
-
   return (
     <>
       <script
@@ -157,28 +118,21 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        // react-doctor-disable-next-line react-doctor/no-danger
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
       <main className="relative overflow-hidden page-bg">
-        <div className="px-8 max-w-[1180px] mx-auto">
-          <div
-            className="pt-6 pb-0 font-mono text-xs"
-            style={{ color: "var(--text-p-3)" }}
+        <div className="px-6 max-w-[680px] mx-auto">
+          <nav
+            className="pt-8 text-[length:var(--fs-2)]"
+            style={{ color: "var(--text-p-2)" }}
           >
             <Link
               href="/"
-              className="transition-colors hover:opacity-80"
-              style={{ color: "var(--text-p-2)" }}
+              className="underline underline-offset-4 decoration-[var(--portfolio-line-2)] hover:decoration-[var(--text-p-1)]"
             >
-              ← {t("breadcrumbHome")}
+              {t("breadcrumbHome")}
             </Link>
             <span className="mx-2">/</span>
             <span>{name}</span>
-          </div>
+          </nav>
 
           <ProjectHero
             project={project}
@@ -190,105 +144,66 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             t={t}
           />
 
-          <div
-            className="mb-15 rounded-[16px] overflow-hidden relative"
-            style={{
-              aspectRatio: "16/8",
-              border: "1px solid var(--portfolio-line-2)",
-              boxShadow: "0 30px 80px rgba(0,0,0,0.4)",
-            }}
-          >
-            {project.imageUrl ? (
+          {project.imageUrl && (
+            <div
+              className="mb-12 rounded-lg overflow-hidden relative"
+              style={{
+                aspectRatio: "16/9",
+                border: "1px solid var(--portfolio-line)",
+              }}
+            >
               <Image
                 src={project.imageUrl}
                 alt={name}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 1180px) 100vw, 1180px"
                 className="object-cover"
                 priority
               />
-            ) : (
-              <BrowserMockup url={project.websiteUrl ?? "nitroc.xyz"} />
-            )}
-          </div>
+            </div>
+          )}
+
+          {project.god && (
+            <ProjectName god={project.god} name={name} locale={locale} t={t} />
+          )}
 
           {(longDescription ?? description) && (
-            <Section eyebrow={t("contextEyebrow")} title={t("contextTitle")}>
+            <Section title={t("contextTitle")}>
               <p
-                className="leading-[1.7] mb-6 max-w-[720px]"
-                style={{ fontSize: "16px", color: "var(--text-p-1)" }}
+                className="text-[length:var(--fs-3)] leading-[1.7] m-0 max-w-[68ch]"
+                style={{ color: "var(--text-p-1)" }}
               >
                 {longDescription ?? description}
               </p>
-              {project.highlights && project.highlights.length >= 2 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-6">
-                  <Pillar
-                    label={t("problemLabel")}
-                    value={project.highlights[0]}
-                  />
-                  <Pillar
-                    label={t("goalLabel")}
-                    value={project.highlights[1]}
-                  />
+              {problem && goal && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8 max-w-[68ch]">
+                  <Pillar label={t("problemLabel")} value={problem} />
+                  <Pillar label={t("goalLabel")} value={goal} />
                 </div>
               )}
             </Section>
           )}
 
-          {project.role && (
-            <Section eyebrow={t("roleEyebrow")} title={t("roleTitle")}>
-              <p
-                className="leading-[1.7] mb-4 max-w-[720px]"
-                style={{ fontSize: "16px", color: "var(--text-p-1)" }}
-              >
-                {project.role}
-              </p>
-              {project.highlights && project.highlights.length > 2 && (
-                <ul
-                  className="space-y-2 mt-4 pl-5"
-                  style={{ listStyleType: "disc" }}
-                >
-                  {project.highlights.slice(2).map((h) => (
-                    <li
-                      key={h}
-                      className="text-[16px] leading-[1.7]"
-                      style={{ color: "var(--text-p-1)" }}
-                    >
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Section>
+          {stackItems.length > 0 && (
+            <ProjectStack stackItems={stackItems} locale={locale} t={t} />
           )}
 
-          <ProjectStack stackItems={stackItems} locale={locale} t={t} />
-
-          {lhScores.length > 0 && (
-            <Section eyebrow={t("perfEyebrow")} title={t("perfTitle")}>
-              <div className="grid gap-4 mt-2 grid-cols-2 md:grid-cols-4">
-                {lhScores.slice(0, 4).map((score, i) => (
-                  <LighthouseCard
-                    key={lhLabels[i] ?? i}
-                    score={score}
-                    label={lhLabels[i] ?? ""}
-                  />
-                ))}
-              </div>
-            </Section>
+          {project.lighthouse && (
+            <LighthouseResults
+              report={project.lighthouse}
+              locale={locale}
+              t={t}
+            />
           )}
 
           {content && (
-            <Section
-              eyebrow={t("caseStudyEyebrow")}
-              title={t("caseStudyTitle")}
-            >
+            <Section title={t("caseStudyTitle")}>
               <MarkdownContent content={content} />
             </Section>
           )}
 
-          {!content && project.highlights && project.highlights.length > 0 && (
-            <ProjectFeatures highlights={project.highlights} t={t} />
+          {!content && highlights && highlights.length > 0 && (
+            <ProjectFeatures highlights={highlights} t={t} />
           )}
 
           <ProjectNextNav nextRaw={nextRaw} tr={tr} t={t} />

@@ -90,7 +90,6 @@ src/
 ├── app/                    # Next.js App Router pages
 │   ├── layout.tsx         # Root layout with metadata
 │   ├── page.tsx           # Homepage
-│   ├── contact/           # Contact page
 │   ├── projects/          # Projects page
 │   └── privacy/           # Privacy policy
 ├── components/

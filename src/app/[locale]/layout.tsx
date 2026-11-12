@@ -2,19 +2,26 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
+import { CommandPalette } from "@/components/command-palette";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { Toaster } from "@/components/ui/sonner";
+import { routing } from "@/i18n/routing";
+import { getProjectsData } from "@/lib/data";
 import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
+import { createTranslator } from "@/utils/translate";
 import "../globals.css";
 
+// Only the Latin file is preloaded. The CSS still declares every Inter
+// subset (accents, Greek for Ζεύς, Ἥλιος…) and the browser fetches those on
+// demand; preloading all four cost ~180 KB before the first paint on mobile.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -22,10 +29,11 @@ const inter = Inter({
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-jetbrains-mono",
   display: "swap",
-  weight: ["400", "500"],
+  // Mono is only used for small details, never the first thing to render.
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -33,7 +41,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#07090f",
+  themeColor: "#0b0b0b",
 };
 
 export async function generateMetadata({
@@ -44,8 +52,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
   return {
+    // Localized defaults; pages override them. The 404 page inherits these.
+    title: t("title"),
+    description: t("description"),
     keywords: [
-      "Full Stack Developer",
+      "React Native Developer",
       "React Developer",
       "Next.js Developer",
       ".NET Developer",
@@ -55,14 +66,16 @@ export async function generateMetadata({
       "Brussels Developer",
       "Portfolio",
     ],
-    authors: [{ name: "Corentin" }],
-    creator: "Corentin",
-    publisher: "Corentin",
+    authors: [{ name: "Corentin D'haeyere", url: "https://nitroc.xyz" }],
+    creator: "Corentin D'haeyere",
+    publisher: "Corentin D'haeyere",
     formatDetection: { email: false, address: false, telephone: false },
     icons: {
       icon: "/favicon.ico",
       shortcut: "/favicon.ico",
-      apple: [{ url: "/profile.png", sizes: "180x180", type: "image/png" }],
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     alternates: buildAlternates(locale, ""),
     openGraph: {
@@ -72,21 +85,12 @@ export async function generateMetadata({
       url: siteUrl(locale, ""),
       title: t("title"),
       description: t("description"),
-      siteName: "Corentin Portfolio",
-      images: [
-        {
-          url: "https://nitroc.xyz/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "Corentin - Full Stack Developer",
-        },
-      ],
+      siteName: "Corentin D'haeyere",
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["https://nitroc.xyz/og-image.png"],
     },
     robots: {
       index: true,
@@ -106,28 +110,36 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://nitroc.xyz/#person",
-  name: "Corentin",
+  name: "Corentin D'haeyere",
+  givenName: "Corentin",
+  familyName: "D'haeyere",
+  alternateName: "Corentin",
   url: "https://nitroc.xyz",
-  image: "https://nitroc.xyz/profile.png",
-  email: "mailto:contact@nitroc.xyz",
-  jobTitle: "Full Stack Developer",
+  image: "https://nitroc.xyz/avatar-c.webp",
+  jobTitle: "Software Engineer",
   worksFor: {
     "@type": "Organization",
     name: "Eachstapp",
+    url: "https://eachstapp.com",
   },
-  knowsLanguage: ["fr", "en", "nl"],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Haute École Léonard de Vinci",
+    url: "https://www.vinci.be",
+  },
   sameAs: [
     "https://github.com/nitroc-dev",
     "https://www.linkedin.com/in/corentin-d-02472724b",
   ],
   knowsAbout: [
+    "TypeScript",
     "React",
     "Next.js",
+    "React Native",
     ".NET",
-    "TypeScript",
-    "PostgreSQL",
-    "Docker",
+    "SQL Server",
   ],
+  knowsLanguage: ["fr", "en", "nl"],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Brussels",
@@ -139,12 +151,11 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://nitroc.xyz/#website",
-  name: "Corentin - Full Stack Developer",
+  name: "Corentin D'haeyere",
+  alternateName: "nitroc.xyz",
   url: "https://nitroc.xyz",
-  description:
-    "Full Stack Developer specializing in React, Next.js, and .NET. Based in Brussels.",
   inLanguage: ["en", "fr"],
-  publisher: { "@id": "https://nitroc.xyz/#person" },
+  author: { "@id": "https://nitroc.xyz/#person" },
 };
 
 interface LocaleLayoutProps {
@@ -157,19 +168,41 @@ export default async function LocaleLayout({
   params,
 }: LocaleLayoutProps) {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  // Lets every page under this layout render statically instead of per request.
   setRequestLocale(locale);
-  const messages = await getMessages();
-  // Only ship namespaces that client components actually consume
-  const clientMessages = { nav: messages.nav, contact: messages.contact };
+  const [messages, tNav, tPalette, projects] = await Promise.all([
+    getMessages(),
+    getTranslations("nav"),
+    getTranslations("palette"),
+    getProjectsData(),
+  ]);
+  const tr = createTranslator(locale);
+  const paletteItems = [
+    { id: "home", label: tNav("home"), hint: tPalette("page"), href: "/" },
+    {
+      id: "about",
+      label: tNav("about"),
+      hint: tPalette("page"),
+      href: "/about",
+    },
+    { id: "uses", label: tNav("uses"), hint: tPalette("page"), href: "/uses" },
+    ...projects.map((p) => ({
+      id: `project-${p.id}`,
+      label: tr(p, "name") ?? p.nameEn,
+      hint: tPalette("project"),
+      href: `/projects/${p.id}`,
+      god: p.god?.id,
+    })),
+  ];
 
   return (
     <html
       lang={locale}
-      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preload" href="/profile.png" as="image" />
         <script
           type="application/ld+json"
           // react-doctor-disable-next-line react-doctor/no-danger
@@ -183,16 +216,24 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
-      <body className="min-h-screen">
-        <NextIntlClientProvider messages={clientMessages}>
+      <body className="ds min-h-screen flex flex-col">
+        <NextIntlClientProvider
+          messages={{
+            // Only what client components read; the rest stays on the server
+            // instead of being inlined into every page's HTML.
+            nav: messages.nav,
+            palette: messages.palette,
+            notFound: messages.notFound,
+          }}
+        >
           <Header />
           {children}
           <Footer />
           <ScrollToTop />
+          <CommandPalette items={paletteItems} />
         </NextIntlClientProvider>
         <Analytics />
         <SpeedInsights />
-        <Toaster />
       </body>
     </html>
   );

@@ -1,29 +1,23 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+"use client";
+
+// A client component on purpose: a server not-found here would read the
+// locale from request headers and make every page under [locale] dynamic.
+import { useTranslations } from "next-intl";
+import { NotFoundView } from "@/components/not-found-view";
+import { Link } from "@/i18n/navigation";
 
 export default function NotFound() {
+  const t = useTranslations("notFound");
   return (
-    <main
-      className="min-h-[80vh] flex items-center justify-center px-6"
-      style={{ background: "var(--navy-0)" }}
-    >
-      <div className="text-center space-y-6 max-w-md">
-        <p
-          className="text-8xl font-black"
-          style={{ color: "var(--portfolio-accent)" }}
-        >
-          404
-        </p>
-        <h1 className="text-2xl font-bold" style={{ color: "var(--text-p-0)" }}>
-          Page not found
-        </h1>
-        <p className="leading-relaxed" style={{ color: "var(--text-p-2)" }}>
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-        </p>
-        <Button asChild>
-          <Link href="/">Back to home</Link>
-        </Button>
-      </div>
-    </main>
+    <NotFoundView
+      title={t("title")}
+      body={t("body")}
+      backLabel={t("back")}
+      backLink={(className, label) => (
+        <Link href="/" className={className}>
+          {label}
+        </Link>
+      )}
+    />
   );
 }

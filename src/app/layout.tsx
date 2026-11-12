@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nitroc.xyz"),
-  title: "Corentin - Full Stack Developer",
+  title: "Corentin D'haeyere – Software Engineer in Brussels",
   description:
-    "Full Stack Developer passionate about creating modern web applications with React, Next.js, and .NET. Explore my portfolio, projects, and professional journey.",
+    "Software engineer in Brussels building web and mobile products end to end with TypeScript, React, Next.js, React Native and .NET.",
 };
 
 export default function RootLayout({

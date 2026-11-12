@@ -9,5 +9,11 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(en|fr)/:path*", "/((?!_next|_vercel|api)[^.]*)"],
+  // Generated OG images (/en/…/opengraph-image) are served as-is: letting the
+  // locale middleware strip /en would turn every English preview into a redirect.
+  matcher: [
+    "/",
+    "/(en|fr)/((?!.*opengraph-image).*)",
+    "/((?!_next|_vercel|api|.*opengraph-image)[^.]*)",
+  ],
 };

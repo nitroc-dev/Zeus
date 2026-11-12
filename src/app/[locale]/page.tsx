@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Currently } from "@/components/sections/working-on";
@@ -23,9 +22,7 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       url: siteUrl(locale, ""),
-      images: [
-        { url: "https://nitroc.xyz/og-image.png", width: 1200, height: 630 },
-      ],
+      type: "website",
     },
   };
 }
@@ -34,17 +31,10 @@ export default async function Home({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   return (
-    <main
-      className="relative overflow-hidden flex flex-col items-center"
-      style={{
-        background:
-          "radial-gradient(1100px 600px at 80% -10%, color-mix(in oklch, var(--portfolio-accent) 8%, transparent), transparent 60%), radial-gradient(900px 500px at -10% 120%, color-mix(in oklch, var(--portfolio-accent) 6%, transparent), transparent 60%), var(--navy-0)",
-      }}
-    >
+    <main className="relative overflow-hidden flex flex-col items-center page-bg">
       <Hero />
       <Projects />
       <Currently />
-      <Cta />
     </main>
   );
 }

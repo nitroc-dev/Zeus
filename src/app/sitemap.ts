@@ -1,44 +1,39 @@
 import type { MetadataRoute } from "next";
 import { getProjectsData } from "@/lib/data";
+import { siteUrl } from "@/lib/seo";
 
-const BASE_URL = "https://nitroc.xyz";
-const DEFAULT_LOCALE = "en";
-const LOCALES = ["en", "fr"];
+// Built once at deploy time, served from the CDN like the pages.
+export const dynamic = "force-static";
 
-function localizedUrl(locale: string, path: string): string {
-  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
-  return `${BASE_URL}${prefix}${path}`;
+const LOCALES = ["en", "fr"] as const;
+
+// One entry per locale, each listing its translations so Google pairs
+// /about with /fr/about instead of treating them as duplicates.
+function entries(
+  path: string,
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"],
+  priority: number,
+): MetadataRoute.Sitemap {
+  const languages = {
+    en: siteUrl("en", path),
+    fr: siteUrl("fr", path),
+    "x-default": siteUrl("en", path),
+  };
+  return LOCALES.map((locale) => ({
+    url: siteUrl(locale, path),
+    changeFrequency,
+    priority,
+    alternates: { languages },
+  }));
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages = [
-    { path: "", changeFrequency: "weekly" as const, priority: 1 },
-    { path: "/about", changeFrequency: "monthly" as const, priority: 0.9 },
-    { path: "/uses", changeFrequency: "monthly" as const, priority: 0.7 },
-    { path: "/contact", changeFrequency: "monthly" as const, priority: 0.6 },
-    { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
-  ];
-
-  const pageEntries = LOCALES.flatMap((locale) =>
-    staticPages.map(({ path, changeFrequency, priority }) => ({
-      url: localizedUrl(locale, path),
-      changeFrequency,
-      priority,
-    })),
-  );
-
   const projects = await getProjectsData();
-  const projectIds = projects.flatMap((p) =>
-    p.status !== "in_progress" ? [p.id] : [],
-  );
-
-  const projectEntries = LOCALES.flatMap((locale) =>
-    projectIds.map((id) => ({
-      url: localizedUrl(locale, `/projects/${id}`),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-  );
-
-  return [...pageEntries, ...projectEntries];
+  return [
+    ...entries("", "weekly", 1),
+    ...entries("/about", "monthly", 0.9),
+    ...entries("/uses", "monthly", 0.6),
+    ...projects.flatMap((p) => entries(`/projects/${p.id}`, "monthly", 0.8)),
+    ...entries("/privacy", "yearly", 0.2),
+  ];
 }

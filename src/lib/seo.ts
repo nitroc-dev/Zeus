@@ -1,6 +1,11 @@
 const BASE = "https://nitroc.xyz";
 const DEFAULT_LOCALE = "en";
 
+export function localePath(locale: string, path = ""): string {
+  const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
+  return `${prefix}${path}` || "/";
+}
+
 export function siteUrl(locale: string, path: string): string {
   const prefix = locale === DEFAULT_LOCALE ? "" : `/${locale}`;
   return `${BASE}${prefix}${path}`;
