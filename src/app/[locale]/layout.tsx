@@ -205,14 +205,14 @@ export default async function LocaleLayout({
       <head>
         <script
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           // react-doctor-disable-next-line react-doctor/no-danger
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <script
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           // react-doctor-disable-next-line react-doctor/no-danger
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static trusted JSON-LD
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>

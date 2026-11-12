@@ -131,78 +131,169 @@ export const projects: Project[] = [
       domainFr:
         "Titan du soleil, qui traverse le ciel chaque jour et voit tout ce qui se passe en dessous",
       whyEn:
-        "Helios is the app that runs my day: calendar, tasks, habits and spending in one window. It takes the name of the god who carries the sun across the sky from morning to evening.",
+        "Helios is the app that runs my day: tasks, habits, calendar and finances in one window. It takes the name of the god who carries the sun across the sky from morning to evening.",
       whyFr:
-        "Helios est l'application qui organise ma journée : agenda, tâches, habitudes et dépenses dans une seule fenêtre. Elle porte le nom du dieu qui mène le soleil à travers le ciel, du matin au soir.",
+        "Helios est l'application qui organise ma journée : tâches, habitudes, agenda et finances dans une seule fenêtre. Elle porte le nom du dieu qui mène le soleil à travers le ciel, du matin au soir.",
     },
     nameFr: "Helios",
     descriptionEn:
-      "My personal day dashboard and Raycast replacement, built with Tauri 2, Rust and React. Today, Week and Money spaces, plus a launcher on the Windows key.",
+      "My personal day dashboard for Windows, built with Tauri 2, Rust and React. Tasks, habits and routines, a calendar day rail, finances, Strava and a launcher on the Windows key, on one fixed screen.",
     descriptionFr:
-      "Mon tableau de bord quotidien et remplaçant de Raycast, construit avec Tauri 2, Rust et React. Espaces Today, Week et Money, plus un lanceur sur la touche Windows.",
+      "Mon tableau de bord quotidien pour Windows, construit avec Tauri 2, Rust et React. Tâches, habitudes et routines, frise du jour, finances, Strava et un lanceur sur la touche Windows, sur un seul écran fixe.",
     longDescriptionEn:
-      "Helios is a native Windows app that runs my day. It's organised as spaces: Today (now/next, calendar, tasks, habits, spending, morning plan and evening review), Week (a 7-day board of events and due tasks) and Money (hand-entered transactions, budgets and subscriptions), built from 21 widgets that can go on any space. A second hidden window replaces Raycast: tap the Windows key for apps, files, a calculator, web search, clipboard history, timers and quick task or expense capture. Everything stays local: SQLite, no server, no account.",
+      "Helios is the app I open every morning. I rebuilt it from scratch in late 2026 after the first version outgrew its use: four platforms, a widget grid, modes, and more features than I ever opened. The new version keeps only what I use every day. It shows today's tasks, habits with streaks, morning and night routines with a reminder, and an hour-by-hour day rail fed by ICS and CalDAV feeds. Work events show as anonymous busy blocks, masked in Rust before the UI ever sees them. Next to those are the weather, the next tram and train, subscriptions and income, and runs and gym sessions from Strava. A launcher opens on the Windows key for apps, files, clipboard history and quick task capture. A local MCP server lets Claude read my day and add tasks.",
     longDescriptionFr:
-      "Helios est une application Windows native qui organise ma journée. Elle est structurée en espaces : Today (maintenant/ensuite, agenda, tâches, habitudes, dépenses, plan du matin et bilan du soir), Week (un tableau de 7 jours avec événements et tâches à échéance) et Money (transactions saisies à la main, budgets et abonnements), composés de 21 widgets placables sur n'importe quel espace. Une seconde fenêtre cachée remplace Raycast : une pression sur la touche Windows donne accès aux applications, fichiers, calculatrice, recherche web, historique du presse-papiers, minuteurs et à la saisie rapide de tâches ou de dépenses. Tout reste local : SQLite, pas de serveur, pas de compte.",
+      "Helios est l'application que j'ouvre chaque matin. Je l'ai reconstruite de zéro fin 2026, après que la première version a dépassé son usage : quatre plateformes, une grille de widgets, des modes, et bien plus de fonctionnalités que je n'en ouvrais. La nouvelle version ne garde que ce que j'utilise chaque jour. Elle affiche les tâches du jour, les habitudes avec leurs séries, les routines du matin et du soir avec un rappel, et une frise horaire alimentée par des flux ICS et CalDAV. Les événements du travail s'affichent comme des créneaux « occupé » anonymes, masqués en Rust avant d'atteindre l'interface. À côté : la météo, le prochain tram et train, les abonnements et revenus, et les courses et séances de salle depuis Strava. Un lanceur s'ouvre avec la touche Windows pour les applications, les fichiers, l'historique du presse-papiers et la saisie rapide de tâches. Un serveur MCP local permet à Claude de lire ma journée et d'ajouter des tâches.",
     problemEn:
-      "My day was spread across a calendar, a to-do app, a budgeting sheet and Raycast, none of which talked to each other.",
+      "The first Helios grew faster than it was used: four platforms, a phone app, modes and a widget grid, with more surface than I ever opened.",
     problemFr:
-      "Ma journée était éparpillée entre un agenda, une app de tâches, un tableur de budget et Raycast, sans aucun lien entre eux.",
+      "Le premier Helios a grandi plus vite qu'il n'était utilisé : quatre plateformes, une app mobile, des modes et une grille de widgets, bien plus que ce que j'ouvrais.",
     goalEn:
-      "One local app that shows the day at a glance and is one keypress away from anywhere.",
+      "One machine, one screen, only what gets opened every day, with my personal projects moved out to Iris.",
     goalFr:
-      "Une seule app locale qui montre la journée d'un coup d'œil, accessible d'une seule touche depuis n'importe où.",
-    repositoryUrl: "https://github.com/nitroc-dev/helios",
-    tags: ["Tauri 2", "Rust", "React 19", "TypeScript", "SQLite"],
+      "Une machine, un écran, uniquement ce qui s'ouvre chaque jour, avec les projets personnels déplacés dans Iris.",
+    tags: ["Tauri 2", "Rust", "React 19", "SQLite", "MCP"],
     techStack: [
       {
         name: "Tauri 2",
         reasonEn:
-          "Electron ships a full Chromium and Node runtime for what is a local tool. Tauri gives a small native binary, a tray icon and two windows (dashboard and launcher) from one bundle.",
+          "A Windows-only daily app has no use for a bundled Chromium. Tauri ships a small binary on the system WebView, with a Rust core for the tray, the global hotkey, notifications and the keychain.",
         reasonFr:
-          "Electron embarque tout Chromium et Node pour ce qui reste un outil local. Tauri fournit un petit binaire natif, une icône dans la zone de notification et deux fenêtres (tableau de bord et lanceur) à partir d'un seul bundle.",
+          "Une app quotidienne uniquement Windows n'a pas besoin d'un Chromium embarqué. Tauri livre un petit binaire sur le WebView du système, avec un cœur Rust pour la zone de notification, le raccourci global, les notifications et le trousseau.",
       },
       {
         name: "Rust",
         reasonEn:
-          "Owns the data layer and the Windows integration: a low-level keyboard hook for the bare Windows-key hotkey, media controls and Start-menu app icons through the windows crate.",
+          "Calendars, Strava OAuth and secrets stay in Rust: work event titles and passwords never reach the webview. Recurrence expansion, streaks and finance dates are plain Rust modules with their own tests.",
         reasonFr:
-          "Gère la couche de données et l'intégration Windows : un hook clavier bas niveau pour le raccourci sur la seule touche Windows, les contrôles média et les icônes d'applications du menu Démarrer via la crate windows.",
-      },
-      {
-        name: "React 19",
-        reasonEn:
-          "Every widget is a self-contained component registered once and placeable on any space; layouts persist per space.",
-        reasonFr:
-          "Chaque widget est un composant autonome, enregistré une seule fois et placable sur n'importe quel espace ; les dispositions sont conservées par espace.",
+          "Calendriers, OAuth Strava et secrets restent en Rust : les titres des réunions de travail et les mots de passe n'atteignent jamais le webview. L'expansion des récurrences, les séries et les dates de finances sont de simples modules Rust, testés.",
       },
       {
         name: "SQLite",
         reasonEn:
-          "All data lives in one local file. Money is stored as integer cents, and domain logic takes a connection so it's tested against an in-memory database.",
+          "No sync, no server: one file on the PC, with a daily backup. WAL mode lets the MCP server read and write beside the running app safely.",
         reasonFr:
-          "Toutes les données vivent dans un seul fichier local. Les montants sont stockés en centimes entiers, et la logique métier reçoit une connexion pour être testée sur une base en mémoire.",
+          "Pas de synchro, pas de serveur : un seul fichier sur le PC, avec une sauvegarde quotidienne. Le mode WAL permet au serveur MCP de lire et d'écrire à côté de l'app en cours d'exécution, sans risque.",
+      },
+      {
+        name: "MCP",
+        reasonEn:
+          "A small stdio binary from the same crate gives Claude my day: today, search, subscriptions, activities and a few writes. It runs locally, has no port, and never deletes anything.",
+        reasonFr:
+          "Un petit binaire stdio issu du même crate donne ma journée à Claude : aujourd'hui, recherche, abonnements, activités, et quelques écritures. Il tourne en local, sans port, et ne supprime jamais rien.",
       },
     ],
     highlights: [
-      "Today, Week and Money spaces built from 21 widgets",
-      "Launcher on the bare Windows key, replacing Raycast",
-      "Recurring tasks, habits and subscriptions handled in Rust",
-      "Unit-tested domain logic in Rust and TypeScript",
+      "Rebuilt from scratch: one machine, one screen, only daily-use features",
+      "Habits with streaks, plus routines with checklists and reminders",
+      "Calendar day rail with work events masked in Rust",
+      "Launcher on the Windows key with clipboard history",
+      "Finances and Strava sport pages",
+      "Local MCP server for Claude",
     ],
     highlightsFr: [
-      "Espaces Today, Week et Money composés de 21 widgets",
-      "Lanceur sur la seule touche Windows, en remplacement de Raycast",
-      "Tâches récurrentes, habitudes et abonnements gérés en Rust",
-      "Logique métier testée unitairement en Rust et TypeScript",
+      "Reconstruit de zéro : une machine, un écran, uniquement l'usage quotidien",
+      "Habitudes avec séries, et routines avec liste et rappel",
+      "Frise du jour avec les événements du travail masqués en Rust",
+      "Lanceur sur la touche Windows avec historique du presse-papiers",
+      "Pages Finances et Sport (Strava)",
+      "Serveur MCP local pour Claude",
     ],
     year: "2026",
-    status: "in_progress",
+    status: "live",
     role: "Solo",
     isFeatured: true,
-    timeline: "Ongoing",
-    timelineFr: "En cours",
-    version: "v0.1",
+    timeline: "2 weeks (rebuild)",
+    timelineFr: "2 semaines (refonte)",
+    version: "v1.0",
+    category: "tool",
+  },
+  {
+    id: "iris",
+    nameEn: "Iris",
+    god: {
+      id: "iris",
+      greek: "Ἶρις",
+      domainEn:
+        "Goddess of the rainbow and messenger of the gods, linking Olympus to the world below",
+      domainFr:
+        "Déesse de l'arc-en-ciel et messagère des dieux, qui relie l'Olympe au monde d'en bas",
+      whyEn:
+        "Iris carries my projects between me, Claude and Helios: it serves boards to Claude over MCP and sends task deadlines to Helios's calendar. It takes the name of the messenger who links the gods.",
+      whyFr:
+        "Iris fait circuler mes projets entre moi, Claude et Helios : elle sert les tableaux à Claude via MCP et envoie les échéances au calendrier de Helios. Elle porte le nom de la messagère qui relie les dieux.",
+    },
+    nameFr: "Iris",
+    descriptionEn:
+      "A desktop hub for my personal projects: code, electronics, 3D printing and homelab. Every project is a folder of markdown files with a Kanban board, docs and assets, and Claude can reach it over MCP.",
+    descriptionFr:
+      "Un hub bureau pour mes projets personnels : code, électronique, impression 3D et homelab. Chaque projet est un dossier de fichiers markdown avec un tableau Kanban, des docs et des ressources, accessible à Claude via MCP.",
+    longDescriptionEn:
+      "Iris tracks every personal project from idea to done. Its rule is that files are the truth. Each project is a folder of markdown and YAML frontmatter: a project card, one file per task, docs, assets and a BOM for hardware. The SQLite index can be deleted at any time and is rebuilt from the files. Every write, from the window or from MCP, goes through one Rust validator. Writes keep the keys and text they don't own, and a file Iris can't parse is shown with the reason, never overwritten. A per-type onboarding wizard lists every folder, scaffold and GitHub repo it will create, then runs only after a yes. Iris also keeps a homelab machine inventory, parses Excel BOMs, shows read-only GitHub status, and writes task deadlines to an ICS file that Helios shows in its calendar.",
+    longDescriptionFr:
+      "Iris suit chaque projet personnel de l'idée à la fin. Sa règle : les fichiers font foi. Chaque projet est un dossier de markdown avec frontmatter YAML : une fiche projet, un fichier par tâche, des docs, des ressources et une nomenclature pour le matériel. L'index SQLite peut être supprimé à tout moment et se reconstruit depuis les fichiers. Chaque écriture, depuis la fenêtre ou via MCP, passe par un seul validateur Rust. Les écritures conservent les clés et le texte qui ne leur appartiennent pas, et un fichier illisible est affiché avec la raison, jamais écrasé. Un assistant de création par type liste chaque dossier, scaffold et dépôt GitHub qu'il va créer, puis ne s'exécute qu'après confirmation. Iris tient aussi un inventaire des machines du homelab, lit les nomenclatures Excel, affiche l'état GitHub en lecture seule et écrit les échéances des tâches dans un fichier ICS que Helios affiche dans son calendrier.",
+    problemEn:
+      "My projects were spread across repos, notes and a board inside Helios, and Claude had no way to know where I'd left off.",
+    problemFr:
+      "Mes projets étaient éparpillés entre des dépôts, des notes et un tableau dans Helios, et Claude n'avait aucun moyen de savoir où j'en étais.",
+    goalEn:
+      "One hub where every project is plain files, readable by me, by git and by Claude, and started the right way for its type.",
+    goalFr:
+      "Un seul hub où chaque projet est fait de simples fichiers, lisibles par moi, par git et par Claude, et démarré correctement selon son type.",
+    tags: ["Tauri 2", "Rust", "React 19", "SQLite", "MCP"],
+    techStack: [
+      {
+        name: "Markdown + YAML",
+        reasonEn:
+          "Projects stay readable in any editor and outlive the app. Claude and git can read them too. The app is a view and a validator on top of the files, not a database.",
+        reasonFr:
+          "Les projets restent lisibles dans n'importe quel éditeur et survivent à l'app. Claude et git peuvent aussi les lire. L'app est une vue et un validateur au-dessus des fichiers, pas une base de données.",
+      },
+      {
+        name: "Rust",
+        reasonEn:
+          "One validator for every write, from the window or from MCP. It preserves unknown keys and the markdown body, uses a fixed key order, and refuses parent loops.",
+        reasonFr:
+          "Un seul validateur pour chaque écriture, depuis la fenêtre ou MCP. Il préserve les clés inconnues et le corps markdown, garde un ordre de clés fixe et refuse les boucles de parenté.",
+      },
+      {
+        name: "SQLite FTS5",
+        reasonEn:
+          "A disposable index for search across projects, tasks and docs, ignoring accents and case and matching word prefixes. It can be deleted and rebuilt from the files at any time.",
+        reasonFr:
+          "Un index jetable pour la recherche dans les projets, tâches et docs, sans tenir compte des accents ni de la casse, avec correspondance par préfixe. Il peut être supprimé et reconstruit depuis les fichiers à tout moment.",
+      },
+      {
+        name: "MCP",
+        reasonEn:
+          "A separate stdio process that works with the app closed. Claude can ask where I left off, read boards, and add or move tasks, but never delete, rename or touch the network.",
+        reasonFr:
+          "Un processus stdio séparé qui fonctionne app fermée. Claude peut demander où j'en étais, lire les tableaux, ajouter ou déplacer des tâches, mais jamais supprimer, renommer ni accéder au réseau.",
+      },
+    ],
+    highlights: [
+      "Files are the truth: markdown + YAML frontmatter, disposable index",
+      "Kanban board per project with type-specific columns",
+      "Onboarding wizard: scaffold, git, CLAUDE.md and GitHub repo in one run",
+      "BOM editor compatible with Belgian Excel CSVs",
+      "Homelab machine inventory",
+      "MCP server for Claude, plus deadlines exported to Helios",
+    ],
+    highlightsFr: [
+      "Les fichiers font foi : markdown + frontmatter YAML, index jetable",
+      "Un tableau Kanban par projet, avec des colonnes selon le type",
+      "Assistant de création : scaffold, git, CLAUDE.md et dépôt GitHub en une fois",
+      "Éditeur de nomenclature compatible avec les CSV d'Excel belge",
+      "Inventaire des machines du homelab",
+      "Serveur MCP pour Claude, et échéances exportées vers Helios",
+    ],
+    year: "2026",
+    status: "live",
+    role: "Solo",
+    isFeatured: true,
+    timeline: "2 days",
+    timelineFr: "2 jours",
+    version: "v1.3",
     category: "tool",
   },
   {

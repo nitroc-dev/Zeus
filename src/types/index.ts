@@ -28,7 +28,7 @@ export interface LighthouseReport {
   desktop: LighthouseRun;
 }
 
-export type GodId = "zeus" | "helios" | "selene";
+export type GodId = "zeus" | "helios" | "selene" | "iris";
 
 export interface ProjectGod {
   id: GodId;

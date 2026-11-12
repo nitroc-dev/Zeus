@@ -11,4 +11,10 @@ export const GOD_PATHS: Record<GodId, string[]> = {
   ],
   // Selene: the crescent moon
   selene: ["M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.6 6.6 0 0 0 10.7 10.7Z"],
+  // Iris: the rainbow, three nested arcs
+  iris: [
+    "M3 18a9 9 0 0 1 18 0",
+    "M6.5 18a5.5 5.5 0 0 1 11 0",
+    "M10 18a2 2 0 0 1 4 0",
+  ],
 };

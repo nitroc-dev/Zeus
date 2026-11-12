@@ -15,7 +15,7 @@ export async function Hero() {
     { label: t("factAt"), value: "Eachstapp, 2024" },
     { label: t("factStack"), value: "TypeScript, React, React Native, .NET" },
     { label: t("factSpeaks"), value: t("factSpeaksValue") },
-    { label: t("factBuilding"), value: "Helios, Selene" },
+    { label: t("factBuilding"), value: "Iris, Selene" },
   ];
 
   return (

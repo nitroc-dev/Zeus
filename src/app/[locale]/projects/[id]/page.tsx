@@ -114,8 +114,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
         // react-doctor-disable-next-line react-doctor/no-danger
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted static JSON-LD
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
       />
       <main className="relative overflow-hidden page-bg">

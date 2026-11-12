@@ -12,7 +12,7 @@ npm run lint:fix   # Auto-fix lint issues
 npm run format     # Format with Biome
 ```
 
-There are no tests in this project.
+There are no tests in this project. Husky + lint-staged run `biome check --write` on staged files before each commit; CI (`.github/workflows/ci.yml`) runs lint and build on every push and PR.
 
 ## Architecture
 
