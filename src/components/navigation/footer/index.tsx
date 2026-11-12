@@ -146,7 +146,8 @@ export async function Footer() {
         }}
       >
         <span suppressHydrationWarning>
-          &copy; {new Date().getFullYear()} Corentin. {tFooter("allRightsReserved")}
+          &copy; {new Date().getFullYear()} Corentin.{" "}
+          {tFooter("allRightsReserved")}
         </span>
         <div className="flex gap-3">
           {[

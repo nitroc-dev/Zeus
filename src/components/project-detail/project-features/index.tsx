@@ -9,14 +9,18 @@ export function ProjectFeatures({ highlights, t }: ProjectFeaturesProps) {
           <div
             key={item}
             className="rounded-[16px] overflow-hidden"
-            style={{ background: "var(--navy-1)", border: "1px solid var(--portfolio-line)" }}
+            style={{
+              background: "var(--navy-1)",
+              border: "1px solid var(--portfolio-line)",
+            }}
           >
             <div
               className="aspect-video border-b"
               style={{
                 borderColor: "var(--portfolio-line)",
                 background: "var(--navy-2)",
-                backgroundImage: "repeating-linear-gradient(45deg, transparent 0, transparent 14px, rgba(255,255,255,0.02) 14px, rgba(255,255,255,0.02) 28px)",
+                backgroundImage:
+                  "repeating-linear-gradient(45deg, transparent 0, transparent 14px, rgba(255,255,255,0.02) 14px, rgba(255,255,255,0.02) 28px)",
               }}
             />
             <div className="px-6 py-5">
@@ -26,7 +30,12 @@ export function ProjectFeatures({ highlights, t }: ProjectFeaturesProps) {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-p-1)" }}>{item}</p>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--text-p-1)" }}
+              >
+                {item}
+              </p>
             </div>
           </div>
         ))}

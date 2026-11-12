@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ExperienceList } from "@/components/about/experience-list";
 import { ProfileHero } from "@/components/about/profile-hero";
 import { SectionTitle } from "@/components/ui/section-title";
 import { TechIcon } from "@/components/ui/tech-icon";
 import { getExperiencesData, getSkillsData } from "@/lib/data";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 import { createTranslator } from "@/utils/translate";
 
 interface PageProps {

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { buildAlternates, siteUrl } from "@/lib/seo";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Projects } from "@/components/sections/projects";
 import { Currently } from "@/components/sections/working-on";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;

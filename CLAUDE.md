@@ -1,96 +1,115 @@
-# CLAUDE.md
+# Zeus — project memory
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Personal portfolio site for Corentin, a full-stack developer, deployed at
+`nitroc.xyz`. Solo project, in production. Bilingual (en/fr).
+
+## Non-negotiables
+
+- **All user-facing strings must have entries in both `messages/en.json`
+  and `messages/fr.json`.** No hardcoded copy in components.
+- **Internal links use `Link` from `@/i18n/navigation`** — never
+  `next/link` with a manual `/${locale}/...` prefix. External links use
+  plain `<a>`.
+- **Every page (and layout) calls `setRequestLocale(locale)`** at the top
+  of the component — this is what keeps the site statically rendered.
+  `generateMetadata` uses `getTranslations({ locale, namespace })`.
+
+## Tech stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (Turbopack), React 19 |
+| i18n | next-intl 4 — locales `en` (default, unprefixed) / `fr` (`/fr/...`) |
+| Styling | Tailwind CSS v4 + `tw-animate-css`, shadcn/ui (`radix-ui`) |
+| Forms | react-hook-form + zod (`@hookform/resolvers`) |
+| Lint/format | Biome (not ESLint/Prettier) |
+| Analytics | `@vercel/analytics`, `@vercel/speed-insights` |
+| Deploy | Vercel |
+
+No test suite in this project.
+
+## Structure
+
+```
+src/
+  app/
+    layout.tsx          # root layout — metadata only, passes through children
+    [locale]/
+      layout.tsx         # NextIntlClientProvider, Header, Footer, ScrollToTop, Analytics, Toaster, JSON-LD
+      page.tsx            # home (Hero, Projects, Currently, CTA)
+      about/page.tsx
+      projects/[id]/page.tsx  # statically generated per project
+      uses/page.tsx       # hardware/software list
+      contact/page.tsx
+      privacy/page.tsx
+    api/contact/route.ts  # re-validates contact form, forwards to Discord
+    sitemap.ts / robots.ts / manifest.ts
+  components/
+    sections/       # home page sections
+    about/           # ProfileHero, ExperienceList
+    cards/           # ProjectCard
+    contact/         # form + success state
+    navigation/      # Header, Footer
+    project-detail/  # project detail page sub-components
+    inputs/          # form input wrappers over ui/ primitives
+    ui/              # shadcn/ui primitives — flat files, exception to folder convention
+  data/static-data.ts   # bilingual content: projects, skills, experiences, /uses items
+  lib/data.ts            # async wrappers: getProjectsData, getProjectById, getSkillsData, getExperiencesData, getUsesData
+  lib/seo.ts             # canonical/alternate URLs, OG locale
+  i18n/routing.ts
+  utils/translate.ts     # createTranslator(locale) → tr(item, "field")
+  utils/contact-validation.ts  # shared zod schema, client + server
+  proxy.ts               # locale detection/routing middleware
+```
+
+## Conventions
+
+- **Component folders**: every component in its own named folder,
+  **named export** (never `export default`).
+  ```
+  component-name/
+    index.tsx   # export function ComponentName(...)
+    props.ts    # export interface ComponentNameProps — only if it takes props
+  ```
+  Zero-prop components (server components fetching their own data, layout
+  wrappers) omit `props.ts`. `ui/` is the sole exception — keeps shadcn's
+  flat convention.
+- **Bilingual data fields**: `nameEn`/`nameFr`, `descriptionEn`/`descriptionFr`,
+  etc. in `static-data.ts`; select via `tr(item, "name") ?? item.nameEn`.
+  UI chrome strings (labels, headings) go in `messages/*.json` instead, not
+  in `static-data.ts`.
+- **`NextIntlClientProvider`** in the locale layout only ships namespaces
+  client components actually use (`nav`, `contact`). Adding a new client
+  component that needs another namespace means adding it to
+  `clientMessages` there.
+- **Design tokens** live in `:root` in `src/app/globals.css`
+  (`--navy-*`, `--text-p-*`, `--portfolio-*`), registered in `@theme
+  inline` so utility classes exist for all of them (`bg-navy-1`,
+  `text-p-0`, `border-portfolio-line`, `text-portfolio-accent`). Prefer
+  these over inline `style={{ color: "var(--...)" }}`.
+- **Responsive layouts required** — no fixed multi-column
+  `gridTemplateColumns` without a mobile breakpoint (e.g.
+  `grid-cols-1 sm:[grid-template-columns:200px_1fr]`).
+- **Contact form**: `src/components/contact/contact-form` validates with
+  the shared `contact-validation.ts` schema (includes a `website` honeypot
+  field), re-validated server-side in `app/api/contact/route.ts`, forwarded
+  to Discord via `DISCORD_WEBHOOK_URL`.
 
 ## Commands
 
 ```bash
-npm run dev        # Start dev server with Turbopack
-npm run build      # Production build
-npm run lint       # Check with Biome
-npm run lint:fix   # Auto-fix lint issues
-npm run format     # Format with Biome
+npm run dev        # dev server, Turbopack
+npm run build       # production build
+npm run lint        # check with Biome
+npm run lint:fix     # auto-fix
+npm run format       # format with Biome
 ```
 
-There are no tests in this project.
+Husky + lint-staged run `biome check --write` on staged files pre-commit.
+CI (`.github/workflows/ci.yml`) runs lint + build on every push.
 
-## Architecture
-
-This is a **Next.js 16 portfolio** (project name: Zeus) for a full-stack developer named Corentin, deployed at `nitroc.xyz`.
-
-### Internationalization (i18n)
-
-The app uses `next-intl` with two locales: `en` (default) and `fr`, with `localePrefix: "as-needed"` — the default locale is served unprefixed (`/about`), French under `/fr/...`. The middleware in [src/proxy.ts](src/proxy.ts) handles locale detection and routing.
-
-- Routing config: [src/i18n/routing.ts](src/i18n/routing.ts)
-- Translation files: [messages/en.json](messages/en.json) and [messages/fr.json](messages/fr.json)
-- All user-facing strings must have entries in both locale files
-
-Rules:
-- **Internal links must use `Link` from `@/i18n/navigation`** (never `next/link` with a manual `/${locale}/...` prefix); external links use plain `<a>`
-- **Every page must call `setRequestLocale(locale)`** at the top of the component (and layouts too) — this is what keeps the site statically rendered. `generateMetadata` uses `getTranslations({ locale, namespace })`.
-- `NextIntlClientProvider` in the locale layout only ships the namespaces client components use (`nav`, `contact`). If a new client component needs another namespace, add it to `clientMessages` there.
-
-### Data Layer
-
-Content (projects, skills, experiences, /uses items) lives in [src/data/static-data.ts](src/data/static-data.ts) with bilingual fields (`nameEn`/`nameFr`, `descriptionEn`/`descriptionFr`, ...). Access goes through the async wrappers in [src/lib/data.ts](src/lib/data.ts) (`getProjectsData`, `getProjectById`, `getSkillsData`, `getExperiencesData`, `getUsesData`).
-
-Locale selection on those fields uses `createTranslator(locale)` from [src/utils/translate.ts](src/utils/translate.ts): `tr(project, "name") ?? project.nameEn`.
-
-UI strings (labels, headings) live in `messages/*.json` instead.
-
-### Page Structure
-
-- `src/app/layout.tsx` - root layout (metadata only, passes through children)
-- `src/app/[locale]/layout.tsx` - locale layout with `NextIntlClientProvider`, `Header`, `Footer`, `ScrollToTop`, `Analytics`, `SpeedInsights`, `Toaster`, JSON-LD
-- `src/app/[locale]/page.tsx` - home page (Hero, Projects, Currently, CTA sections)
-- `src/app/[locale]/about/page.tsx` - about page (profile, bio, languages, skills, experience)
-- `src/app/[locale]/projects/[id]/page.tsx` - project detail page (statically generated per project)
-- `src/app/[locale]/uses/page.tsx` - hardware/software list
-- `src/app/[locale]/contact/page.tsx` - contact form page
-- `src/app/[locale]/privacy/page.tsx` - privacy policy
-- `src/app/sitemap.ts` / `src/app/robots.ts` / `src/app/manifest.ts` - SEO metadata routes
-
-SEO helpers (canonical/alternate URLs, OG locale) are in [src/lib/seo.ts](src/lib/seo.ts).
-
-### Contact Form
-
-The form ([src/components/contact/contact-form](src/components/contact/contact-form/index.tsx)) uses **react-hook-form + zod** (`@hookform/resolvers`). The shared schema in [src/utils/contact-validation.ts](src/utils/contact-validation.ts) validates on both client and server, and includes a honeypot field (`website`). The API route at `src/app/api/contact/route.ts` re-validates with the same schema and forwards submissions to a **Discord webhook** via the `DISCORD_WEBHOOK_URL` environment variable.
-
-### Components
-
-- `src/components/sections/` - home page sections (Hero, Projects, Currently/working-on, CTA)
-- `src/components/about/` - about page pieces (ProfileHero, ExperienceList)
-- `src/components/cards/` - reusable cards (ProjectCard)
-- `src/components/contact/` - contact form + success state
-- `src/components/navigation/` - Header, Footer
-- `src/components/project-detail/` - sub-components for the project detail page
-- `src/components/ui/` - shadcn/ui primitives (Button, Input, etc.) — intentional exception to folder convention (flat files)
-- `src/components/inputs/` - form input wrappers built on top of the UI primitives
-
-#### Component folder convention
-
-Every component lives in its own named folder with an `index.tsx` that uses a **named export**:
-
-```
-component-name/
-  index.tsx   ← export function ComponentName(...)
-  props.ts    ← export interface ComponentNameProps {...}  (only when the component has external props)
-```
-
-Rules:
-- Always **named exports** — never `export default`
-- `props.ts` is only created when the component receives props from a caller; zero-prop components (server components that fetch their own data, layout wrappers) omit it
-- `ui/` is the only exception: it keeps shadcn's flat `.tsx` convention
-
-### Styling
-
-Tailwind CSS v4 with `tw-animate-css`. The linter is **Biome** (not ESLint/Prettier). Biome is configured to use space indentation and has Next.js + React recommended rules enabled.
-
-Design tokens live in `:root` in [src/app/globals.css](src/app/globals.css) (`--navy-*`, `--text-p-*`, `--portfolio-*`) and are registered in `@theme inline`, so utility classes exist for all of them: `bg-navy-1`, `text-p-0`, `border-portfolio-line`, `text-portfolio-accent`, etc. **Prefer these classes over inline `style={{ color: "var(--...)" }}`** in new/edited code. Layouts must be responsive — no fixed multi-column `gridTemplateColumns` without a mobile breakpoint (`grid-cols-1 sm:[grid-template-columns:200px_1fr]`).
-
-### Environment Variables
+## Environment variables
 
 | Variable | Purpose |
 |---|---|
-| `DISCORD_WEBHOOK_URL` | Required - receives contact form submissions |
+| `DISCORD_WEBHOOK_URL` | Required — receives contact form submissions |

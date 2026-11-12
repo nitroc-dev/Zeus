@@ -8,11 +8,11 @@ import {
   getTranslations,
   setRequestLocale,
 } from "next-intl/server";
-import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import { Footer } from "@/components/navigation/footer";
 import { Header } from "@/components/navigation/header";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { Toaster } from "@/components/ui/sonner";
+import { buildAlternates, ogLocale, siteUrl } from "@/lib/seo";
 import "../globals.css";
 
 const inter = Inter({

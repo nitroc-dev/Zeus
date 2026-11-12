@@ -8,21 +8,35 @@ export function ProjectNextNav({ nextRaw, tr, t }: ProjectNextNavProps) {
       <Link
         href={`/projects/${nextRaw.id}`}
         className="block mb-20 mt-10 p-10 rounded-[16px] transition-all group"
-        style={{ background: "var(--navy-1)", border: "1px solid var(--portfolio-line)", textDecoration: "none", color: "inherit" }}
+        style={{
+          background: "var(--navy-1)",
+          border: "1px solid var(--portfolio-line)",
+          textDecoration: "none",
+          color: "inherit",
+        }}
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.1em] mb-2" style={{ color: "var(--text-p-3)" }}>
+            <p
+              className="font-mono text-[11px] uppercase tracking-[0.1em] mb-2"
+              style={{ color: "var(--text-p-3)" }}
+            >
               {t("nextProjectLabel")} →
             </p>
-            <h3 className="text-3xl font-semibold tracking-tight" style={{ color: "var(--text-p-0)" }}>
+            <h3
+              className="text-3xl font-semibold tracking-tight"
+              style={{ color: "var(--text-p-0)" }}
+            >
               {tr(nextRaw, "name") ?? nextRaw.nameEn}
             </h3>
             <p className="mt-1 text-sm" style={{ color: "var(--text-p-2)" }}>
               {tr(nextRaw, "description") ?? nextRaw.descriptionEn}
             </p>
           </div>
-          <span className="text-3xl shrink-0 transition-transform group-hover:translate-x-2" style={{ color: "var(--portfolio-accent)" }}>
+          <span
+            className="text-3xl shrink-0 transition-transform group-hover:translate-x-2"
+            style={{ color: "var(--portfolio-accent)" }}
+          >
             →
           </span>
         </div>

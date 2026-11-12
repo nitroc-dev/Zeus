@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { buildAlternates, siteUrl } from "@/lib/seo";
 import { ContactForm } from "@/components/contact/contact-form";
+import { buildAlternates, siteUrl } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
