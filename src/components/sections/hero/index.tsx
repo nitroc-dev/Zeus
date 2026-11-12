@@ -204,7 +204,7 @@ export async function Hero() {
               &nbsp;&nbsp;"focus"
             </span>
             <span style={{ color: "var(--text-p-2)" }}>: </span>
-            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Helios"</span>
+            <span style={{ color: "oklch(0.78 0.16 145)" }}>"Iris"</span>
             <br />
             <span style={{ color: "var(--text-p-2)" }}>{"}"}</span>
             <br />
